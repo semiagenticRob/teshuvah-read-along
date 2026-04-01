@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useCallback } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, LayoutChangeEvent } from 'react-native';
 import { Prayer, DisplayMode, TextSize } from '../types';
 import { getScaledFontSizes } from '../utils/hebrewUtils';
@@ -13,6 +13,47 @@ interface ReadAlongViewProps {
   onLineLayout?: (lineIndex: number, y: number) => void;
 }
 
+/**
+ * Renders English text with footnote markers as tappable blue superscripts.
+ * Splits on the ⁽N⁾ pattern inserted by the bundler.
+ */
+function renderEnglishWithMarkers(
+  english: string,
+  fontSize: number,
+  isHighlighted: boolean,
+  onMarkerTap: () => void,
+) {
+  const parts = english.split(/(⁽\d+⁾)/);
+  if (parts.length === 1) {
+    // No markers — plain text
+    return (
+      <Text style={[styles.englishLine, { fontSize }, isHighlighted && styles.highlightedEnglish]}>
+        {english}
+      </Text>
+    );
+  }
+
+  return (
+    <Text style={[styles.englishLine, { fontSize }, isHighlighted && styles.highlightedEnglish]}>
+      {parts.map((part, i) => {
+        const markerMatch = part.match(/^⁽(\d+)⁾$/);
+        if (markerMatch) {
+          return (
+            <Text
+              key={i}
+              style={styles.inlineFootnoteMarker}
+              onPress={onMarkerTap}
+            >
+              ⁽{markerMatch[1]}⁾
+            </Text>
+          );
+        }
+        return <Text key={i}>{part}</Text>;
+      })}
+    </Text>
+  );
+}
+
 export const ReadAlongView: React.FC<ReadAlongViewProps> = ({
   prayer,
   currentLineIndex,
@@ -25,6 +66,21 @@ export const ReadAlongView: React.FC<ReadAlongViewProps> = ({
   const fontSizes = getScaledFontSizes(textSize);
   const showTransliteration = displayMode === 'hebrew_translit' || displayMode === 'all';
   const showEnglish = displayMode === 'hebrew_english' || displayMode === 'all';
+
+  // Track which lines have their footnotes expanded (collapsed by default)
+  const [expandedFootnotes, setExpandedFootnotes] = useState<Set<number>>(new Set());
+
+  const toggleFootnotes = useCallback((lineIndex: number) => {
+    setExpandedFootnotes((prev) => {
+      const next = new Set(prev);
+      if (next.has(lineIndex)) {
+        next.delete(lineIndex);
+      } else {
+        next.add(lineIndex);
+      }
+      return next;
+    });
+  }, []);
 
   if (!prayer.sections.length) {
     return (
@@ -45,6 +101,8 @@ export const ReadAlongView: React.FC<ReadAlongViewProps> = ({
       {prayer.sections.map((section) =>
         section.lines.map((line, lineIndex) => {
           const isCurrentLine = lineIndex === currentLineIndex;
+          const hasFootnotes = line.footnotes && line.footnotes.length > 0;
+          const footnotesExpanded = expandedFootnotes.has(lineIndex);
 
           return (
             <View
@@ -101,17 +159,38 @@ export const ReadAlongView: React.FC<ReadAlongViewProps> = ({
                 </View>
               )}
 
-              {/* English translation (LTR) */}
+              {/* English translation with tappable footnote markers */}
               {showEnglish && (
-                <Text
-                  style={[
-                    styles.englishLine,
-                    { fontSize: fontSizes.english },
-                    isCurrentLine && styles.highlightedEnglish,
-                  ]}
-                >
-                  {line.english}
-                </Text>
+                hasFootnotes
+                  ? renderEnglishWithMarkers(
+                      line.english,
+                      fontSizes.english,
+                      isCurrentLine,
+                      () => toggleFootnotes(lineIndex),
+                    )
+                  : (
+                    <Text
+                      style={[
+                        styles.englishLine,
+                        { fontSize: fontSizes.english },
+                        isCurrentLine && styles.highlightedEnglish,
+                      ]}
+                    >
+                      {line.english}
+                    </Text>
+                  )
+              )}
+
+              {/* Footnotes (collapsed by default, toggled by marker tap) */}
+              {showEnglish && hasFootnotes && footnotesExpanded && (
+                <View style={styles.footnotesContainer}>
+                  {line.footnotes!.map((fn) => (
+                    <Text key={fn.marker} style={styles.footnoteText}>
+                      <Text style={styles.footnoteMarker}>{fn.marker}. </Text>
+                      {fn.text}
+                    </Text>
+                  ))}
+                </View>
               )}
 
               {/* Divider between lines */}
@@ -206,6 +285,27 @@ const styles = StyleSheet.create({
   highlightedEnglish: {
     color: '#2D3748',
     fontWeight: '500',
+  },
+  inlineFootnoteMarker: {
+    color: '#3182CE',
+    fontWeight: '700',
+    fontSize: 11,
+  },
+  footnotesContainer: {
+    marginTop: 6,
+    paddingLeft: 8,
+    borderLeftWidth: 2,
+    borderLeftColor: '#E2E8F0',
+  },
+  footnoteText: {
+    fontSize: 12,
+    color: '#A0AEC0',
+    lineHeight: 18,
+    marginBottom: 2,
+  },
+  footnoteMarker: {
+    fontWeight: '700',
+    color: '#718096',
   },
   lineDivider: {
     height: 1,

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useCallback, useState } from 'react';
+import React, { useEffect, useRef, useCallback, useState, useMemo } from 'react';
 import {
   View,
   Text,
@@ -42,8 +42,8 @@ export const ReadAlongScreen: React.FC<Props> = ({ route }) => {
 
   const { displayMode, textSize } = useSettingsStore();
 
-  // Load prayers for this service
-  const prayers = serviceId === 'shacharit' ? getShacharitPrayers() : [];
+  // Load prayers for this service (memoized to avoid new array each render)
+  const prayers = useMemo(() => serviceId === 'shacharit' ? getShacharitPrayers() : [], [serviceId]);
   const currentPrayer = prayers[currentPrayerIndex];
 
   // Loaded prayer state — fetches text from Sefaria on demand
@@ -67,7 +67,8 @@ export const ReadAlongScreen: React.FC<Props> = ({ route }) => {
         setLoadError('Could not load prayer text. Check your connection and try again.');
         setIsLoadingText(false);
       });
-  }, [currentPrayer]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentPrayer?.id]);
 
   useEffect(() => {
     loadCurrentPrayer();
@@ -94,7 +95,8 @@ export const ReadAlongScreen: React.FC<Props> = ({ route }) => {
         nextPrayer(prayers.length);
       }
     });
-  }, [onComplete, activePrayer, setIsPlaying, markPrayerCompleted, nextPrayer, currentPrayerIndex, prayers.length]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [onComplete, currentPrayer?.id, setIsPlaying, markPrayerCompleted, nextPrayer, currentPrayerIndex, prayers.length]);
 
   // Word sync hook — updates currentWord based on audio position
   useWordSync(activePrayer, isPlaying, getPositionMs);

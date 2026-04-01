@@ -23,15 +23,24 @@ export interface WordTiming {
   endTime: number;
 }
 
+export interface Footnote {
+  /** Footnote number as displayed in text */
+  marker: string;
+  /** Footnote body text */
+  text: string;
+}
+
 export interface PrayerLine {
   /** Full Hebrew line */
   hebrew: string;
-  /** English translation */
+  /** English translation (footnotes stripped) */
   english: string;
   /** Transliteration of the full line */
   transliteration: string;
   /** Word-level data for audio sync */
   words: WordTiming[];
+  /** Footnotes extracted from the English translation */
+  footnotes?: Footnote[];
 }
 
 export interface PrayerSection {
