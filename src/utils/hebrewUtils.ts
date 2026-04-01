@@ -48,10 +48,10 @@ export function getTextSizeMultiplier(size: 'small' | 'medium' | 'large' | 'xlar
  * Base font sizes used in the app.
  */
 export const BASE_FONT_SIZES = {
-  hebrewPrimary: 26,
+  hebrewPrimary: 17,
   transliteration: 16,
   english: 15,
-  hebrewSmall: 18,
+  hebrewSmall: 14,
 } as const;
 
 /**
