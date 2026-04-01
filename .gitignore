@@ -1,6 +1,9 @@
 # Dependencies
 node_modules/
 
+# Expo
+.expo/
+
 # React Native
 ios/Pods/
 ios/build/

@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 import { PlaybackSpeed, PLAYBACK_SPEEDS } from '../types';
 
 interface PlaybackControlsProps {
@@ -44,16 +45,20 @@ export const PlaybackControls: React.FC<PlaybackControlsProps> = ({
           onPress={onPreviousPrayer}
           disabled={!hasPrevious}
         >
-          <Text style={[styles.navIcon, !hasPrevious && styles.disabledText]}>
-            {'\u23EE'}
-          </Text>
+          <Ionicons
+            name="play-skip-back"
+            size={22}
+            color={hasPrevious ? '#4A5568' : '#A0AEC0'}
+          />
         </TouchableOpacity>
 
         {/* Play/Pause */}
         <TouchableOpacity style={styles.playButton} onPress={onPlayPause}>
-          <Text style={styles.playIcon}>
-            {isPlaying ? '\u23F8' : '\u25B6'}
-          </Text>
+          <Ionicons
+            name={isPlaying ? 'pause' : 'play'}
+            size={28}
+            color="#FFFFFF"
+          />
         </TouchableOpacity>
 
         {/* Next prayer */}
@@ -62,9 +67,11 @@ export const PlaybackControls: React.FC<PlaybackControlsProps> = ({
           onPress={onNextPrayer}
           disabled={!hasNext}
         >
-          <Text style={[styles.navIcon, !hasNext && styles.disabledText]}>
-            {'\u23ED'}
-          </Text>
+          <Ionicons
+            name="play-skip-forward"
+            size={22}
+            color={hasNext ? '#4A5568' : '#A0AEC0'}
+          />
         </TouchableOpacity>
       </View>
 
@@ -110,10 +117,6 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 4,
   },
-  playIcon: {
-    fontSize: 28,
-    color: '#FFFFFF',
-  },
   navButton: {
     width: 44,
     height: 44,
@@ -122,15 +125,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  navIcon: {
-    fontSize: 20,
-    color: '#4A5568',
-  },
   disabledButton: {
     opacity: 0.4,
-  },
-  disabledText: {
-    color: '#A0AEC0',
   },
   speedButton: {
     width: 50,

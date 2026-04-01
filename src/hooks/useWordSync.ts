@@ -1,6 +1,5 @@
 import { useEffect, useRef } from 'react';
-import TrackPlayer from 'react-native-track-player';
-import { Prayer, WordTiming } from '../types';
+import { Prayer } from '../types';
 import { usePrayerStore } from '../store/prayerStore';
 
 const SYNC_INTERVAL_MS = 50;
@@ -31,31 +30,15 @@ export function useWordSync(prayer: Prayer | undefined, isPlaying: boolean) {
 
     if (wordIndex.length === 0) return;
 
-    if (prayer.audioSource === 'recorded') {
-      // Poll audio position and find current word
-      intervalRef.current = setInterval(async () => {
-        try {
-          const position = await TrackPlayer.getPosition();
-          const positionMs = position * 1000;
-          const result = findWordAtTime(wordIndex, positionMs);
-          if (result) {
-            setCurrentWord(result.lineIndex, result.wordIndex);
-          }
-        } catch {
-          // TrackPlayer may not be ready yet
-        }
-      }, SYNC_INTERVAL_MS);
-    } else {
-      // TTS: use estimated timing with a simple timer
-      let startTime = Date.now();
-      intervalRef.current = setInterval(() => {
-        const elapsed = Date.now() - startTime;
-        const result = findWordAtTime(wordIndex, elapsed);
-        if (result) {
-          setCurrentWord(result.lineIndex, result.wordIndex);
-        }
-      }, SYNC_INTERVAL_MS);
-    }
+    // Use estimated timing with a simple timer synced to TTS playback
+    let startTime = Date.now();
+    intervalRef.current = setInterval(() => {
+      const elapsed = Date.now() - startTime;
+      const result = findWordAtTime(wordIndex, elapsed);
+      if (result) {
+        setCurrentWord(result.lineIndex, result.wordIndex);
+      }
+    }, SYNC_INTERVAL_MS);
 
     return () => {
       if (intervalRef.current) {
