@@ -7,12 +7,12 @@ import {
   FlatList,
   SafeAreaView,
 } from 'react-native';
-import type { NativeStackScreenProps } from '@react-navigation/stack';
+import type { StackScreenProps } from '@react-navigation/stack';
 import { RootStackParamList, Prayer } from '../types';
 import { usePrayerStore } from '../store/prayerStore';
 import { getShacharitPrayers } from '../data/prayerOrder';
 
-type Props = NativeStackScreenProps<RootStackParamList, 'PrayerList'>;
+type Props = StackScreenProps<RootStackParamList, 'PrayerList'>;
 
 export const PrayerListScreen: React.FC<Props> = ({ navigation, route }) => {
   const { serviceId } = route.params;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, LayoutChangeEvent } from 'react-native';
 import { Prayer, DisplayMode, TextSize } from '../types';
 import { getScaledFontSizes } from '../utils/hebrewUtils';
 
@@ -10,6 +10,7 @@ interface ReadAlongViewProps {
   displayMode: DisplayMode;
   textSize: TextSize;
   onWordTap: (lineIndex: number, wordIndex: number) => void;
+  onLineLayout?: (lineIndex: number, y: number) => void;
 }
 
 export const ReadAlongView: React.FC<ReadAlongViewProps> = ({
@@ -19,6 +20,7 @@ export const ReadAlongView: React.FC<ReadAlongViewProps> = ({
   displayMode,
   textSize,
   onWordTap,
+  onLineLayout,
 }) => {
   const fontSizes = getScaledFontSizes(textSize);
   const showTransliteration = displayMode === 'hebrew_translit' || displayMode === 'all';
@@ -48,6 +50,7 @@ export const ReadAlongView: React.FC<ReadAlongViewProps> = ({
             <View
               key={`${section.id}-${lineIndex}`}
               style={[styles.lineContainer, isCurrentLine && styles.currentLineContainer]}
+              onLayout={onLineLayout ? (e: LayoutChangeEvent) => onLineLayout(lineIndex, e.nativeEvent.layout.y) : undefined}
             >
               {/* Hebrew text (RTL, primary) */}
               <View style={styles.hebrewLine}>
