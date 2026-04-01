@@ -11,6 +11,27 @@ import { getAudioAsset } from '../data/audioAssets';
  *
  * Returns a stable interface regardless of mode.
  */
+// Cache the male Hebrew voice identifier so we only look it up once
+let cachedMaleVoice: string | undefined;
+async function getMaleHebrewVoice(): Promise<string | undefined> {
+  if (cachedMaleVoice !== undefined) return cachedMaleVoice || undefined;
+  try {
+    const voices = await Speech.getAvailableVoicesAsync();
+    const hebrewVoices = voices.filter((v) => v.language?.startsWith('he'));
+    // Prefer a male voice; fall back to any non-default Hebrew voice
+    const male = hebrewVoices.find(
+      (v) => v.identifier?.toLowerCase().includes('male') ||
+             v.identifier?.toLowerCase().includes('grandpa') ||
+             v.name?.toLowerCase().includes('male'),
+    );
+    cachedMaleVoice = male?.identifier ?? '';
+    return cachedMaleVoice || undefined;
+  } catch {
+    cachedMaleVoice = '';
+    return undefined;
+  }
+}
+
 export function useAudioPlayer(prayer: Prayer | undefined) {
   const soundRef = useRef<Audio.Sound | null>(null);
   const audioAsset = prayer ? getAudioAsset(prayer.id) : undefined;
@@ -18,6 +39,7 @@ export function useAudioPlayer(prayer: Prayer | undefined) {
 
   // TTS state
   const ttsRate = useRef<number>(0.45);
+  const ttsVoice = useRef<string | undefined>(undefined);
   const ttsStartTime = useRef<number>(0);
   const ttsPlaying = useRef<boolean>(false);
   const ttsPausedElapsed = useRef<number>(0);
@@ -77,17 +99,22 @@ export function useAudioPlayer(prayer: Prayer | undefined) {
     if (isRecorded && soundRef.current) {
       await soundRef.current.playAsync();
     } else {
-      // TTS mode
+      // TTS mode — prefer male voice
       const hebrewText = prayer.sections
         .flatMap((s) => s.lines.map((l) => l.hebrew))
         .join('. ');
 
       if (hebrewText) {
+        // Resolve male voice if not yet cached
+        if (!ttsVoice.current) {
+          ttsVoice.current = await getMaleHebrewVoice() ?? undefined;
+        }
         ttsStartTime.current = Date.now() - ttsPausedElapsed.current;
         ttsPlaying.current = true;
         Speech.speak(hebrewText, {
           language: 'he-IL',
           rate: ttsRate.current,
+          voice: ttsVoice.current,
           onDone: () => {
             ttsPlaying.current = false;
             onCompleteRef.current?.();

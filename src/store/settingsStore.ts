@@ -62,7 +62,13 @@ export const useSettingsStore = create<SettingsState>((set, get) => ({
     const stored = await AsyncStorage.getItem(SETTINGS_STORAGE_KEY);
     if (stored) {
       const parsed = JSON.parse(stored);
-      set({ ...parsed, isLoaded: true });
+      set({
+        textSize: parsed.textSize ?? 'medium',
+        displayMode: parsed.displayMode ?? 'all',
+        defaultSpeed: parsed.defaultSpeed ?? 1.0,
+        nusach: parsed.nusach ?? 'ashkenaz',
+        isLoaded: true,
+      });
     } else {
       set({ isLoaded: true });
     }

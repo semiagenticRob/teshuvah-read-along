@@ -56,8 +56,8 @@ const SHACHARIT_PRAYERS = [
   },
   {
     id: 'shema',
+    // Barchu omitted — requires a minyan
     refs: [
-      `${P} Blessings of the Shema, Barchu`,
       `${P} Blessings of the Shema, First Blessing before Shema`,
       `${P} Blessings of the Shema, Second Blessing before Shema`,
       `${P} Blessings of the Shema, Shema`,
@@ -69,6 +69,7 @@ const SHACHARIT_PRAYERS = [
     refs: [
       `${P} Amidah, Patriarchs`,
       `${P} Amidah, Divine Might`,
+      // Kedushah omitted — requires a minyan (chazzan's repetition)
       `${P} Amidah, Holiness of God`,
       `${P} Amidah, Knowledge`,
       `${P} Amidah, Repentance`,
@@ -85,7 +86,7 @@ const SHACHARIT_PRAYERS = [
       `${P} Amidah, Response to Prayer`,
       `${P} Amidah, Temple Service`,
       `${P} Amidah, Thanksgiving`,
-      `${P} Amidah, Birkat Kohanim`,
+      // Birkat Kohanim omitted — said by Chazzan only
       `${P} Amidah, Peace`,
       `${P} Amidah, Concluding Passage`,
     ],
@@ -111,6 +112,31 @@ const SHACHARIT_PRAYERS = [
 
 function stripHtml(text) {
   return text.replace(/<[^>]*>/g, '').trim();
+}
+
+/**
+ * Returns true if a line is a chazzan/minyan-only instruction that should be
+ * excluded from the individual prayer experience.
+ */
+function isMinyanOnlyLine(he, en) {
+  const heLower = he || '';
+  const enLower = (en || '').toLowerCase();
+  // Chazzan instruction lines
+  if (/^(שליח ציבור|שליח צבור):?$/.test(heLower.trim())) return true;
+  if (/^בחזרת הש"ץ/.test(heLower.trim())) return true;
+  if (/^כשיגיע שליח צ/.test(heLower.trim())) return true;
+  if (/^to be said by the chazzan/i.test(enLower.trim())) return true;
+  if (/^\(when the chazzan/i.test(enLower.trim())) return true;
+  // Congregation response instructions
+  if (/^ועונין הקהל/.test(heLower.trim())) return true;
+  if (/^ואומר שליח צ/.test(heLower.trim())) return true;
+  // Post-service chazzan notes
+  if (/^בר"ח וחולו של מועד/.test(heLower.trim())) return true;
+  // Fast day chazzan note
+  if (/^\(בתענית ציבור/.test(heLower.trim())) return true;
+  // Birkat Kohanim chazzan intro
+  if (/^הטעם שתקנו לברך/.test(heLower.trim())) return true;
+  return false;
 }
 
 /**
@@ -181,9 +207,17 @@ async function main() {
         const he = flattenTextArray(raw.he).map(stripHtml).filter(Boolean);
         const rawText = flattenTextArray(raw.text).filter(Boolean);
 
-        // Process each English line: extract footnotes, strip remaining HTML
-        for (let i = 0; i < rawText.length; i++) {
-          const { text: cleanText, footnotes } = extractFootnotes(rawText[i]);
+        // Process lines in parallel: extract footnotes, filter minyan-only
+        const maxLen = Math.max(he.length, rawText.length);
+        for (let i = 0; i < maxLen; i++) {
+          const heLine = he[i] || '';
+          const rawEnLine = rawText[i] || '';
+          const { text: cleanText, footnotes } = extractFootnotes(rawEnLine);
+
+          // Skip chazzan/minyan-only instruction lines
+          if (isMinyanOnlyLine(heLine, cleanText)) continue;
+
+          if (heLine) allHe.push(heLine);
           if (cleanText) {
             allText.push(cleanText);
             if (footnotes) {
@@ -192,7 +226,6 @@ async function main() {
           }
         }
 
-        allHe.push(...he);
         // Small delay between sub-fetches
         await new Promise((r) => setTimeout(r, 300));
       }

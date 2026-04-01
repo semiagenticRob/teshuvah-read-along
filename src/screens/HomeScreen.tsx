@@ -4,9 +4,11 @@ import {
   Text,
   StyleSheet,
   TouchableOpacity,
-  SafeAreaView,
   StatusBar,
+  ImageBackground,
+  ScrollView,
 } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
 import type { StackScreenProps } from '@react-navigation/stack';
 import { RootStackParamList } from '../types';
 
@@ -39,44 +41,58 @@ const SERVICES = [
   },
 ];
 
+/* eslint-disable @typescript-eslint/no-var-requires */
+const headerImage = require('../../assets/images/kotel-header.jpg');
+
 export const HomeScreen: React.FC<Props> = ({ navigation }) => {
   return (
-    <SafeAreaView style={styles.container}>
-      <StatusBar barStyle="dark-content" />
-      <View style={styles.header}>
-        <Text style={styles.titleHebrew}>תשובה</Text>
-        <Text style={styles.titleEnglish}>Teshuvah Read-Along</Text>
-        <Text style={styles.subtitle}>Follow along with the weekday siddur</Text>
-      </View>
-
-      <View style={styles.serviceList}>
-        {SERVICES.map((service) => (
-          <TouchableOpacity
-            key={service.id}
-            style={[styles.serviceCard, !service.available && styles.serviceCardDisabled]}
-            disabled={!service.available}
-            onPress={() => navigation.navigate('PrayerList', { serviceId: service.id })}
+    <View style={styles.container}>
+      <StatusBar barStyle="light-content" />
+      <ScrollView style={styles.scrollView} bounces={false}>
+        {/* Header image with text overlay and gradient fade */}
+        <ImageBackground source={headerImage} style={styles.headerImage} resizeMode="cover">
+          <LinearGradient
+            colors={['rgba(0,0,0,0.35)', 'rgba(0,0,0,0.15)', '#FDFAF6']}
+            locations={[0, 0.5, 1]}
+            style={styles.headerGradient}
           >
-            <Text style={[styles.serviceHebrew, !service.available && styles.disabledText]}>
-              {service.hebrew}
-            </Text>
-            <Text style={[styles.serviceEnglish, !service.available && styles.disabledText]}>
-              {service.english}
-            </Text>
-            {!service.available && (
-              <Text style={styles.comingSoon}>Coming Soon</Text>
-            )}
-          </TouchableOpacity>
-        ))}
-      </View>
+            <View style={styles.headerContent}>
+              <Text style={styles.titleEnglish}>Daven Along</Text>
+              <Text style={styles.subtitle}>Follow along with the weekday siddur</Text>
+            </View>
+          </LinearGradient>
+        </ImageBackground>
 
-      <TouchableOpacity
-        style={styles.settingsButton}
-        onPress={() => navigation.navigate('Settings')}
-      >
-        <Text style={styles.settingsText}>Settings</Text>
-      </TouchableOpacity>
-    </SafeAreaView>
+        {/* Service cards */}
+        <View style={styles.serviceList}>
+          {SERVICES.map((service) => (
+            <TouchableOpacity
+              key={service.id}
+              style={[styles.serviceCard, !service.available && styles.serviceCardDisabled]}
+              disabled={!service.available}
+              onPress={() => navigation.navigate('PrayerList', { serviceId: service.id })}
+            >
+              <Text style={[styles.serviceHebrew, !service.available && styles.disabledText]}>
+                {service.hebrew}
+              </Text>
+              <Text style={[styles.serviceEnglish, !service.available && styles.disabledText]}>
+                {service.english}
+              </Text>
+              {!service.available && (
+                <Text style={styles.comingSoon}>Coming Soon</Text>
+              )}
+            </TouchableOpacity>
+          ))}
+        </View>
+
+        <TouchableOpacity
+          style={styles.settingsButton}
+          onPress={() => navigation.navigate('Settings')}
+        >
+          <Text style={styles.settingsText}>Settings</Text>
+        </TouchableOpacity>
+      </ScrollView>
+    </View>
   );
 };
 
@@ -85,30 +101,41 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#FDFAF6',
   },
-  header: {
-    alignItems: 'center',
-    paddingTop: 40,
-    paddingBottom: 30,
+  scrollView: {
+    flex: 1,
   },
-  titleHebrew: {
-    fontSize: 42,
-    fontWeight: '700',
-    color: '#1A365D',
-    marginBottom: 4,
+  headerImage: {
+    width: '100%',
+    height: 180,
+  },
+  headerGradient: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  headerContent: {
+    alignItems: 'center',
+    paddingHorizontal: 20,
   },
   titleEnglish: {
-    fontSize: 22,
-    fontWeight: '600',
-    color: '#2D4A7A',
-    marginBottom: 8,
+    fontSize: 36,
+    fontWeight: '800',
+    color: '#FFFFFF',
+    marginBottom: 6,
+    textShadowColor: 'rgba(0,0,0,0.5)',
+    textShadowOffset: { width: 0, height: 1 },
+    textShadowRadius: 4,
   },
   subtitle: {
-    fontSize: 14,
-    color: '#718096',
+    fontSize: 15,
+    color: 'rgba(255,255,255,0.9)',
+    textShadowColor: 'rgba(0,0,0,0.4)',
+    textShadowOffset: { width: 0, height: 1 },
+    textShadowRadius: 3,
   },
   serviceList: {
-    flex: 1,
     paddingHorizontal: 20,
+    paddingTop: 8,
     gap: 12,
   },
   serviceCard: {

@@ -95,7 +95,7 @@ export const SettingsScreen: React.FC = () => {
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>About</Text>
           <Text style={styles.aboutText}>
-            Teshuvah Read-Along helps ba'alei teshuvah follow along with the
+            Daven Along helps ba'alei teshuvah follow along with the
             weekday siddur by providing synchronized audio with word-by-word
             highlighting in Hebrew, transliteration, and English.
           </Text>
@@ -126,9 +126,11 @@ export const SettingsScreen: React.FC = () => {
           <View style={styles.sourceCard}>
             <Text style={styles.sourceTitle}>Read-Along Siddur</Text>
             <Text style={styles.sourceDescription}>
-              Hebrew prayer audio recordings by Ari Hoffman and Shimon Stroll.
-              Created by Adam Moskowitz. Used with permission.
+              Hebrew prayer audio recordings. Used with permission.
             </Text>
+            <Text style={styles.sourceCredits}>Created by Adam Moskowitz</Text>
+            <Text style={styles.sourceCredits}>Audio by Ari Hoffman and Shimon Stroll</Text>
+            <Text style={styles.sourceCredits}>Technical and design by Lev Lawrence, Jonah Lawrence, and Raphael Lawrence</Text>
             <Text
               style={styles.sourceLink}
               onPress={() => Linking.openURL('https://readalongsiddur.com')}
@@ -150,6 +152,19 @@ export const SettingsScreen: React.FC = () => {
             <Text style={styles.sourceDescription}>
               Generated using Ashkenazi pronunciation conventions.
               The Tetragrammaton (Name of God) is always rendered as "Adonai."
+            </Text>
+          </View>
+
+          <View style={styles.sourceCard}>
+            <Text style={styles.sourceTitle}>Header Image</Text>
+            <Text style={styles.sourceDescription}>
+              Western Wall photograph by Bruno Aguirre on Unsplash.
+            </Text>
+            <Text
+              style={styles.sourceLink}
+              onPress={() => Linking.openURL('https://unsplash.com/photos/TgUs0JOtXZA')}
+            >
+              View on Unsplash
             </Text>
           </View>
 
@@ -260,6 +275,12 @@ const styles = StyleSheet.create({
     fontSize: 13,
     color: '#718096',
     lineHeight: 20,
+  },
+  sourceCredits: {
+    fontSize: 13,
+    color: '#4A5568',
+    lineHeight: 20,
+    marginTop: 2,
   },
   sourceLink: {
     fontSize: 13,
