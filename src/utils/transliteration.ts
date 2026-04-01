@@ -75,6 +75,10 @@ const DAGESH_CHANGES: Record<string, string> = {
 // Vav combinations
 const VAV = '\u05D5';
 
+// The Tetragrammaton (יהוה) — always transliterated as "Adonai" per halachic convention.
+// Matches the four letters with any interleaved niqqud/cantillation marks.
+const TETRAGRAMMATON_PATTERN = /\u05D9[\u0590-\u05CF]*\u05D4[\u0590-\u05CF]*\u05D5[\u0590-\u05CF]*\u05D4[\u0590-\u05CF]*/g;
+
 /**
  * Transliterates a Hebrew string to Latin characters.
  *
@@ -82,8 +86,11 @@ const VAV = '\u05D5';
  * @returns Transliterated string
  */
 export function transliterateHebrew(hebrew: string): string {
+  // Replace the Tetragrammaton with a placeholder before processing
+  const processed = hebrew.replace(TETRAGRAMMATON_PATTERN, '\uFFFDAdonai\uFFFD');
+
   const result: string[] = [];
-  const chars = Array.from(hebrew);
+  const chars = Array.from(processed);
 
   for (let i = 0; i < chars.length; i++) {
     const char = chars[i];
@@ -92,6 +99,19 @@ export function transliterateHebrew(hebrew: string): string {
     // Whitespace
     if (/\s/.test(char)) {
       result.push(' ');
+      continue;
+    }
+
+    // Handle Tetragrammaton placeholder: read "Adonai" between sentinels
+    if (char === '\uFFFD') {
+      // Collect characters until the closing sentinel
+      let word = '';
+      i++;
+      while (i < chars.length && chars[i] !== '\uFFFD') {
+        word += chars[i];
+        i++;
+      }
+      result.push(word);
       continue;
     }
 

@@ -26,7 +26,7 @@ const SHACHARIT_PRAYERS: PrayerDefinition[] = [
     nameHebrew: 'מודה אני',
     nameEnglish: 'Modeh Ani',
     nameTransliteration: 'Modeh Ani',
-    audioSource: 'tts',
+    audioSource: 'recorded',
     instructions: 'Said immediately upon waking, before washing hands.',
   },
   {
@@ -35,7 +35,7 @@ const SHACHARIT_PRAYERS: PrayerDefinition[] = [
     nameHebrew: 'נטילת ידיים',
     nameEnglish: 'Washing of the Hands',
     nameTransliteration: 'Netilat Yadayim',
-    audioSource: 'tts',
+    audioSource: 'recorded',
     instructions: 'Wash hands alternating three times, then say the blessing.',
   },
   {
@@ -44,7 +44,7 @@ const SHACHARIT_PRAYERS: PrayerDefinition[] = [
     nameHebrew: 'אשר יצר',
     nameEnglish: 'Asher Yatzar',
     nameTransliteration: 'Asher Yatzar',
-    audioSource: 'tts',
+    audioSource: 'recorded',
     instructions: 'Blessing acknowledging the body\'s functioning.',
   },
   {
@@ -53,7 +53,7 @@ const SHACHARIT_PRAYERS: PrayerDefinition[] = [
     nameHebrew: 'אלהי נשמה',
     nameEnglish: 'Elokai Neshama',
     nameTransliteration: 'Elokai Neshama',
-    audioSource: 'tts',
+    audioSource: 'recorded',
     instructions: 'Blessing for the soul.',
   },
   {
@@ -62,7 +62,7 @@ const SHACHARIT_PRAYERS: PrayerDefinition[] = [
     nameHebrew: 'ברכות התורה',
     nameEnglish: 'Torah Blessings',
     nameTransliteration: 'Birchot HaTorah',
-    audioSource: 'tts',
+    audioSource: 'recorded',
     instructions: 'Blessings before Torah study, includes the priestly blessing.',
   },
   {
@@ -71,7 +71,7 @@ const SHACHARIT_PRAYERS: PrayerDefinition[] = [
     nameHebrew: 'ברכות השחר',
     nameEnglish: 'Morning Blessings',
     nameTransliteration: 'Birchot HaShachar',
-    audioSource: 'tts',
+    audioSource: 'recorded',
     instructions: 'Series of blessings thanking God for daily gifts.',
   },
   {
@@ -97,7 +97,7 @@ const SHACHARIT_PRAYERS: PrayerDefinition[] = [
     nameHebrew: 'פסוקי דזמרה',
     nameEnglish: 'Verses of Praise',
     nameTransliteration: "Pesukei D'Zimrah",
-    audioSource: 'tts',
+    audioSource: 'recorded',
     instructions: 'Begins with Baruch She\'Amar, ends with Yishtabach. Includes Ashrei and Psalms 146-150.',
   },
   {
@@ -133,7 +133,7 @@ const SHACHARIT_PRAYERS: PrayerDefinition[] = [
     nameHebrew: 'אשרי / ובא לציון',
     nameEnglish: "Ashrei / U'va L'Tziyon",
     nameTransliteration: "Ashrei / U'va L'Tziyon",
-    audioSource: 'tts',
+    audioSource: 'recorded',
   },
   {
     id: 'aleinu',
@@ -141,7 +141,7 @@ const SHACHARIT_PRAYERS: PrayerDefinition[] = [
     nameHebrew: 'עלינו',
     nameEnglish: 'Aleinu',
     nameTransliteration: 'Aleinu',
-    audioSource: 'tts',
+    audioSource: 'recorded',
     instructions: 'Concluding prayer. Bow at "va-anachnu kor\'im".',
   },
   {

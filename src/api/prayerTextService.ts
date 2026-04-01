@@ -1,7 +1,7 @@
-import { Prayer, PrayerLine, PrayerSection, WordTiming } from '../types';
+import { Prayer, PrayerLine, PrayerSection, WordTiming, Footnote } from '../types';
 import { fetchPrayerText, flattenTextArray, stripHtml } from './sefariaClient';
 import { transliterateHebrew } from '../utils/transliteration';
-import { getBundledPrayerText } from '../data/bundled/shacharit';
+import { getBundledPrayerText, BundledFootnoteEntry } from '../data/bundled/shacharit';
 
 /**
  * Loads prayer text, preferring bundled content over API fetch.
@@ -14,16 +14,26 @@ export async function loadPrayerContent(prayer: Prayer): Promise<Prayer> {
 
   let hebrewLines: string[];
   let englishLines: string[];
+  let footnoteEntries: BundledFootnoteEntry[] | undefined;
 
   if (bundled) {
-    // Bundled content is already flattened and HTML-stripped
+    // Bundled content is already flattened, HTML-stripped, and footnotes extracted
     hebrewLines = bundled.he;
     englishLines = bundled.text;
+    footnoteEntries = bundled.footnotes;
   } else {
-    // Fallback to Sefaria API
+    // Fallback to Sefaria API (footnotes will remain inline — not ideal but functional)
     const response = await fetchPrayerText(prayer.sefariaRef);
     hebrewLines = flattenTextArray(response.he).map(stripHtml).filter(Boolean);
     englishLines = flattenTextArray(response.text).map(stripHtml).filter(Boolean);
+  }
+
+  // Build a lookup for footnotes by line index
+  const footnotesByLine = new Map<number, Footnote[]>();
+  if (footnoteEntries) {
+    for (const entry of footnoteEntries) {
+      footnotesByLine.set(entry.lineIndex, entry.footnotes);
+    }
   }
 
   const lines: PrayerLine[] = hebrewLines.map((hebrewLine, index) => {
@@ -34,17 +44,23 @@ export async function loadPrayerContent(prayer: Prayer): Promise<Prayer> {
     const words: WordTiming[] = hebrewWords.map((word) => ({
       hebrew: word,
       transliteration: transliterateHebrew(word),
-      // Timing data starts at 0 — will be populated from timing files or TTS
       startTime: 0,
       endTime: 0,
     }));
 
-    return {
+    const line: PrayerLine = {
       hebrew: hebrewLine,
       english,
       transliteration,
       words,
     };
+
+    const footnotes = footnotesByLine.get(index);
+    if (footnotes) {
+      line.footnotes = footnotes;
+    }
+
+    return line;
   });
 
   const section: PrayerSection = {

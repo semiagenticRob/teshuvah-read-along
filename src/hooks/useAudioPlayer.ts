@@ -2,6 +2,7 @@ import { useCallback, useRef, useEffect } from 'react';
 import { Audio, AVPlaybackStatus } from 'expo-av';
 import * as Speech from 'expo-speech';
 import { Prayer } from '../types';
+import { getAudioAsset } from '../data/audioAssets';
 
 /**
  * Dual-mode audio player hook.
@@ -12,7 +13,8 @@ import { Prayer } from '../types';
  */
 export function useAudioPlayer(prayer: Prayer | undefined) {
   const soundRef = useRef<Audio.Sound | null>(null);
-  const isRecorded = prayer?.audioSource === 'recorded' && !!prayer?.audioFile;
+  const audioAsset = prayer ? getAudioAsset(prayer.id) : undefined;
+  const isRecorded = prayer?.audioSource === 'recorded' && audioAsset !== undefined;
 
   // TTS state
   const ttsRate = useRef<number>(0.45);
@@ -37,7 +39,7 @@ export function useAudioPlayer(prayer: Prayer | undefined) {
 
   // Load recorded audio when prayer changes
   useEffect(() => {
-    if (!isRecorded || !prayer?.audioFile) return;
+    if (!isRecorded || !audioAsset) return;
 
     let cancelled = false;
 
@@ -49,7 +51,7 @@ export function useAudioPlayer(prayer: Prayer | undefined) {
       }
 
       const { sound } = await Audio.Sound.createAsync(
-        { uri: prayer.audioFile! },
+        audioAsset,
         { shouldPlay: false },
         (status: AVPlaybackStatus) => {
           if (status.isLoaded && status.didJustFinish) {
@@ -67,7 +69,7 @@ export function useAudioPlayer(prayer: Prayer | undefined) {
 
     loadSound();
     return () => { cancelled = true; };
-  }, [prayer?.id, isRecorded, prayer?.audioFile]);
+  }, [prayer?.id, isRecorded, audioAsset]);
 
   const play = useCallback(async () => {
     if (!prayer) return;

@@ -3,10 +3,16 @@
  * Pre-fetched from Sefaria API — no network required for these prayers.
  */
 
-interface BundledPrayerText {
+export interface BundledFootnoteEntry {
+  lineIndex: number;
+  footnotes: { marker: string; text: string }[];
+}
+
+export interface BundledPrayerText {
   ref: string;
   he: string[];
   text: string[];
+  footnotes?: BundledFootnoteEntry[];
   heTitle: string;
 }
 

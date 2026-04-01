@@ -113,6 +113,30 @@ function stripHtml(text) {
   return text.replace(/<[^>]*>/g, '').trim();
 }
 
+/**
+ * Extracts footnotes from Sefaria English HTML and returns clean text + footnotes.
+ * Sefaria format: <sup class="footnote-marker">1</sup><i class="footnote">...text...</i>
+ */
+function extractFootnotes(html) {
+  const footnotes = [];
+  const footnotePattern = /<sup[^>]*class="footnote-marker"[^>]*>(\d+)<\/sup>\s*<i[^>]*class="footnote"[^>]*>([\s\S]*?)<\/i>/g;
+  let match;
+  while ((match = footnotePattern.exec(html)) !== null) {
+    footnotes.push({
+      marker: match[1],
+      text: stripHtml(match[2]),
+    });
+  }
+
+  // Remove footnote bodies but keep markers as superscript-style indicators
+  const cleanHtml = html
+    .replace(/<sup[^>]*class="footnote-marker"[^>]*>(\d+)<\/sup>\s*<i[^>]*class="footnote"[^>]*>[\s\S]*?<\/i>/g, '⁽$1⁾')
+    .replace(/<sup[^>]*class="footnote-marker"[^>]*>(\d+)<\/sup>/g, '⁽$1⁾');
+
+  const cleanText = stripHtml(cleanHtml);
+  return { text: cleanText, footnotes: footnotes.length > 0 ? footnotes : undefined };
+}
+
 function flattenTextArray(text) {
   if (typeof text === 'string') return [text];
   if (!text) return [];
@@ -150,12 +174,25 @@ async function main() {
       const allHe = [];
       const allText = [];
 
+      const allFootnotes = [];
+
       for (const ref of prayer.refs) {
         const raw = await fetchRef(ref);
         const he = flattenTextArray(raw.he).map(stripHtml).filter(Boolean);
-        const text = flattenTextArray(raw.text).map(stripHtml).filter(Boolean);
+        const rawText = flattenTextArray(raw.text).filter(Boolean);
+
+        // Process each English line: extract footnotes, strip remaining HTML
+        for (let i = 0; i < rawText.length; i++) {
+          const { text: cleanText, footnotes } = extractFootnotes(rawText[i]);
+          if (cleanText) {
+            allText.push(cleanText);
+            if (footnotes) {
+              allFootnotes.push({ lineIndex: allText.length - 1, footnotes });
+            }
+          }
+        }
+
         allHe.push(...he);
-        allText.push(...text);
         // Small delay between sub-fetches
         await new Promise((r) => setTimeout(r, 300));
       }
@@ -164,6 +201,7 @@ async function main() {
         ref: prayer.refs.length === 1 ? prayer.refs[0] : prayer.refs[0].replace(/,[^,]+$/, ''),
         he: allHe,
         text: allText,
+        footnotes: allFootnotes.length > 0 ? allFootnotes : undefined,
         heTitle: prayer.id,
       };
 
