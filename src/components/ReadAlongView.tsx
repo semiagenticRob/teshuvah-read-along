@@ -15,36 +15,31 @@ interface ReadAlongViewProps {
 
 /**
  * Renders English text with footnote markers as tappable blue superscripts.
- * Splits on the ⁽N⁾ pattern inserted by the bundler.
  */
 function renderEnglishWithMarkers(
   english: string,
   fontSize: number,
   isHighlighted: boolean,
   onMarkerTap: () => void,
+  isColumn?: boolean,
 ) {
+  const baseStyle = isColumn ? styles.columnEnglish : styles.englishLine;
   const parts = english.split(/(⁽\d+⁾)/);
   if (parts.length === 1) {
-    // No markers — plain text
     return (
-      <Text style={[styles.englishLine, { fontSize }, isHighlighted && styles.highlightedEnglish]}>
+      <Text style={[baseStyle, { fontSize }, isHighlighted && styles.highlightedEnglish]}>
         {english}
       </Text>
     );
   }
-
   return (
-    <Text style={[styles.englishLine, { fontSize }, isHighlighted && styles.highlightedEnglish]}>
+    <Text style={[baseStyle, { fontSize }, isHighlighted && styles.highlightedEnglish]}>
       {parts.map((part, i) => {
-        const markerMatch = part.match(/^⁽(\d+)⁾$/);
-        if (markerMatch) {
+        const m = part.match(/^⁽(\d+)⁾$/);
+        if (m) {
           return (
-            <Text
-              key={i}
-              style={styles.inlineFootnoteMarker}
-              onPress={onMarkerTap}
-            >
-              ⁽{markerMatch[1]}⁾
+            <Text key={i} style={styles.inlineFootnoteMarker} onPress={onMarkerTap}>
+              ⁽{m[1]}⁾
             </Text>
           );
         }
@@ -66,18 +61,21 @@ export const ReadAlongView: React.FC<ReadAlongViewProps> = ({
   const fontSizes = getScaledFontSizes(textSize);
   const showTransliteration = displayMode === 'hebrew_translit' || displayMode === 'all';
   const showEnglish = displayMode === 'hebrew_english' || displayMode === 'all';
+  const hebrewOnly = displayMode === 'hebrew';
+  // In "all" mode: two columns (Hebrew + Translit), English below
+  // In "hebrew_english" mode: two columns (Hebrew + English)
+  // In "hebrew_translit" mode: two columns (Hebrew + Translit)
+  const twoColumn = !hebrewOnly;
+  // What goes in the right column?
+  const rightColumnIsEnglish = displayMode === 'hebrew_english';
 
-  // Track which lines have their footnotes expanded (collapsed by default)
   const [expandedFootnotes, setExpandedFootnotes] = useState<Set<number>>(new Set());
 
   const toggleFootnotes = useCallback((lineIndex: number) => {
     setExpandedFootnotes((prev) => {
       const next = new Set(prev);
-      if (next.has(lineIndex)) {
-        next.delete(lineIndex);
-      } else {
-        next.add(lineIndex);
-      }
+      if (next.has(lineIndex)) next.delete(lineIndex);
+      else next.add(lineIndex);
       return next;
     });
   }, []);
@@ -104,63 +102,85 @@ export const ReadAlongView: React.FC<ReadAlongViewProps> = ({
           const hasFootnotes = line.footnotes && line.footnotes.length > 0;
           const footnotesExpanded = expandedFootnotes.has(lineIndex);
 
+          // Hebrew words (used in both layouts)
+          const hebrewWords = line.words.map((word, wordIndex) => {
+            const isCurrentWord = isCurrentLine && wordIndex === currentWordIndex;
+            return (
+              <TouchableOpacity
+                key={`he-${wordIndex}`}
+                onPress={() => onWordTap(lineIndex, wordIndex)}
+                activeOpacity={0.7}
+                style={wordIndex < line.words.length - 1 ? styles.hebrewWordSpacing : undefined}
+              >
+                <Text
+                  style={[
+                    styles.hebrewWord,
+                    { fontSize: fontSizes.hebrewPrimary },
+                    isCurrentWord && styles.highlightedWord,
+                  ]}
+                >
+                  {word.hebrew}
+                </Text>
+              </TouchableOpacity>
+            );
+          });
+
+          // Transliteration words
+          const translitWords = line.words.map((word, wordIndex) => {
+            const isCurrentWord = isCurrentLine && wordIndex === currentWordIndex;
+            return (
+              <Text
+                key={`tr-${wordIndex}`}
+                style={[
+                  styles.transliterationWord,
+                  { fontSize: fontSizes.transliteration },
+                  isCurrentWord && styles.highlightedTransliteration,
+                  wordIndex < line.words.length - 1 && styles.transliterationWordSpacing,
+                ]}
+              >
+                {word.transliteration}
+              </Text>
+            );
+          });
+
           return (
             <View
               key={`${section.id}-${lineIndex}`}
               style={[styles.lineContainer, isCurrentLine && styles.currentLineContainer]}
               onLayout={onLineLayout ? (e: LayoutChangeEvent) => onLineLayout(lineIndex, e.nativeEvent.layout.y) : undefined}
             >
-              {/* Hebrew text (RTL, primary) */}
-              <View style={styles.hebrewLine}>
-                {line.words.map((word, wordIndex) => {
-                  const isCurrentWord = isCurrentLine && wordIndex === currentWordIndex;
+              {hebrewOnly ? (
+                /* Hebrew only — single column */
+                <View style={styles.hebrewLine}>{hebrewWords}</View>
+              ) : (
+                /* Two-column layout */
+                <View style={styles.twoColumnRow}>
+                  {/* Left column: Hebrew (right-justified) */}
+                  <View style={styles.columnLeft}>
+                    <View style={styles.hebrewLine}>{hebrewWords}</View>
+                  </View>
 
-                  return (
-                    <TouchableOpacity
-                      key={`he-${wordIndex}`}
-                      onPress={() => onWordTap(lineIndex, wordIndex)}
-                      activeOpacity={0.7}
-                      style={wordIndex < line.words.length - 1 ? styles.hebrewWordSpacing : undefined}
-                    >
+                  {/* Right column: Transliteration or English */}
+                  <View style={styles.columnRight}>
+                    {rightColumnIsEnglish ? (
                       <Text
                         style={[
-                          styles.hebrewWord,
-                          { fontSize: fontSizes.hebrewPrimary },
-                          isCurrentWord && styles.highlightedWord,
+                          styles.columnEnglish,
+                          { fontSize: fontSizes.english },
+                          isCurrentLine && styles.highlightedEnglish,
                         ]}
                       >
-                        {word.hebrew}
+                        {line.english}
                       </Text>
-                    </TouchableOpacity>
-                  );
-                })}
-              </View>
-
-              {/* Transliteration (LTR) */}
-              {showTransliteration && (
-                <View style={styles.transliterationLine}>
-                  {line.words.map((word, wordIndex) => {
-                    const isCurrentWord = isCurrentLine && wordIndex === currentWordIndex;
-
-                    return (
-                      <Text
-                        key={`tr-${wordIndex}`}
-                        style={[
-                          styles.transliterationWord,
-                          { fontSize: fontSizes.transliteration },
-                          isCurrentWord && styles.highlightedTransliteration,
-                          wordIndex < line.words.length - 1 && styles.transliterationWordSpacing,
-                        ]}
-                      >
-                        {word.transliteration}
-                      </Text>
-                    );
-                  })}
+                    ) : (
+                      <View style={styles.transliterationLine}>{translitWords}</View>
+                    )}
+                  </View>
                 </View>
               )}
 
-              {/* English translation with tappable footnote markers */}
-              {showEnglish && (
+              {/* In "All Three" mode: English full-width below the two columns */}
+              {displayMode === 'all' && showEnglish && (
                 hasFootnotes
                   ? renderEnglishWithMarkers(
                       line.english,
@@ -181,7 +201,17 @@ export const ReadAlongView: React.FC<ReadAlongViewProps> = ({
                   )
               )}
 
-              {/* Footnotes (collapsed by default, toggled by marker tap) */}
+              {/* In "Hebrew + English" mode: footnotes below the two-column row */}
+              {rightColumnIsEnglish && hasFootnotes && (
+                renderEnglishWithMarkers(
+                  '', // empty — just for marker taps
+                  fontSizes.english,
+                  isCurrentLine,
+                  () => toggleFootnotes(lineIndex),
+                )
+              )}
+
+              {/* Footnotes (collapsed by default) */}
               {showEnglish && hasFootnotes && footnotesExpanded && (
                 <View style={styles.footnotesContainer}>
                   {line.footnotes!.map((fn) => (
@@ -193,7 +223,6 @@ export const ReadAlongView: React.FC<ReadAlongViewProps> = ({
                 </View>
               )}
 
-              {/* Divider between lines */}
               <View style={styles.lineDivider} />
             </View>
           );
@@ -205,7 +234,7 @@ export const ReadAlongView: React.FC<ReadAlongViewProps> = ({
 
 const styles = StyleSheet.create({
   container: {
-    paddingBottom: 100, // space for playback controls
+    paddingBottom: 120,
   },
   loading: {
     padding: 40,
@@ -238,19 +267,34 @@ const styles = StyleSheet.create({
   currentLineContainer: {
     backgroundColor: 'rgba(49, 130, 206, 0.05)',
   },
+  // Two-column layout
+  twoColumnRow: {
+    flexDirection: 'row',
+    gap: 12,
+    marginBottom: 4,
+  },
+  columnLeft: {
+    flex: 1,
+    alignItems: 'flex-end',
+  },
+  columnRight: {
+    flex: 1,
+    alignItems: 'flex-start',
+    justifyContent: 'center',
+  },
+  // Hebrew words
   hebrewLine: {
     flexDirection: 'row-reverse',
     flexWrap: 'wrap',
     justifyContent: 'flex-start',
-    marginBottom: 4,
   },
   hebrewWord: {
     color: '#1A365D',
     fontWeight: '500',
-    lineHeight: 40,
+    lineHeight: 36,
   },
   hebrewWordSpacing: {
-    marginLeft: 10,
+    marginLeft: 8,
   },
   highlightedWord: {
     backgroundColor: '#FBD38D',
@@ -259,10 +303,10 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     overflow: 'hidden',
   },
+  // Transliteration
   transliterationLine: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    marginBottom: 4,
   },
   transliterationWord: {
     color: '#718096',
@@ -270,17 +314,24 @@ const styles = StyleSheet.create({
     lineHeight: 24,
   },
   transliterationWordSpacing: {
-    marginRight: 6,
+    marginRight: 5,
   },
   highlightedTransliteration: {
     color: '#975A16',
     fontWeight: '600',
     fontStyle: 'italic',
   },
+  // English (full-width below columns)
   englishLine: {
     color: '#4A5568',
     lineHeight: 22,
+    marginTop: 4,
     marginBottom: 2,
+  },
+  // English in right column
+  columnEnglish: {
+    color: '#4A5568',
+    lineHeight: 22,
   },
   highlightedEnglish: {
     color: '#2D3748',

@@ -8,9 +8,15 @@ export type DisplayMode = 'hebrew' | 'hebrew_translit' | 'hebrew_english' | 'all
 
 export type TextSize = 'small' | 'medium' | 'large' | 'xlarge';
 
-export type PlaybackSpeed = 0.5 | 0.75 | 1.0 | 1.25 | 1.5 | 2.0;
+export type PlaybackSpeed = number;
 
-export const PLAYBACK_SPEEDS: PlaybackSpeed[] = [0.5, 0.75, 1.0, 1.25, 1.5, 2.0];
+export const MIN_PLAYBACK_SPEED = 0.25;
+export const MAX_PLAYBACK_SPEED = 4.0;
+export const DEFAULT_PLAYBACK_SPEED = 1.0;
+export const SPEED_STEP = 0.25;
+
+/** Preset speeds for Settings screen */
+export const PLAYBACK_SPEED_PRESETS: number[] = [0.5, 0.75, 1.0, 1.25, 1.5, 2.0, 3.0, 4.0];
 
 export interface WordTiming {
   /** Individual Hebrew word */
@@ -105,6 +111,7 @@ export type RootStackParamList = {
   PrayerList: { serviceId: string };
   ReadAlong: { serviceId: string; prayerIndex: number };
   Settings: undefined;
+  About: undefined;
 };
 
 // ===== Day of Week (for varying prayers) =====

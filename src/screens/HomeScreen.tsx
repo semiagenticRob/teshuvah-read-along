@@ -9,37 +9,14 @@ import {
   ScrollView,
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import { Ionicons } from '@expo/vector-icons';
 import type { StackScreenProps } from '@react-navigation/stack';
 import { RootStackParamList } from '../types';
+import { getAvailableServices } from '../data/serviceRegistry';
 
 type Props = StackScreenProps<RootStackParamList, 'Home'>;
 
-const SERVICES = [
-  {
-    id: 'shacharit',
-    hebrew: 'שחרית',
-    english: 'Shacharit (Morning)',
-    available: true,
-  },
-  {
-    id: 'mincha',
-    hebrew: 'מנחה',
-    english: 'Mincha (Afternoon)',
-    available: false,
-  },
-  {
-    id: 'maariv',
-    hebrew: 'מעריב',
-    english: "Ma'ariv (Evening)",
-    available: false,
-  },
-  {
-    id: 'birkat_hamazon',
-    hebrew: 'ברכת המזון',
-    english: 'Birkat Hamazon (Grace After Meals)',
-    available: false,
-  },
-];
+const SERVICES = getAvailableServices();
 
 /* eslint-disable @typescript-eslint/no-var-requires */
 const headerImage = require('../../assets/images/kotel-header.jpg');
@@ -73,10 +50,10 @@ export const HomeScreen: React.FC<Props> = ({ navigation }) => {
               onPress={() => navigation.navigate('PrayerList', { serviceId: service.id })}
             >
               <Text style={[styles.serviceHebrew, !service.available && styles.disabledText]}>
-                {service.hebrew}
+                {service.name.hebrew}
               </Text>
               <Text style={[styles.serviceEnglish, !service.available && styles.disabledText]}>
-                {service.english}
+                {service.name.english}
               </Text>
               {!service.available && (
                 <Text style={styles.comingSoon}>Coming Soon</Text>
@@ -85,13 +62,26 @@ export const HomeScreen: React.FC<Props> = ({ navigation }) => {
           ))}
         </View>
 
+      </ScrollView>
+
+      {/* Fixed footer */}
+      <View style={styles.footer}>
         <TouchableOpacity
-          style={styles.settingsButton}
+          style={styles.footerButton}
           onPress={() => navigation.navigate('Settings')}
         >
-          <Text style={styles.settingsText}>Settings</Text>
+          <Ionicons name="settings-outline" size={20} color="#4A5568" />
+          <Text style={styles.footerButtonText}>Settings</Text>
         </TouchableOpacity>
-      </ScrollView>
+        <View style={styles.footerDivider} />
+        <TouchableOpacity
+          style={styles.footerButton}
+          onPress={() => navigation.navigate('About')}
+        >
+          <Ionicons name="information-circle-outline" size={20} color="#4A5568" />
+          <Text style={styles.footerButtonText}>About</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
@@ -174,14 +164,31 @@ const styles = StyleSheet.create({
     fontStyle: 'italic',
     marginTop: 4,
   },
-  settingsButton: {
+  footer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
     alignItems: 'center',
-    padding: 16,
-    marginBottom: 20,
+    paddingVertical: 14,
+    paddingBottom: 28,
+    borderTopWidth: 1,
+    borderTopColor: '#E2E8F0',
+    backgroundColor: '#FFFFFF',
   },
-  settingsText: {
-    fontSize: 16,
-    color: '#2D4A7A',
+  footerButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+    paddingHorizontal: 24,
+    paddingVertical: 8,
+  },
+  footerDivider: {
+    width: 1,
+    height: 24,
+    backgroundColor: '#E2E8F0',
+  },
+  footerButtonText: {
+    fontSize: 14,
+    color: '#4A5568',
     fontWeight: '500',
   },
 });

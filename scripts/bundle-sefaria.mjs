@@ -25,7 +25,7 @@ const SHACHARIT_PRAYERS = [
   { id: 'netilat_yadayim', refs: [`${P} Preparatory Prayers, Netilat Yadayim`] },
   { id: 'asher_yatzar', refs: [`${P} Preparatory Prayers, Asher Yatzar`] },
   { id: 'elokai_neshama', refs: [`${P} Preparatory Prayers, Elokai Neshama`] },
-  { id: 'birchot_hatorah', refs: [`${P} Preparatory Prayers, Torah Blessings`] },
+  { id: 'birchot_hatorah', refs: [`${P} Preparatory Prayers, Torah Blessings`, `${P} Preparatory Prayers, Torah Study`] },
   { id: 'birchot_hashachar', refs: [`${P} Preparatory Prayers, Morning Blessings`] },
   { id: 'akedah', refs: [`${P} Preparatory Prayers, Akedah`] },
   {

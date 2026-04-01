@@ -1,17 +1,19 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import Slider from '@react-native-community/slider';
 import { Ionicons } from '@expo/vector-icons';
-import { PlaybackSpeed, PLAYBACK_SPEEDS } from '../types';
+import { MIN_PLAYBACK_SPEED, MAX_PLAYBACK_SPEED, SPEED_STEP } from '../types';
 
 interface PlaybackControlsProps {
   isPlaying: boolean;
-  playbackSpeed: PlaybackSpeed;
+  playbackSpeed: number;
   onPlayPause: () => void;
   onSpeedChange: (speed: number) => void;
   onPreviousPrayer: () => void;
   onNextPrayer: () => void;
   hasPrevious: boolean;
   hasNext: boolean;
+  awaitingPlay?: boolean;
 }
 
 export const PlaybackControls: React.FC<PlaybackControlsProps> = ({
@@ -23,23 +25,19 @@ export const PlaybackControls: React.FC<PlaybackControlsProps> = ({
   onNextPrayer,
   hasPrevious,
   hasNext,
+  awaitingPlay,
 }) => {
-  const handleSpeedCycle = () => {
-    const currentIndex = PLAYBACK_SPEEDS.indexOf(playbackSpeed);
-    const nextIndex = (currentIndex + 1) % PLAYBACK_SPEEDS.length;
-    onSpeedChange(PLAYBACK_SPEEDS[nextIndex]);
+  const handleSliderChange = (value: number) => {
+    // Snap to nearest step
+    const snapped = Math.round(value / SPEED_STEP) * SPEED_STEP;
+    const clamped = Math.max(MIN_PLAYBACK_SPEED, Math.min(MAX_PLAYBACK_SPEED, snapped));
+    onSpeedChange(parseFloat(clamped.toFixed(2)));
   };
 
   return (
     <View style={styles.container}>
-      {/* Speed control */}
-      <TouchableOpacity style={styles.speedButton} onPress={handleSpeedCycle}>
-        <Text style={styles.speedText}>{playbackSpeed}x</Text>
-      </TouchableOpacity>
-
-      {/* Main controls */}
+      {/* Main controls row */}
       <View style={styles.mainControls}>
-        {/* Previous prayer */}
         <TouchableOpacity
           style={[styles.navButton, !hasPrevious && styles.disabledButton]}
           onPress={onPreviousPrayer}
@@ -52,8 +50,10 @@ export const PlaybackControls: React.FC<PlaybackControlsProps> = ({
           />
         </TouchableOpacity>
 
-        {/* Play/Pause */}
-        <TouchableOpacity style={styles.playButton} onPress={onPlayPause}>
+        <TouchableOpacity
+          style={[styles.playButton, awaitingPlay && !isPlaying && styles.playButtonPulsing]}
+          onPress={onPlayPause}
+        >
           <Ionicons
             name={isPlaying ? 'pause' : 'play'}
             size={28}
@@ -61,7 +61,6 @@ export const PlaybackControls: React.FC<PlaybackControlsProps> = ({
           />
         </TouchableOpacity>
 
-        {/* Next prayer */}
         <TouchableOpacity
           style={[styles.navButton, !hasNext && styles.disabledButton]}
           onPress={onNextPrayer}
@@ -75,9 +74,24 @@ export const PlaybackControls: React.FC<PlaybackControlsProps> = ({
         </TouchableOpacity>
       </View>
 
-      {/* Spacer to balance the speed button */}
-      <View style={styles.speedButton}>
-        <Text style={styles.speedLabel}>Speed</Text>
+      {/* Speed slider row */}
+      <View style={styles.speedRow}>
+        <Text style={styles.speedBound}>{MIN_PLAYBACK_SPEED}x</Text>
+        <View style={styles.sliderContainer}>
+          <Text style={styles.speedValue}>{playbackSpeed.toFixed(2)}x</Text>
+          <Slider
+            style={styles.slider}
+            minimumValue={MIN_PLAYBACK_SPEED}
+            maximumValue={MAX_PLAYBACK_SPEED}
+            step={SPEED_STEP}
+            value={playbackSpeed}
+            onSlidingComplete={handleSliderChange}
+            minimumTrackTintColor="#3182CE"
+            maximumTrackTintColor="#E2E8F0"
+            thumbTintColor="#3182CE"
+          />
+        </View>
+        <Text style={styles.speedBound}>{MAX_PLAYBACK_SPEED}x</Text>
       </View>
     </View>
   );
@@ -85,11 +99,9 @@ export const PlaybackControls: React.FC<PlaybackControlsProps> = ({
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
     paddingHorizontal: 20,
-    paddingVertical: 16,
+    paddingTop: 12,
+    paddingBottom: 24,
     backgroundColor: '#FFFFFF',
     borderTopWidth: 1,
     borderTopColor: '#E2E8F0',
@@ -102,7 +114,9 @@ const styles = StyleSheet.create({
   mainControls: {
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'center',
     gap: 20,
+    marginBottom: 12,
   },
   playButton: {
     width: 64,
@@ -117,6 +131,12 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 4,
   },
+  playButtonPulsing: {
+    shadowOpacity: 0.6,
+    shadowRadius: 12,
+    borderWidth: 2,
+    borderColor: '#63B3ED',
+  },
   navButton: {
     width: 44,
     height: 44,
@@ -128,17 +148,29 @@ const styles = StyleSheet.create({
   disabledButton: {
     opacity: 0.4,
   },
-  speedButton: {
-    width: 50,
+  speedRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+  },
+  sliderContainer: {
+    flex: 1,
     alignItems: 'center',
   },
-  speedText: {
-    fontSize: 16,
-    fontWeight: '700',
+  speedValue: {
+    fontSize: 12,
+    fontWeight: '600',
     color: '#3182CE',
+    marginBottom: 2,
   },
-  speedLabel: {
-    fontSize: 11,
+  slider: {
+    width: '100%',
+    height: 28,
+  },
+  speedBound: {
+    fontSize: 10,
     color: '#A0AEC0',
+    width: 28,
+    textAlign: 'center',
   },
 });

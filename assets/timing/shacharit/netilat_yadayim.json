@@ -1,0 +1,58 @@
+[
+  {
+    "words": [
+      {
+        "startTime": 950,
+        "endTime": 1820
+      },
+      {
+        "startTime": 1820,
+        "endTime": 2550
+      },
+      {
+        "startTime": 2550,
+        "endTime": 3600
+      },
+      {
+        "startTime": 3600,
+        "endTime": 4770
+      },
+      {
+        "startTime": 4770,
+        "endTime": 5750
+      },
+      {
+        "startTime": 5750,
+        "endTime": 7000
+      },
+      {
+        "startTime": 7000,
+        "endTime": 8070
+      },
+      {
+        "startTime": 8070,
+        "endTime": 9500
+      },
+      {
+        "startTime": 9500,
+        "endTime": 11110
+      },
+      {
+        "startTime": 11110,
+        "endTime": 12710
+      },
+      {
+        "startTime": 12710,
+        "endTime": 13550
+      },
+      {
+        "startTime": 13550,
+        "endTime": 14580
+      },
+      {
+        "startTime": 14580,
+        "endTime": 16430
+      }
+    ]
+  }
+]
