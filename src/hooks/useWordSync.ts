@@ -7,12 +7,14 @@ const SYNC_INTERVAL_MS = 50;
 /**
  * Hook that synchronizes the currently highlighted word with the audio playback position.
  *
- * For pre-recorded audio: polls TrackPlayer.getPosition() every 50ms and uses binary search
- * on the timing data to find the current word.
- *
- * For TTS audio: uses estimated timing based on ~300ms per word.
+ * Uses getPositionMs() from the audio player to get the actual playback position,
+ * then binary-searches the word timing index to find the current word.
  */
-export function useWordSync(prayer: Prayer | undefined, isPlaying: boolean) {
+export function useWordSync(
+  prayer: Prayer | undefined,
+  isPlaying: boolean,
+  getPositionMs: () => Promise<number>,
+) {
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const { setCurrentWord } = usePrayerStore();
 
@@ -25,16 +27,12 @@ export function useWordSync(prayer: Prayer | undefined, isPlaying: boolean) {
       return;
     }
 
-    // Build a flat index of all words with their line positions for binary search
     const wordIndex = buildWordIndex(prayer);
-
     if (wordIndex.length === 0) return;
 
-    // Use estimated timing with a simple timer synced to TTS playback
-    let startTime = Date.now();
-    intervalRef.current = setInterval(() => {
-      const elapsed = Date.now() - startTime;
-      const result = findWordAtTime(wordIndex, elapsed);
+    intervalRef.current = setInterval(async () => {
+      const posMs = await getPositionMs();
+      const result = findWordAtTime(wordIndex, posMs);
       if (result) {
         setCurrentWord(result.lineIndex, result.wordIndex);
       }
@@ -46,7 +44,7 @@ export function useWordSync(prayer: Prayer | undefined, isPlaying: boolean) {
         intervalRef.current = null;
       }
     };
-  }, [prayer, isPlaying, setCurrentWord]);
+  }, [prayer, isPlaying, setCurrentWord, getPositionMs]);
 }
 
 interface IndexedWord {

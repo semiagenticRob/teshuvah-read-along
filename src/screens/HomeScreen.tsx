@@ -7,10 +7,10 @@ import {
   SafeAreaView,
   StatusBar,
 } from 'react-native';
-import type { NativeStackScreenProps } from '@react-navigation/stack';
+import type { StackScreenProps } from '@react-navigation/stack';
 import { RootStackParamList } from '../types';
 
-type Props = NativeStackScreenProps<RootStackParamList, 'Home'>;
+type Props = StackScreenProps<RootStackParamList, 'Home'>;
 
 const SERVICES = [
   {

@@ -48,17 +48,17 @@ const SHACHARIT_PRAYERS: PrayerDefinition[] = [
     instructions: 'Blessing acknowledging the body\'s functioning.',
   },
   {
-    id: 'elohai_neshamah',
-    sefariaRef: 'Siddur Ashkenaz, Weekday, Shacharit, Preparatory Prayers, Elohai Neshamah',
+    id: 'elokai_neshama',
+    sefariaRef: 'Siddur Ashkenaz, Weekday, Shacharit, Preparatory Prayers, Elokai Neshama',
     nameHebrew: 'אלהי נשמה',
-    nameEnglish: 'Elohai Neshamah',
-    nameTransliteration: 'Elohai Neshamah',
+    nameEnglish: 'Elokai Neshama',
+    nameTransliteration: 'Elokai Neshama',
     audioSource: 'tts',
     instructions: 'Blessing for the soul.',
   },
   {
     id: 'birchot_hatorah',
-    sefariaRef: 'Siddur Ashkenaz, Weekday, Shacharit, Preparatory Prayers, Birchot HaTorah',
+    sefariaRef: 'Siddur Ashkenaz, Weekday, Shacharit, Preparatory Prayers, Torah Blessings',
     nameHebrew: 'ברכות התורה',
     nameEnglish: 'Torah Blessings',
     nameTransliteration: 'Birchot HaTorah',
@@ -67,7 +67,7 @@ const SHACHARIT_PRAYERS: PrayerDefinition[] = [
   },
   {
     id: 'birchot_hashachar',
-    sefariaRef: 'Siddur Ashkenaz, Weekday, Shacharit, Preparatory Prayers, Birchot HaShachar',
+    sefariaRef: 'Siddur Ashkenaz, Weekday, Shacharit, Preparatory Prayers, Morning Blessings',
     nameHebrew: 'ברכות השחר',
     nameEnglish: 'Morning Blessings',
     nameTransliteration: 'Birchot HaShachar',
@@ -84,7 +84,7 @@ const SHACHARIT_PRAYERS: PrayerDefinition[] = [
   },
   {
     id: 'korbanot',
-    sefariaRef: 'Siddur Ashkenaz, Weekday, Shacharit, Preparatory Prayers, Korbanot',
+    sefariaRef: 'Siddur Ashkenaz, Weekday, Shacharit, Preparatory Prayers, Korbanot, Korban HaTamid',
     nameHebrew: 'קרבנות',
     nameEnglish: 'Sacrificial Passages',
     nameTransliteration: 'Korbanot',
@@ -102,7 +102,7 @@ const SHACHARIT_PRAYERS: PrayerDefinition[] = [
   },
   {
     id: 'shema',
-    sefariaRef: 'Siddur Ashkenaz, Weekday, Shacharit, Shema',
+    sefariaRef: 'Siddur Ashkenaz, Weekday, Shacharit, Blessings of the Shema, Shema',
     nameHebrew: 'שמע',
     nameEnglish: 'Shema and its Blessings',
     nameTransliteration: 'Shema',
@@ -120,7 +120,7 @@ const SHACHARIT_PRAYERS: PrayerDefinition[] = [
   },
   {
     id: 'tachanun',
-    sefariaRef: 'Siddur Ashkenaz, Weekday, Shacharit, Tachanun',
+    sefariaRef: 'Siddur Ashkenaz, Weekday, Shacharit, Post Amidah, Tachanun, Nefilat Apayim',
     nameHebrew: 'תחנון',
     nameEnglish: 'Tachanun (Supplication)',
     nameTransliteration: 'Tachanun',
@@ -129,7 +129,7 @@ const SHACHARIT_PRAYERS: PrayerDefinition[] = [
   },
   {
     id: 'ashrei_uva_letziyon',
-    sefariaRef: 'Siddur Ashkenaz, Weekday, Shacharit, Post Amidah, Ashrei',
+    sefariaRef: 'Siddur Ashkenaz, Weekday, Shacharit, Concluding Prayers, Ashrei',
     nameHebrew: 'אשרי / ובא לציון',
     nameEnglish: "Ashrei / U'va L'Tziyon",
     nameTransliteration: "Ashrei / U'va L'Tziyon",
@@ -137,7 +137,7 @@ const SHACHARIT_PRAYERS: PrayerDefinition[] = [
   },
   {
     id: 'aleinu',
-    sefariaRef: 'Siddur Ashkenaz, Weekday, Shacharit, Post Amidah, Aleinu',
+    sefariaRef: 'Siddur Ashkenaz, Weekday, Shacharit, Concluding Prayers, Alenu',
     nameHebrew: 'עלינו',
     nameEnglish: 'Aleinu',
     nameTransliteration: 'Aleinu',
@@ -146,7 +146,7 @@ const SHACHARIT_PRAYERS: PrayerDefinition[] = [
   },
   {
     id: 'shir_shel_yom',
-    sefariaRef: 'Siddur Ashkenaz, Weekday, Shacharit, Post Amidah, Shir Shel Yom',
+    sefariaRef: 'Siddur Ashkenaz, Weekday, Shacharit, Concluding Prayers, Song of the Day',
     nameHebrew: 'שיר של יום',
     nameEnglish: 'Psalm of the Day',
     nameTransliteration: 'Shir Shel Yom',

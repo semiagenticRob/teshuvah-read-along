@@ -1,16 +1,30 @@
 import { Prayer, PrayerLine, PrayerSection, WordTiming } from '../types';
 import { fetchPrayerText, flattenTextArray, stripHtml } from './sefariaClient';
 import { transliterateHebrew } from '../utils/transliteration';
+import { getBundledPrayerText } from '../data/bundled/shacharit';
 
 /**
- * Fetches prayer text from Sefaria and transforms it into our Prayer data model.
- * This bridges the Sefaria API format with our app's internal format.
+ * Loads prayer text, preferring bundled content over API fetch.
+ * Bundled content loads synchronously (no network needed).
+ * Falls back to Sefaria API if no bundled content exists.
  */
 export async function loadPrayerContent(prayer: Prayer): Promise<Prayer> {
-  const response = await fetchPrayerText(prayer.sefariaRef);
+  // Try bundled content first (instant, offline-capable)
+  const bundled = getBundledPrayerText(prayer.id);
 
-  const hebrewLines = flattenTextArray(response.he).map(stripHtml).filter(Boolean);
-  const englishLines = flattenTextArray(response.text).map(stripHtml).filter(Boolean);
+  let hebrewLines: string[];
+  let englishLines: string[];
+
+  if (bundled) {
+    // Bundled content is already flattened and HTML-stripped
+    hebrewLines = bundled.he;
+    englishLines = bundled.text;
+  } else {
+    // Fallback to Sefaria API
+    const response = await fetchPrayerText(prayer.sefariaRef);
+    hebrewLines = flattenTextArray(response.he).map(stripHtml).filter(Boolean);
+    englishLines = flattenTextArray(response.text).map(stripHtml).filter(Boolean);
+  }
 
   const lines: PrayerLine[] = hebrewLines.map((hebrewLine, index) => {
     const english = englishLines[index] || '';

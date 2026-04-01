@@ -5,8 +5,10 @@ import {
   StyleSheet,
   SafeAreaView,
   ScrollView,
+  Dimensions,
+  TouchableOpacity,
 } from 'react-native';
-import type { NativeStackScreenProps } from '@react-navigation/stack';
+import type { StackScreenProps } from '@react-navigation/stack';
 import { RootStackParamList, Prayer } from '../types';
 import { usePrayerStore } from '../store/prayerStore';
 import { useSettingsStore } from '../store/settingsStore';
@@ -17,7 +19,7 @@ import { useAudioPlayer } from '../hooks/useAudioPlayer';
 import { useWordSync } from '../hooks/useWordSync';
 import { loadPrayerContent, generateEstimatedTiming } from '../api/prayerTextService';
 
-type Props = NativeStackScreenProps<RootStackParamList, 'ReadAlong'>;
+type Props = StackScreenProps<RootStackParamList, 'ReadAlong'>;
 
 export const ReadAlongScreen: React.FC<Props> = ({ route }) => {
   const { serviceId, prayerIndex } = route.params;
@@ -47,10 +49,12 @@ export const ReadAlongScreen: React.FC<Props> = ({ route }) => {
   // Loaded prayer state — fetches text from Sefaria on demand
   const [loadedPrayer, setLoadedPrayer] = useState<Prayer | undefined>(undefined);
   const [isLoadingText, setIsLoadingText] = useState(false);
+  const [loadError, setLoadError] = useState<string | null>(null);
 
-  useEffect(() => {
+  const loadCurrentPrayer = useCallback(() => {
     if (!currentPrayer) return;
     setLoadedPrayer(undefined);
+    setLoadError(null);
     setIsLoadingText(true);
     loadPrayerContent(currentPrayer)
       .then((prayer) => generateEstimatedTiming(prayer))
@@ -60,9 +64,14 @@ export const ReadAlongScreen: React.FC<Props> = ({ route }) => {
       })
       .catch((err) => {
         console.error('Failed to load prayer text:', err);
+        setLoadError('Could not load prayer text. Check your connection and try again.');
         setIsLoadingText(false);
       });
-  }, [currentPrayer?.id]);
+  }, [currentPrayer]);
+
+  useEffect(() => {
+    loadCurrentPrayer();
+  }, [loadCurrentPrayer]);
 
   const activePrayer = loadedPrayer ?? currentPrayer;
 
@@ -72,10 +81,53 @@ export const ReadAlongScreen: React.FC<Props> = ({ route }) => {
   }, [prayerIndex, setCurrentPrayer]);
 
   // Audio player hook
-  const { play, pause, seek, setSpeed } = useAudioPlayer(activePrayer);
+  const { play, pause, seek, setSpeed, getPositionMs, onComplete } = useAudioPlayer(activePrayer);
+
+  // Auto-advance when playback finishes
+  useEffect(() => {
+    onComplete(() => {
+      setIsPlaying(false);
+      if (activePrayer) {
+        markPrayerCompleted(activePrayer.id);
+      }
+      if (currentPrayerIndex < prayers.length - 1) {
+        nextPrayer(prayers.length);
+      }
+    });
+  }, [onComplete, activePrayer, setIsPlaying, markPrayerCompleted, nextPrayer, currentPrayerIndex, prayers.length]);
 
   // Word sync hook — updates currentWord based on audio position
-  useWordSync(activePrayer, isPlaying);
+  useWordSync(activePrayer, isPlaying, getPositionMs);
+
+  // Auto-scroll: track line Y positions and scroll when the current line changes
+  const linePositions = useRef<Record<number, number>>({});
+  const userScrolling = useRef(false);
+  const userScrollTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const handleLineLayout = useCallback((lineIndex: number, y: number) => {
+    linePositions.current[lineIndex] = y;
+  }, []);
+
+  useEffect(() => {
+    if (!isPlaying || userScrolling.current) return;
+    const y = linePositions.current[currentLineIndex];
+    if (y !== undefined && scrollViewRef.current) {
+      const screenHeight = Dimensions.get('window').height;
+      scrollViewRef.current.scrollTo({
+        y: Math.max(0, y - screenHeight / 3),
+        animated: true,
+      });
+    }
+  }, [currentLineIndex, isPlaying]);
+
+  const handleScrollBeginDrag = useCallback(() => {
+    userScrolling.current = true;
+    if (userScrollTimeout.current) clearTimeout(userScrollTimeout.current);
+    // Re-enable auto-scroll after 5 seconds of no manual scrolling
+    userScrollTimeout.current = setTimeout(() => {
+      userScrolling.current = false;
+    }, 5000);
+  }, []);
 
   const handlePlayPause = useCallback(() => {
     if (isPlaying) {
@@ -95,7 +147,7 @@ export const ReadAlongScreen: React.FC<Props> = ({ route }) => {
   const handleWordTap = useCallback((lineIndex: number, wordIndex: number) => {
     const line = activePrayer?.sections[0]?.lines[lineIndex];
     if (line?.words[wordIndex]) {
-      seek(line.words[wordIndex].startTime / 1000);
+      seek(line.words[wordIndex].startTime);
       setCurrentWord(lineIndex, wordIndex);
     }
   }, [activePrayer, seek, setCurrentWord]);
@@ -131,15 +183,26 @@ export const ReadAlongScreen: React.FC<Props> = ({ route }) => {
         ref={scrollViewRef}
         style={styles.textContainer}
         contentContainerStyle={styles.textContent}
+        onScrollBeginDrag={handleScrollBeginDrag}
       >
-        <ReadAlongView
-          prayer={activePrayer}
-          currentLineIndex={currentLineIndex}
-          currentWordIndex={currentWordIndex}
-          displayMode={displayMode}
-          textSize={textSize}
-          onWordTap={handleWordTap}
-        />
+        {loadError ? (
+          <View style={styles.errorContainer}>
+            <Text style={styles.errorMessage}>{loadError}</Text>
+            <TouchableOpacity style={styles.retryButton} onPress={loadCurrentPrayer}>
+              <Text style={styles.retryButtonText}>Retry</Text>
+            </TouchableOpacity>
+          </View>
+        ) : (
+          <ReadAlongView
+            prayer={activePrayer}
+            currentLineIndex={currentLineIndex}
+            currentWordIndex={currentWordIndex}
+            displayMode={displayMode}
+            textSize={textSize}
+            onWordTap={handleWordTap}
+            onLineLayout={handleLineLayout}
+          />
+        )}
       </ScrollView>
 
       {/* Playback controls */}
@@ -194,5 +257,27 @@ const styles = StyleSheet.create({
     color: '#E53E3E',
     textAlign: 'center',
     marginTop: 40,
+  },
+  errorContainer: {
+    padding: 40,
+    alignItems: 'center',
+  },
+  errorMessage: {
+    fontSize: 15,
+    color: '#C53030',
+    textAlign: 'center',
+    lineHeight: 22,
+    marginBottom: 16,
+  },
+  retryButton: {
+    backgroundColor: '#3182CE',
+    paddingHorizontal: 24,
+    paddingVertical: 10,
+    borderRadius: 8,
+  },
+  retryButtonText: {
+    color: '#FFFFFF',
+    fontSize: 15,
+    fontWeight: '600',
   },
 });
