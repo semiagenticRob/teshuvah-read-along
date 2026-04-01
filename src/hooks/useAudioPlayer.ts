@@ -40,6 +40,7 @@ export function useAudioPlayer(prayer: Prayer | undefined, initialSpeed: number 
   // TTS state
   const ttsRate = useRef<number>(0.45 * initialSpeed);
   const ttsVoice = useRef<string | undefined>(undefined);
+  const ttsStopping = useRef<boolean>(false); // suppress onDone when deliberately paused
   const ttsStartTime = useRef<number>(0);
   const ttsPlaying = useRef<boolean>(false);
   const ttsPausedElapsed = useRef<number>(0);
@@ -115,13 +116,17 @@ export function useAudioPlayer(prayer: Prayer | undefined, initialSpeed: number 
         }
         ttsStartTime.current = Date.now() - ttsPausedElapsed.current;
         ttsPlaying.current = true;
+        ttsStopping.current = false;
         Speech.speak(hebrewText, {
           language: 'he-IL',
           rate: ttsRate.current,
           voice: ttsVoice.current,
           onDone: () => {
             ttsPlaying.current = false;
-            onCompleteRef.current?.();
+            // Only trigger completion if not deliberately paused
+            if (!ttsStopping.current) {
+              onCompleteRef.current?.();
+            }
           },
         });
       }
@@ -133,6 +138,7 @@ export function useAudioPlayer(prayer: Prayer | undefined, initialSpeed: number 
       await soundRef.current.pauseAsync();
     } else {
       // TTS: stop and record elapsed time for resume estimation
+      ttsStopping.current = true;
       ttsPausedElapsed.current = Date.now() - ttsStartTime.current;
       ttsPlaying.current = false;
       Speech.stop();
