@@ -53,9 +53,7 @@ export const PrayerListScreen: React.FC<Props> = ({ navigation, route }) => {
           )}
         </View>
         <View style={styles.audioIndicator}>
-          <Text style={styles.audioIcon}>
-            {item.audioSource === 'recorded' ? '\u266B' : '\u{1F50A}'}
-          </Text>
+          <Text style={styles.audioIcon}>▶</Text>
         </View>
       </TouchableOpacity>
     );

@@ -1,0 +1,17 @@
+{
+  "expo": {
+    "name": "Teshuvah Read-Along",
+    "slug": "teshuvah-read-along",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "scheme": "teshuvah",
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.semiagenticrob.teshuvahreadalong"
+    },
+    "android": {
+      "package": "com.semiagenticrob.teshuvahreadalong"
+    },
+    "plugins": []
+  }
+}

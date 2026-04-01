@@ -59,6 +59,7 @@ export const ReadAlongView: React.FC<ReadAlongViewProps> = ({
                       key={`he-${wordIndex}`}
                       onPress={() => onWordTap(lineIndex, wordIndex)}
                       activeOpacity={0.7}
+                      style={wordIndex < line.words.length - 1 ? styles.hebrewWordSpacing : undefined}
                     >
                       <Text
                         style={[
@@ -68,7 +69,6 @@ export const ReadAlongView: React.FC<ReadAlongViewProps> = ({
                         ]}
                       >
                         {word.hebrew}
-                        {wordIndex < line.words.length - 1 ? ' ' : ''}
                       </Text>
                     </TouchableOpacity>
                   );
@@ -88,10 +88,10 @@ export const ReadAlongView: React.FC<ReadAlongViewProps> = ({
                           styles.transliterationWord,
                           { fontSize: fontSizes.transliteration },
                           isCurrentWord && styles.highlightedTransliteration,
+                          wordIndex < line.words.length - 1 && styles.transliterationWordSpacing,
                         ]}
                       >
                         {word.transliteration}
-                        {wordIndex < line.words.length - 1 ? ' ' : ''}
                       </Text>
                     );
                   })}
@@ -167,6 +167,9 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     lineHeight: 40,
   },
+  hebrewWordSpacing: {
+    marginLeft: 10,
+  },
   highlightedWord: {
     backgroundColor: '#FBD38D',
     color: '#744210',
@@ -183,6 +186,9 @@ const styles = StyleSheet.create({
     color: '#718096',
     fontStyle: 'italic',
     lineHeight: 24,
+  },
+  transliterationWordSpacing: {
+    marginRight: 6,
   },
   highlightedTransliteration: {
     color: '#975A16',

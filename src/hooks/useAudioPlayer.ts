@@ -1,117 +1,41 @@
-import { useEffect, useCallback, useRef } from 'react';
-import TrackPlayer, {
-  Capability,
-  State,
-  Event,
-} from 'react-native-track-player';
-import Tts from 'react-native-tts';
+import { useCallback, useRef } from 'react';
+import * as Speech from 'expo-speech';
 import { Prayer } from '../types';
-
-let isTrackPlayerInitialized = false;
-
-/**
- * Initializes the track player service (called once on app start).
- */
-async function initializeTrackPlayer() {
-  if (isTrackPlayerInitialized) return;
-
-  await TrackPlayer.setupPlayer({
-    waitForBuffer: true,
-  });
-
-  await TrackPlayer.updateOptions({
-    capabilities: [
-      Capability.Play,
-      Capability.Pause,
-      Capability.SkipToNext,
-      Capability.SkipToPrevious,
-      Capability.SeekTo,
-    ],
-    compactCapabilities: [Capability.Play, Capability.Pause],
-  });
-
-  isTrackPlayerInitialized = true;
-}
 
 /**
  * Hook for managing audio playback of a prayer.
- * Supports both pre-recorded audio files and TTS fallback.
+ * Currently uses TTS via expo-speech. Will add recorded audio support
+ * (via expo-av) once chazzan recordings are available.
  */
 export function useAudioPlayer(prayer: Prayer | undefined) {
-  const ttsUtteranceId = useRef<string | null>(null);
-
-  useEffect(() => {
-    initializeTrackPlayer();
-  }, []);
-
-  // Load the prayer's audio track when the prayer changes
-  useEffect(() => {
-    if (!prayer) return;
-
-    const loadTrack = async () => {
-      await TrackPlayer.reset();
-
-      if (prayer.audioSource === 'recorded' && prayer.audioFile) {
-        await TrackPlayer.add({
-          id: prayer.id,
-          url: prayer.audioFile,
-          title: prayer.name.english,
-          artist: 'Teshuvah Read-Along',
-        });
-      }
-      // TTS prayers are handled in the play function
-    };
-
-    loadTrack();
-  }, [prayer]);
+  const ttsRate = useRef<number>(0.45);
 
   const play = useCallback(async () => {
     if (!prayer) return;
 
-    if (prayer.audioSource === 'recorded' && prayer.audioFile) {
-      await TrackPlayer.play();
-    } else {
-      // TTS fallback: speak each line of Hebrew text
-      const hebrewText = prayer.sections
-        .flatMap((s) => s.lines.map((l) => l.hebrew))
-        .join('. ');
+    const hebrewText = prayer.sections
+      .flatMap((s) => s.lines.map((l) => l.hebrew))
+      .join('. ');
 
-      if (hebrewText) {
-        Tts.setDefaultLanguage('he-IL');
-        Tts.setDefaultRate(0.45); // Slower default for learning
-        Tts.speak(hebrewText);
-      }
+    if (hebrewText) {
+      Speech.speak(hebrewText, {
+        language: 'he-IL',
+        rate: ttsRate.current,
+      });
     }
   }, [prayer]);
 
   const pause = useCallback(async () => {
-    if (!prayer) return;
+    Speech.stop();
+  }, []);
 
-    if (prayer.audioSource === 'recorded') {
-      await TrackPlayer.pause();
-    } else {
-      Tts.stop();
-    }
-  }, [prayer]);
-
-  const seek = useCallback(async (positionSeconds: number) => {
-    if (!prayer) return;
-
-    if (prayer.audioSource === 'recorded') {
-      await TrackPlayer.seekTo(positionSeconds);
-    }
-    // TTS doesn't support seeking — would need to restart from a specific line
-  }, [prayer]);
+  const seek = useCallback(async (_positionSeconds: number) => {
+    // TTS doesn't support seeking — will be supported with recorded audio
+  }, []);
 
   const setSpeed = useCallback(async (speed: number) => {
-    if (!prayer) return;
-
-    if (prayer.audioSource === 'recorded') {
-      await TrackPlayer.setRate(speed);
-    } else {
-      Tts.setDefaultRate(0.45 * speed);
-    }
-  }, [prayer]);
+    ttsRate.current = 0.45 * speed;
+  }, []);
 
   return { play, pause, seek, setSpeed };
 }
