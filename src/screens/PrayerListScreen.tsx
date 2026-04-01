@@ -17,7 +17,7 @@ type Props = StackScreenProps<RootStackParamList, 'PrayerList'>;
 export const PrayerListScreen: React.FC<Props> = ({ navigation, route }) => {
   const { serviceId } = route.params;
   const [prayers, setPrayers] = useState<Prayer[]>([]);
-  const { completedPrayers, currentPrayerIndex, setCurrentService } = usePrayerStore();
+  const { currentPrayerIndex, setCurrentService } = usePrayerStore();
 
   useEffect(() => {
     setCurrentService(serviceId);
@@ -28,7 +28,6 @@ export const PrayerListScreen: React.FC<Props> = ({ navigation, route }) => {
   }, [serviceId, setCurrentService]);
 
   const renderPrayerItem = ({ item, index }: { item: Prayer; index: number }) => {
-    const isCompleted = completedPrayers.has(item.id);
     const isCurrent = index === currentPrayerIndex;
 
     return (
@@ -36,13 +35,12 @@ export const PrayerListScreen: React.FC<Props> = ({ navigation, route }) => {
         style={[
           styles.prayerItem,
           isCurrent && styles.currentPrayer,
-          isCompleted && styles.completedPrayer,
         ]}
         onPress={() => navigation.navigate('ReadAlong', { serviceId, prayerIndex: index })}
       >
         <View style={styles.prayerNumber}>
           <Text style={styles.numberText}>
-            {isCompleted ? '\u2713' : index + 1}
+            {index + 1}
           </Text>
         </View>
         <View style={styles.prayerInfo}>
@@ -67,9 +65,6 @@ export const PrayerListScreen: React.FC<Props> = ({ navigation, route }) => {
         </Text>
         <Text style={styles.serviceTitleEnglish}>
           {serviceId === 'shacharit' ? 'Shacharit — Morning Prayers' : serviceId}
-        </Text>
-        <Text style={styles.progressText}>
-          {completedPrayers.size} of {prayers.length} prayers completed
         </Text>
       </View>
 
@@ -104,11 +99,6 @@ const styles = StyleSheet.create({
     color: '#4A5568',
     marginTop: 4,
   },
-  progressText: {
-    fontSize: 13,
-    color: '#718096',
-    marginTop: 8,
-  },
   list: {
     padding: 16,
     gap: 8,
@@ -127,9 +117,6 @@ const styles = StyleSheet.create({
     borderColor: '#3182CE',
     borderWidth: 2,
     backgroundColor: '#EBF8FF',
-  },
-  completedPrayer: {
-    opacity: 0.7,
   },
   prayerNumber: {
     width: 32,

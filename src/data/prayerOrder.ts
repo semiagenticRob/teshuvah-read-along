@@ -107,7 +107,7 @@ const SHACHARIT_PRAYERS: PrayerDefinition[] = [
     nameEnglish: 'Shema and its Blessings',
     nameTransliteration: 'Shema',
     audioSource: 'recorded',
-    instructions: 'The central declaration of faith. Cover eyes for first line. Includes Barchoo, Yotzer Or, Ahavah Rabbah.',
+    instructions: 'The central declaration of faith. Cover eyes for first line. Includes Yotzer Or, Ahavah Rabbah.',
   },
   {
     id: 'amidah',
