@@ -32,13 +32,13 @@ async function getMaleHebrewVoice(): Promise<string | undefined> {
   }
 }
 
-export function useAudioPlayer(prayer: Prayer | undefined) {
+export function useAudioPlayer(prayer: Prayer | undefined, initialSpeed: number = 1.0) {
   const soundRef = useRef<Audio.Sound | null>(null);
   const audioAsset = prayer ? getAudioAsset(prayer.id) : undefined;
   const isRecorded = prayer?.audioSource === 'recorded' && audioAsset !== undefined;
 
   // TTS state
-  const ttsRate = useRef<number>(0.45);
+  const ttsRate = useRef<number>(0.45 * initialSpeed);
   const ttsVoice = useRef<string | undefined>(undefined);
   const ttsStartTime = useRef<number>(0);
   const ttsPlaying = useRef<boolean>(false);
@@ -84,6 +84,10 @@ export function useAudioPlayer(prayer: Prayer | undefined) {
 
       if (!cancelled) {
         soundRef.current = sound;
+        // Apply persisted speed to newly loaded audio
+        if (initialSpeed !== 1.0) {
+          await sound.setRateAsync(initialSpeed, true);
+        }
       } else {
         sound.unloadAsync();
       }
@@ -91,7 +95,7 @@ export function useAudioPlayer(prayer: Prayer | undefined) {
 
     loadSound();
     return () => { cancelled = true; };
-  }, [prayer?.id, isRecorded, audioAsset]);
+  }, [prayer?.id, isRecorded, audioAsset, initialSpeed]);
 
   const play = useCallback(async () => {
     if (!prayer) return;

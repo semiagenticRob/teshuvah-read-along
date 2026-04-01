@@ -1,0 +1,122 @@
+[
+  {
+    "words": [
+      {
+        "startTime": 1680,
+        "endTime": 2410
+      },
+      {
+        "startTime": 2410,
+        "endTime": 3390
+      },
+      {
+        "startTime": 3390,
+        "endTime": 5050
+      },
+      {
+        "startTime": 5050,
+        "endTime": 5970
+      },
+      {
+        "startTime": 5970,
+        "endTime": 6850
+      },
+      {
+        "startTime": 6850,
+        "endTime": 8580
+      },
+      {
+        "startTime": 8580,
+        "endTime": 10210
+      },
+      {
+        "startTime": 10210,
+        "endTime": 11390
+      },
+      {
+        "startTime": 11390,
+        "endTime": 12680
+      },
+      {
+        "startTime": 12680,
+        "endTime": 14010
+      },
+      {
+        "startTime": 14010,
+        "endTime": 14930
+      },
+      {
+        "startTime": 14930,
+        "endTime": 16720
+      }
+    ]
+  },
+  {
+    "words": [
+      {
+        "startTime": 17620,
+        "endTime": 19260
+      },
+      {
+        "startTime": 19260,
+        "endTime": 20220
+      },
+      {
+        "startTime": 20220,
+        "endTime": 21150
+      },
+      {
+        "startTime": 21150,
+        "endTime": 22200
+      },
+      {
+        "startTime": 22200,
+        "endTime": 23440
+      },
+      {
+        "startTime": 23440,
+        "endTime": 24220
+      },
+      {
+        "startTime": 24220,
+        "endTime": 24220
+      },
+      {
+        "startTime": 26130,
+        "endTime": 27980
+      },
+      {
+        "startTime": 27980,
+        "endTime": 27980
+      },
+      {
+        "startTime": 29210,
+        "endTime": 30260
+      },
+      {
+        "startTime": 30260,
+        "endTime": 31460
+      },
+      {
+        "startTime": 31460,
+        "endTime": 32390
+      },
+      {
+        "startTime": 32390,
+        "endTime": 33610
+      },
+      {
+        "startTime": 33610,
+        "endTime": 34990
+      },
+      {
+        "startTime": 34990,
+        "endTime": 36230
+      },
+      {
+        "startTime": 36230,
+        "endTime": 37380
+      }
+    ]
+  }
+]

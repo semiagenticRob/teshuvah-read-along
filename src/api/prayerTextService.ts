@@ -1,16 +1,16 @@
 import { Prayer, PrayerLine, PrayerSection, WordTiming, Footnote } from '../types';
 import { fetchPrayerText, flattenTextArray, stripHtml } from './sefariaClient';
 import { transliterateHebrew } from '../utils/transliteration';
-import { getBundledPrayerText, BundledFootnoteEntry } from '../data/bundled/shacharit';
+import { getBundledPrayerText, BundledFootnoteEntry } from '../data/bundled';
 
 /**
  * Loads prayer text, preferring bundled content over API fetch.
  * Bundled content loads synchronously (no network needed).
  * Falls back to Sefaria API if no bundled content exists.
  */
-export async function loadPrayerContent(prayer: Prayer): Promise<Prayer> {
+export async function loadPrayerContent(prayer: Prayer, serviceId: string = 'shacharit'): Promise<Prayer> {
   // Try bundled content first (instant, offline-capable)
-  const bundled = getBundledPrayerText(prayer.id);
+  const bundled = getBundledPrayerText(serviceId, prayer.id);
 
   let hebrewLines: string[];
   let englishLines: string[];
@@ -112,6 +112,51 @@ export function applyTimingData(
     });
 
     return { ...section, lines: updatedLines };
+  });
+
+  return interpolateTimingGaps({ ...prayer, sections: updatedSections });
+}
+
+/**
+ * Fills zero-duration timing gaps by linearly interpolating between known timestamps.
+ * This ensures word highlighting flows smoothly through sections where the audio
+ * doesn't have exact word-level timing (e.g., Sefaria text that doesn't match the recording).
+ */
+function interpolateTimingGaps(prayer: Prayer): Prayer {
+  const updatedSections = prayer.sections.map((section) => {
+    // Flatten all words to find gap runs
+    const allWords: WordTiming[] = section.lines.flatMap((l) => l.words);
+
+    // Find runs of zero-duration words and interpolate
+    let i = 0;
+    while (i < allWords.length) {
+      const w = allWords[i];
+      if (w.startTime === w.endTime && w.startTime > 0) {
+        // Found a gap — find how long it runs
+        const gapStart = i;
+        while (i < allWords.length && allWords[i].startTime === allWords[i].endTime) {
+          i++;
+        }
+        const gapEnd = i;
+        const gapLen = gapEnd - gapStart;
+
+        // Get bounding timestamps
+        const prevEnd = allWords[gapStart].startTime; // same as endTime for zero-dur
+        const nextStart = gapEnd < allWords.length ? allWords[gapEnd].startTime : prevEnd + gapLen * 300;
+
+        // Distribute time evenly across gap words
+        const stepMs = (nextStart - prevEnd) / gapLen;
+        for (let g = 0; g < gapLen; g++) {
+          allWords[gapStart + g].startTime = Math.round(prevEnd + g * stepMs);
+          allWords[gapStart + g].endTime = Math.round(prevEnd + (g + 1) * stepMs);
+        }
+      } else {
+        i++;
+      }
+    }
+
+    // Words were modified in-place via the flattened array references
+    return section;
   });
 
   return { ...prayer, sections: updatedSections };

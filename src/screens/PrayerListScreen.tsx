@@ -10,7 +10,7 @@ import {
 import type { StackScreenProps } from '@react-navigation/stack';
 import { RootStackParamList, Prayer } from '../types';
 import { usePrayerStore } from '../store/prayerStore';
-import { getShacharitPrayers } from '../data/prayerOrder';
+import { getPrayersForService, getService } from '../data/serviceRegistry';
 
 type Props = StackScreenProps<RootStackParamList, 'PrayerList'>;
 
@@ -19,12 +19,11 @@ export const PrayerListScreen: React.FC<Props> = ({ navigation, route }) => {
   const [prayers, setPrayers] = useState<Prayer[]>([]);
   const { currentPrayerIndex, setCurrentService } = usePrayerStore();
 
+  const serviceDef = getService(serviceId);
+
   useEffect(() => {
     setCurrentService(serviceId);
-    // Load prayer list based on service
-    if (serviceId === 'shacharit') {
-      setPrayers(getShacharitPrayers());
-    }
+    setPrayers(getPrayersForService(serviceId));
   }, [serviceId, setCurrentService]);
 
   const renderPrayerItem = ({ item, index }: { item: Prayer; index: number }) => {
@@ -61,10 +60,10 @@ export const PrayerListScreen: React.FC<Props> = ({ navigation, route }) => {
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.serviceTitle}>
-          {serviceId === 'shacharit' ? 'שחרית' : serviceId}
+          {serviceDef?.name.hebrew ?? serviceId}
         </Text>
         <Text style={styles.serviceTitleEnglish}>
-          {serviceId === 'shacharit' ? 'Shacharit — Morning Prayers' : serviceId}
+          {serviceDef?.name.english ?? serviceId}
         </Text>
       </View>
 

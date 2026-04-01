@@ -1,0 +1,27 @@
+{
+  "ref": "Siddur Ashkenaz, Weekday, Maariv, Vehu Rachum",
+  "he": [
+    "כשיגיע הלילה יתפלל תפלת ערבית. ואינה חובה שלא נתקנה אלא כנגד איברים ופדרים של תמיד של בין הערבים שלא נתעכלו ביום שקרבין והולכין כל הלילה. ומ\"מ מצוה איכא ואין לבטלה. ורב אלפס כתב דהאידנא קבעוה חובה ואין לבטלה כלל (טור או\"ח רל\"ה)",
+    "וְהוּא רַחוּם יְכַפֵּר עָוֹן וְלֹא־יַשְׁחִית וְהִרְבָּה לְהָשִׁיב אַפּוֹ וְלֹא־יָעִיר כָּל־חֲמָתוֹ: יְהֹוָה הוֹשִׁיעָה הַמֶּֽלֶךְ יַעֲנֵֽנוּ בְיוֹם־קָרְאֵֽנוּ:"
+  ],
+  "text": [
+    "Unlike the morning Shacharis and afternoon Mincha services which correspond to the two daily communal sacrifices (Tamid), offered in the Temple, one in the morning and one in the afternoon, the evening Maariv service has no counterpart in the Temple service, since sacrifices were never brought at night in the Temple. The Maariv service was instituted to correspond to the Temple ritual of keeping on the altar the unconsumed parts of sacrifices that had been offered earlier in the day. These parts were kept on the altar at night so that they could be completely consumed by its fire. This ritual was applicable only if there actually were uncon- sumed parts of offerings. Although the Maariv service was instituted to correspond to this ritual, and may therefore seem to be non-obligatory (see Maseches Berachos 27b), Rabbeinu Yitzchak Alfasi and all the other codifiers have ruled that Maariv has been accepted and hallowed by custom, and is therefore an obligatory service. The Shema is preceded by two blessings and followed by two other blessings.",
+    "And He, the Merciful One, atones iniquity; and does not destroy. He frequently withdraws His anger and does not arouse all His rage.⁽1⁾Midrash Tanchuma (Pinchos 13) notes that the morning sacrifice (תמיד של שחר) atoned for sins committed during the night, while the afternoon sacrifice (תמיד של בין הערבים) atoned for sins committed during the day. Since the evening service does not represent Temple sacrifice, it became customary to recite this verse because it mentions that God “atones iniquity.”—Avudraham Adonoy, deliver [us!] The King will answer us on the day we call.⁽2⁾"
+  ],
+  "footnotes": [
+    {
+      "lineIndex": 1,
+      "footnotes": [
+        {
+          "marker": "1",
+          "text": "Psalms 78:38. This verse consists of thirteen Hebrew words. It recalls the “thirteen attributes of Divine mercy” (Exodus 34:67). In the evening when man pauses from the rush of his daily activities, he is conscious of having sinned during the day, and thus begins his prayer with this appeal for Divine mercy.—Machzor Vitry"
+        },
+        {
+          "marker": "2",
+          "text": "Psalms 20:10."
+        }
+      ]
+    }
+  ],
+  "heTitle": "maariv_vehu_rachum"
+}

@@ -12,12 +12,14 @@ import type { StackScreenProps } from '@react-navigation/stack';
 import { RootStackParamList, Prayer } from '../types';
 import { usePrayerStore } from '../store/prayerStore';
 import { useSettingsStore } from '../store/settingsStore';
-import { getShacharitPrayers } from '../data/prayerOrder';
+import { getPrayersForService, getService } from '../data/serviceRegistry';
 import { ReadAlongView } from '../components/ReadAlongView';
 import { PlaybackControls } from '../components/PlaybackControls';
+import { DisplayModeMenu } from '../components/DisplayModeMenu';
 import { useAudioPlayer } from '../hooks/useAudioPlayer';
 import { useWordSync } from '../hooks/useWordSync';
-import { loadPrayerContent, generateEstimatedTiming } from '../api/prayerTextService';
+import { loadPrayerContent, generateEstimatedTiming, applyTimingData } from '../api/prayerTextService';
+import { getTimingData } from '../data/timingAssets';
 
 type Props = StackScreenProps<RootStackParamList, 'ReadAlong'>;
 
@@ -43,7 +45,7 @@ export const ReadAlongScreen: React.FC<Props> = ({ route }) => {
   const { displayMode, textSize } = useSettingsStore();
 
   // Load prayers for this service (memoized to avoid new array each render)
-  const prayers = useMemo(() => serviceId === 'shacharit' ? getShacharitPrayers() : [], [serviceId]);
+  const prayers = useMemo(() => getPrayersForService(serviceId), [serviceId]);
   const currentPrayer = prayers[currentPrayerIndex];
 
   // Loaded prayer state — fetches text from Sefaria on demand
@@ -56,8 +58,12 @@ export const ReadAlongScreen: React.FC<Props> = ({ route }) => {
     setLoadedPrayer(undefined);
     setLoadError(null);
     setIsLoadingText(true);
-    loadPrayerContent(currentPrayer)
-      .then((prayer) => generateEstimatedTiming(prayer))
+    loadPrayerContent(currentPrayer, serviceId)
+      .then((prayer) => {
+        // Use real timing data if available, otherwise estimate
+        const timing = getTimingData(prayer.id);
+        return timing ? applyTimingData(prayer, timing) : generateEstimatedTiming(prayer);
+      })
       .then((prayer) => {
         setLoadedPrayer(prayer);
         setIsLoadingText(false);
@@ -81,8 +87,17 @@ export const ReadAlongScreen: React.FC<Props> = ({ route }) => {
     setCurrentPrayer(prayerIndex);
   }, [prayerIndex, setCurrentPrayer]);
 
+  // Awaiting play state — set after auto-advance, cleared on play
+  const [awaitingPlay, setAwaitingPlay] = useState(false);
+
+  // Scroll to top when prayer changes
+  useEffect(() => {
+    scrollViewRef.current?.scrollTo({ y: 0, animated: false });
+    linePositions.current = {};
+  }, [currentPrayerIndex]);
+
   // Audio player hook
-  const { play, pause, seek, setSpeed, getPositionMs, onComplete } = useAudioPlayer(activePrayer);
+  const { play, pause, seek, setSpeed, getPositionMs, onComplete } = useAudioPlayer(activePrayer, playbackSpeed);
 
   // Auto-advance when playback finishes
   useEffect(() => {
@@ -93,6 +108,7 @@ export const ReadAlongScreen: React.FC<Props> = ({ route }) => {
       }
       if (currentPrayerIndex < prayers.length - 1) {
         nextPrayer(prayers.length);
+        setAwaitingPlay(true);
       }
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -138,11 +154,12 @@ export const ReadAlongScreen: React.FC<Props> = ({ route }) => {
     } else {
       play();
       setIsPlaying(true);
+      setAwaitingPlay(false);
     }
   }, [isPlaying, play, pause, setIsPlaying]);
 
   const handleSpeedChange = useCallback((speed: number) => {
-    setPlaybackSpeed(speed as any);
+    setPlaybackSpeed(speed);
     setSpeed(speed);
   }, [setPlaybackSpeed, setSpeed]);
 
@@ -173,6 +190,9 @@ export const ReadAlongScreen: React.FC<Props> = ({ route }) => {
     <SafeAreaView style={styles.container}>
       {/* Header */}
       <View style={styles.header}>
+        <View style={styles.headerMenuButton}>
+          <DisplayModeMenu />
+        </View>
         <Text style={styles.prayerNameHebrew}>{currentPrayer.name.hebrew}</Text>
         <Text style={styles.prayerNameEnglish}>{currentPrayer.name.english}</Text>
         <Text style={styles.progress}>
@@ -217,6 +237,7 @@ export const ReadAlongScreen: React.FC<Props> = ({ route }) => {
         onNextPrayer={handleNextPrayer}
         hasPrevious={currentPrayerIndex > 0}
         hasNext={currentPrayerIndex < prayers.length - 1}
+        awaitingPlay={awaitingPlay}
       />
     </SafeAreaView>
   );
@@ -232,6 +253,13 @@ const styles = StyleSheet.create({
     padding: 16,
     borderBottomWidth: 1,
     borderBottomColor: '#E2E8F0',
+    position: 'relative',
+  },
+  headerMenuButton: {
+    position: 'absolute',
+    top: 12,
+    right: 8,
+    zIndex: 1,
   },
   prayerNameHebrew: {
     fontSize: 28,
