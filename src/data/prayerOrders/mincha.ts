@@ -19,7 +19,7 @@ const MINCHA_PRAYERS: PrayerDefinition[] = [
     nameHebrew: 'אשרי',
     nameEnglish: 'Ashrei',
     nameTransliteration: 'Ashrei',
-    audioSource: 'tts',
+    audioSource: 'recorded',
     instructions: 'Psalm 145 with surrounding verses. Said while seated.',
   },
   {
@@ -28,7 +28,7 @@ const MINCHA_PRAYERS: PrayerDefinition[] = [
     nameHebrew: 'עמידה',
     nameEnglish: 'Amidah (Standing Prayer)',
     nameTransliteration: 'Amidah',
-    audioSource: 'tts',
+    audioSource: 'recorded',
     instructions: 'Stand with feet together, facing Jerusalem. Take three steps forward to begin.',
   },
   {
@@ -37,7 +37,7 @@ const MINCHA_PRAYERS: PrayerDefinition[] = [
     nameHebrew: 'תחנון',
     nameEnglish: 'Tachanun (Supplication)',
     nameTransliteration: 'Tachanun',
-    audioSource: 'tts',
+    audioSource: 'recorded',
     instructions: 'Lean head on arm. Omitted on certain days.',
   },
   {
@@ -46,7 +46,7 @@ const MINCHA_PRAYERS: PrayerDefinition[] = [
     nameHebrew: 'עלינו',
     nameEnglish: 'Aleinu',
     nameTransliteration: 'Aleinu',
-    audioSource: 'tts',
+    audioSource: 'recorded',
     instructions: 'Concluding prayer. Bow at "va-anachnu kor\'im".',
   },
 ];
