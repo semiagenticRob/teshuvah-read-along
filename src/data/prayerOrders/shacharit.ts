@@ -80,7 +80,7 @@ const SHACHARIT_PRAYERS: PrayerDefinition[] = [
     nameHebrew: 'עקידה',
     nameEnglish: 'The Binding of Isaac',
     nameTransliteration: 'Akedah',
-    audioSource: 'tts',
+    audioSource: 'recorded',
   },
   {
     id: 'korbanot',
@@ -88,7 +88,7 @@ const SHACHARIT_PRAYERS: PrayerDefinition[] = [
     nameHebrew: 'קרבנות',
     nameEnglish: 'Sacrificial Passages',
     nameTransliteration: 'Korbanot',
-    audioSource: 'tts',
+    audioSource: 'recorded',
     instructions: 'Passages about the Temple sacrifices.',
   },
   {
@@ -124,7 +124,7 @@ const SHACHARIT_PRAYERS: PrayerDefinition[] = [
     nameHebrew: 'תחנון',
     nameEnglish: 'Tachanun (Supplication)',
     nameTransliteration: 'Tachanun',
-    audioSource: 'tts',
+    audioSource: 'recorded',
     instructions: 'Lean head on arm. Omitted on certain days (holidays, Rosh Chodesh, etc.).',
   },
   {
@@ -150,7 +150,7 @@ const SHACHARIT_PRAYERS: PrayerDefinition[] = [
     nameHebrew: 'שיר של יום',
     nameEnglish: 'Psalm of the Day',
     nameTransliteration: 'Shir Shel Yom',
-    audioSource: 'tts',
+    audioSource: 'recorded',
     instructions: 'The daily psalm varies by day of the week.',
   },
 ];

@@ -17,7 +17,7 @@ const BIRKAT_HAMAZON_PRAYERS: PrayerDefinition[] = [
     nameHebrew: 'זימון',
     nameEnglish: 'Zimmun (Invitation)',
     nameTransliteration: 'Zimmun',
-    audioSource: 'tts',
+    audioSource: 'recorded',
     instructions: 'Call to say grace together. Requires 3 or more people.',
   },
   {
@@ -26,7 +26,7 @@ const BIRKAT_HAMAZON_PRAYERS: PrayerDefinition[] = [
     nameHebrew: 'ברכת הזן',
     nameEnglish: 'Blessing on the Food',
     nameTransliteration: 'Birkat HaZan',
-    audioSource: 'tts',
+    audioSource: 'recorded',
     instructions: 'First blessing — thanking God for providing food.',
   },
   {
@@ -35,7 +35,7 @@ const BIRKAT_HAMAZON_PRAYERS: PrayerDefinition[] = [
     nameHebrew: 'ברכת הארץ',
     nameEnglish: 'Blessing on the Land',
     nameTransliteration: 'Birkat HaAretz',
-    audioSource: 'tts',
+    audioSource: 'recorded',
     instructions: 'Second blessing — thanking God for the Land of Israel.',
   },
   {
@@ -44,7 +44,7 @@ const BIRKAT_HAMAZON_PRAYERS: PrayerDefinition[] = [
     nameHebrew: 'בונה ירושלים',
     nameEnglish: 'Blessing on Jerusalem',
     nameTransliteration: 'Bonei Yerushalayim',
-    audioSource: 'tts',
+    audioSource: 'recorded',
     instructions: 'Third blessing — prayer for the rebuilding of Jerusalem.',
   },
   {
@@ -53,7 +53,7 @@ const BIRKAT_HAMAZON_PRAYERS: PrayerDefinition[] = [
     nameHebrew: 'הטוב והמטיב',
     nameEnglish: 'The Good and Beneficent',
     nameTransliteration: 'HaTov VeHaMeitiv',
-    audioSource: 'tts',
+    audioSource: 'recorded',
     instructions: 'Fourth blessing — acknowledging God\'s goodness.',
   },
 ];

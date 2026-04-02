@@ -2,56 +2,56 @@
   {
     "words": [
       {
-        "startTime": 950,
-        "endTime": 1820
+        "startTime": 0,
+        "endTime": 383
       },
       {
-        "startTime": 1820,
-        "endTime": 2550
+        "startTime": 389,
+        "endTime": 739
       },
       {
-        "startTime": 2550,
-        "endTime": 3600
+        "startTime": 792,
+        "endTime": 1137
       },
       {
-        "startTime": 3600,
-        "endTime": 4770
+        "startTime": 1163,
+        "endTime": 2027
       },
       {
-        "startTime": 4770,
-        "endTime": 5750
+        "startTime": 2207,
+        "endTime": 2685
       },
       {
-        "startTime": 5750,
-        "endTime": 7000
+        "startTime": 2695,
+        "endTime": 3585
       },
       {
-        "startTime": 7000,
-        "endTime": 8070
+        "startTime": 3745,
+        "endTime": 4117
       },
       {
-        "startTime": 8070,
-        "endTime": 9500
+        "startTime": 4143,
+        "endTime": 4715
       },
       {
-        "startTime": 9500,
-        "endTime": 11110
+        "startTime": 4723,
+        "endTime": 5577
       },
       {
-        "startTime": 11110,
-        "endTime": 12710
+        "startTime": 6057,
+        "endTime": 6656
       },
       {
-        "startTime": 12710,
-        "endTime": 13550
+        "startTime": 6696,
+        "endTime": 6760
       },
       {
-        "startTime": 13550,
-        "endTime": 14580
+        "startTime": 6776,
+        "endTime": 7176
       },
       {
-        "startTime": 14580,
-        "endTime": 16430
+        "startTime": 7256,
+        "endTime": 7735
       }
     ]
   }

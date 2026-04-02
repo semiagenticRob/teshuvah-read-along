@@ -19,7 +19,7 @@ const MAARIV_PRAYERS: PrayerDefinition[] = [
     nameHebrew: 'והוא רחום',
     nameEnglish: 'Vehu Rachum',
     nameTransliteration: 'Vehu Rachum',
-    audioSource: 'tts',
+    audioSource: 'recorded',
     instructions: 'Opening verse of the evening service.',
   },
   {
@@ -28,7 +28,7 @@ const MAARIV_PRAYERS: PrayerDefinition[] = [
     nameHebrew: 'שמע',
     nameEnglish: 'Shema and its Blessings',
     nameTransliteration: 'Shema',
-    audioSource: 'tts',
+    audioSource: 'recorded',
     instructions: 'The central declaration of faith. Cover eyes for first line.',
   },
   {
@@ -37,7 +37,7 @@ const MAARIV_PRAYERS: PrayerDefinition[] = [
     nameHebrew: 'עמידה',
     nameEnglish: 'Amidah (Standing Prayer)',
     nameTransliteration: 'Amidah',
-    audioSource: 'tts',
+    audioSource: 'recorded',
     instructions: 'Stand with feet together, facing Jerusalem. Take three steps forward to begin.',
   },
   {
@@ -46,7 +46,7 @@ const MAARIV_PRAYERS: PrayerDefinition[] = [
     nameHebrew: 'עלינו',
     nameEnglish: 'Aleinu',
     nameTransliteration: 'Aleinu',
-    audioSource: 'tts',
+    audioSource: 'recorded',
     instructions: 'Concluding prayer. Bow at "va-anachnu kor\'im".',
   },
 ];
