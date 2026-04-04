@@ -3,191 +3,191 @@
     "words": [
       {
         "startTime": 0,
-        "endTime": 480
+        "endTime": 640
       },
       {
-        "startTime": 600,
-        "endTime": 1120
+        "startTime": 640,
+        "endTime": 1240
       },
       {
-        "startTime": 1280,
-        "endTime": 1760
+        "startTime": 1240,
+        "endTime": 2240
       },
       {
-        "startTime": 2400,
-        "endTime": 2880
+        "startTime": 2240,
+        "endTime": 2940
       },
       {
-        "startTime": 2920,
-        "endTime": 3800
+        "startTime": 2940,
+        "endTime": 3980
       },
       {
-        "startTime": 4160,
-        "endTime": 4880
+        "startTime": 4320,
+        "endTime": 4940
       },
       {
-        "startTime": 4960,
-        "endTime": 6400
+        "startTime": 4940,
+        "endTime": 5520
       },
       {
-        "startTime": 6480,
-        "endTime": 8078
+        "startTime": 6340,
+        "endTime": 7740
       }
     ]
   },
   {
     "words": [
       {
-        "startTime": 8118,
-        "endTime": 8838
+        "startTime": 8260,
+        "endTime": 8920
       },
       {
-        "startTime": 8878,
-        "endTime": 10236
+        "startTime": 8920,
+        "endTime": 9820
       },
       {
-        "startTime": 10276,
-        "endTime": 10596
+        "startTime": 10460,
+        "endTime": 10660
       },
       {
-        "startTime": 10636,
-        "endTime": 10756
+        "startTime": 10660,
+        "endTime": 10860
       },
       {
-        "startTime": 10776,
-        "endTime": 11636
+        "startTime": 10860,
+        "endTime": 11700
       },
       {
-        "startTime": 11696,
-        "endTime": 12234
+        "startTime": 11700,
+        "endTime": 12600
       },
       {
-        "startTime": 12554,
-        "endTime": 12766
+        "startTime": 12600,
+        "endTime": 12880
       },
       {
-        "startTime": 12792,
-        "endTime": 13190
+        "startTime": 12880,
+        "endTime": 13400
       }
     ]
   },
   {
     "words": [
       {
-        "startTime": 13710,
-        "endTime": 14670
+        "startTime": 14240,
+        "endTime": 14760
       },
       {
-        "startTime": 14690,
-        "endTime": 16387
+        "startTime": 14760,
+        "endTime": 15400
       },
       {
-        "startTime": 16427,
-        "endTime": 17107
+        "startTime": 16500,
+        "endTime": 17240
       },
       {
-        "startTime": 17187,
-        "endTime": 17864
+        "startTime": 17240,
+        "endTime": 18020
       },
       {
-        "startTime": 17904,
-        "endTime": 19021
+        "startTime": 18020,
+        "endTime": 19120
       },
       {
-        "startTime": 19101,
-        "endTime": 20019
+        "startTime": 19120,
+        "endTime": 19170
       },
       {
-        "startTime": 20159,
-        "endTime": 20779
+        "startTime": 19170,
+        "endTime": 19220
       },
       {
-        "startTime": 20819,
-        "endTime": 21337
+        "startTime": 19220,
+        "endTime": 19270
       },
       {
-        "startTime": 21737,
-        "endTime": 22675
+        "startTime": 19270,
+        "endTime": 19320
       },
       {
-        "startTime": 22685,
-        "endTime": 23973
+        "startTime": 19320,
+        "endTime": 19370
       }
     ]
   },
   {
     "words": [
       {
-        "startTime": 24053,
-        "endTime": 24693
+        "startTime": 19370,
+        "endTime": 19420
       },
       {
-        "startTime": 24773,
-        "endTime": 26396
+        "startTime": 19420,
+        "endTime": 20240
       },
       {
-        "startTime": 26556,
-        "endTime": 27062
+        "startTime": 20240,
+        "endTime": 22227
       },
       {
-        "startTime": 27088,
-        "endTime": 28232
+        "startTime": 22227,
+        "endTime": 24213
       },
       {
-        "startTime": 28258,
-        "endTime": 28649
+        "startTime": 24213,
+        "endTime": 26200
       },
       {
-        "startTime": 28669,
-        "endTime": 29600
+        "startTime": 26200,
+        "endTime": 28187
       },
       {
-        "startTime": 29856,
-        "endTime": 30438
+        "startTime": 28187,
+        "endTime": 30173
       },
       {
-        "startTime": 30558,
-        "endTime": 31918
+        "startTime": 30173,
+        "endTime": 32160
       }
     ]
   },
   {
     "words": [
       {
-        "startTime": 31958,
-        "endTime": 32478
+        "startTime": 32160,
+        "endTime": 33200
       },
       {
-        "startTime": 32558,
-        "endTime": 32878
+        "startTime": 33200,
+        "endTime": 33720
       },
       {
-        "startTime": 33038,
-        "endTime": 34996
+        "startTime": 33720,
+        "endTime": 34860
       },
       {
-        "startTime": 35196,
-        "endTime": 35756
+        "startTime": 36160,
+        "endTime": 36400
       },
       {
-        "startTime": 35796,
-        "endTime": 36394
+        "startTime": 36400,
+        "endTime": 36680
       },
       {
-        "startTime": 36994,
-        "endTime": 37644
+        "startTime": 36680,
+        "endTime": 37180
       },
       {
-        "startTime": 37657,
-        "endTime": 38589
+        "startTime": 37180,
+        "endTime": 37230
       },
       {
-        "startTime": 38949,
-        "endTime": 39629
+        "startTime": 37230,
+        "endTime": 37280
       },
       {
-        "startTime": 39749,
-        "endTime": 40307
+        "startTime": 37280,
+        "endTime": 37330
       }
     ]
   }
