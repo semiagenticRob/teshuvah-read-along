@@ -3,6 +3,7 @@ import { Prayer } from '../types';
 import { usePrayerStore } from '../store/prayerStore';
 
 const SYNC_INTERVAL_MS = 50;
+const ANTICIPATION_OFFSET_MS = 85; // Compensate for render pipeline latency
 
 /**
  * Hook that synchronizes the currently highlighted word with the audio playback position.
@@ -31,7 +32,8 @@ export function useWordSync(
     if (wordIndex.length === 0) return;
 
     intervalRef.current = setInterval(async () => {
-      const posMs = await getPositionMs();
+      const rawPosMs = await getPositionMs();
+      const posMs = rawPosMs + ANTICIPATION_OFFSET_MS;
       const result = findWordAtTime(wordIndex, posMs);
       if (result) {
         setCurrentWord(result.lineIndex, result.wordIndex);

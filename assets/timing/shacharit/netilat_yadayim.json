@@ -3,55 +3,55 @@
     "words": [
       {
         "startTime": 0,
-        "endTime": 383
+        "endTime": 580
       },
       {
-        "startTime": 389,
-        "endTime": 739
+        "startTime": 580,
+        "endTime": 820
       },
       {
-        "startTime": 792,
-        "endTime": 1137
+        "startTime": 880,
+        "endTime": 1220
       },
       {
-        "startTime": 1163,
-        "endTime": 2027
+        "startTime": 1220,
+        "endTime": 1900
       },
       {
-        "startTime": 2207,
-        "endTime": 2685
+        "startTime": 2500,
+        "endTime": 2820
       },
       {
-        "startTime": 2695,
-        "endTime": 3585
+        "startTime": 2820,
+        "endTime": 3500
       },
       {
-        "startTime": 3745,
-        "endTime": 4117
+        "startTime": 4040,
+        "endTime": 4260
       },
       {
-        "startTime": 4143,
-        "endTime": 4715
+        "startTime": 4260,
+        "endTime": 4800
       },
       {
-        "startTime": 4723,
-        "endTime": 5577
+        "startTime": 4800,
+        "endTime": 5960
       },
       {
-        "startTime": 6057,
-        "endTime": 6656
-      },
-      {
-        "startTime": 6696,
+        "startTime": 5960,
         "endTime": 6760
       },
       {
-        "startTime": 6776,
-        "endTime": 7176
+        "startTime": 6760,
+        "endTime": 6900
       },
       {
-        "startTime": 7256,
-        "endTime": 7735
+        "startTime": 6900,
+        "endTime": 7360
+      },
+      {
+        "startTime": 7360,
+        "endTime": 7740
       }
     ]
   }
