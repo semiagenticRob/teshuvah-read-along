@@ -1,0 +1,1982 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>DavenAlong · Shacharit Scroll · Prototype</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700;900&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+/* ----------------------------------------------------------
+   DavenAlong · Living Parchment
+   Adaptive color system: time-of-day axis × section axis
+   ---------------------------------------------------------- */
+
+:root {
+  --time-bg-a: #f6e9d2;
+  --time-bg-b: #f9e6d0;
+  --time-grain: 0.055;
+
+  --ink:        #2a1d12;
+  --ink-soft:   #5a4835;
+  --ink-faint:  #8a7a64;
+  --accent:     #b07a1c;
+  --accent-hi:  #d9a24a;
+  --accent-lo:  rgba(176,122,28, 0.14);
+
+  --measure-hebrew: 34rem;
+  --measure-english: 30rem;
+}
+
+body[data-time="dawn"]    { --time-bg-a: #f7e3d4; --time-bg-b: #f4d8c6; }
+body[data-time="morning"] { --time-bg-a: #f6e9d2; --time-bg-b: #f9e6d0; }
+body[data-time="midday"]  {
+  --time-bg-a: #f1ede0; --time-bg-b: #ece7d6;
+  --ink: #19202e; --ink-soft: #3e4a5e; --ink-faint: #7d8396;
+}
+
+.section-birchot    { --accent: #b07a1c; --accent-hi: #d9a24a; --accent-lo: rgba(176,122,28, 0.14); }
+.section-pesukei    { --accent: #c9831a; --accent-hi: #eaae4c; --accent-lo: rgba(201,131,26, 0.13); }
+.section-shema      { --accent: #1d4a7a; --accent-hi: #3f77aa; --accent-lo: rgba(29,74,122, 0.16); }
+.section-concluding { --accent: #5c6b2f; --accent-hi: #8ea051; --accent-lo: rgba(92,107,47, 0.14); }
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  min-height: 100vh;
+  font-family: "EB Garamond", Georgia, serif;
+  font-size: 19px;
+  line-height: 1.6;
+  color: var(--ink);
+  background: var(--time-bg-a);
+  transition: background-color 1.4s ease, color 1.4s ease;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed; inset: -20%;
+  background:
+    radial-gradient(1200px 800px at 30% 20%, var(--time-bg-b) 0%, transparent 55%),
+    radial-gradient(900px 700px at 75% 75%, var(--time-bg-b) 0%, transparent 60%);
+  opacity: 0.9;
+  animation: drift 42s ease-in-out infinite alternate;
+  pointer-events: none;
+  z-index: 0;
+  transition: background 1.4s ease;
+}
+body::after {
+  content: "";
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.15  0 0 0 0 0.12  0 0 0 0 0.08  0 0 0 0.7 0'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.55'/></svg>");
+  opacity: var(--time-grain);
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  z-index: 10;  /* above section backgrounds so paper grain stays visible throughout */
+}
+
+@keyframes drift {
+  0%   { transform: translate3d(0,0,0)    scale(1);    }
+  50%  { transform: translate3d(-2%,1%,0) scale(1.03); }
+  100% { transform: translate3d(1%,-1%,0) scale(1.015); }
+}
+
+main { position: relative; z-index: 2; }
+
+/* ——— per-section full background color (with boundary blends) ——— */
+section[class^="section-"] {
+  position: relative;
+  z-index: 0;
+}
+/* solid section color fills the full viewport width, blending into neighbors */
+section[class^="section-"]::before {
+  content: "";
+  position: absolute;
+  left: calc(50% - 50vw);
+  right: calc(50% - 50vw);
+  top: 0; bottom: 0;
+  width: 100vw;
+  pointer-events: none;
+  z-index: -2;
+}
+/* ambient motion overlay — subtle, positioned away from section boundaries
+   so it doesn't leak light bands at the top/bottom edges */
+section[class^="section-"]::after {
+  content: "";
+  position: absolute;
+  left: calc(50% - 50vw);
+  right: calc(50% - 50vw);
+  top: 8%; bottom: 8%;
+  width: 100vw;
+  background:
+    radial-gradient(48% 40% at 32% 45%, rgba(255,252,240,0.10), transparent 70%),
+    radial-gradient(42% 38% at 72% 62%, rgba(30,20,10,0.06), transparent 72%);
+  pointer-events: none;
+  z-index: -1;
+  animation: section-drift 42s ease-in-out infinite alternate;
+  opacity: 0.9;
+}
+section[class^="section-"]:nth-child(even)::after {
+  animation-duration: 52s;
+  animation-direction: alternate-reverse;
+}
+@keyframes section-drift {
+  0%   { transform: translate3d(0, 0, 0)    scale(1);    opacity: 0.75; }
+  50%  { transform: translate3d(-2.5%, 2%, 0) scale(1.06); opacity: 1;   }
+  100% { transform: translate3d(2%, -1.5%, 0) scale(1.02); opacity: 0.85; }
+}
+
+/* section color palette — boundary stops match the neighboring section */
+.section-birchot::before {
+  background: linear-gradient(to bottom,
+    #f2e2ba 0%,
+    #ecd197 10%,
+    #ecd197 86%,
+    #e7c88a 100%);
+}
+.section-pesukei::before {
+  background: linear-gradient(to bottom,
+    #e7c88a 0%,
+    #e4c17d 10%,
+    #e4c17d 84%,
+    #d6ccaa 100%);
+}
+.section-shema::before {
+  background: linear-gradient(to bottom,
+    #d6ccaa 0%,
+    #c3d0e1 18%,
+    #c3d0e1 84%,
+    #ccd4c1 100%);
+}
+.section-concluding::before {
+  background: linear-gradient(to bottom,
+    #ccd4c1 0%,
+    #d1d7b6 12%,
+    #d1d7b6 100%);
+}
+
+/* ——— bottom floating app bar ——— */
+.appbar {
+  position: fixed;
+  bottom: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px;
+  background: rgba(255,253,247,0.78);
+  backdrop-filter: blur(16px) saturate(1.1);
+  -webkit-backdrop-filter: blur(16px) saturate(1.1);
+  border: 1px solid rgba(0,0,0,0.07);
+  border-radius: 999px;
+  box-shadow:
+    0 8px 30px rgba(40,25,10,0.13),
+    0 2px 6px rgba(40,25,10,0.06),
+    inset 0 1px 0 rgba(255,255,255,0.6);
+  font-family: "EB Garamond", serif;
+}
+
+/* multi-select display toggle */
+.modes {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 0 4px;
+}
+.modes button {
+  all: unset;
+  cursor: pointer;
+  min-width: 44px;
+  height: 44px;
+  padding: 0 10px;
+  border-radius: 999px;
+  color: var(--ink-faint);
+  font-size: 15px;
+  letter-spacing: 0.04em;
+  text-align: center;
+  transition: all 0.28s ease;
+  position: relative;
+  font-style: italic;
+}
+.modes button .label {
+  display: inline-block;
+  transition: transform 0.28s ease;
+}
+.modes button.hebrew { font-family: "Frank Ruhl Libre", serif; font-style: normal; font-size: 19px; }
+.modes button:active { transform: scale(0.92); }
+.modes button.on {
+  background: var(--ink);
+  color: var(--time-bg-a);
+  font-style: normal;
+}
+.modes button.on::after {
+  content: "";
+  position: absolute;
+  left: 50%; bottom: 4px;
+  width: 5px; height: 5px;
+  background: var(--accent-hi);
+  border-radius: 50%;
+  transform: translateX(-50%);
+}
+
+/* divider */
+.appbar-divider {
+  width: 1px;
+  height: 28px;
+  background: rgba(0,0,0,0.09);
+  margin: 0 2px;
+}
+
+/* play button — the hero control */
+.play {
+  all: unset;
+  cursor: pointer;
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--time-bg-a);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: transform 0.2s ease, background 0.4s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 14px rgba(40,25,10,0.25);
+}
+.play:active { transform: scale(0.93); }
+.play.playing {
+  background: var(--accent);
+  box-shadow: 0 0 0 0 var(--accent-hi), 0 4px 14px rgba(40,25,10,0.2);
+  animation: play-pulse 2.4s ease-out infinite;
+}
+@keyframes play-pulse {
+  0%   { box-shadow: 0 0 0 0 var(--accent-lo), 0 4px 14px rgba(40,25,10,0.2); }
+  70%  { box-shadow: 0 0 0 16px rgba(0,0,0,0), 0 4px 14px rgba(40,25,10,0.2); }
+  100% { box-shadow: 0 0 0 0 rgba(0,0,0,0), 0 4px 14px rgba(40,25,10,0.2); }
+}
+.play svg { width: 20px; height: 20px; fill: currentColor; transition: opacity 0.2s ease; }
+.play .icon-pause { display: none; }
+.play.playing .icon-play  { display: none; }
+.play.playing .icon-pause { display: block; }
+
+/* progress ring around play */
+.play::before {
+  content: "";
+  position: absolute; inset: -6px;
+  border-radius: 50%;
+  border: 1.5px solid var(--accent-lo);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.play.playing::before { opacity: 1; }
+
+/* ——— reading speed slider ——— */
+.speed {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 14px 0 10px;
+  min-width: 150px;
+}
+.speed-val {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 13px;
+  color: var(--ink-soft);
+  min-width: 34px;
+  text-align: center;
+  letter-spacing: 0.02em;
+  transition: color 0.3s ease;
+}
+.speed-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 92px;
+  height: 20px;
+  background: transparent;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+}
+.speed-slider::-webkit-slider-runnable-track {
+  height: 2px;
+  background: linear-gradient(to right, rgba(0,0,0,0.1), rgba(0,0,0,0.2));
+  border-radius: 999px;
+}
+.speed-slider::-moz-range-track {
+  height: 2px;
+  background: linear-gradient(to right, rgba(0,0,0,0.1), rgba(0,0,0,0.2));
+  border-radius: 999px;
+}
+.speed-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px; height: 14px;
+  margin-top: -6px;
+  background: var(--ink);
+  border: 2px solid var(--time-bg-a);
+  border-radius: 50%;
+  cursor: grab;
+  box-shadow: 0 1px 4px rgba(40,25,10,0.22);
+  transition: transform 0.2s ease;
+}
+.speed-slider::-moz-range-thumb {
+  width: 14px; height: 14px;
+  background: var(--ink);
+  border: 2px solid var(--time-bg-a);
+  border-radius: 50%;
+  cursor: grab;
+  box-shadow: 0 1px 4px rgba(40,25,10,0.22);
+}
+.speed-slider:hover::-webkit-slider-thumb { transform: scale(1.15); }
+.speed-slider:active::-webkit-slider-thumb { cursor: grabbing; transform: scale(1.2); }
+
+.scroll {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 20px 40px 180px;
+  position: relative;
+}
+
+.section-intro {
+  padding: 36px 0 14px;
+  position: relative;
+}
+/* first section sits flush to top — mobile app, no masthead */
+section:first-of-type > .section-intro { padding-top: 14px; }
+
+/* ——— glowing gold divider between sections ——— */
+section[class^="section-"] + section[class^="section-"] > .section-intro::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: calc(50% - 50vw);
+  right: calc(50% - 50vw);
+  width: 100vw;
+  height: 1px;
+  background: linear-gradient(to right,
+    transparent 0%,
+    rgba(217, 162, 64, 0.25) 15%,
+    #e6b24a 50%,
+    rgba(217, 162, 64, 0.25) 85%,
+    transparent 100%);
+  box-shadow:
+    0 0 10px rgba(230, 178, 74, 0.7),
+    0 0 22px rgba(230, 178, 74, 0.35),
+    0 0 40px rgba(230, 178, 74, 0.18);
+  z-index: 5;
+  pointer-events: none;
+  animation: divider-pulse 5s ease-in-out infinite;
+}
+@keyframes divider-pulse {
+  0%, 100% { opacity: 0.75; }
+  50%      { opacity: 1;    }
+}
+/* no rule or extra margin between sections — the color change IS the boundary */
+.section-intro.has-rule { margin-top: 0; }
+.section-eyebrow {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.75rem, 3.4vw, 2.4rem);
+  line-height: 1.1;
+  letter-spacing: 0.005em;
+  text-transform: none;
+  color: var(--accent);
+  margin-bottom: 14px;
+  display: block;
+}
+.section-hebrew-title {
+  font-family: "Frank Ruhl Libre", serif;
+  font-weight: 500;
+  font-size: clamp(2.6rem, 6vw, 4rem);
+  line-height: 1.1;
+  color: var(--ink);
+  direction: rtl;
+  text-align: right;
+  margin: 0 0 6px;
+  letter-spacing: -0.01em;
+}
+.section-english-title {
+  font-family: "EB Garamond", serif;
+  font-weight: 400;
+  font-style: italic;
+  font-size: clamp(1.2rem, 2.2vw, 1.5rem);
+  color: var(--ink-soft);
+  margin: 0 0 28px;
+  letter-spacing: 0.02em;
+}
+.section-body {
+  font-family: "EB Garamond", serif;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--ink-soft);
+  max-width: var(--measure-english);
+}
+.section-body::first-letter {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 3.8em;
+  font-weight: 500;
+  float: left;
+  line-height: 0.85;
+  padding: 8px 12px 0 0;
+  color: var(--accent);
+}
+.section-toggles {
+  margin-top: 22px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 22px;
+}
+.section-toggle {
+  font-family: "EB Garamond", serif;
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  padding: 0;
+  transition: color 0.3s ease;
+}
+.section-toggle::after {
+  content: "+";
+  font-size: 18px;
+  transition: transform 0.4s ease;
+}
+.section-toggle.on::after { transform: rotate(45deg); }
+
+[data-panel] {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.7s ease, margin 0.5s ease, opacity 0.5s ease;
+  opacity: 0;
+}
+[data-panel].open {
+  max-height: 900px;
+  margin-top: 22px;
+  opacity: 1;
+}
+
+/* ——— audio & notes panel ——— */
+.audio-player {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  background: rgba(255,252,245,0.55);
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 14px;
+  backdrop-filter: blur(8px);
+  max-width: var(--measure-english);
+}
+.audio-play-btn {
+  all: unset;
+  cursor: pointer;
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--time-bg-a);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.2s ease, background 0.3s ease;
+  box-shadow: 0 2px 8px rgba(40,25,10,0.15);
+}
+.audio-play-btn:active { transform: scale(0.93); }
+.audio-play-btn svg { width: 14px; height: 14px; fill: currentColor; }
+.audio-play-btn .ic-pause { display: none; }
+.audio-play-btn.on .ic-play  { display: none; }
+.audio-play-btn.on .ic-pause { display: block; }
+.audio-meta { flex: 1; min-width: 0; }
+.audio-title {
+  font-family: "EB Garamond", serif;
+  font-size: 0.95rem;
+  color: var(--ink);
+  font-style: italic;
+}
+.audio-duration {
+  font-family: "EB Garamond", serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-top: 4px;
+}
+.audio-wave {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  height: 22px;
+  flex-shrink: 0;
+}
+.audio-wave span {
+  width: 2px;
+  height: 4px;
+  background: var(--accent);
+  opacity: 0.35;
+  border-radius: 1px;
+  transition: height 0.3s ease, opacity 0.3s ease;
+}
+.audio-player:has(.audio-play-btn.on) .audio-wave span {
+  animation: wave 1.4s ease-in-out infinite;
+}
+.audio-wave span:nth-child(2n) { animation-delay: 0.15s; }
+.audio-wave span:nth-child(3n) { animation-delay: 0.3s; }
+.audio-wave span:nth-child(5n) { animation-delay: 0.45s; }
+@keyframes wave {
+  0%, 100% { height: 4px;  opacity: 0.4; }
+  50%      { height: 18px; opacity: 0.8; }
+}
+.audio-notes {
+  margin-top: 14px;
+  padding: 4px 0 4px 22px;
+  border-left: 2px solid var(--accent);
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: var(--ink-soft);
+  max-width: var(--measure-english);
+}
+.audio-notes-attribution {
+  display: block;
+  margin-top: 10px;
+  font-family: "EB Garamond", serif;
+  font-style: normal;
+  font-size: 0.74rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.commentary-block {
+  border-left: 2px solid var(--accent);
+  padding: 4px 0 4px 22px;
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 1.1rem;
+  line-height: 1.65;
+  color: var(--ink-soft);
+  max-width: var(--measure-english);
+}
+.commentary-attribution {
+  display: block;
+  margin-top: 10px;
+  font-family: "EB Garamond", serif;
+  font-style: normal;
+  font-size: 0.78rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.prayer {
+  position: relative;
+  padding: 26px 0 26px 32px;
+  margin: 10px 0;
+  transition: padding 0.4s ease;
+}
+/* tighten the first prayer right after a section intro */
+.section-intro + .prayer { margin-top: 4px; padding-top: 20px; }
+.prayer::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 30px; bottom: 30px;
+  width: 2px;
+  background: var(--accent);
+  opacity: 0.28;
+  border-radius: 2px;
+  animation: rule-pulse 5.5s ease-in-out infinite;
+}
+@keyframes rule-pulse {
+  0%, 100% { opacity: 0.18; transform: scaleY(0.96); }
+  50%      { opacity: 0.42; transform: scaleY(1); }
+}
+.prayer-title {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 1.45rem;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--ink);
+  margin: 0 0 2px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+.prayer-title:has(+ .prayer-subtitle) { margin-bottom: 2px; }
+
+.prayer-subtitle {
+  font-family: "EB Garamond", serif;
+  font-style: italic;
+  font-size: 0.92rem;
+  color: var(--ink-faint);
+  margin: 0 0 10px;
+  max-width: var(--measure-english);
+  line-height: 1.45;
+}
+
+.prayer-toggles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin: 6px 0 10px;
+}
+.prayer-toggle {
+  all: unset;
+  cursor: pointer;
+  font-family: "EB Garamond", serif;
+  font-size: 10.5px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.3s ease;
+}
+.prayer-toggle::after {
+  content: "+";
+  font-size: 13px;
+  transition: transform 0.3s ease;
+}
+.prayer-toggle.on::after { transform: rotate(45deg); }
+
+.prayer-commentary,
+.prayer-audio {
+  max-width: var(--measure-english);
+}
+
+.commentary-block-sm {
+  border-left: 1.5px solid var(--accent);
+  padding: 3px 0 3px 16px;
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--ink-soft);
+}
+
+/* tighter audio player for per-prayer use */
+.prayer-audio .audio-player {
+  padding: 10px 12px;
+  gap: 10px;
+}
+.prayer-audio .audio-play-btn {
+  width: 34px; height: 34px;
+}
+.prayer-audio .audio-play-btn svg { width: 12px; height: 12px; }
+.prayer-audio .audio-title  { font-size: 0.88rem; }
+.prayer-audio .audio-duration { font-size: 0.62rem; margin-top: 2px; }
+.prayer-audio .audio-wave { height: 18px; }
+.prayer-audio .audio-notes {
+  font-size: 0.98rem;
+  padding: 2px 0 2px 16px;
+  margin-top: 10px;
+}
+.prayer-title-hebrew {
+  font-family: "Frank Ruhl Libre", serif;
+  font-size: 0.95rem;
+  letter-spacing: 0;
+  color: var(--accent);
+  margin-left: 10px;
+  font-weight: 500;
+  text-transform: none;
+  direction: rtl;
+  unicode-bidi: isolate;
+}
+
+.hebrew {
+  font-family: "Frank Ruhl Libre", serif;
+  font-weight: 500;
+  font-size: clamp(1.55rem, 3vw, 1.9rem);
+  line-height: 2.1;
+  direction: rtl;
+  text-align: right;
+  color: var(--ink);
+  max-width: var(--measure-hebrew);
+  margin: 0 0 18px;
+  letter-spacing: 0.005em;
+}
+.english {
+  font-family: "EB Garamond", serif;
+  font-size: 1.08rem;
+  line-height: 1.7;
+  color: var(--ink-soft);
+  max-width: var(--measure-english);
+  margin: 0;
+  font-style: italic;
+}
+.translit {
+  font-family: "EB Garamond", serif;
+  font-size: 1.02rem;
+  line-height: 1.75;
+  color: var(--ink-soft);
+  max-width: var(--measure-english);
+  margin: 12px 0 0;
+  letter-spacing: 0.01em;
+}
+.translit em { color: var(--accent); font-style: italic; }
+
+/* ——— interlinear word-pair layout ——— */
+/* The Hebrew paragraph becomes a flex container of Hebrew+translit stacked pairs,
+   flowing RTL so Hebrew reading order is preserved. Translit sits directly beneath
+   each Hebrew word for tight visual correspondence. */
+p.hebrew.interlinear {
+  direction: rtl;
+  text-align: initial;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  letter-spacing: normal;
+  margin: 0 0 18px;
+  max-width: none;
+}
+.pair-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 14px;
+  align-items: flex-start;
+  direction: rtl;
+}
+.pair {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2px 0;
+  min-width: 0;
+  cursor: pointer;
+  direction: ltr;  /* reset so word inside lays out naturally */
+}
+.pair .word {
+  font-family: "Frank Ruhl Libre", serif;
+  font-weight: 500;
+  font-size: clamp(1.35rem, 3vw, 1.75rem);
+  line-height: 1.15;
+  color: var(--ink);
+  direction: rtl;
+  text-align: center;
+  letter-spacing: 0.005em;
+  white-space: nowrap;
+  padding: 0 2px;
+  cursor: pointer;
+}
+.pair .tword {
+  font-family: "EB Garamond", serif;
+  font-size: 0.72rem;
+  line-height: 1.3;
+  color: var(--ink-faint);
+  font-style: italic;
+  direction: ltr;
+  text-align: center;
+  letter-spacing: 0.02em;
+  margin-top: 3px;
+  white-space: nowrap;
+  padding: 0 2px;
+  cursor: pointer;
+}
+/* reset the loose tword styling when it sits inside a pair */
+.pair .tword em { font-style: italic; color: var(--ink-soft); }
+
+/* display-mode visibility — scoped to pairs now */
+body:not(.show-hebrew)   .pair .word   { display: none; }
+body:not(.show-translit) .pair .tword  { display: none; }
+body:not(.show-english)  p.english     { display: none; }
+
+/* when only translit is on, flow LTR like English */
+body:not(.show-hebrew).show-translit p.hebrew.interlinear,
+body:not(.show-hebrew).show-translit .pair-row {
+  direction: ltr;
+}
+
+.word, .tword {
+  position: relative;
+  display: inline-block;
+  padding: 0 2px;
+  transition: color 0.6s ease;
+  cursor: pointer;
+}
+.word:active, .tword:active { transform: scale(0.97); }
+.word.active, .tword.active { color: var(--ink); }
+.word.active::before,
+.word.fading::before,
+.tword.active::before,
+.tword.fading::before {
+  content: "";
+  position: absolute;
+  inset: -6px -4px;
+  border-radius: 10px;
+  background: radial-gradient(ellipse at center,
+    rgba(255,255,255,0.98) 0%,
+    rgba(255,255,255,0.6)  40%,
+    transparent 75%);
+  opacity: 0;
+  z-index: -1;
+}
+.tword.active::before,
+.tword.fading::before { inset: -3px -2px; border-radius: 7px; }
+
+/* incoming: crescendo from dim to bright peak */
+.word.active::before,
+.tword.active::before {
+  animation: halo-crescendo var(--halo-dur, 1.05s) ease-in forwards;
+}
+/* outgoing: slow decrescendo — leaves a luminous trail of recent words behind the current one */
+.word.fading::before,
+.tword.fading::before {
+  animation: halo-decrescendo var(--halo-fade-dur, 3.8s) linear forwards;
+}
+
+@keyframes halo-crescendo {
+  0%   { opacity: 0.08; transform: scale(0.88); }
+  60%  { opacity: 0.42; transform: scale(1.00); }
+  100% { opacity: 1;    transform: scale(1.10); }
+}
+@keyframes halo-decrescendo {
+  0%   { opacity: 1;    transform: scale(1.10); }
+  100% { opacity: 0;    transform: scale(1.04); }
+}
+
+.fn {
+  display: inline-block;
+  vertical-align: super;
+  font-size: 0.52em;
+  color: var(--accent);
+  cursor: pointer;
+  padding: 0 3px;
+  font-family: "EB Garamond", serif;
+  font-style: normal;
+  font-weight: 600;
+  user-select: none;
+  transition: color 0.2s ease;
+}
+.fn:hover { color: var(--accent-hi); }
+.fn::before { content: "◆"; font-size: 0.85em; margin-right: 1px; }
+
+.marginalia {
+  position: fixed;
+  top: 0; right: 0;
+  height: 100vh;
+  width: min(460px, 90vw);
+  background: var(--time-bg-a);
+  border-left: 1px solid rgba(0,0,0,0.1);
+  box-shadow: -24px 0 60px rgba(30,20,10,0.1);
+  transform: translateX(100%);
+  transition: transform 0.55s cubic-bezier(0.3, 0.8, 0.3, 1), background 1.4s ease;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+}
+.marginalia.open { transform: translateX(0); }
+.marginalia-head {
+  padding: 28px 36px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+.marginalia-eyebrow {
+  font-family: "EB Garamond", serif;
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.marginalia-close {
+  all: unset;
+  cursor: pointer;
+  font-size: 22px;
+  line-height: 1;
+  color: var(--ink-faint);
+  padding: 4px 10px;
+}
+.marginalia-body {
+  padding: 20px 36px 36px;
+  overflow-y: auto;
+  flex: 1;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.12rem;
+  line-height: 1.7;
+  color: var(--ink-soft);
+}
+.marginalia-body p {
+  font-style: italic;
+  margin: 0 0 1em;
+}
+.marginalia-body em { color: var(--accent); font-style: italic; }
+.marginalia-title {
+  font-family: "Frank Ruhl Libre", serif;
+  font-style: normal;
+  font-size: 1.8rem;
+  color: var(--ink);
+  margin: 6px 0 20px;
+  direction: rtl;
+  text-align: right;
+}
+.marginalia-source {
+  margin-top: 28px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(0,0,0,0.1);
+  font-family: "EB Garamond", serif;
+  font-style: normal;
+  font-size: 0.78rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.scrim {
+  position: fixed; inset: 0;
+  background: rgba(30,20,10,0.18);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  z-index: 45;
+  backdrop-filter: blur(1px);
+}
+.scrim.open { opacity: 1; pointer-events: auto; }
+
+/* ——— right-side progress rail ——— */
+.rail {
+  position: fixed;
+  right: 22px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 30;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  height: min(560px, 68vh);
+  width: 14px;
+  transition: opacity 0.3s ease;
+}
+.rail.hidden { opacity: 0; pointer-events: none; }
+
+.rail-seg {
+  position: relative;
+  flex: 1;
+  width: 4px;
+  margin: 0 auto;
+  border-radius: 999px;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: opacity 0.4s ease, width 0.28s ease;
+  text-decoration: none;
+}
+/* each segment carries its section's gradient, blending into the next */
+.rail-seg:nth-child(1) { background: linear-gradient(to bottom, #eab864 0%, #b07a1c 100%); }
+.rail-seg:nth-child(2) { background: linear-gradient(to bottom, #b07a1c 0%, #d48d23 100%); }
+.rail-seg:nth-child(3) { background: linear-gradient(to bottom, #d48d23 0%, #1d4a7a 100%); }
+.rail-seg:nth-child(4) { background: linear-gradient(to bottom, #1d4a7a 0%, #5c6b2f 100%); }
+
+.rail-seg:hover,
+.rail-seg.active {
+  opacity: 1;
+  width: 6px;
+}
+
+.rail-num {
+  position: absolute;
+  left: -22px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 13px;
+  color: var(--ink-faint);
+  letter-spacing: 0.05em;
+  transition: color 0.3s ease, opacity 0.3s ease;
+}
+.rail-seg.active .rail-num { color: var(--ink); }
+
+.rail-label {
+  position: absolute;
+  right: 60px;  /* past the bird, so label can appear without overlap */
+  top: 50%;
+  transform: translateY(-50%) translateX(8px);
+  white-space: nowrap;
+  font-family: "EB Garamond", serif;
+  font-size: 10.5px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--ink);
+  background: rgba(255,253,247,0.9);
+  border: 1px solid rgba(0,0,0,0.06);
+  padding: 7px 11px;
+  border-radius: 6px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 3px 10px rgba(40,25,10,0.08);
+}
+/* labels only on hover — the bird itself is the always-on active indicator */
+.rail-seg:hover .rail-label {
+  opacity: 0.95;
+  transform: translateY(-50%) translateX(0);
+}
+
+/* current-position marker — a bold little bird that glides along the rail
+   (sits on the content side so it can't be clipped by the viewport edge) */
+.rail-marker {
+  position: absolute;
+  right: 100%;
+  margin-right: 6px;
+  width: 40px;
+  height: 24px;
+  color: var(--accent);
+  pointer-events: none;
+  transition: top 0.45s cubic-bezier(0.3, 0.8, 0.3, 1),
+              color 1s ease;
+  filter:
+    drop-shadow(0 2px 4px rgba(40,25,10,0.28))
+    drop-shadow(0 0 6px rgba(255,252,240,0.35));
+}
+.rail-marker .bird {
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: visible;
+  animation: bird-glide 3.4s ease-in-out infinite;
+  transform-origin: 50% 60%;
+}
+@keyframes bird-glide {
+  0%, 100% { transform: translateY(0)      rotate(-3deg); }
+  50%      { transform: translateY(-2px)   rotate(3deg);  }
+}
+.bird .wing {
+  stroke: currentColor;
+  stroke-width: 3.2;
+  stroke-linecap: round;
+  fill: none;
+}
+.bird .body { fill: currentColor; }
+.bird .head {
+  fill: #fffcf3;
+  filter: drop-shadow(0 0 2px rgba(255,255,255,0.4));
+}
+.bird .eye  { fill: rgba(40,25,10,0.85); }
+
+.masthead {
+  padding: 60px 0 8px;
+  text-align: center;
+  font-family: "EB Garamond", serif;
+  font-size: 11px;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.masthead em {
+  font-style: italic;
+  color: var(--accent);
+  font-weight: 500;
+}
+
+@media (max-width: 680px) {
+  .scroll { padding: 12px 22px 160px; }
+  .hebrew { font-size: 1.4rem; line-height: 2; }
+  .marginalia {
+    top: auto; bottom: 0;
+    width: 100%; height: 72vh;
+    border-left: none;
+    border-top: 1px solid rgba(0,0,0,0.1);
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    transform: translateY(100%);
+  }
+  .marginalia.open { transform: translateY(0); }
+  .appbar { bottom: 16px; gap: 6px; padding: 6px; }
+  .modes button { min-width: 38px; height: 38px; padding: 0 8px; }
+  .play { width: 48px; height: 48px; }
+  .speed { min-width: 108px; padding: 0 8px; gap: 6px; }
+  .speed-slider { width: 64px; }
+  .speed-val { font-size: 12px; min-width: 28px; }
+  .rail { right: 10px; width: 10px; }
+  .rail-label { display: none; }
+  .rail-num { left: -18px; font-size: 11px; }
+}
+</style>
+</head>
+<body data-time="morning" class="show-hebrew show-translit">
+
+<!-- floating app bar: mode multi-select · play · -->
+<div class="appbar">
+  <div class="modes" id="modes">
+    <button class="hebrew on" data-mode="hebrew" aria-label="Hebrew"><span class="label">א</span></button>
+    <button class="on" data-mode="translit" aria-label="Transliteration"><span class="label">Aa</span></button>
+    <button data-mode="english" aria-label="English"><span class="label">En</span></button>
+  </div>
+  <div class="appbar-divider"></div>
+  <button class="play" id="play" aria-label="Play">
+    <svg class="icon-play"  viewBox="0 0 24 24"><path d="M7 5v14l12-7z"/></svg>
+    <svg class="icon-pause" viewBox="0 0 24 24"><path d="M6 5h4v14H6zm8 0h4v14h-4z"/></svg>
+  </button>
+  <div class="appbar-divider"></div>
+  <div class="speed">
+    <span class="speed-val" id="speed-val">1.0×</span>
+    <input type="range" class="speed-slider" id="speed-slider" min="0.5" max="2" step="0.1" value="1" aria-label="Reading speed">
+  </div>
+</div>
+
+<main>
+<div class="scroll">
+
+  <section class="section-birchot">
+
+    <div class="section-intro">
+      <div class="section-eyebrow">Section One</div>
+      <h1 class="section-hebrew-title">בִּרְכוֹת הַשַּׁחַר</h1>
+      <p class="section-english-title">Morning Blessings — the first words of the day</p>
+      <p class="section-body">We begin by acknowledging the gift of a new day and the body that carries us. These blessings are the first words we offer — gratitude before requests, wonder before work.</p>
+      <div class="section-toggles">
+        <button class="section-toggle" data-target="commentary">Commentary</button>
+        <button class="section-toggle" data-target="audio">Audio &amp; Notes</button>
+      </div>
+      <div class="section-commentary" data-panel="commentary">
+        <div class="commentary-block">
+          Before reciting Birchot HaShachar, the tradition asks us to pause at the threshold of consciousness. The soul, returned by God in the night, is greeted with thanks before a single need is named. The structure of the blessings — body, then mind, then spirit — mirrors the order of waking itself.
+          <span class="commentary-attribution">— Placeholder · Feigenbaum Commentary</span>
+        </div>
+      </div>
+      <div class="section-audio" data-panel="audio">
+        <div class="audio-player">
+          <button class="audio-play-btn" aria-label="Play audio commentary">
+            <svg class="ic-play"  viewBox="0 0 24 24"><path d="M7 5v14l12-7z"/></svg>
+            <svg class="ic-pause" viewBox="0 0 24 24"><path d="M6 5h4v14H6zm8 0h4v14h-4z"/></svg>
+          </button>
+          <div class="audio-meta">
+            <div class="audio-title">Rabbi Feigenbaum · Birchot HaShachar</div>
+            <div class="audio-duration">4:32 · Placeholder</div>
+          </div>
+          <div class="audio-wave" aria-hidden="true">
+            <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+          </div>
+        </div>
+        <div class="audio-notes">
+          The morning blessings evolved from private practices recited at home into the communal opening of Shacharit. Listening while reading allows the learner to absorb both the cantillation and the reasoning behind each blessing in a single pass.
+          <span class="audio-notes-attribution">— Placeholder · Audio commentary notes</span>
+        </div>
+      </div>
+    </div>
+
+    <article class="prayer">
+      <p class="prayer-title">Modeh Ani<span class="prayer-title-hebrew">מוֹדֶה אֲנִי</span></p>
+      <p class="hebrew">מוֹדֶה אֲנִי לְפָנֶיךָ מֶלֶךְ חַי וְקַיָּם, שֶׁהֶחֱזַרְתָּ בִּי נִשְׁמָתִי בְּחֶמְלָה, רַבָּה אֱמוּנָתֶךָ.</p>
+      <p class="translit">Modeh ani lefanecha melech chai vekayam, shehechezarta bi nishmati b'chemla, raba emunatecha.</p>
+      <p class="english">I offer thanks before You, living and eternal King, for You have returned my soul within me with compassion — abundant is Your faithfulness.</p>
+    </article>
+
+    <article class="prayer">
+      <p class="prayer-title">Asher Yatzar<span class="prayer-title-hebrew">אֲשֶׁר יָצַר</span></p>
+      <p class="hebrew">בָּרוּךְ אַתָּה ה׳ אֱלֹהֵינוּ מֶלֶךְ הָעוֹלָם, אֲשֶׁר יָצַר אֶת <span class="word">הָאָדָם<span class="fn" data-fn="haadam"></span></span> בְּחָכְמָה, וּבָרָא בוֹ נְקָבִים נְקָבִים, חֲלוּלִים חֲלוּלִים. גָּלוּי וְיָדוּעַ לִפְנֵי כִסֵּא כְבוֹדֶךָ, שֶׁאִם יִפָּתֵחַ אֶחָד מֵהֶם, אוֹ יִסָּתֵם אֶחָד מֵהֶם, אִי אֶפְשַׁר לְהִתְקַיֵּם וְלַעֲמוֹד לְפָנֶיךָ. בָּרוּךְ אַתָּה ה׳, רוֹפֵא כָל בָּשָׂר וּמַפְלִיא לַעֲשׂוֹת.</p>
+      <p class="translit">Baruch atah Adonai Eloheinu melech ha'olam, asher yatzar et ha'adam b'chochma, u'vara vo n'kavim n'kavim, chalulim chalulim. Galui v'yadu'a lifnei chisei ch'vodecha, she'im yipate'ach echad meihem, o yisatem echad meihem, i efshar l'hitkayem v'la'amod l'fanecha. Baruch atah Adonai, rofei chol basar u'mafli la'asot.</p>
+      <p class="english">Blessed are You, Lord our God, King of the universe, who formed the human being with wisdom and created within him a system of openings and hollows. It is revealed and known before the throne of Your glory that if one of them were to open, or one of them were to close, it would be impossible to stand before You. Blessed are You, Lord, who heals all flesh and does wonders.</p>
+    </article>
+
+    <article class="prayer">
+      <p class="prayer-title">Elohai Neshamah<span class="prayer-title-hebrew">אֱלֹהַי נְשָׁמָה</span></p>
+      <p class="hebrew">אֱלֹהַי, נְשָׁמָה שֶׁנָּתַתָּ בִּי טְהוֹרָה הִיא. אַתָּה בְרָאתָהּ, אַתָּה יְצַרְתָּהּ, אַתָּה נְפַחְתָּהּ בִּי, וְאַתָּה מְשַׁמְּרָהּ בְּקִרְבִּי, וְאַתָּה עָתִיד לִטְּלָהּ מִמֶּנִּי, וּלְהַחֲזִירָהּ בִּי לֶעָתִיד לָבוֹא. כָּל זְמַן שֶׁהַנְּשָׁמָה בְקִרְבִּי, מוֹדֶה אֲנִי לְפָנֶיךָ ה׳ אֱלֹהַי וֵאלֹהֵי אֲבוֹתַי, רִבּוֹן כָּל הַמַּעֲשִׂים, אֲדוֹן כָּל הַנְּשָׁמוֹת. בָּרוּךְ אַתָּה ה׳, הַמַּחֲזִיר נְשָׁמוֹת לִפְגָרִים מֵתִים.</p>
+      <p class="translit">Elohai, neshama shenatata bi tehora hi. Atah v'ratah, atah yetzartah, atah nefachtah bi, v'atah m'shamrah b'kirbi, v'atah atid lit'lah mimeni, u'lehachazirah bi le'atid lavo. Kol zman shehaneshama v'kirbi, modeh ani lefanecha Adonai Elohai vElohei avotai, ribbon kol hama'asim, adon kol haneshamot. Baruch atah Adonai, hamachazir neshamot lifgarim meitim.</p>
+      <p class="english">My God, the soul You placed within me is pure. You created it, You formed it, You breathed it into me, You preserve it within me, and one day You will take it from me, and return it to me in the time to come. As long as the soul is within me, I offer thanks before You, Lord my God and God of my ancestors, Sovereign of all works, Master of all souls. Blessed are You, Lord, who returns souls to lifeless bodies.</p>
+    </article>
+
+    <article class="prayer">
+      <p class="prayer-title">Birchot HaTorah<span class="prayer-title-hebrew">בִּרְכוֹת הַתּוֹרָה</span></p>
+      <p class="hebrew">בָּרוּךְ אַתָּה ה׳ אֱלֹהֵינוּ מֶלֶךְ הָעוֹלָם, אֲשֶׁר קִדְּשָׁנוּ בְּמִצְוֺתָיו וְצִוָּנוּ לַעֲסֹק בְּדִבְרֵי תוֹרָה. וְהַעֲרֶב נָא ה׳ אֱלֹהֵינוּ אֶת דִּבְרֵי תוֹרָתְךָ בְּפִינוּ וּבְפִי עַמְּךָ בֵּית יִשְׂרָאֵל, וְנִהְיֶה אֲנַחְנוּ וְצֶאֱצָאֵינוּ וְצֶאֱצָאֵי עַמְּךָ בֵּית יִשְׂרָאֵל, כֻּלָּנוּ יוֹדְעֵי שְׁמֶךָ וְלוֹמְדֵי תוֹרָתֶךָ לִשְׁמָהּ. בָּרוּךְ אַתָּה ה׳, הַמְלַמֵּד תּוֹרָה לְעַמּוֹ יִשְׂרָאֵל.</p>
+      <p class="translit">Baruch atah Adonai Eloheinu melech ha'olam, asher kid'shanu b'mitzvotav v'tzivanu la'asok b'divrei Torah. V'ha'arev na Adonai Eloheinu et divrei Toratcha b'finu u'vfi amcha beit Yisrael, v'nih'yeh anachnu v'tze'etza'einu v'tze'etza'ei amcha beit Yisrael, kulanu yod'ei shmecha v'lomdei Toratecha lishma. Baruch atah Adonai, hamlamed Torah l'amo Yisrael.</p>
+      <p class="english">Blessed are You, Lord our God, King of the universe, who has sanctified us with His commandments and commanded us to engage with the words of Torah. Make the words of Your Torah, Lord our God, sweet in our mouths and in the mouths of Your people the house of Israel, so that we, our descendants, and the descendants of Your people the house of Israel may all know Your name and learn Your Torah for its own sake. Blessed are You, Lord, who teaches Torah to His people Israel.</p>
+    </article>
+
+    <article class="prayer">
+      <p class="prayer-title">HaNoten LaYa'ef Ko'ach<span class="prayer-title-hebrew">הַנּוֹתֵן לַיָּעֵף כֹּחַ</span></p>
+      <p class="hebrew">בָּרוּךְ אַתָּה ה׳ אֱלֹהֵינוּ מֶלֶךְ הָעוֹלָם, הַנּוֹתֵן לַיָּעֵף כֹּחַ. בָּרוּךְ אַתָּה ה׳ אֱלֹהֵינוּ מֶלֶךְ הָעוֹלָם, הַמַּעֲבִיר שֵׁנָה מֵעֵינָי וּתְנוּמָה מֵעַפְעַפָּי. וִיהִי רָצוֹן מִלְּפָנֶיךָ ה׳ אֱלֹהֵינוּ וֵאלֹהֵי אֲבוֹתֵינוּ, שֶׁתַּרְגִּילֵנוּ בְּתוֹרָתֶךָ וְדַבְּקֵנוּ בְּמִצְוֹתֶיךָ, וְאַל תְּבִיאֵנוּ לֹא לִידֵי חֵטְא וְלֹא לִידֵי עֲבֵרָה וְעָוֺן, וְלֹא לִידֵי נִסָּיוֹן, וְלֹא לִידֵי בִזָּיוֹן.</p>
+      <p class="translit">Baruch atah Adonai Eloheinu melech ha'olam, ha'noten laya'ef ko'ach. Baruch atah Adonai Eloheinu melech ha'olam, hama'avir sheinah mei'einai u'tnumah mei'af'apai. Vihi ratzon milfanecha Adonai Eloheinu vElohei avoteinu, shetargilenu b'Toratecha v'dabkenu b'mitzvotecha, v'al t'vi'enu lo lidei chet v'lo lidei aveirah v'avon, v'lo lidei nisayon, v'lo lidei bizayon.</p>
+      <p class="english">Blessed are You, Lord our God, King of the universe, who gives strength to the weary. Blessed are You, Lord our God, King of the universe, who removes sleep from my eyes and slumber from my eyelids. May it be Your will, Lord our God and God of our ancestors, to accustom us to Your Torah and attach us to Your commandments. Do not lead us into sin, transgression, or iniquity — not into trial, and not into disgrace.</p>
+    </article>
+
+  </section>
+
+  <section class="section-pesukei">
+
+    <div class="section-intro">
+      <div class="section-eyebrow">Section Two</div>
+      <h1 class="section-hebrew-title">פְּסוּקֵי דְּזִמְרָה</h1>
+      <p class="section-english-title">Verses of Praise — the ascent begins</p>
+      <p class="section-body">Before we can ask, we must praise. Pesukei D'Zimra gathers the Psalms that sing the world into its right relationship: creation marveled at, the Creator named, the soul tuned.</p>
+      <div class="section-toggles">
+        <button class="section-toggle" data-target="commentary">Commentary</button>
+        <button class="section-toggle" data-target="audio">Audio &amp; Notes</button>
+      </div>
+      <div class="section-commentary" data-panel="commentary">
+        <div class="commentary-block">
+          The Talmud calls these verses "the warmup of the service." One does not leap into the presence of God; one prepares the voice, the body, the attention.
+          <span class="commentary-attribution">— Placeholder · Feigenbaum Commentary</span>
+        </div>
+      </div>
+      <div class="section-audio" data-panel="audio">
+        <div class="audio-player">
+          <button class="audio-play-btn" aria-label="Play audio commentary">
+            <svg class="ic-play"  viewBox="0 0 24 24"><path d="M7 5v14l12-7z"/></svg>
+            <svg class="ic-pause" viewBox="0 0 24 24"><path d="M6 5h4v14H6zm8 0h4v14h-4z"/></svg>
+          </button>
+          <div class="audio-meta">
+            <div class="audio-title">Rabbi Feigenbaum · Pesukei D'Zimra</div>
+            <div class="audio-duration">5:18 · Placeholder</div>
+          </div>
+          <div class="audio-wave" aria-hidden="true">
+            <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+          </div>
+        </div>
+        <div class="audio-notes">
+          The Psalms of David were chosen as the entry-corridor into deeper prayer precisely because they do not argue: they sing. Audio accompaniment here lets the learner feel the rise and fall of the verses before parsing their meaning.
+          <span class="audio-notes-attribution">— Placeholder · Audio commentary notes</span>
+        </div>
+      </div>
+    </div>
+
+    <article class="prayer">
+      <p class="prayer-title">Ashrei<span class="prayer-title-hebrew">אַשְׁרֵי</span></p>
+      <p class="hebrew">אַשְׁרֵי יוֹשְׁבֵי בֵיתֶךָ, עוֹד יְהַלְלוּךָ סֶּלָה. אַשְׁרֵי הָעָם שֶׁכָּכָה לּוֹ, אַשְׁרֵי הָעָם שֶׁה׳ אֱלֹהָיו. תְּהִלָּה לְדָוִד, אֲרוֹמִמְךָ אֱלוֹהַי הַמֶּלֶךְ, וַאֲבָרְכָה שִׁמְךָ לְעוֹלָם וָעֶד. בְּכָל יוֹם אֲבָרְכֶךָּ, וַאֲהַלְלָה שִׁמְךָ לְעוֹלָם וָעֶד. גָּדוֹל ה׳ וּמְהֻלָּל מְאֹד, וְלִגְדֻלָּתוֹ אֵין חֵקֶר. דּוֹר לְדוֹר יְשַׁבַּח מַעֲשֶׂיךָ, וּגְבוּרֹתֶיךָ יַגִּידוּ. הֲדַר כְּבוֹד הוֹדֶךָ, וְדִבְרֵי נִפְלְאֹתֶיךָ אָשִׂיחָה. פּוֹתֵחַ אֶת יָדֶךָ, וּמַשְׂבִּיעַ לְכָל חַי רָצוֹן. קָרוֹב ה׳ לְכָל קֹרְאָיו, לְכֹל אֲשֶׁר יִקְרָאֻהוּ בֶאֱמֶת.</p>
+      <p class="translit">Ashrei yoshvei veitecha, od y'hallelucha selah. Ashrei ha'am shekachah lo, ashrei ha'am she'Adonai Elohav. T'hillah l'David, aromimcha Elohai hamelech, va'avarchah shimcha l'olam va'ed. B'chol yom avarchecha, va'ahallelah shimcha l'olam va'ed. Gadol Adonai um'hullal m'od, v'ligdulato ein cheker. Dor l'dor y'shabach ma'asecha, u'g'vurotecha yagidu. Hadar k'vod hodecha, v'divrei nifl'otecha asichah. Potei'ach et yadecha, u'masbi'a l'chol chai ratzon. Karov Adonai l'chol kor'av, l'chol asher yikra'uhu ve'emet.</p>
+      <p class="english">Happy are those who dwell in Your house; they praise You forever. Happy is the people for whom it is so; happy is the people whose God is the Lord. A psalm of David: I will exalt You, my God, the King; I will bless Your name forever and ever. Every day I will bless You, and praise Your name forever and ever. Great is the Lord and greatly to be praised; His greatness is unsearchable. One generation shall praise Your works to another, and shall declare Your mighty acts. I will meditate on the glorious splendor of Your majesty, and on Your wondrous works. You open Your hand, and satisfy the desire of every living thing. The Lord is near to all who call upon Him — to all who call upon Him in truth.</p>
+    </article>
+
+    <article class="prayer">
+      <p class="prayer-title">Baruch She'Amar<span class="prayer-title-hebrew">בָּרוּךְ שֶׁאָמַר</span></p>
+      <p class="hebrew">בָּרוּךְ שֶׁאָמַר וְהָיָה הָעוֹלָם, בָּרוּךְ הוּא. בָּרוּךְ עוֹשֶׂה בְרֵאשִׁית, בָּרוּךְ אוֹמֵר וְעוֹשֶׂה, בָּרוּךְ גּוֹזֵר וּמְקַיֵּם, בָּרוּךְ מְרַחֵם עַל הָאָרֶץ, בָּרוּךְ מְרַחֵם עַל הַבְּרִיּוֹת, בָּרוּךְ מְשַׁלֵּם שָׂכָר טוֹב לִירֵאָיו, בָּרוּךְ חַי לָעַד וְקַיָּם לָנֶצַח, בָּרוּךְ פּוֹדֶה וּמַצִּיל, בָּרוּךְ שְׁמוֹ. בָּרוּךְ אַתָּה ה׳ אֱלֹהֵינוּ מֶלֶךְ הָעוֹלָם, הָאֵל הָאָב הָרַחֲמָן, הַמְהֻלָּל בְּפֶה עַמּוֹ, מְשֻׁבָּח וּמְפֹאָר בִּלְשׁוֹן חֲסִידָיו וַעֲבָדָיו.</p>
+      <p class="translit">Baruch she'amar v'haya ha'olam, baruch hu. Baruch oseh v'reishit, baruch omer v'oseh, baruch gozer u'm'kayem, baruch m'rachem al ha'aretz, baruch m'rachem al hab'riyot, baruch m'shalem sachar tov lirei'av, baruch chai la'ad v'kayam lanetzach, baruch podeh u'matzil, baruch shmo. Baruch atah Adonai Eloheinu melech ha'olam, ha'El ha'Av haRachaman, hamhullal b'feh amo, m'shubach u'mfo'ar bilshon chasidav va'avadav.</p>
+      <p class="english">Blessed is the One who spoke, and the world came into being — blessed is He. Blessed is He who makes creation; blessed is He who speaks and acts; blessed is He who decrees and fulfills; blessed is He who has mercy on the earth; blessed is He who has mercy on creatures; blessed is He who rewards those who revere Him; blessed is He who lives forever and endures to eternity; blessed is He who redeems and rescues; blessed is His name. Blessed are You, Lord our God, King of the universe, the merciful Father, praised by the mouth of His people, extolled and glorified by the tongue of His devoted ones and servants.</p>
+    </article>
+
+    <article class="prayer">
+      <p class="prayer-title">Mizmor L'Todah<span class="prayer-title-hebrew">מִזְמוֹר לְתוֹדָה</span></p>
+      <p class="hebrew">מִזְמוֹר לְתוֹדָה. הָרִיעוּ לַה׳ כָּל הָאָרֶץ. עִבְדוּ אֶת ה׳ בְּשִׂמְחָה, בֹּאוּ לְפָנָיו בִּרְנָנָה. דְּעוּ כִּי ה׳ הוּא אֱלֹהִים, הוּא עָשָׂנוּ וְלוֹ אֲנַחְנוּ, עַמּוֹ וְצֹאן מַרְעִיתוֹ. בֹּאוּ שְׁעָרָיו בְּתוֹדָה, חֲצֵרוֹתָיו בִּתְהִלָּה, הוֹדוּ לוֹ, בָּרְכוּ שְׁמוֹ. כִּי טוֹב ה׳, לְעוֹלָם חַסְדּוֹ, וְעַד דֹּר וָדֹר אֱמוּנָתוֹ.</p>
+      <p class="translit">Mizmor l'todah. Hari'u l'Adonai kol ha'aretz. Ivdu et Adonai b'simchah, bo'u l'fanav bir'nanah. D'u ki Adonai hu Elohim, hu asanu v'lo anachnu, amo v'tzon mar'ito. Bo'u sh'arav b'todah, chatzerotav bit'hillah, hodu lo, barchu shmo. Ki tov Adonai, l'olam chasdo, v'ad dor va'dor emunato.</p>
+      <p class="english">A psalm of thanksgiving. Raise a shout to the Lord, all the earth. Serve the Lord with gladness; come before Him with joyful song. Know that the Lord is God — He made us, and we are His, His people, the flock He shepherds. Enter His gates with thanksgiving, His courts with praise; give thanks to Him, bless His name. For the Lord is good; His kindness is forever, and His faithfulness endures through every generation.</p>
+    </article>
+
+    <article class="prayer">
+      <p class="prayer-title">Yishtabach<span class="prayer-title-hebrew">יִשְׁתַּבַּח</span></p>
+      <p class="hebrew">יִשְׁתַּבַּח שִׁמְךָ לָעַד מַלְכֵּנוּ, הָאֵל הַמֶּלֶךְ הַגָּדוֹל וְהַקָּדוֹשׁ בַּשָּׁמַיִם וּבָאָרֶץ. כִּי לְךָ נָאֶה ה׳ אֱלֹהֵינוּ וֵאלֹהֵי אֲבוֹתֵינוּ, שִׁיר וּשְׁבָחָה, הַלֵּל וְזִמְרָה, עֹז וּמֶמְשָׁלָה, נֶצַח גְּדֻלָּה וּגְבוּרָה, תְּהִלָּה וְתִפְאֶרֶת, קְדֻשָּׁה וּמַלְכוּת, בְּרָכוֹת וְהוֹדָאוֹת, מֵעַתָּה וְעַד עוֹלָם. בָּרוּךְ אַתָּה ה׳, אֵל מֶלֶךְ גָּדוֹל בַּתִּשְׁבָּחוֹת, אֵל הַהוֹדָאוֹת, אֲדוֹן הַנִּפְלָאוֹת.</p>
+      <p class="translit">Yishtabach shimcha la'ad malkenu, ha'El hamelech hagadol v'hakadosh bashamayim u'va'aretz. Ki l'cha na'eh Adonai Eloheinu vElohei avoteinu, shir u'sh'vachah, hallel v'zimrah, oz u'memshalah, netzach g'dulah u'g'vurah, t'hillah v'tif'eret, k'dushah u'malchut, b'rachot v'hoda'ot, me'atah v'ad olam. Baruch atah Adonai, El melech gadol batishbachot, El hahoda'ot, adon haniflaot.</p>
+      <p class="english">May Your name be praised forever, our King — the great and holy God and King, in heaven and on earth. For to You, Lord our God and God of our ancestors, song and praise, hallel and melody, strength and dominion, eternal greatness and might, glory and splendor, holiness and sovereignty, blessings and thanksgiving are fitting, from now and forever. Blessed are You, Lord, God and King great in praises, God of thanksgiving, Master of wonders.</p>
+    </article>
+
+  </section>
+
+  <section class="section-shema">
+
+    <div class="section-intro">
+      <div class="section-eyebrow">Section Three</div>
+      <h1 class="section-hebrew-title">קְרִיאַת שְׁמַע</h1>
+      <p class="section-english-title">The Shema and Its Blessings — the heart of the service</p>
+      <p class="section-body">Here the service gathers itself. After gratitude and praise, we arrive at the declaration: God is One. The Shema is less a prayer than a stance — the posture the rest of the day rests upon.</p>
+      <div class="section-toggles">
+        <button class="section-toggle" data-target="commentary">Commentary</button>
+        <button class="section-toggle" data-target="audio">Audio &amp; Notes</button>
+      </div>
+      <div class="section-commentary" data-panel="commentary">
+        <div class="commentary-block">
+          The Shema is the only prayer the tradition insists we recite with full concentration, even if every other word of the service slips past us. Its six words — "Hear O Israel, the Lord our God, the Lord is One" — are said to contain the entire argument of Jewish theology in miniature.
+          <span class="commentary-attribution">— Placeholder · Feigenbaum Commentary</span>
+        </div>
+      </div>
+      <div class="section-audio" data-panel="audio">
+        <div class="audio-player">
+          <button class="audio-play-btn" aria-label="Play audio commentary">
+            <svg class="ic-play"  viewBox="0 0 24 24"><path d="M7 5v14l12-7z"/></svg>
+            <svg class="ic-pause" viewBox="0 0 24 24"><path d="M6 5h4v14H6zm8 0h4v14h-4z"/></svg>
+          </button>
+          <div class="audio-meta">
+            <div class="audio-title">Rabbi Feigenbaum · Shema &amp; Its Blessings</div>
+            <div class="audio-duration">6:47 · Placeholder</div>
+          </div>
+          <div class="audio-wave" aria-hidden="true">
+            <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+          </div>
+        </div>
+        <div class="audio-notes">
+          The Shema is recited twice daily — morning and evening — and tradition teaches that it is the last thing uttered before sleep and the first thing reached for on waking. The audio commentary unpacks why these six words carry that weight.
+          <span class="audio-notes-attribution">— Placeholder · Audio commentary notes</span>
+        </div>
+      </div>
+    </div>
+
+    <article class="prayer">
+      <p class="prayer-title">Barchu<span class="prayer-title-hebrew">בָּרְכוּ</span></p>
+      <p class="hebrew">בָּרְכוּ אֶת ה׳ הַמְבֹרָךְ. בָּרוּךְ ה׳ הַמְבֹרָךְ לְעוֹלָם וָעֶד.</p>
+      <p class="translit">Bar'chu et Adonai ha'm'vorach. Baruch Adonai ha'm'vorach l'olam va'ed.</p>
+      <p class="english">Bless the Lord, the blessed One. Blessed is the Lord, the blessed One, forever and ever.</p>
+    </article>
+
+    <article class="prayer">
+      <p class="prayer-title">Yotzer Or<span class="prayer-title-hebrew">יוֹצֵר אוֹר</span></p>
+      <p class="hebrew">בָּרוּךְ אַתָּה ה׳ אֱלֹהֵינוּ מֶלֶךְ הָעוֹלָם, יוֹצֵר אוֹר וּבוֹרֵא חֹשֶׁךְ, עוֹשֶׂה שָׁלוֹם וּבוֹרֵא אֶת הַכֹּל. הַמֵּאִיר לָאָרֶץ וְלַדָּרִים עָלֶיהָ בְּרַחֲמִים, וּבְטוּבוֹ מְחַדֵּשׁ בְּכָל יוֹם תָּמִיד מַעֲשֵׂה בְרֵאשִׁית. מָה רַבּוּ מַעֲשֶׂיךָ ה׳, כֻּלָּם בְּחָכְמָה עָשִׂיתָ, מָלְאָה הָאָרֶץ קִנְיָנֶךָ. הַמֶּלֶךְ הַמְרוֹמָם לְבַדּוֹ מֵאָז, הַמְשֻׁבָּח וְהַמְפֹאָר וְהַמִּתְנַשֵּׂא מִימוֹת עוֹלָם. אוֹר חָדָשׁ עַל צִיּוֹן תָּאִיר, וְנִזְכֶּה כֻלָּנוּ מְהֵרָה לְאוֹרוֹ. בָּרוּךְ אַתָּה ה׳, יוֹצֵר הַמְּאוֹרוֹת.</p>
+      <p class="translit">Baruch atah Adonai Eloheinu melech ha'olam, yotzer or u'vorei choshech, oseh shalom u'vorei et hakol. Hame'ir la'aretz v'ladarim aleha b'rachamim, u'v'tuvo m'chadesh b'chol yom tamid ma'aseh v'reishit. Mah rabbu ma'asecha Adonai, kulam b'chochmah asita, mal'ah ha'aretz kinyanecha. Hamelech ham'romam l'vado me'az, ham'shubach v'hamfo'ar v'hamitnasei mimot olam. Or chadash al Tziyon ta'ir, v'nizkeh chulanu m'heirah l'oro. Baruch atah Adonai, yotzer ha'm'orot.</p>
+      <p class="english">Blessed are You, Lord our God, King of the universe, who forms light and creates darkness, makes peace and creates all things. He illumines the earth and those who dwell upon it in mercy, and in His goodness renews every day, continually, the work of creation. How many are Your works, Lord — all of them made in wisdom; the earth is full of Your possessions. The King, exalted alone since of old, extolled, glorified, and raised up from the days of eternity. May You cause a new light to shine upon Zion, and may we all soon be worthy of its light. Blessed are You, Lord, former of the luminaries.</p>
+    </article>
+
+    <article class="prayer">
+      <p class="prayer-title">Shema<span class="prayer-title-hebrew">שְׁמַע יִשְׂרָאֵל</span></p>
+      <p class="hebrew">שְׁמַע יִשְׂרָאֵל, ה׳ אֱלֹהֵינוּ, ה׳ <span class="word">אֶחָד<span class="fn" data-fn="echad"></span></span>. בָּרוּךְ שֵׁם כְּבוֹד מַלְכוּתוֹ לְעוֹלָם וָעֶד.</p>
+      <p class="translit">Shema Yisrael, Adonai Eloheinu, Adonai Echad. Baruch shem k'vod malchuto l'olam va'ed.</p>
+      <p class="english">Hear, O Israel: the Lord is our God, the Lord is One. Blessed is the name of His glorious kingdom forever and ever.</p>
+    </article>
+
+    <article class="prayer">
+      <p class="prayer-title">V'Ahavta<span class="prayer-title-hebrew">וְאָהַבְתָּ</span></p>
+      <p class="hebrew">וְאָהַבְתָּ אֵת ה׳ אֱלֹהֶיךָ, בְּכָל לְבָבְךָ, וּבְכָל נַפְשְׁךָ, וּבְכָל מְאֹדֶךָ. וְהָיוּ הַדְּבָרִים הָאֵלֶּה, אֲשֶׁר אָנֹכִי מְצַוְּךָ הַיּוֹם, עַל לְבָבֶךָ. וְשִׁנַּנְתָּם לְבָנֶיךָ, וְדִבַּרְתָּ בָּם, בְּשִׁבְתְּךָ בְּבֵיתֶךָ, וּבְלֶכְתְּךָ בַדֶּרֶךְ, וּבְשָׁכְבְּךָ וּבְקוּמֶךָ. וּקְשַׁרְתָּם לְאוֹת עַל יָדֶךָ, וְהָיוּ לְטֹטָפֹת בֵּין עֵינֶיךָ. וּכְתַבְתָּם עַל מְזֻזוֹת בֵּיתֶךָ וּבִשְׁעָרֶיךָ.</p>
+      <p class="translit">V'ahavta et Adonai Elohecha, b'chol l'vavcha, u'v'chol nafshecha, u'v'chol me'odecha. V'hayu had'varim ha'eleh, asher anochi m'tzavcha hayom, al l'vavecha. V'shinantam l'vanecha, v'dibarta bam, b'shivt'cha b'veitecha, u'v'lecht'cha vaderech, u'v'shochb'cha u'v'kumecha. U'k'shartam l'ot al yadecha, v'hayu l'totafot bein einecha. U'ch'tavtam al m'zuzot beitecha u'vish'arecha.</p>
+      <p class="english">And you shall love the Lord your God with all your heart, with all your soul, and with all your might. These words, which I command you this day, shall be upon your heart. You shall teach them diligently to your children, and shall speak of them when you sit in your house, when you walk by the way, when you lie down, and when you rise up. You shall bind them as a sign upon your hand, and they shall be as frontlets between your eyes. You shall write them upon the doorposts of your house and upon your gates.</p>
+    </article>
+
+    <article class="prayer">
+      <p class="prayer-title">Emet V'Yatziv<span class="prayer-title-hebrew">אֱמֶת וְיַצִּיב</span></p>
+      <p class="hebrew">אֱמֶת וְיַצִּיב וְנָכוֹן וְקַיָּם וְיָשָׁר וְנֶאֱמָן וְאָהוּב וְחָבִיב וְנֶחְמָד וְנָעִים, וְנוֹרָא וְאַדִּיר וּמְתֻקָּן וּמְקֻבָּל וְטוֹב וְיָפֶה, הַדָּבָר הַזֶּה עָלֵינוּ לְעוֹלָם וָעֶד. אֱמֶת, אֱלֹהֵי עוֹלָם מַלְכֵּנוּ, צוּר יַעֲקֹב מָגֵן יִשְׁעֵנוּ. לְדוֹר וָדוֹר הוּא קַיָּם, וּשְׁמוֹ קַיָּם, וְכִסְאוֹ נָכוֹן, וּמַלְכוּתוֹ וֶאֱמוּנָתוֹ לָעַד קַיֶּמֶת. וּדְבָרָיו חָיִים וְקַיָּמִים, נֶאֱמָנִים וְנֶחֱמָדִים לָעַד וּלְעוֹלְמֵי עוֹלָמִים.</p>
+      <p class="translit">Emet v'yatziv v'nachon v'kayam v'yashar v'ne'eman v'ahuv v'chaviv v'nechmad v'na'im, v'nora v'adir u'm'tukan u'm'kubal v'tov v'yafeh, hadavar hazeh aleinu l'olam va'ed. Emet, Elohei olam malkenu, tzur Ya'akov magen yish'enu. L'dor va'dor hu kayam, u'shmo kayam, v'chis'o nachon, u'malchuto ve'emunato la'ad kayemet. U'dvarav chayim v'kayamim, ne'emanim v'nechemadim la'ad u'l'olmei olamim.</p>
+      <p class="english">True and firm, established and enduring, upright and faithful, beloved and cherished, delightful and pleasant, awesome and mighty, well-ordered and accepted, good and beautiful is this matter to us forever and ever. In truth, the eternal God is our King, the Rock of Jacob, the shield of our salvation. He endures through every generation, His name endures, His throne is established, and His kingship and His faithfulness endure forever. His words are living and enduring, faithful and delightful, for all eternity.</p>
+    </article>
+
+  </section>
+
+  <section class="section-concluding">
+
+    <div class="section-intro">
+      <div class="section-eyebrow">Section Four</div>
+      <h1 class="section-hebrew-title">עָלֵינוּ</h1>
+      <p class="section-english-title">Concluding Prayers — carrying the service back into the day</p>
+      <p class="section-body">The service ends with a turn outward. Alenu speaks of the world as it is and the world as it could be, then Kaddish raises the name of God in the voice of the community.</p>
+      <div class="section-toggles">
+        <button class="section-toggle" data-target="commentary">Commentary</button>
+        <button class="section-toggle" data-target="audio">Audio &amp; Notes</button>
+      </div>
+      <div class="section-commentary" data-panel="commentary">
+        <div class="commentary-block">
+          We do not end with another petition but with a declaration of responsibility. The prayer has shaped us; now it releases us, equipped, back into ordinary time.
+          <span class="commentary-attribution">— Placeholder · Feigenbaum Commentary</span>
+        </div>
+      </div>
+      <div class="section-audio" data-panel="audio">
+        <div class="audio-player">
+          <button class="audio-play-btn" aria-label="Play audio commentary">
+            <svg class="ic-play"  viewBox="0 0 24 24"><path d="M7 5v14l12-7z"/></svg>
+            <svg class="ic-pause" viewBox="0 0 24 24"><path d="M6 5h4v14H6zm8 0h4v14h-4z"/></svg>
+          </button>
+          <div class="audio-meta">
+            <div class="audio-title">Rabbi Feigenbaum · Concluding Prayers</div>
+            <div class="audio-duration">3:55 · Placeholder</div>
+          </div>
+          <div class="audio-wave" aria-hidden="true">
+            <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+          </div>
+        </div>
+        <div class="audio-notes">
+          Alenu began as a High Holidays prayer and migrated into daily use — a small history lesson in how communal liturgy evolves. The audio walks through that arc and what the ending wants from us.
+          <span class="audio-notes-attribution">— Placeholder · Audio commentary notes</span>
+        </div>
+      </div>
+    </div>
+
+    <article class="prayer">
+      <p class="prayer-title">Alenu<span class="prayer-title-hebrew">עָלֵינוּ</span></p>
+      <p class="hebrew">עָלֵינוּ לְשַׁבֵּחַ לַאֲדוֹן הַכֹּל, לָתֵת גְּדֻלָּה לְיוֹצֵר בְּרֵאשִׁית, שֶׁלֹּא עָשָׂנוּ כְּגוֹיֵי הָאֲרָצוֹת, וְלֹא שָׂמָנוּ כְּמִשְׁפְּחוֹת הָאֲדָמָה. שֶׁהוּא נוֹטֶה שָׁמַיִם וְיוֹסֵד אָרֶץ, וּמוֹשַׁב יְקָרוֹ בַּשָּׁמַיִם מִמַּעַל, וּשְׁכִינַת עֻזּוֹ בְּגָבְהֵי מְרוֹמִים. הוּא אֱלֹהֵינוּ אֵין עוֹד, אֱמֶת מַלְכֵּנוּ אֶפֶס זוּלָתוֹ, כַּכָּתוּב בְּתוֹרָתוֹ: וְיָדַעְתָּ הַיּוֹם וַהֲשֵׁבֹתָ אֶל לְבָבֶךָ, כִּי ה׳ הוּא הָאֱלֹהִים בַּשָּׁמַיִם מִמַּעַל וְעַל הָאָרֶץ מִתָּחַת, אֵין עוֹד.</p>
+      <p class="translit">Alenu l'shabe'ach la'adon hakol, latet g'dulah l'yotzer b'reishit, shelo asanu k'goyei ha'aratzot, v'lo samanu k'mishp'chot ha'adamah. Shehu noteh shamayim v'yosed aretz, u'moshav y'karo bashamayim mima'al, u'shchinat uzzo b'govhei m'romim. Hu Eloheinu ein od, emet malkenu efes zulato, kakatuv b'Torato: V'yadata hayom va'hashevota el l'vavecha, ki Adonai hu ha'Elohim bashamayim mima'al v'al ha'aretz mitachat, ein od.</p>
+      <p class="english">It is our duty to praise the Master of all, to proclaim the greatness of the Creator of the universe, who did not make us like the nations of the lands, nor place us among the families of the earth. He stretches out the heavens and establishes the earth; the seat of His glory is in the heavens above, and the presence of His might is in the loftiest heights. He is our God — there is no other; our King in truth, beside whom there is none, as it is written in His Torah: "Know this day and lay it upon your heart, that the Lord alone is God — in heaven above and on earth below; there is no other."</p>
+    </article>
+
+    <article class="prayer">
+      <p class="prayer-title">Kaddish Yatom<span class="prayer-title-hebrew">קַדִּישׁ יָתוֹם</span></p>
+      <p class="hebrew">יִתְגַּדַּל וְיִתְקַדַּשׁ שְׁמֵהּ רַבָּא, בְּעָלְמָא דִּי בְרָא כִרְעוּתֵהּ, וְיַמְלִיךְ מַלְכוּתֵהּ בְּחַיֵּיכוֹן וּבְיוֹמֵיכוֹן וּבְחַיֵּי דְכָל בֵּית יִשְׂרָאֵל, בַּעֲגָלָא וּבִזְמַן קָרִיב, וְאִמְרוּ אָמֵן. יְהֵא שְׁמֵהּ רַבָּא מְבָרַךְ לְעָלַם וּלְעָלְמֵי עָלְמַיָּא. יִתְבָּרַךְ וְיִשְׁתַּבַּח וְיִתְפָּאַר וְיִתְרוֹמַם וְיִתְנַשֵּׂא וְיִתְהַדָּר וְיִתְעַלֶּה וְיִתְהַלָּל שְׁמֵהּ דְּקֻדְשָׁא בְּרִיךְ הוּא, לְעֵלָּא מִן כָּל בִּרְכָתָא וְשִׁירָתָא, תֻּשְׁבְּחָתָא וְנֶחֱמָתָא, דַּאֲמִירָן בְּעָלְמָא, וְאִמְרוּ אָמֵן.</p>
+      <p class="translit">Yitgadal v'yitkadash sh'mei raba, b'alma di v'ra chir'utei, v'yamlich malchutei b'chayeichon u'v'yomeichon u'v'chayei d'chol beit Yisrael, ba'agala u'viz'man kariv, v'imru amen. Y'hei sh'mei raba m'varach l'alam u'l'almei almaya. Yitbarach v'yishtabach v'yitpa'ar v'yitromam v'yitnasei v'yit'hadar v'yit'aleh v'yit'halal sh'mei d'kudsha, brich hu, l'eila min kol birchata v'shirata, tushb'chata v'nechemata, da'amiran b'alma, v'imru amen.</p>
+      <p class="english">May His great name be exalted and sanctified in the world He created according to His will. May He establish His kingdom in your lifetime and in your days, and in the lifetime of all the house of Israel, speedily and soon — and let us say, Amen. May His great name be blessed forever and ever. Blessed, praised, glorified, exalted, extolled, honored, uplifted and lauded be the name of the Holy One, blessed is He — above and beyond all blessings, songs, praises, and consolations uttered in the world — and let us say, Amen.</p>
+    </article>
+
+    <article class="prayer">
+      <p class="prayer-title">Ein Keloheinu<span class="prayer-title-hebrew">אֵין כֵּאלֹהֵינוּ</span></p>
+      <p class="hebrew">אֵין כֵּאלֹהֵינוּ, אֵין כַּאדוֹנֵינוּ, אֵין כְּמַלְכֵּנוּ, אֵין כְּמוֹשִׁיעֵנוּ. מִי כֵאלֹהֵינוּ, מִי כַאדוֹנֵינוּ, מִי כְמַלְכֵּנוּ, מִי כְמוֹשִׁיעֵנוּ. נוֹדֶה לֵאלֹהֵינוּ, נוֹדֶה לַאדוֹנֵינוּ, נוֹדֶה לְמַלְכֵּנוּ, נוֹדֶה לְמוֹשִׁיעֵנוּ. בָּרוּךְ אֱלֹהֵינוּ, בָּרוּךְ אֲדוֹנֵינוּ, בָּרוּךְ מַלְכֵּנוּ, בָּרוּךְ מוֹשִׁיעֵנוּ. אַתָּה הוּא אֱלֹהֵינוּ, אַתָּה הוּא אֲדוֹנֵינוּ, אַתָּה הוּא מַלְכֵּנוּ, אַתָּה הוּא מוֹשִׁיעֵנוּ.</p>
+      <p class="translit">Ein keloheinu, ein kadoneinu, ein k'malkenu, ein k'moshi'enu. Mi cheloheinu, mi chadoneinu, mi ch'malkenu, mi ch'moshi'enu. Nodeh leloheinu, nodeh ladoneinu, nodeh l'malkenu, nodeh l'moshi'enu. Baruch Eloheinu, baruch Adoneinu, baruch Malkenu, baruch Moshi'enu. Atah hu Eloheinu, atah hu Adoneinu, atah hu Malkenu, atah hu Moshi'enu.</p>
+      <p class="english">There is none like our God, none like our Lord, none like our King, none like our Savior. Who is like our God? Who is like our Lord? Who is like our King? Who is like our Savior? Let us give thanks to our God, to our Lord, to our King, to our Savior. Blessed is our God, blessed is our Lord, blessed is our King, blessed is our Savior. You are our God, You are our Lord, You are our King, You are our Savior.</p>
+    </article>
+
+    <article class="prayer">
+      <p class="prayer-title">Adon Olam<span class="prayer-title-hebrew">אֲדוֹן עוֹלָם</span></p>
+      <p class="hebrew">אֲדוֹן עוֹלָם אֲשֶׁר מָלַךְ, בְּטֶרֶם כָּל יְצִיר נִבְרָא. לְעֵת נַעֲשָׂה בְחֶפְצוֹ כֹּל, אֲזַי מֶלֶךְ שְׁמוֹ נִקְרָא. וְאַחֲרֵי כִּכְלוֹת הַכֹּל, לְבַדּוֹ יִמְלוֹךְ נוֹרָא. וְהוּא הָיָה וְהוּא הֹוֶה, וְהוּא יִהְיֶה בְּתִפְאָרָה. וְהוּא אֶחָד וְאֵין שֵׁנִי, לְהַמְשִׁיל לוֹ לְהַחְבִּירָה. בְּלִי רֵאשִׁית בְּלִי תַכְלִית, וְלוֹ הָעֹז וְהַמִּשְׂרָה. וְהוּא אֵלִי וְחַי גּוֹאֲלִי, וְצוּר חֶבְלִי בְּעֵת צָרָה. בְּיָדוֹ אַפְקִיד רוּחִי, בְּעֵת אִישָׁן וְאָעִירָה. וְעִם רוּחִי גְּוִיָּתִי, ה׳ לִי וְלֹא אִירָא.</p>
+      <p class="translit">Adon olam asher malach, b'terem kol y'tzir nivra. L'et na'asah v'cheftzo kol, azai melech sh'mo nikra. V'acharei kichlot hakol, l'vado yimloch nora. V'hu hayah v'hu hoveh, v'hu yih'yeh b'tif'arah. V'hu echad v'ein sheni, l'hamshil lo l'hachbira. B'li reishit b'li tachlit, v'lo ha'oz v'hamisrah. V'hu Eli v'chai go'ali, v'tzur chevli b'et tzarah. B'yado afkid ruchi, b'et ishan v'a'irah. V'im ruchi g'viyati, Adonai li v'lo ira.</p>
+      <p class="english">Master of the universe who reigned before any creature was formed. When all was made by His will, then was His name proclaimed King. And when all shall cease to be, He alone, awesome, will reign. He was, He is, He shall be — in splendor. He is One; there is no second to compare Him to, to join with Him. Without beginning, without end — His is the power and dominion. He is my God, my living Redeemer, the Rock of my travail in time of trouble. Into His hand I entrust my spirit when I sleep and when I wake. And with my spirit, my body: the Lord is with me — I shall not fear.</p>
+    </article>
+
+  </section>
+
+</div>
+
+<!-- right-side progress rail -->
+<nav class="rail" id="rail" aria-label="Shacharit progress">
+  <a class="rail-seg" data-target="section-birchot"><span class="rail-num">I</span><span class="rail-label">Birchot HaShachar</span></a>
+  <a class="rail-seg" data-target="section-pesukei"><span class="rail-num">II</span><span class="rail-label">Pesukei D'Zimra</span></a>
+  <a class="rail-seg" data-target="section-shema"><span class="rail-num">III</span><span class="rail-label">Shema &amp; Blessings</span></a>
+  <a class="rail-seg" data-target="section-concluding"><span class="rail-num">IV</span><span class="rail-label">Concluding</span></a>
+  <div class="rail-marker" id="rail-marker">
+    <svg class="bird" viewBox="0 0 42 24" aria-hidden="true">
+      <!-- left wing — swept up and back -->
+      <path class="wing" d="M2 16 Q 9 3, 18 13"/>
+      <!-- right wing -->
+      <path class="wing" d="M24 13 Q 33 3, 40 16"/>
+      <!-- body — filled oval -->
+      <ellipse class="body" cx="21" cy="15" rx="4.6" ry="3.3"/>
+      <!-- head — cream pop of contrast -->
+      <circle class="head" cx="21" cy="11.4" r="2.4"/>
+      <!-- eye -->
+      <circle class="eye"  cx="21.3" cy="11" r="0.75"/>
+    </svg>
+  </div>
+</nav>
+
+</main>
+
+<div class="scrim" id="scrim"></div>
+<aside class="marginalia" id="marginalia">
+  <div class="marginalia-head">
+    <span class="marginalia-eyebrow">Footnote · A word closer</span>
+    <button class="marginalia-close" id="marginalia-close">×</button>
+  </div>
+  <div class="marginalia-body" id="marginalia-body"></div>
+</aside>
+
+<script>
+/* ——— per-prayer metadata — subtitle, short commentary, audio placeholder ——— */
+const prayerMeta = {
+  'Modeh Ani':               { subtitle: "First words on waking — gratitude before speech",               commentary: "Recited before the morning washing, in the half-light between sleep and waking. Tradition teaches its simplicity is what makes it safe to say with a tongue not yet alert.", duration: "2:15" },
+  'Asher Yatzar':            { subtitle: "The body's miraculous ordinary function",                        commentary: "A blessing that pairs the most physical of daily acts with gratitude — insisting the sacred and the ordinary occupy one plane.",                                       duration: "3:10" },
+  'Elohai Neshamah':         { subtitle: "Acknowledging the soul, returned from sleep",                    commentary: "Each morning the soul is returned as a gift; the blessing names God as the Master of souls who will one day take it back.",                                              duration: "2:48" },
+  'Birchot HaTorah':         { subtitle: "Sanctifying Torah study as the day's first labor",               commentary: "Before a word of scripture is read, we ask that it be sweet in our mouths and in our children's mouths — learning tied to love from the outset.",                        duration: "3:22" },
+  "HaNoten LaYa'ef Ko'ach":  { subtitle: "Thanking God for strength restored overnight",                   commentary: "A prayer of the body: sleep's renewal is itself a daily miracle, not a baseline to be taken for granted.",                                                              duration: "2:05" },
+  'Ashrei':                  { subtitle: "Psalm 145 — the alphabet of praise",                             commentary: "Arranged alphabetically so the whole vocabulary of language is bent toward praise before the service proper begins.",                                                    duration: "4:18" },
+  "Baruch She'Amar":         { subtitle: "The opening benediction of Pesukei D'Zimra",                     commentary: "Ten repetitions of 'blessed' — a rhythmic preparation of attention before the psalms of David are sung.",                                                                 duration: "3:45" },
+  "Mizmor L'Todah":          { subtitle: "Psalm 100 — the song of thanksgiving",                           commentary: "Omitted on Shabbat and festivals because the thanksgiving sacrifice was not brought on those days; its structure mirrors the old temple procession.",                  duration: "2:36" },
+  'Yishtabach':              { subtitle: "The closing blessing of Pesukei D'Zimra",                        commentary: "A fifteen-fold chain of praise — language stretched to its limit before we enter the declaration of the Shema.",                                                         duration: "3:28" },
+  'Barchu':                  { subtitle: "The call to prayer — the community responds",                    commentary: "The only prayer that strictly requires a minyan; a single call that makes ten individuals into a congregation.",                                                       duration: "1:10" },
+  'Yotzer Or':               { subtitle: "Blessing the Creator of light and darkness",                     commentary: "The first blessing before the Shema — each morning's renewal of creation is acknowledged before God is declared One.",                                                  duration: "4:02" },
+  'Shema':                   { subtitle: "The declaration of God's oneness — the core of the service",    commentary: "Six words the tradition teaches should be said with closed eyes and full concentration, even if every other word slips by.",                                           duration: "2:20" },
+  "V'Ahavta":                { subtitle: "The commandment to love, bind, and teach",                      commentary: "Deuteronomy 6:4–9 — source text for tefillin, mezuzah, and the obligation to teach the next generation. A chain of embodied remembering.",                              duration: "4:40" },
+  "Emet V'Yatziv":           { subtitle: "Affirmation — truth established forever",                        commentary: "Fifteen adjectives of affirmation bind us to what has just been declared in the Shema.",                                                                                duration: "3:55" },
+  'Alenu':                   { subtitle: "Duty to the world — the responsibility of being chosen",         commentary: "Originally a High Holidays prayer; its daily use keeps the vision of a redeemed world at the close of every service.",                                                  duration: "3:18" },
+  'Kaddish Yatom':           { subtitle: "Sanctifying the name — the mourner's voice",                    commentary: "Said by those in mourning, but entirely about God. The loss is held silently; the response is communal praise.",                                                          duration: "2:42" },
+  'Ein Keloheinu':           { subtitle: "A four-fold hymn of naming",                                     commentary: "An acrostic whose opening letters spell 'Amen, Baruch, Atah' — a prayer whose structure is itself a blessing.",                                                          duration: "2:08" },
+  'Adon Olam':               { subtitle: "The eternal Master — before and after creation",                commentary: "An 11th-century liturgical poem that ends by placing one's spirit in God's hand — the same words traditionally whispered before sleep.",                               duration: "3:30" }
+};
+
+(function injectPrayerHeaders() {
+  const SVG_NS = 'http://www.w3.org/2000/svg';
+  document.querySelectorAll('.prayer').forEach(prayer => {
+    const titleEl = prayer.querySelector('.prayer-title');
+    if (!titleEl) return;
+    const first = titleEl.childNodes[0];
+    if (!first || first.nodeType !== Node.TEXT_NODE) return;
+    const titleText = first.textContent.trim();
+    const meta = prayerMeta[titleText];
+    if (!meta) return;
+
+    const frag = document.createDocumentFragment();
+
+    /* subtitle */
+    const subtitle = document.createElement('p');
+    subtitle.className = 'prayer-subtitle';
+    subtitle.textContent = meta.subtitle;
+    frag.appendChild(subtitle);
+
+    /* toggle row */
+    const toggles = document.createElement('div');
+    toggles.className = 'prayer-toggles';
+    [['commentary', 'Commentary'], ['audio', 'Audio & Notes']].forEach(([target, label]) => {
+      const btn = document.createElement('button');
+      btn.className = 'prayer-toggle';
+      btn.dataset.target = target;
+      btn.textContent = label;
+      toggles.appendChild(btn);
+    });
+    frag.appendChild(toggles);
+
+    /* commentary panel */
+    const comm = document.createElement('div');
+    comm.className = 'prayer-commentary';
+    comm.dataset.panel = 'commentary';
+    const commBlock = document.createElement('div');
+    commBlock.className = 'commentary-block-sm';
+    commBlock.textContent = meta.commentary;
+    comm.appendChild(commBlock);
+    frag.appendChild(comm);
+
+    /* audio panel */
+    const audio = document.createElement('div');
+    audio.className = 'prayer-audio';
+    audio.dataset.panel = 'audio';
+
+    const player = document.createElement('div');
+    player.className = 'audio-player';
+
+    const playBtn = document.createElement('button');
+    playBtn.className = 'audio-play-btn';
+    playBtn.setAttribute('aria-label', 'Play audio commentary');
+
+    const makeIcon = (cls, d) => {
+      const svg = document.createElementNS(SVG_NS, 'svg');
+      svg.setAttribute('class', cls);
+      svg.setAttribute('viewBox', '0 0 24 24');
+      const path = document.createElementNS(SVG_NS, 'path');
+      path.setAttribute('d', d);
+      svg.appendChild(path);
+      return svg;
+    };
+    playBtn.appendChild(makeIcon('ic-play',  'M7 5v14l12-7z'));
+    playBtn.appendChild(makeIcon('ic-pause', 'M6 5h4v14H6zm8 0h4v14h-4z'));
+    player.appendChild(playBtn);
+
+    const metaDiv = document.createElement('div');
+    metaDiv.className = 'audio-meta';
+    const t = document.createElement('div');
+    t.className = 'audio-title';
+    t.textContent = 'Rabbi Feigenbaum · ' + titleText;
+    const d = document.createElement('div');
+    d.className = 'audio-duration';
+    d.textContent = meta.duration + ' · Placeholder';
+    metaDiv.append(t, d);
+    player.appendChild(metaDiv);
+
+    const wave = document.createElement('div');
+    wave.className = 'audio-wave';
+    wave.setAttribute('aria-hidden', 'true');
+    for (let i = 0; i < 10; i++) wave.appendChild(document.createElement('span'));
+    player.appendChild(wave);
+
+    audio.appendChild(player);
+
+    const notes = document.createElement('div');
+    notes.className = 'audio-notes';
+    notes.textContent = 'Audio commentary plays alongside the written notes. Placeholder recording — final audio will be recorded by Rabbi Feigenbaum.';
+    audio.appendChild(notes);
+
+    frag.appendChild(audio);
+
+    titleEl.after(frag);
+  });
+})();
+
+/* ——— auto-wrap Hebrew into .word spans and Transliteration into .tword spans
+   leaves existing <span class="word"> and <span class="fn"> children intact
+   so hand-authored footnotes keep working. */
+(function wrapAll() {
+  const re = /(\s+)/;
+  const wrap = (sel, cls) => {
+    document.querySelectorAll(sel).forEach(p => {
+      Array.from(p.childNodes).forEach(node => {
+        if (node.nodeType !== Node.TEXT_NODE) return;
+        if (!node.textContent.trim()) return;
+        const frag = document.createDocumentFragment();
+        node.textContent.split(re).forEach(tok => {
+          if (!tok) return;
+          if (/^\s+$/.test(tok)) {
+            frag.appendChild(document.createTextNode(tok));
+          } else {
+            const span = document.createElement('span');
+            span.className = cls;
+            span.textContent = tok;
+            frag.appendChild(span);
+          }
+        });
+        node.parentNode.replaceChild(frag, node);
+      });
+    });
+  };
+  wrap('p.hebrew',   'word');
+  wrap('p.translit', 'tword');
+})();
+
+/* ——— pair up each Hebrew word with its transliteration partner into a
+   vertical stack, and flow all pairs RTL inside the Hebrew paragraph.
+   Removes the separate translit paragraph once pairs are built. */
+(function buildPairs() {
+  document.querySelectorAll('.prayer').forEach(prayer => {
+    const hebrewP   = prayer.querySelector('p.hebrew');
+    const translitP = prayer.querySelector('p.translit');
+    if (!hebrewP || !translitP) return;
+
+    const words  = Array.from(hebrewP.querySelectorAll('.word'));
+    const twords = Array.from(translitP.querySelectorAll('.tword'));
+    const pairCount = Math.max(words.length, twords.length);
+    if (pairCount === 0) return;
+
+    while (hebrewP.firstChild) hebrewP.removeChild(hebrewP.firstChild);
+    hebrewP.classList.add('interlinear');
+
+    const row = document.createElement('span');
+    row.className = 'pair-row';
+
+    for (let i = 0; i < pairCount; i++) {
+      const pair = document.createElement('span');
+      pair.className = 'pair';
+
+      if (words[i]) {
+        pair.appendChild(words[i]);
+      } else {
+        const blank = document.createElement('span');
+        blank.className = 'word';
+        blank.textContent = '\u00A0';
+        pair.appendChild(blank);
+      }
+
+      if (twords[i]) {
+        pair.appendChild(twords[i]);
+      } else {
+        const blank = document.createElement('span');
+        blank.className = 'tword';
+        blank.textContent = '\u00A0';
+        pair.appendChild(blank);
+      }
+
+      row.appendChild(pair);
+    }
+
+    hebrewP.appendChild(row);
+    translitP.remove();
+  });
+})();
+
+/* ——— multi-select display modes ——— */
+const modes = document.getElementById('modes');
+modes.addEventListener('click', e => {
+  const btn = e.target.closest('button'); if (!btn) return;
+  const mode = btn.dataset.mode;
+  const cls  = 'show-' + mode;
+  const turningOff = btn.classList.contains('on');
+  /* prevent turning off the last remaining mode */
+  const onCount = modes.querySelectorAll('button.on').length;
+  if (turningOff && onCount === 1) {
+    btn.animate(
+      [{ transform: 'translateX(0)' }, { transform: 'translateX(-4px)' }, { transform: 'translateX(4px)' }, { transform: 'translateX(0)' }],
+      { duration: 260 }
+    );
+    return;
+  }
+  btn.classList.toggle('on');
+  document.body.classList.toggle(cls);
+});
+
+/* ——— expandable panels (section-level commentary/audio + per-prayer) ——— */
+document.querySelectorAll('.section-toggle, .prayer-toggle').forEach(btn => {
+  btn.addEventListener('click', e => {
+    e.stopPropagation();
+    const target = btn.dataset.target;
+    const container = btn.closest('.section-intro, .prayer');
+    const panel = container && container.querySelector('[data-panel="' + target + '"]');
+    if (!panel) return;
+    const isOpen = panel.classList.toggle('open');
+    btn.classList.toggle('on', isOpen);
+  });
+});
+
+/* ——— audio play buttons in each section (placeholder playback state) ——— */
+document.querySelectorAll('.audio-play-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const wasOn = btn.classList.contains('on');
+    /* ensure only one audio player "plays" at a time */
+    document.querySelectorAll('.audio-play-btn.on').forEach(b => b.classList.remove('on'));
+    if (!wasOn) btn.classList.add('on');
+  });
+});
+
+const marginalia = document.getElementById('marginalia');
+const scrim = document.getElementById('scrim');
+const mBody = document.getElementById('marginalia-body');
+
+const footnotes = {
+  haadam: {
+    title: 'הָאָדָם',
+    paragraphs: [
+      { text: "The word ", emphasis: "ha'adam", rest: ' — "the human being" — comes from ', em2: 'adamah', rest2: ', "earth." To be human, in this blessing\'s framing, is to be a creature of the ground who nonetheless holds wisdom. The body is not incidental to the spiritual life; it is the site of it.' },
+      { text: 'Rabbi Hirsch reads the double phrasing — "openings and hollows" — as a meditation on the miracle that anything about us works at all. The blessing, recited after relieving oneself, is the tradition refusing to separate the sacred from the ordinary.' }
+    ],
+    source: 'Placeholder · Sefaria / OU-style commentary'
+  },
+  echad: {
+    title: 'אֶחָד',
+    paragraphs: [
+      { emphasis: 'Echad', rest: ' — "One." The tradition teaches us to extend the final letter, ', em2: 'dalet', rest2: ', and to meditate while saying it: God is One in the heavens above, One on the earth below, One in the four directions.' },
+      { text: 'The word is not a mathematical claim. It is a commitment: to live as though everything is connected, as though no part of creation falls outside the same sovereignty.' }
+    ],
+    source: 'Placeholder · Sefaria / OU-style commentary'
+  }
+};
+
+function renderFootnote(key) {
+  const data = footnotes[key];
+  if (!data) return;
+
+  while (mBody.firstChild) mBody.removeChild(mBody.firstChild);
+
+  const title = document.createElement('h2');
+  title.className = 'marginalia-title';
+  title.textContent = data.title;
+  mBody.appendChild(title);
+
+  data.paragraphs.forEach(p => {
+    const para = document.createElement('p');
+    if (p.text) para.appendChild(document.createTextNode(p.text));
+    if (p.emphasis) {
+      const em = document.createElement('em');
+      em.textContent = p.emphasis;
+      para.appendChild(em);
+    }
+    if (p.rest) para.appendChild(document.createTextNode(p.rest));
+    if (p.em2) {
+      const em = document.createElement('em');
+      em.textContent = p.em2;
+      para.appendChild(em);
+    }
+    if (p.rest2) para.appendChild(document.createTextNode(p.rest2));
+    mBody.appendChild(para);
+  });
+
+  const src = document.createElement('div');
+  src.className = 'marginalia-source';
+  src.textContent = data.source;
+  mBody.appendChild(src);
+}
+
+document.querySelectorAll('.fn').forEach(fn => {
+  fn.addEventListener('click', e => {
+    e.stopPropagation();
+    renderFootnote(fn.dataset.fn);
+    marginalia.classList.add('open');
+    scrim.classList.add('open');
+  });
+});
+
+document.querySelectorAll('.fn').forEach(fn => {
+  fn.addEventListener('click', () => rail && rail.classList.add('hidden'));
+});
+document.getElementById('marginalia-close').addEventListener('click', closePanel);
+scrim.addEventListener('click', closePanel);
+function closePanel() {
+  marginalia.classList.remove('open');
+  scrim.classList.remove('open');
+  if (rail) rail.classList.remove('hidden');
+}
+
+/* ——— play / pause: drives the word halo across the whole document ——— */
+const playBtn = document.getElementById('play');
+const allWords = Array.from(document.querySelectorAll('.word'));
+let playing = false;
+let idx = allWords.findIndex(w => w.classList.contains('active'));
+if (idx < 0) idx = 0;
+let tickTimer = null;
+
+let speed = 1.0;
+let haloDurationMs = 738;
+let haloFadeMs = 3800;
+
+function fadeOut(el) {
+  el.classList.remove('active');
+  el.classList.add('fading');
+  if (el._fadeTimer) clearTimeout(el._fadeTimer);
+  el._fadeTimer = setTimeout(() => {
+    el.classList.remove('fading');
+    el._fadeTimer = null;
+  }, haloFadeMs);
+}
+
+function highlight(i) {
+  /* transfer any currently-active halo into .fading so it decrescendos
+     while the newly-active word crescendos — overlapping transition */
+  document.querySelectorAll('.word.active, .tword.active').forEach(fadeOut);
+
+  const w = allWords[i];
+  if (!w) return;
+  if (w._fadeTimer) { clearTimeout(w._fadeTimer); w._fadeTimer = null; }
+  w.classList.remove('fading');
+  w.classList.add('active');
+
+  /* mirror the halo on the matching transliteration word in the same prayer */
+  const prayer = w.closest('.prayer');
+  if (prayer) {
+    const pWords  = Array.from(prayer.querySelectorAll('.word'));
+    const pTwords = prayer.querySelectorAll('.tword');
+    const local = pWords.indexOf(w);
+    if (local >= 0 && local < pTwords.length) {
+      const tw = pTwords[local];
+      if (tw._fadeTimer) { clearTimeout(tw._fadeTimer); tw._fadeTimer = null; }
+      tw.classList.remove('fading');
+      tw.classList.add('active');
+    }
+  }
+
+  const rect = w.getBoundingClientRect();
+  const middle = window.innerHeight * 0.42;
+  if (rect.top < 80 || rect.bottom > window.innerHeight - 120) {
+    window.scrollBy({ top: rect.top - middle, behavior: 'smooth' });
+  }
+}
+
+function prayerOf(w) { return w ? w.closest('.prayer') : null; }
+
+function tick() {
+  const currentPrayer = prayerOf(allWords[idx]);
+  const nextIdx = (idx + 1) % allWords.length;
+  const nextPrayer = prayerOf(allWords[nextIdx]);
+
+  /* stop cleanly at the last word of the current prayer;
+     next press of play advances into the following prayer */
+  if (currentPrayer && nextPrayer && currentPrayer !== nextPrayer) {
+    setPlaying(false);
+    return;
+  }
+
+  idx = nextIdx;
+  highlight(idx);
+  const next = (757 + Math.random() * 378) / speed;
+  tickTimer = setTimeout(tick, next);
+}
+
+function setPlaying(on) {
+  playing = on;
+  playBtn.classList.toggle('playing', on);
+  playBtn.setAttribute('aria-label', on ? 'Pause' : 'Play');
+  if (on) {
+    /* if we're parked at a prayer's last word (auto-stopped there),
+       step into the first word of the next prayer on this play-press */
+    const curPrayer  = prayerOf(allWords[idx]);
+    const nextWord   = allWords[(idx + 1) % allWords.length];
+    const nextPrayer = prayerOf(nextWord);
+    if (curPrayer && nextPrayer && curPrayer !== nextPrayer) {
+      idx = (idx + 1) % allWords.length;
+    }
+    highlight(idx);
+    tickTimer = setTimeout(tick, 585 / speed);
+  } else {
+    clearTimeout(tickTimer);
+  }
+}
+
+playBtn.addEventListener('click', () => setPlaying(!playing));
+
+/* ——— speed slider ——— */
+const speedSlider = document.getElementById('speed-slider');
+const speedVal    = document.getElementById('speed-val');
+function applyHaloDuration() {
+  /* crescendo peaks around the jump; decrescendo is ~4 words long so a trail
+     of recent words lingers behind the bright current one */
+  const avgMs = 946 / speed;
+  haloDurationMs = avgMs * 0.78;
+  haloFadeMs     = avgMs * 4.0;
+  document.documentElement.style.setProperty('--halo-dur',      haloDurationMs + 'ms');
+  document.documentElement.style.setProperty('--halo-fade-dur', haloFadeMs     + 'ms');
+}
+applyHaloDuration();
+
+speedSlider.addEventListener('input', e => {
+  speed = parseFloat(e.target.value);
+  speedVal.textContent = speed.toFixed(1) + '×';
+  applyHaloDuration();
+});
+
+/* tap a Hebrew word: set position (highlight), but do NOT auto-play */
+allWords.forEach((w, i) => {
+  w.addEventListener('click', () => {
+    idx = i;
+    highlight(i);
+  });
+});
+
+/* tap a Transliteration word: seek to the matching Hebrew word by position in prayer */
+document.querySelectorAll('.tword').forEach(tw => {
+  tw.addEventListener('click', e => {
+    e.stopPropagation();
+    const prayer = tw.closest('.prayer');
+    if (!prayer) return;
+    const pWords  = Array.from(prayer.querySelectorAll('.word'));
+    const pTwords = Array.from(prayer.querySelectorAll('.tword'));
+    const local = pTwords.indexOf(tw);
+    if (local < 0 || local >= pWords.length) return;
+    const globalIdx = allWords.indexOf(pWords[local]);
+    if (globalIdx < 0) return;
+    idx = globalIdx;
+    highlight(idx);
+  });
+});
+
+/* tap an English line or Transliteration line: seek to the first word of that prayer */
+document.querySelectorAll('.english, .translit').forEach(p => {
+  p.style.cursor = 'pointer';
+  p.addEventListener('click', () => {
+    const prayer = p.closest('.prayer');
+    if (!prayer) return;
+    const firstWord = prayer.querySelector('.word');
+    if (!firstWord) return;
+    const globalIdx = allWords.indexOf(firstWord);
+    if (globalIdx < 0) return;
+    idx = globalIdx;
+    highlight(idx);
+  });
+});
+
+/* ——— right-side progress rail ——— */
+const rail       = document.getElementById('rail');
+const railMarker = document.getElementById('rail-marker');
+const sectionOrder = ['section-birchot', 'section-pesukei', 'section-shema', 'section-concluding'];
+const sectionEls   = sectionOrder.map(c => document.querySelector('.' + c));
+const railSegs     = Array.from(rail.querySelectorAll('.rail-seg'));
+
+const sectionAccents = [
+  { ring: '#b07a1c', halo: 'rgba(176,122,28,0.22)' },
+  { ring: '#d48d23', halo: 'rgba(212,141,35,0.22)' },
+  { ring: '#1d4a7a', halo: 'rgba(29,74,122,0.24)' },
+  { ring: '#5c6b2f', halo: 'rgba(92,107,47,0.22)' },
+];
+
+function railHeight() { return rail.getBoundingClientRect().height; }
+
+function updateRail() {
+  if (!sectionEls[0] || !sectionEls[sectionEls.length-1]) return;
+  const first = sectionEls[0].getBoundingClientRect().top + window.scrollY;
+  const last  = sectionEls[sectionEls.length-1];
+  const lastBottom = last.getBoundingClientRect().bottom + window.scrollY;
+  const range = Math.max(1, lastBottom - first);
+  const focus = window.scrollY + window.innerHeight * 0.42;
+  const progress = Math.max(0, Math.min(1, (focus - first) / range));
+
+  railMarker.style.top = (progress * railHeight() - 12) + 'px';
+
+  let active = 0;
+  sectionEls.forEach((el, i) => {
+    const r = el.getBoundingClientRect();
+    if (r.top < window.innerHeight * 0.5) active = i;
+  });
+  railSegs.forEach((s, i) => s.classList.toggle('active', i === active));
+
+  /* the bird's stroke follows the current section's accent via currentColor */
+  railMarker.style.color = sectionAccents[active].ring;
+}
+
+window.addEventListener('scroll', updateRail, { passive: true });
+window.addEventListener('resize', updateRail);
+requestAnimationFrame(updateRail);
+
+railSegs.forEach((seg, i) => {
+  seg.addEventListener('click', e => {
+    e.preventDefault();
+    const target = sectionEls[i];
+    if (!target) return;
+    const y = target.getBoundingClientRect().top + window.scrollY - 40;
+    window.scrollTo({ top: y, behavior: 'smooth' });
+  });
+});
+</script>
+</body>
+</html>
