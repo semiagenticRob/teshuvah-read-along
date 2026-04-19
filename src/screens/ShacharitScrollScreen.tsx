@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
-import { ScrollView, StyleSheet, SafeAreaView, View, Pressable, Text } from 'react-native';
+import { ScrollView, StyleSheet, SafeAreaView, View } from 'react-native';
 import { SHACHARIT_STRUCTURE } from '../data/shacharit/structure';
-import { PARCHMENT, TIMING, INK, SECTIONS } from '../theme/shacharitTheme';
+import { PARCHMENT, TIMING, SECTIONS } from '../theme/shacharitTheme';
 import SectionBlock from '../components/shacharit/SectionBlock';
 import SectionIntro from '../components/shacharit/SectionIntro';
 import PrayerBlock from '../components/shacharit/PrayerBlock';
@@ -12,6 +12,8 @@ import { useHaloStore } from '../store/haloStore';
 import { useShacharitScroll } from '../hooks/useShacharitScroll';
 import ProgressRail from '../components/shacharit/ProgressRail';
 import BirdMarker from '../components/shacharit/BirdMarker';
+import AppBar from '../components/shacharit/AppBar';
+import { useSettingsStore } from '../store/settingsStore';
 
 // Precompute flat prayer list with global word start/end indices.
 // Done at module load — cheap pure work, deterministic.
@@ -54,6 +56,8 @@ function PairHalo({ idx, speed }: { idx: number; speed: number }) {
 export default function ShacharitScrollScreen() {
   const playing = usePrayerStore(s => s.shacharitPlaying);
   const speed   = usePrayerStore(s => s.shacharitSpeed);
+  const lanes = useSettingsStore(s => s.displayLanes);
+  const setDisplayLane = useSettingsStore(s => s.setDisplayLane);
 
   const { scrollRef, onScroll, onSectionLayout, activeSection, birdFraction, jumpToSection } = useShacharitScroll();
 
@@ -127,13 +131,6 @@ export default function ShacharitScrollScreen() {
 
   return (
     <SafeAreaView style={styles.root}>
-      {/* TEMPORARY — will be replaced by Phase 10 AppBar */}
-      <View style={styles.tempBar}>
-        <Pressable onPress={togglePlay} style={styles.playBtn}>
-          <Text style={styles.playText}>{playing ? '⏸ Pause' : '▶ Play'}</Text>
-        </Pressable>
-      </View>
-
       <ScrollView
         ref={scrollRef}
         onScroll={onScroll}
@@ -175,6 +172,15 @@ export default function ShacharitScrollScreen() {
           renderBird={() => <BirdMarker color={SECTIONS[activeSection].accent} />}
         />
       </View>
+
+      <AppBar
+        lanes={lanes}
+        onToggleLane={(l) => setDisplayLane(l, !lanes[l])}
+        playing={playing}
+        onTogglePlay={togglePlay}
+        speed={speed}
+        onSpeedChange={(v) => usePrayerStore.getState().setShacharitSpeed(v)}
+      />
     </SafeAreaView>
   );
 }
@@ -182,19 +188,4 @@ export default function ShacharitScrollScreen() {
 const styles = StyleSheet.create({
   root: { flex: 1, backgroundColor: PARCHMENT },
   scroll: { paddingVertical: 20, paddingBottom: 120 },
-  tempBar: {
-    flexDirection: 'row',
-    padding: 12,
-    gap: 8,
-    backgroundColor: 'rgba(255,253,247,0.85)',
-    borderBottomWidth: 1,
-    borderBottomColor: 'rgba(0,0,0,0.08)',
-  },
-  playBtn: {
-    paddingHorizontal: 18,
-    paddingVertical: 10,
-    borderRadius: 999,
-    backgroundColor: INK.strong,
-  },
-  playText: { color: PARCHMENT, fontSize: 14, fontWeight: '500' },
 });
