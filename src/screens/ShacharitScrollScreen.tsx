@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect } from 'react';
-import { ScrollView, StyleSheet, SafeAreaView, View } from 'react-native';
+import { ScrollView, StyleSheet, SafeAreaView, View, Text } from 'react-native';
 import { SHACHARIT_STRUCTURE } from '../data/shacharit/structure';
 import { PARCHMENT, TIMING, SECTIONS } from '../theme/shacharitTheme';
 import SectionBlock from '../components/shacharit/SectionBlock';
@@ -25,16 +25,25 @@ interface LoadedPrayer {
   endIdx: number;
 }
 
+const PRAYER_LOAD_ERROR: string[] = [];
+
 const PRAYERS: LoadedPrayer[] = (() => {
   const arr: LoadedPrayer[] = [];
   let running = 0;
   SHACHARIT_STRUCTURE.forEach(sec => {
     sec.prayerIds.forEach(pid => {
-      const data = loadBundledPrayer(pid);
-      const start = running;
-      const wordCount = data.hebrewText.trim().split(/\s+/).filter(Boolean).length;
-      running += wordCount;
-      arr.push({ id: pid, sectionId: sec.id, data, startIdx: start, endIdx: running });
+      try {
+        const data = loadBundledPrayer(pid);
+        const start = running;
+        const wordCount = data.hebrewText.trim().split(/\s+/).filter(Boolean).length;
+        running += wordCount;
+        arr.push({ id: pid, sectionId: sec.id, data, startIdx: start, endIdx: running });
+      } catch (e) {
+        const msg = e instanceof Error ? e.message : String(e);
+        PRAYER_LOAD_ERROR.push(`${pid}: ${msg}`);
+        // eslint-disable-next-line no-console
+        console.error(`[ShacharitScrollScreen] Failed to load prayer "${pid}":`, e);
+      }
     });
   });
   return arr;
@@ -60,6 +69,24 @@ export default function ShacharitScrollScreen() {
   const setDisplayLane = useSettingsStore(s => s.setDisplayLane);
 
   const { scrollRef, onScroll, onSectionLayout, activeSection, birdFraction, jumpToSection } = useShacharitScroll();
+
+  // Guard: if any prayers failed to load at module init, show a diagnostic screen.
+  // This surfaces runtime errors (e.g. bad JSON, missing require) that Metro can't
+  // catch at bundle time but that would otherwise produce a silent blank screen.
+  if (PRAYER_LOAD_ERROR.length > 0 || PRAYERS.length === 0) {
+    return (
+      <SafeAreaView style={[styles.root, { justifyContent: 'center', alignItems: 'center', padding: 24 }]}>
+        <Text style={{ fontSize: 16, color: '#c0392b', fontWeight: '600', marginBottom: 8 }}>
+          Prayer load error
+        </Text>
+        <Text style={{ fontSize: 13, color: '#333', textAlign: 'center' }}>
+          {PRAYER_LOAD_ERROR.length > 0
+            ? PRAYER_LOAD_ERROR.join('\n')
+            : 'No prayers were loaded. Check the console for details.'}
+        </Text>
+      </SafeAreaView>
+    );
+  }
 
   // Populate bounds once on mount.
   useEffect(() => {
