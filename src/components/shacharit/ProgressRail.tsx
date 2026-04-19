@@ -1,12 +1,12 @@
-import React from 'react';
-import { View, Pressable, StyleSheet } from 'react-native';
+import React, { useState } from 'react';
+import { View, Pressable, StyleSheet, type LayoutChangeEvent } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { SECTION_ORDER, type SectionId } from '../../theme/shacharitTheme';
 
 interface Props {
   activeSection: SectionId;
   onJumpSection: (id: SectionId) => void;
-  birdTop: number;
+  birdFraction: number;   // 0..1
   renderBird: () => React.ReactNode;
 }
 
@@ -17,10 +17,15 @@ const SEG_GRADIENTS: Record<SectionId, [string, string]> = {
   concluding: ['#1d4a7a', '#5c6b2f'],
 };
 
-export default function ProgressRail({ activeSection, onJumpSection, birdTop, renderBird }: Props) {
+export default function ProgressRail({ activeSection, onJumpSection, birdFraction, renderBird }: Props) {
+  const [segsHeight, setSegsHeight] = useState(0);
+  const onSegsLayout = (e: LayoutChangeEvent) => setSegsHeight(e.nativeEvent.layout.height);
+
+  const birdTop = Math.max(0, Math.min(segsHeight - 24, birdFraction * segsHeight - 12));
+
   return (
     <View style={styles.rail} pointerEvents="box-none">
-      <View style={styles.segments}>
+      <View style={styles.segments} onLayout={onSegsLayout}>
         {SECTION_ORDER.map(id => (
           <Pressable
             key={id}
@@ -56,12 +61,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     gap: 6,
   },
-  seg: {
-    flex: 1,
-    borderRadius: 999,
-    overflow: 'hidden',
-    opacity: 0.55,
-  },
+  seg: { flex: 1, borderRadius: 999, overflow: 'hidden', opacity: 0.55 },
   segActive: { opacity: 1 },
   birdHost: {
     position: 'absolute',
