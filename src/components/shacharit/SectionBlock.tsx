@@ -2,6 +2,7 @@ import React from 'react';
 import { View, StyleSheet, useWindowDimensions } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { SECTIONS, type SectionId } from '../../theme/shacharitTheme';
+import SectionDivider from './SectionDivider';
 
 interface Props {
   sectionId: SectionId;
@@ -9,11 +10,12 @@ interface Props {
   children: React.ReactNode;
 }
 
-export default function SectionBlock({ sectionId, children }: Props) {
+export default function SectionBlock({ sectionId, isFirst, children }: Props) {
   const spec = SECTIONS[sectionId];
   const { width } = useWindowDimensions();
   return (
     <View style={styles.wrap}>
+      {!isFirst && <SectionDivider />}
       <LinearGradient
         colors={spec.gradient}
         locations={spec.gradientStops}
