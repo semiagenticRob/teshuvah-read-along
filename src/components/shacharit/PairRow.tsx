@@ -13,7 +13,7 @@ interface Props {
   renderHalo: (globalIdx: number) => React.ReactNode;
 }
 
-export default function PairRow({
+function PairRow({
   hebrew, translit, showHebrew, showTranslit,
   prayerStartIdx, onTapWord, renderHalo,
 }: Props) {
@@ -35,6 +35,8 @@ export default function PairRow({
     </View>
   );
 }
+
+export default React.memo(PairRow);
 
 const styles = StyleSheet.create({
   row: {

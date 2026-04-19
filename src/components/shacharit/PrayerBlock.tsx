@@ -21,7 +21,7 @@ interface Props {
   renderHalo: (globalIdx: number) => React.ReactNode;
 }
 
-export default function PrayerBlock(p: Props) {
+function PrayerBlock(p: Props) {
   const [openCommentary, setOpenCommentary] = useState(false);
   const [openAudio, setOpenAudio] = useState(false);
   const spec = SECTIONS[p.sectionId];
@@ -72,6 +72,8 @@ export default function PrayerBlock(p: Props) {
     </View>
   );
 }
+
+export default React.memo(PrayerBlock);
 
 const styles = StyleSheet.create({
   wrap: {

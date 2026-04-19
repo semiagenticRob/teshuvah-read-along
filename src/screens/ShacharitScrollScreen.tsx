@@ -53,12 +53,13 @@ const PRAYERS: LoadedPrayer[] = (() => {
 // Per-pair subscription: only pairs whose idx matches activeIdx or sits in the
 // trail window re-render when haloStore changes.
 function PairHalo({ idx, speed }: { idx: number; speed: number }) {
-  const activeIdx = useHaloStore(s => s.activeIdx);
-  const trail     = useHaloStore(s => s.recentlyActive);
-  const state =
-    idx === activeIdx ? 'active' :
-    trail.includes(idx) ? 'fading' :
-    'idle';
+  const state = useHaloStore(s => {
+    if (s.activeIdx === idx) return 'active' as const;
+    if (s.recentlyActive.includes(idx)) return 'fading' as const;
+    return 'idle' as const;
+  });
+  // Idle halos never mount — saves 800+ Animated.Views
+  if (state === 'idle') return null;
   return <Halo state={state} speed={speed} />;
 }
 
