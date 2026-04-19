@@ -28,8 +28,9 @@ function PairRow({
           translit={p.translit}
           showHebrew={showHebrew}
           showTranslit={showTranslit}
-          onPress={() => onTapWord(prayerStartIdx + i)}
-          renderHalo={() => renderHalo(prayerStartIdx + i)}
+          idx={prayerStartIdx + i}
+          onTapWord={onTapWord}
+          renderHalo={renderHalo}
         />
       ))}
     </View>

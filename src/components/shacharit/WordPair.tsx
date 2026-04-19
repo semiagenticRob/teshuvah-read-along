@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { Text, Pressable, StyleSheet } from 'react-native';
 import { FONTS, INK } from '../../theme/shacharitTheme';
 
@@ -7,16 +7,18 @@ interface Props {
   translit: string | null;
   showHebrew: boolean;
   showTranslit: boolean;
-  onPress: () => void;
-  renderHalo: () => React.ReactNode;
+  idx: number;
+  onTapWord: (idx: number) => void;
+  renderHalo: (idx: number) => React.ReactNode;
 }
 
-function WordPair({ hebrew, translit, showHebrew, showTranslit, onPress, renderHalo }: Props) {
+function WordPair({ hebrew, translit, showHebrew, showTranslit, idx, onTapWord, renderHalo }: Props) {
+  const handlePress = useCallback(() => onTapWord(idx), [idx, onTapWord]);
   return (
-    <Pressable onPress={onPress} hitSlop={4} style={styles.pair}>
-      {renderHalo()}
-      {showHebrew && hebrew !== null && <Text style={styles.hebrew}>{hebrew}</Text>}
-      {showTranslit && translit !== null && <Text style={styles.translit}>{translit}</Text>}
+    <Pressable onPress={handlePress} hitSlop={4} style={styles.pair}>
+      {renderHalo(idx)}
+      {showHebrew && hebrew !== null && <Text allowFontScaling={false} style={styles.hebrew}>{hebrew}</Text>}
+      {showTranslit && translit !== null && <Text allowFontScaling={false} style={styles.translit}>{translit}</Text>}
     </Pressable>
   );
 }
