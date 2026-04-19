@@ -1,11 +1,13 @@
 import React from 'react';
-import { ScrollView, StyleSheet, SafeAreaView } from 'react-native';
+import { ScrollView, StyleSheet, SafeAreaView, View, Pressable, Text } from 'react-native';
 import { SHACHARIT_STRUCTURE } from '../data/shacharit/structure';
-import { PARCHMENT } from '../theme/shacharitTheme';
+import { PARCHMENT, TIMING } from '../theme/shacharitTheme';
 import SectionBlock from '../components/shacharit/SectionBlock';
 import SectionIntro from '../components/shacharit/SectionIntro';
 import PrayerBlock from '../components/shacharit/PrayerBlock';
 import { loadBundledPrayer } from '../data/shacharit/loadPrayer';
+import { useHaloStore } from '../store/haloStore';
+import Halo from '../components/shacharit/Halo';
 
 // Precompute flat prayer list with global word start indices.
 // Done at module load — cheap pure work, deterministic.
@@ -30,13 +32,46 @@ const PRAYERS: LoadedPrayer[] = (() => {
   return arr;
 })();
 
+// Declared at module scope so it is never re-created on each render of the screen.
+// Per-pair subscription: only pairs whose idx matches activeIdx or sits in the
+// trail window re-render when haloStore changes.
+function PairHalo({ idx, speed }: { idx: number; speed: number }) {
+  const activeIdx = useHaloStore(s => s.activeIdx);
+  const trail     = useHaloStore(s => s.recentlyActive);
+  const state =
+    idx === activeIdx ? 'active' :
+    trail.includes(idx) ? 'fading' :
+    'idle';
+  return <Halo state={state} speed={speed} />;
+}
+
 export default function ShacharitScrollScreen() {
-  // Placeholder callbacks — Phase 7/8 replace these
+  // onTapWord remains a placeholder — Phase 8 wires it to the store's active word
   const onTapWord = (_idx: number) => {};
-  const renderHalo = (_idx: number) => null;
+
+  const speed = TIMING.SPEED_DEFAULT; // Phase 8 swaps this for the store's speed
+  const renderHalo = (idx: number) => <PairHalo idx={idx} speed={speed} />;
 
   return (
     <SafeAreaView style={styles.root}>
+      {/* TEMPORARY — Phase 7.3 dev controls, removed when play button replaces them in Phase 8 */}
+      <View style={{ flexDirection: 'row', gap: 8, padding: 8, backgroundColor: 'rgba(0,0,0,0.05)' }}>
+        <Pressable
+          onPress={() => {
+            const cur = useHaloStore.getState().activeIdx ?? -1;
+            useHaloStore.getState().setActive(cur + 1);
+          }}
+          style={{ padding: 8, backgroundColor: '#b07a1c', borderRadius: 6 }}
+        >
+          <Text style={{ color: '#fffcf3', fontSize: 12 }}>DEV · Advance halo</Text>
+        </Pressable>
+        <Pressable
+          onPress={() => useHaloStore.getState().setActive(null)}
+          style={{ padding: 8, backgroundColor: '#2a1d12', borderRadius: 6 }}
+        >
+          <Text style={{ color: '#fffcf3', fontSize: 12 }}>DEV · Reset</Text>
+        </Pressable>
+      </View>
       <ScrollView contentContainerStyle={styles.scroll}>
         {SHACHARIT_STRUCTURE.map((sec, idx) => (
           <SectionBlock key={sec.id} sectionId={sec.id} isFirst={idx === 0}>
