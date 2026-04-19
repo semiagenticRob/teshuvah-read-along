@@ -47,7 +47,11 @@ export const HomeScreen: React.FC<Props> = ({ navigation }) => {
               key={service.id}
               style={[styles.serviceCard, !service.available && styles.serviceCardDisabled]}
               disabled={!service.available}
-              onPress={() => navigation.navigate('PrayerList', { serviceId: service.id })}
+              onPress={() =>
+                service.id === 'shacharit'
+                  ? navigation.navigate('ShacharitScroll')
+                  : navigation.navigate('PrayerList', { serviceId: service.id })
+              }
             >
               <Text style={[styles.serviceHebrew, !service.available && styles.disabledText]}>
                 {service.name.hebrew}

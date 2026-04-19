@@ -5,6 +5,7 @@ import { RootStackParamList } from '../types';
 import { HomeScreen } from '../screens/HomeScreen';
 import { PrayerListScreen } from '../screens/PrayerListScreen';
 import { ReadAlongScreen } from '../screens/ReadAlongScreen';
+import ShacharitScrollScreen from '../screens/ShacharitScrollScreen';
 import { SettingsScreen } from '../screens/SettingsScreen';
 import { AboutScreen } from '../screens/AboutScreen';
 
@@ -45,6 +46,11 @@ export const AppNavigator: React.FC = () => {
           name="ReadAlong"
           component={ReadAlongScreen}
           options={{ title: 'Read Along' }}
+        />
+        <Stack.Screen
+          name="ShacharitScroll"
+          component={ShacharitScrollScreen}
+          options={{ headerShown: false }}
         />
         <Stack.Screen
           name="Settings"
