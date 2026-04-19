@@ -4,7 +4,9 @@ import { SECTIONS, INK, FONTS, PARCHMENT, type SectionId } from '../../theme/sha
 import PrayerHeader from './PrayerHeader';
 import ExpandablePanel from './ExpandablePanel';
 import AudioPlayerPlaceholder from './AudioPlayerPlaceholder';
+import PairRow from './PairRow';
 import { PRAYER_META } from '../../data/shacharit/prayerMeta';
+import { useSettingsStore } from '../../store/settingsStore';
 
 interface Props {
   prayerId: string;
@@ -14,6 +16,9 @@ interface Props {
   hebrewText: string;
   translitText: string;
   englishText: string;
+  startIdx: number;
+  onTapWord: (globalIdx: number) => void;
+  renderHalo: (globalIdx: number) => React.ReactNode;
 }
 
 export default function PrayerBlock(p: Props) {
@@ -21,6 +26,7 @@ export default function PrayerBlock(p: Props) {
   const [openAudio, setOpenAudio] = useState(false);
   const spec = SECTIONS[p.sectionId];
   const meta = PRAYER_META[p.prayerId];
+  const lanes = useSettingsStore(s => s.displayLanes);
 
   return (
     <View style={[styles.wrap, { borderLeftColor: spec.accent }]}>
@@ -49,14 +55,18 @@ export default function PrayerBlock(p: Props) {
         />
       </ExpandablePanel>
 
-      {/* Body — plain text for now; Phase 6 replaces with interlinear word pairs */}
-      {p.hebrewText ? (
-        <Text style={[styles.hebrew, { color: INK.strong }]}>{p.hebrewText}</Text>
-      ) : null}
-      {p.translitText ? (
-        <Text style={styles.translit}>{p.translitText}</Text>
-      ) : null}
-      {p.englishText ? (
+      {(lanes.hebrew || lanes.translit) && (
+        <PairRow
+          hebrew={p.hebrewText}
+          translit={p.translitText}
+          showHebrew={lanes.hebrew}
+          showTranslit={lanes.translit}
+          prayerStartIdx={p.startIdx}
+          onTapWord={p.onTapWord}
+          renderHalo={p.renderHalo}
+        />
+      )}
+      {lanes.english && p.englishText ? (
         <Text style={styles.english}>{p.englishText}</Text>
       ) : null}
     </View>
@@ -66,7 +76,6 @@ export default function PrayerBlock(p: Props) {
 const styles = StyleSheet.create({
   wrap: {
     paddingLeft: 32,
-    paddingRight: 0,
     paddingVertical: 26,
     marginVertical: 10,
     position: 'relative',
@@ -79,21 +88,6 @@ const styles = StyleSheet.create({
     lineHeight: 25,
     color: INK.soft,
     fontStyle: 'italic',
-  },
-  hebrew: {
-    fontFamily: FONTS.hebrew,
-    fontSize: 26,
-    lineHeight: 42,
-    writingDirection: 'rtl',
-    textAlign: 'right',
-    marginTop: 12,
-  },
-  translit: {
-    fontFamily: FONTS.serifBody,
-    fontSize: 16,
-    color: INK.soft,
-    lineHeight: 28,
-    marginTop: 10,
   },
   english: {
     fontFamily: FONTS.serifBodyItalic,
