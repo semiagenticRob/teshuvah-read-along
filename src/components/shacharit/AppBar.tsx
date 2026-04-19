@@ -30,23 +30,19 @@ export default function AppBar(p: Props) {
         ))}
       </View>
 
-      <View style={styles.divider} />
+      <View style={styles.rightGroup}>
+        <Pressable onPress={p.onTogglePlay} style={[styles.play, p.playing && styles.playOn]}>
+          <Svg width={18} height={18} viewBox="0 0 24 24">
+            <Path
+              d={p.playing ? 'M6 5h4v14H6zm8 0h4v14h-4z' : 'M7 5v14l12-7z'}
+              fill={PARCHMENT}
+            />
+          </Svg>
+        </Pressable>
 
-      <Pressable onPress={p.onTogglePlay} style={[styles.play, p.playing && styles.playOn]}>
-        <Svg width={18} height={18} viewBox="0 0 24 24">
-          <Path
-            d={p.playing ? 'M6 5h4v14H6zm8 0h4v14h-4z' : 'M7 5v14l12-7z'}
-            fill={PARCHMENT}
-          />
-        </Svg>
-      </Pressable>
-
-      <View style={styles.divider} />
-
-      <View style={styles.speed}>
         <Text style={styles.speedVal}>{p.speed.toFixed(1)}×</Text>
         <Slider
-          style={{ width: 88, height: 28 }}
+          style={styles.slider}
           minimumValue={TIMING.SPEED_MIN}
           maximumValue={TIMING.SPEED_MAX}
           step={TIMING.SPEED_STEP}
@@ -69,8 +65,10 @@ const styles = StyleSheet.create({
     right: 22,
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 8,
-    padding: 6,
+    justifyContent: 'space-between',
+    paddingVertical: 6,
+    paddingLeft: 14,
+    paddingRight: 10,
     backgroundColor: 'rgba(255,253,247,0.78)',
     borderRadius: 999,
     borderWidth: 1,
@@ -80,9 +78,10 @@ const styles = StyleSheet.create({
     shadowRadius: 14,
     shadowOffset: { width: 0, height: 4 },
     elevation: 10,
-    justifyContent: 'center',
   },
   modes: { flexDirection: 'row' },
+  rightGroup: { flexDirection: 'row', alignItems: 'center', gap: 6 },
+  slider: { width: 80, height: 28 },
   modeBtn: {
     minWidth: 40,
     height: 40,
@@ -103,7 +102,6 @@ const styles = StyleSheet.create({
     fontFamily: FONTS.serifBody,
     fontStyle: 'normal',
   },
-  divider: { width: 1, height: 28, backgroundColor: 'rgba(0,0,0,0.09)' },
   play: {
     width: 54,
     height: 54,
@@ -113,18 +111,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   playOn: { backgroundColor: '#b07a1c' },
-  speed: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-    paddingHorizontal: 10,
-  },
   speedVal: {
     fontFamily: FONTS.displayItalic,
     fontSize: 13,
     color: INK.soft,
-    minWidth: 34,
+    minWidth: 30,
     textAlign: 'center',
     fontStyle: 'italic',
+    marginLeft: 4,
   },
 });
