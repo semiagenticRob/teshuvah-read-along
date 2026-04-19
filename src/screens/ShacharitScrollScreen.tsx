@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { ScrollView, StyleSheet, SafeAreaView, View, Pressable, Text } from 'react-native';
 import { SHACHARIT_STRUCTURE } from '../data/shacharit/structure';
-import { PARCHMENT, TIMING, INK } from '../theme/shacharitTheme';
+import { PARCHMENT, TIMING, INK, SECTIONS } from '../theme/shacharitTheme';
 import SectionBlock from '../components/shacharit/SectionBlock';
 import SectionIntro from '../components/shacharit/SectionIntro';
 import PrayerBlock from '../components/shacharit/PrayerBlock';
@@ -9,6 +9,9 @@ import Halo from '../components/shacharit/Halo';
 import { loadBundledPrayer } from '../data/shacharit/loadPrayer';
 import { usePrayerStore } from '../store/prayerStore';
 import { useHaloStore } from '../store/haloStore';
+import { useShacharitScroll } from '../hooks/useShacharitScroll';
+import ProgressRail from '../components/shacharit/ProgressRail';
+import BirdMarker from '../components/shacharit/BirdMarker';
 
 // Precompute flat prayer list with global word start/end indices.
 // Done at module load — cheap pure work, deterministic.
@@ -51,6 +54,8 @@ function PairHalo({ idx, speed }: { idx: number; speed: number }) {
 export default function ShacharitScrollScreen() {
   const playing = usePrayerStore(s => s.shacharitPlaying);
   const speed   = usePrayerStore(s => s.shacharitSpeed);
+
+  const { scrollRef, onScroll, onSectionLayout, activeSection, birdFraction, jumpToSection } = useShacharitScroll();
 
   // Populate bounds once on mount.
   useEffect(() => {
@@ -129,28 +134,47 @@ export default function ShacharitScrollScreen() {
         </Pressable>
       </View>
 
-      <ScrollView contentContainerStyle={styles.scroll}>
+      <ScrollView
+        ref={scrollRef}
+        onScroll={onScroll}
+        scrollEventThrottle={16}
+        contentContainerStyle={styles.scroll}
+      >
         {SHACHARIT_STRUCTURE.map((sec, idx) => (
-          <SectionBlock key={sec.id} sectionId={sec.id} isFirst={idx === 0}>
-            <SectionIntro sectionId={sec.id} />
-            {PRAYERS.filter(p => p.sectionId === sec.id).map(p => (
-              <PrayerBlock
-                key={p.id}
-                prayerId={p.id}
-                sectionId={p.sectionId}
-                englishName={p.data.englishName}
-                hebrewName={p.data.hebrewName}
-                hebrewText={p.data.hebrewText}
-                translitText={p.data.translitText}
-                englishText={p.data.englishText}
-                startIdx={p.startIdx}
-                onTapWord={onTapWord}
-                renderHalo={renderHalo}
-              />
-            ))}
-          </SectionBlock>
+          <View
+            key={sec.id}
+            onLayout={e => onSectionLayout(sec.id, e.nativeEvent.layout.y, e.nativeEvent.layout.height)}
+          >
+            <SectionBlock sectionId={sec.id} isFirst={idx === 0}>
+              <SectionIntro sectionId={sec.id} />
+              {PRAYERS.filter(p => p.sectionId === sec.id).map(p => (
+                <PrayerBlock
+                  key={p.id}
+                  prayerId={p.id}
+                  sectionId={p.sectionId}
+                  englishName={p.data.englishName}
+                  hebrewName={p.data.hebrewName}
+                  hebrewText={p.data.hebrewText}
+                  translitText={p.data.translitText}
+                  englishText={p.data.englishText}
+                  startIdx={p.startIdx}
+                  onTapWord={onTapWord}
+                  renderHalo={renderHalo}
+                />
+              ))}
+            </SectionBlock>
+          </View>
         ))}
       </ScrollView>
+
+      <View style={StyleSheet.absoluteFill} pointerEvents="box-none">
+        <ProgressRail
+          activeSection={activeSection}
+          onJumpSection={jumpToSection}
+          birdFraction={birdFraction}
+          renderBird={() => <BirdMarker color={SECTIONS[activeSection].accent} />}
+        />
+      </View>
     </SafeAreaView>
   );
 }
