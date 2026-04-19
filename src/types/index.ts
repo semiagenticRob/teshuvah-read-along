@@ -110,6 +110,7 @@ export type RootStackParamList = {
   Home: undefined;
   PrayerList: { serviceId: string };
   ReadAlong: { serviceId: string; prayerIndex: number };
+  ShacharitScroll: undefined;
   Settings: undefined;
   About: undefined;
 };
