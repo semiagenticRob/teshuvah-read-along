@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { ScrollView, StyleSheet, SafeAreaView, View } from 'react-native';
 import { SHACHARIT_STRUCTURE } from '../data/shacharit/structure';
 import { PARCHMENT, TIMING, SECTIONS } from '../theme/shacharitTheme';
@@ -89,14 +89,17 @@ export default function ShacharitScrollScreen() {
       }, delay);
     };
 
-    // Initial delay before first tick
-    scheduleNext(TIMING.INITIAL_DELAY / speed);
+    // Initial delay before first tick, reading fresh from store
+    scheduleNext(TIMING.INITIAL_DELAY / usePrayerStore.getState().shacharitSpeed);
 
     return () => {
       cancelled = true;
       if (timer) clearTimeout(timer);
     };
-  }, [playing, speed]);
+  // Only restart the loop when play toggles; speed changes are read fresh
+  // from the store at each tick, so they don't require effect restart.
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [playing]);
 
   const togglePlay = () => {
     const s = usePrayerStore.getState();
@@ -127,7 +130,10 @@ export default function ShacharitScrollScreen() {
     useHaloStore.getState().setActive(idx);
   };
 
-  const renderHalo = (idx: number) => <PairHalo idx={idx} speed={speed} />;
+  const renderHalo = useCallback(
+    (idx: number) => <PairHalo idx={idx} speed={speed} />,
+    [speed]
+  );
 
   return (
     <SafeAreaView style={styles.root}>
