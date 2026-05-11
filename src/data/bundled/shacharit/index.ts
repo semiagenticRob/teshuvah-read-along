@@ -28,8 +28,6 @@ export type VariantTag =
 
 export interface BundledPrayerSegment {
   lineIndex: number;
-  minyanOnly?: boolean;
-  minyanLabel?: string;
   variantTag?: VariantTag;
   variantMode?: 'omit' | 'include-only';
   simplifiedOmit?: boolean;

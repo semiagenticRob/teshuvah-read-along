@@ -3,7 +3,6 @@ import { View, StyleSheet } from 'react-native';
 import WordPair from './WordPair';
 import FootnoteMarker from './FootnoteMarker';
 import FootnotePanel from './FootnotePanel';
-import MinyanOnlyMarker from './MinyanOnlyMarker';
 import { pairWords } from '../../utils/pairWords';
 import { footnoteKey, useFootnoteStore } from '../../store/footnoteStore';
 import type { BundledCommentary, BundledPrayerSegment } from '../../data/bundled/shacharit';
@@ -38,11 +37,6 @@ function LineRow(p: Props) {
     (wordIndex: number) => toggle(footnoteKey(p.prayerId, p.lineIndex, wordIndex)),
     [toggle, p.prayerId, p.lineIndex],
   );
-
-  // Minyan-only segment fully replaces the line content.
-  if (p.segment?.minyanOnly) {
-    return <MinyanOnlyMarker label={p.segment.minyanLabel} accent={p.accent} />;
-  }
 
   const lineLevelCommentary = p.commentaryByWord?.get(-1);
   const lineLevelKey = footnoteKey(p.prayerId, p.lineIndex, undefined);
