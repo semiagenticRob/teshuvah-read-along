@@ -87,33 +87,49 @@ function stripHebrewFragments(text) {
     .replace(/\s+—\s+/g, ' — ')         // normalize em-dash spacing
     .replace(/(^|\s)—\s+/g, '$1')        // drop leading em-dash (was lemma sep)
     .replace(/\(\s*\)/g, '')             // empty parens from stripped Hebrew
+    .replace(/\(\s*$/g, '')              // orphan open-paren at end (stripped lemma)
+    .replace(/^\s*\)/g, '')              // orphan close-paren at start
     .replace(/[;,]\s*[;,]/g, ',')        // doubled punctuation
     .replace(/\s+/g, ' ')
     .replace(/\s+([.,;:!?])/g, '$1')
+    .replace(/[ \t]+\(\s*\.?\s*$/g, '.') // trailing "( ." or "(." → "."
     .trim();
 }
 
 /**
  * Walk the slice and collect English commentary paragraphs.
- * Hebrew-only lines and page headers act as paragraph terminators.
+ *
+ * Only blank lines and page headers terminate paragraphs. Hebrew-classified
+ * lines get folded in alongside English so that punctuation marooned on a
+ * mostly-Hebrew line (e.g., the closing `.` of an English sentence that
+ * happens to fall on the same wrap as a Hebrew quotation) survives the
+ * later stripHebrewFragments pass. A paragraph that ends up empty after
+ * stripping is filtered out at the end.
  */
 function extractEnglishParagraphs(rawLines) {
   const paragraphs = [];
   let current = [];
+  let hasEnglishContent = false;
+
+  const flush = () => {
+    if (hasEnglishContent && current.length > 0) {
+      paragraphs.push(current.join(' ').replace(/\s+/g, ' ').trim());
+    }
+    current = [];
+    hasEnglishContent = false;
+  };
+
   for (const line of rawLines) {
     const kind = classifyLine(line);
-    if (kind === 'english') {
-      current.push(line.trim());
-    } else {
-      if (current.length > 0) {
-        paragraphs.push(current.join(' ').replace(/\s+/g, ' ').trim());
-        current = [];
-      }
+    if (kind === 'empty' || kind === 'header') {
+      flush();
+      continue;
     }
+    current.push(line.trim());
+    if (kind === 'english') hasEnglishContent = true;
   }
-  if (current.length > 0) {
-    paragraphs.push(current.join(' ').replace(/\s+/g, ' ').trim());
-  }
+  flush();
+
   return paragraphs.map(stripHebrewFragments).filter(Boolean);
 }
 

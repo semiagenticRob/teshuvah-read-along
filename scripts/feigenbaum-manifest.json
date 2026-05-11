@@ -12,23 +12,23 @@
     "netilat_yadayim": {
       "ref": "Feigenbaum Teen Siddur, Nusach Ashkenaz, Weekday, Shacharis, Hashkamas Ha'boker, Netilas Yadayim",
       "lineStart": 700,
-      "lineEnd": 765,
+      "lineEnd": 763,
       "hebrewTitle": "עַל נְטִילַת יָדַיִם",
-      "notes": "Feigenbaum bundles Netilas Yadayim + Asher Yatzar under one section heading ('My Body Works!'). Both prayer IDs share this content; editorial split or duplicate accepted."
+      "notes": "Feigenbaum bundles Netilas Yadayim + Asher Yatzar under one section heading ('My Body Works!'). Both prayer IDs share this content; editorial split or duplicate accepted. Trimmed to 763 to exclude the next section's 'And I Have a Soul!' heading."
     },
     "asher_yatzar": {
       "ref": "Feigenbaum Teen Siddur, Nusach Ashkenaz, Weekday, Shacharis, Hashkamas Ha'boker, Asher Yatzar",
       "lineStart": 700,
-      "lineEnd": 765,
+      "lineEnd": 763,
       "hebrewTitle": "אֲשֶׁר יָצַר",
       "notes": "Shares Feigenbaum's 'My Body Works!' section with netilat_yadayim."
     },
     "elokai_neshama": {
       "ref": "Feigenbaum Teen Siddur, Nusach Ashkenaz, Weekday, Shacharis, Hashkamas Ha'boker, Elokai Neshama",
       "lineStart": 765,
-      "lineEnd": 819,
+      "lineEnd": 817,
       "hebrewTitle": "אֱלֹהַי נְשָׁמָה",
-      "notes": "Feigenbaum's 'And I Have a Soul!' section. Hebrew title at line 766."
+      "notes": "Feigenbaum's 'And I Have a Soul!' section. Hebrew title at line 766. Trimmed to 817 to exclude the next section's 'I Have a Torah!' heading at line 818."
     },
     "birchot_hatorah": {
       "ref": "Feigenbaum Teen Siddur, Nusach Ashkenaz, Weekday, Shacharis, Hashkamas Ha'boker, Birchos HaTorah",
@@ -40,9 +40,9 @@
     "birchot_hashachar": {
       "ref": "Feigenbaum Teen Siddur, Nusach Ashkenaz, Weekday, Shacharis, Birchos Ha'shachar",
       "lineStart": 1470,
-      "lineEnd": 1954,
+      "lineEnd": 1951,
       "hebrewTitle": "בִּרְכוֹת הַשַּׁחַר",
-      "notes": "Morning blessings section. Pages 11-17 in the print siddur."
+      "notes": "Morning blessings section. Pages 11-17 in the print siddur. Trimmed to 1951 to exclude 'Last Thoughts before Pesukei D'Zimrah' transition heading at line 1952."
     },
     "akedah": {
       "ref": "Feigenbaum Teen Siddur, Nusach Ashkenaz, Weekday, Shacharis, Korbanos, Akedah",
@@ -68,9 +68,9 @@
     "shema": {
       "ref": "Feigenbaum Teen Siddur, Nusach Ashkenaz, Weekday, Shacharis, Birchos Krias Shema",
       "lineStart": 5395,
-      "lineEnd": 5896,
+      "lineEnd": 5894,
       "hebrewTitle": "שְׁמַע יִשְׂרָאֵל",
-      "notes": "Shema + its blessings (Yotzer Or, Ahavah Rabbah, V'ahavta, V'haya, V'yomer)."
+      "notes": "Shema + its blessings (Yotzer Or, Ahavah Rabbah, V'ahavta, V'haya, V'yomer). Trimmed to 5894 to exclude 'OUR REQUESTS' heading (Shemoneh Esrei intro) at line 5895."
     },
     "amidah": {
       "ref": "Feigenbaum Teen Siddur, Nusach Ashkenaz, Weekday, Shacharis, Shemoneh Esrei",
@@ -103,9 +103,9 @@
     "shir_shel_yom": {
       "ref": "Feigenbaum Teen Siddur, Nusach Ashkenaz, Weekday, Shacharis, Shir shel Yom",
       "lineStart": 10387,
-      "lineEnd": 10800,
+      "lineEnd": 10794,
       "hebrewTitle": "שִׁיר שֶׁל יוֹם",
-      "notes": "Daily Psalm. Includes seven sub-prayers (one per day of week). Pages 107+."
+      "notes": "Daily Psalm. Includes seven sub-prayers (one per day of week). Pages 107+. End at 10794 (final commentary line 'happens, praise Hashem!'); excludes the post-Shacharit L'Dovid Hashem section that starts at the page header on line 10796."
     }
   }
 }
