@@ -119,6 +119,7 @@ function PrayerItem({
           hebrewLines={data.hebrewLines}
           translitLines={data.translitLines}
           englishLines={data.englishLines}
+          textBlocks={data.textBlocks}
           startIdx={startIdx}
           onTapWord={onTapWord}
           renderHalo={renderHalo}

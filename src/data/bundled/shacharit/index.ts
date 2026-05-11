@@ -37,10 +37,26 @@ export interface BundledPrayerSegment {
 
 export type PrayerSource = 'sefaria' | 'feigenbaum';
 
+/**
+ * Typed paragraph kind for the English commentary lane. Feigenbaum's
+ * pedagogy threads section titles, interjections, FAQs, and "Instant
+ * Insight" callouts through the prose; rendering them with the same
+ * style as body text loses the structure. textBlocks carries the kind
+ * per paragraph so PrayerBlock can render each distinctively.
+ */
+export type TextBlockKind = 'body' | 'heading' | 'subheading' | 'faq' | 'callout';
+
+export interface TextBlock {
+  kind: TextBlockKind;
+  text: string;
+}
+
 export interface BundledPrayerText {
   ref: string;
   he: string[];
   text: string[];
+  /** Optional typed view of text[]. When absent, all paragraphs render as 'body'. */
+  textBlocks?: TextBlock[];
   commentary?: BundledCommentary[];
   segments?: BundledPrayerSegment[];
   source?: PrayerSource;

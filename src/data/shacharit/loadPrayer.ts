@@ -2,6 +2,7 @@ import type {
   BundledCommentary,
   BundledPrayerSegment,
   PrayerSource,
+  TextBlock,
 } from '../bundled/shacharit';
 
 export interface BundledPrayer {
@@ -15,6 +16,8 @@ export interface BundledPrayer {
   hebrewLines: string[];
   translitLines: string[];
   englishLines: string[];
+  /** Typed English paragraphs (preferred over englishLines for rendering). */
+  textBlocks: TextBlock[];
   commentary: BundledCommentary[];
   segments: BundledPrayerSegment[];
   source: PrayerSource;
@@ -126,6 +129,9 @@ export function loadBundledPrayer(prayerId: string): BundledPrayer {
   const commentary: BundledCommentary[] = Array.isArray(raw.commentary) ? raw.commentary : [];
   const segments: BundledPrayerSegment[] = Array.isArray(raw.segments) ? raw.segments : [];
   const source: PrayerSource = raw.source === 'feigenbaum' ? 'feigenbaum' : 'sefaria';
+  const textBlocks: TextBlock[] = Array.isArray(raw.textBlocks)
+    ? raw.textBlocks
+    : enLines.map((text) => ({ kind: 'body' as const, text }));
 
   const result: BundledPrayer = {
     englishName,
@@ -136,6 +142,7 @@ export function loadBundledPrayer(prayerId: string): BundledPrayer {
     hebrewLines: heLines,
     translitLines: paddedTranslit,
     englishLines: enLines,
+    textBlocks,
     commentary,
     segments,
     source,

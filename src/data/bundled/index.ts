@@ -15,6 +15,8 @@ export type {
   CommentaryTone,
   PrayerSource,
   VariantTag,
+  TextBlock,
+  TextBlockKind,
 } from './shacharit';
 
 const SERVICE_BUNDLED: Record<string, (prayerId: string) => BundledPrayerText | undefined> = {

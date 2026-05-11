@@ -110,6 +110,45 @@ function stripHebrewFragments(text) {
  * later stripHebrewFragments pass. A paragraph that ends up empty after
  * stripping is filtered out at the end.
  */
+/**
+ * Classify an extracted English paragraph as one of:
+ *   - 'faq'        — Feigenbaum's "FAQ: ..." Q&A callouts.
+ *   - 'callout'    — "Instant Insight: ..." pedagogical notes.
+ *   - 'heading'    — Section title style: short, strong statement, often all
+ *                    caps or ends with "!". E.g. "MY BODY WORKS!",
+ *                    "OUR REQUESTS", "Last Thoughts before Pesukei D'Zimrah".
+ *   - 'subheading' — Mid-prose interjection. Conversational opener (OK / But /
+ *                    And then), short-medium, ends with "!" or "?", no
+ *                    sentence-internal periods.
+ *   - 'body'       — Everything else (the running commentary).
+ */
+function classifyParagraph(text) {
+  const t = text.trim();
+  if (!t) return 'body';
+  if (/^FAQ\s*:/i.test(t)) return 'faq';
+  if (/^Instant Insight\s*:/i.test(t)) return 'callout';
+
+  const letters = (t.match(/[A-Za-z]/g) || []).length;
+  const uppers = (t.match(/[A-Z]/g) || []).length;
+
+  // All-caps short phrase: section header.
+  if (letters >= 3 && uppers / letters > 0.7 && t.length < 80) return 'heading';
+
+  // Heading style: short title-ish line with no internal sentence punctuation,
+  // optionally ending in "!" or "?".
+  const endsWithBang = /[!?]$/.test(t);
+  const hasInternalPunct = /[.,;:][^!?]/.test(t);
+
+  if (t.length <= 50 && !hasInternalPunct) return 'heading';
+  if (endsWithBang && t.length < 80 && !hasInternalPunct) return 'heading';
+
+  // Subheading: longer interjection that ends with "!" or "?" and lacks
+  // sentence-internal periods.
+  if (endsWithBang && t.length < 130 && !/\./.test(t.slice(0, -1))) return 'subheading';
+
+  return 'body';
+}
+
 function extractEnglishParagraphs(rawLines) {
   const paragraphs = [];
   let current = [];
@@ -167,6 +206,10 @@ function main() {
   const allLines = fs.readFileSync(sourcePath, 'utf8').split('\n');
   const sliced = allLines.slice(entry.lineStart - 1, entry.lineEnd);
   const englishParagraphs = extractEnglishParagraphs(sliced);
+  const textBlocks = englishParagraphs.map((text) => ({
+    kind: classifyParagraph(text),
+    text,
+  }));
 
   // Preserve Hebrew from the existing bundled JSON (the standard Ashkenaz
   // weekday text Feigenbaum prints), but rewrite ref + source + English.
@@ -174,6 +217,7 @@ function main() {
     ref: entry.ref,
     he: existing.he,
     text: englishParagraphs,
+    textBlocks,
     heTitle: existing.heTitle ?? args.prayer,
     source: 'feigenbaum',
     ...(existing.commentary ? { commentary: existing.commentary } : {}),

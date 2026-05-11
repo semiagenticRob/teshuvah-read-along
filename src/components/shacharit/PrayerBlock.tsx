@@ -7,7 +7,11 @@ import AudioPlayerPlaceholder from './AudioPlayerPlaceholder';
 import PairRow from './PairRow';
 import { PRAYER_META } from '../../data/shacharit/prayerMeta';
 import { useSettingsStore } from '../../store/settingsStore';
-import type { BundledCommentary, BundledPrayerSegment } from '../../data/bundled/shacharit';
+import type {
+  BundledCommentary,
+  BundledPrayerSegment,
+  TextBlock,
+} from '../../data/bundled/shacharit';
 
 interface Props {
   prayerId: string;
@@ -17,6 +21,7 @@ interface Props {
   hebrewLines: string[];
   translitLines: string[];
   englishLines: string[];
+  textBlocks?: TextBlock[];
   startIdx: number;
   onTapWord: (globalIdx: number) => void;
   renderHalo: (globalIdx: number) => React.ReactNode;
@@ -31,9 +36,14 @@ function PrayerBlock(p: Props) {
   const meta = PRAYER_META[p.prayerId];
   const lanes = useSettingsStore(s => s.displayLanes);
 
-  const englishBlock = lanes.english
-    ? p.englishLines.filter(Boolean).join('\n')
-    : '';
+  // Prefer textBlocks (typed paragraphs) so headings/subheadings/FAQs render
+  // with their own styling. Fall back to englishLines (all 'body') when the
+  // bundled JSON predates the textBlocks field.
+  const blocks: TextBlock[] = lanes.english
+    ? (p.textBlocks && p.textBlocks.length > 0
+        ? p.textBlocks
+        : p.englishLines.filter(Boolean).map((t) => ({ kind: 'body' as const, text: t })))
+    : [];
 
   return (
     <View style={[styles.wrap, { borderLeftColor: spec.accent }]}>
@@ -77,9 +87,52 @@ function PrayerBlock(p: Props) {
           accent={spec.accent}
         />
       )}
-      {englishBlock ? <Text style={styles.english}>{englishBlock}</Text> : null}
+      {blocks.length > 0 && (
+        <View style={styles.englishGroup}>
+          {blocks.map((block, idx) => (
+            <EnglishBlock key={idx} block={block} accent={spec.accent} />
+          ))}
+        </View>
+      )}
     </View>
   );
+}
+
+interface EnglishBlockProps {
+  block: TextBlock;
+  accent: string;
+}
+
+function EnglishBlock({ block, accent }: EnglishBlockProps) {
+  switch (block.kind) {
+    case 'heading':
+      return (
+        <Text style={[styles.heading, { color: accent }]}>{block.text}</Text>
+      );
+    case 'subheading':
+      return (
+        <Text style={[styles.subheading, { color: accent }]}>{block.text}</Text>
+      );
+    case 'faq':
+      return (
+        <View style={[styles.callout, { borderLeftColor: accent }]}>
+          <Text style={[styles.calloutLabel, { color: accent }]}>FAQ</Text>
+          <Text style={styles.calloutBody}>{block.text.replace(/^FAQ\s*:\s*/i, '')}</Text>
+        </View>
+      );
+    case 'callout':
+      return (
+        <View style={[styles.callout, { borderLeftColor: accent }]}>
+          <Text style={[styles.calloutLabel, { color: accent }]}>Instant Insight</Text>
+          <Text style={styles.calloutBody}>
+            {block.text.replace(/^Instant Insight\s*:\s*/i, '')}
+          </Text>
+        </View>
+      );
+    case 'body':
+    default:
+      return <Text style={styles.body}>{block.text}</Text>;
+  }
 }
 
 export default React.memo(PrayerBlock);
@@ -107,5 +160,51 @@ const styles = StyleSheet.create({
     lineHeight: 28,
     marginTop: 10,
     fontStyle: 'italic',
+  },
+  englishGroup: {
+    marginTop: 14,
+    gap: 14,
+  },
+  body: {
+    fontFamily: FONTS.serifBodyItalic,
+    fontSize: 16,
+    color: INK.soft,
+    lineHeight: 26,
+    fontStyle: 'italic',
+  },
+  heading: {
+    fontFamily: FONTS.display,
+    fontSize: 20,
+    lineHeight: 26,
+    letterSpacing: 0.2,
+    marginTop: 8,
+    marginBottom: -4,
+  },
+  subheading: {
+    fontFamily: FONTS.serifBodyItalic,
+    fontStyle: 'italic',
+    fontSize: 16,
+    lineHeight: 24,
+    marginTop: 4,
+    marginBottom: -6,
+  },
+  callout: {
+    borderLeftWidth: 2,
+    paddingLeft: 14,
+    paddingVertical: 6,
+    marginVertical: 4,
+  },
+  calloutLabel: {
+    fontFamily: FONTS.serifBody,
+    fontSize: 10,
+    letterSpacing: 2.4,
+    textTransform: 'uppercase',
+    marginBottom: 6,
+  },
+  calloutBody: {
+    fontFamily: FONTS.serifBody,
+    fontSize: 15,
+    lineHeight: 24,
+    color: INK.soft,
   },
 });
