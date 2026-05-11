@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, Pressable, ScrollView, StatusBar, ActivityIndicator } from 'react-native';
+import { View, Text, Pressable, StyleSheet, StatusBar, ActivityIndicator } from 'react-native';
 import * as Location from 'expo-location';
 import type { StackScreenProps } from '@react-navigation/stack';
 import { RootStackParamList } from '../../types';
@@ -69,20 +69,22 @@ export const LocationPermissionScreen: React.FC<Props> = () => {
   return (
     <View style={s.container}>
       <StatusBar barStyle="dark-content" />
-      <ScrollView contentContainerStyle={s.scrollContent}>
-        <Text style={s.eyebrow}>Almost there</Text>
-        <Text style={s.title}>When should you daven?</Text>
-        <Text style={s.subtitle}>
-          We'll show today's davening times based on where you are. The location stays on your device.
-        </Text>
-
-        {error && (
-          <Text style={[s.footerNote, { textAlign: 'left', marginTop: 0, marginBottom: 24 }]}>
-            {error}
+      <View style={styles.center}>
+        <View>
+          <Text style={s.eyebrow}>Almost there</Text>
+          <Text style={s.title}>When should you daven?</Text>
+          <Text style={s.subtitle}>
+            We'll show today's davening times based on where you are. The location stays on your device.
           </Text>
-        )}
 
-        <View style={s.buttonGroup}>
+          {error && (
+            <Text style={[s.footerNote, { textAlign: 'left', marginTop: 0, marginBottom: 8 }]}>
+              {error}
+            </Text>
+          )}
+        </View>
+
+        <View style={styles.actions}>
           <Pressable
             disabled={isRequesting}
             style={({ pressed }) => [s.primaryButton, pressed && s.primaryButtonPressed]}
@@ -99,8 +101,20 @@ export const LocationPermissionScreen: React.FC<Props> = () => {
           </Pressable>
           <Text style={s.footerNote}>We never share your location.</Text>
         </View>
-      </ScrollView>
+      </View>
     </View>
   );
 };
 
+const styles = StyleSheet.create({
+  center: {
+    flex: 1,
+    paddingHorizontal: 28,
+    justifyContent: 'center',
+    alignItems: 'stretch',
+    gap: 28,
+  },
+  actions: {
+    gap: 4,
+  },
+});

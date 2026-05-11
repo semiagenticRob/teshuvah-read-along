@@ -112,11 +112,11 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   scrollContent: {
-    paddingBottom: 90,
+    paddingBottom: 84,
   },
   headerWrap: {
     width: '100%',
-    height: 260,
+    height: 200,
     overflow: 'hidden',
   },
   headerImage: {
@@ -129,7 +129,7 @@ const styles = StyleSheet.create({
   },
   headerContent: {
     paddingHorizontal: 28,
-    paddingBottom: 32,
+    paddingBottom: 20,
   },
   eyebrow: {
     fontFamily: FONTS.serifBody,
@@ -137,7 +137,7 @@ const styles = StyleSheet.create({
     letterSpacing: 3.0,
     textTransform: 'uppercase',
     color: AMBER.accent,
-    marginBottom: 8,
+    marginBottom: 6,
   },
   titleEnglish: {
     fontFamily: FONTS.displayItalic,
@@ -145,7 +145,7 @@ const styles = StyleSheet.create({
     fontSize: 48,
     lineHeight: 52,
     color: INK.strong,
-    marginBottom: 6,
+    marginBottom: 2,
   },
   subtitle: {
     fontFamily: FONTS.serifBodyItalic,
@@ -156,8 +156,8 @@ const styles = StyleSheet.create({
   },
   serviceList: {
     paddingHorizontal: 20,
-    paddingTop: 18,
-    gap: 14,
+    paddingTop: 12,
+    gap: 10,
   },
   serviceCard: {
     borderRadius: 14,
@@ -188,9 +188,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingVertical: 22,
-    paddingLeft: 22,
-    paddingRight: 22,
+    paddingVertical: 14,
+    paddingLeft: 20,
+    paddingRight: 20,
     gap: 16,
   },
   serviceLeft: {
@@ -201,7 +201,7 @@ const styles = StyleSheet.create({
     fontSize: 10,
     letterSpacing: 2.6,
     textTransform: 'uppercase',
-    marginBottom: 6,
+    marginBottom: 4,
   },
   serviceEnglish: {
     fontFamily: FONTS.displayItalic,
@@ -209,7 +209,7 @@ const styles = StyleSheet.create({
     fontSize: 26,
     lineHeight: 30,
     color: INK.strong,
-    marginBottom: 4,
+    marginBottom: 2,
   },
   serviceSubtitle: {
     fontFamily: FONTS.serifBodyItalic,
@@ -232,7 +232,7 @@ const styles = StyleSheet.create({
     fontSize: 10,
     letterSpacing: 2.4,
     textTransform: 'uppercase',
-    marginTop: 8,
+    marginTop: 4,
   },
   footer: {
     position: 'absolute',

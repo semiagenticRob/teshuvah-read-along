@@ -7,7 +7,105 @@
       "lineStart": 624,
       "lineEnd": 668,
       "hebrewTitle": "מוֹדֶה אֲנִי",
-      "notes": "Sefaria groups Modeh Ani + Reishis Chochmah under prayer id modeh_ani; Torah Tzivah belongs to birchot_hatorah. Line 623 (combined title 'Modeh Ani / Reishis Chochmah / Torah Tzivah') is excluded because Torah Tzivah's title would inflate Hebrew coverage. Range 624-668 covers Modeh Ani body + Reishis Chochmah body + Baruch Shem K'vod."
+      "notes": "Sefaria groups Modeh Ani + Reishis Chochmah under prayer id modeh_ani; Torah Tzivah belongs to birchot_hatorah. Line 623 (combined title) is excluded so Torah Tzivah's title doesn't inflate coverage. Range 624-668 covers Modeh Ani body + Reishis Chochmah body + Baruch Shem K'vod."
+    },
+    "netilat_yadayim": {
+      "ref": "Feigenbaum Teen Siddur, Nusach Ashkenaz, Weekday, Shacharis, Hashkamas Ha'boker, Netilas Yadayim",
+      "lineStart": 700,
+      "lineEnd": 765,
+      "hebrewTitle": "עַל נְטִילַת יָדַיִם",
+      "notes": "Feigenbaum bundles Netilas Yadayim + Asher Yatzar under one section heading ('My Body Works!'). Both prayer IDs share this content; editorial split or duplicate accepted."
+    },
+    "asher_yatzar": {
+      "ref": "Feigenbaum Teen Siddur, Nusach Ashkenaz, Weekday, Shacharis, Hashkamas Ha'boker, Asher Yatzar",
+      "lineStart": 700,
+      "lineEnd": 765,
+      "hebrewTitle": "אֲשֶׁר יָצַר",
+      "notes": "Shares Feigenbaum's 'My Body Works!' section with netilat_yadayim."
+    },
+    "elokai_neshama": {
+      "ref": "Feigenbaum Teen Siddur, Nusach Ashkenaz, Weekday, Shacharis, Hashkamas Ha'boker, Elokai Neshama",
+      "lineStart": 765,
+      "lineEnd": 819,
+      "hebrewTitle": "אֱלֹהַי נְשָׁמָה",
+      "notes": "Feigenbaum's 'And I Have a Soul!' section. Hebrew title at line 766."
+    },
+    "birchot_hatorah": {
+      "ref": "Feigenbaum Teen Siddur, Nusach Ashkenaz, Weekday, Shacharis, Hashkamas Ha'boker, Birchos HaTorah",
+      "lineStart": 819,
+      "lineEnd": 1469,
+      "hebrewTitle": "בִּרְכוֹת הַתּוֹרָה",
+      "notes": "Feigenbaum's 'I Have a Torah!' section + Torah text recitations + Aaronic blessing. Long; covers pages 5-9 of Hashkamas Ha'boker."
+    },
+    "birchot_hashachar": {
+      "ref": "Feigenbaum Teen Siddur, Nusach Ashkenaz, Weekday, Shacharis, Birchos Ha'shachar",
+      "lineStart": 1470,
+      "lineEnd": 1954,
+      "hebrewTitle": "בִּרְכוֹת הַשַּׁחַר",
+      "notes": "Morning blessings section. Pages 11-17 in the print siddur."
+    },
+    "akedah": {
+      "ref": "Feigenbaum Teen Siddur, Nusach Ashkenaz, Weekday, Shacharis, Korbanos, Akedah",
+      "lineStart": 1955,
+      "lineEnd": 2226,
+      "hebrewTitle": "עֲקֵדָה",
+      "notes": "Feigenbaum bundles Akedah + Le'olam Yehei + Shema (first paragraph) + Atah Hu + Korbanos intro in one combined header at line 1955."
+    },
+    "korbanot": {
+      "ref": "Feigenbaum Teen Siddur, Nusach Ashkenaz, Weekday, Shacharis, Korbanos",
+      "lineStart": 2227,
+      "lineEnd": 2734,
+      "hebrewTitle": "קָרְבָּנוֹת",
+      "notes": "Sacrifices section. Pages 19-27 in the print siddur."
+    },
+    "pesukei_dezimrah": {
+      "ref": "Feigenbaum Teen Siddur, Nusach Ashkenaz, Weekday, Shacharis, Pesukei D'Zimrah",
+      "lineStart": 2735,
+      "lineEnd": 5394,
+      "hebrewTitle": "פְּסוּקֵי דְזִמְרָה",
+      "notes": "Verses of praise. Long section spanning pages 29-49 in the print siddur. Includes Hodu, Mizmor LeTodah, Ashrei (first instance), Hallelu-Yah psalms, Yishtabach."
+    },
+    "shema": {
+      "ref": "Feigenbaum Teen Siddur, Nusach Ashkenaz, Weekday, Shacharis, Birchos Krias Shema",
+      "lineStart": 5395,
+      "lineEnd": 5896,
+      "hebrewTitle": "שְׁמַע יִשְׂרָאֵל",
+      "notes": "Shema + its blessings (Yotzer Or, Ahavah Rabbah, V'ahavta, V'haya, V'yomer)."
+    },
+    "amidah": {
+      "ref": "Feigenbaum Teen Siddur, Nusach Ashkenaz, Weekday, Shacharis, Shemoneh Esrei",
+      "lineStart": 5897,
+      "lineEnd": 8156,
+      "hebrewTitle": "שְׁמוֹנֶה עֶשְׂרֵה",
+      "notes": "Silent Amidah. Long section (pages 60-82 in print siddur) — 19 blessings + introductory/concluding paragraphs."
+    },
+    "tachanun": {
+      "ref": "Feigenbaum Teen Siddur, Nusach Ashkenaz, Weekday, Shacharis, Tachanun",
+      "lineStart": 8157,
+      "lineEnd": 9473,
+      "hebrewTitle": "תַּחֲנוּן",
+      "notes": "Supplication. Pages 83-90."
+    },
+    "ashrei_uva_letziyon": {
+      "ref": "Feigenbaum Teen Siddur, Nusach Ashkenaz, Weekday, Shacharis, Ashrei + Uvah Letzion",
+      "lineStart": 9474,
+      "lineEnd": 10209,
+      "hebrewTitle": "אַשְׁרֵי וּבָא לְצִיּוֹן",
+      "notes": "Ashrei + Uvah Letzion. Feigenbaum bundles these under a 'Concluding' page."
+    },
+    "aleinu": {
+      "ref": "Feigenbaum Teen Siddur, Nusach Ashkenaz, Weekday, Shacharis, Aleinu",
+      "lineStart": 10210,
+      "lineEnd": 10386,
+      "hebrewTitle": "עָלֵינוּ",
+      "notes": "Aleinu. Page 105."
+    },
+    "shir_shel_yom": {
+      "ref": "Feigenbaum Teen Siddur, Nusach Ashkenaz, Weekday, Shacharis, Shir shel Yom",
+      "lineStart": 10387,
+      "lineEnd": 10800,
+      "hebrewTitle": "שִׁיר שֶׁל יוֹם",
+      "notes": "Daily Psalm. Includes seven sub-prayers (one per day of week). Pages 107+."
     }
   }
 }

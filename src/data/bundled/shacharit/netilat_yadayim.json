@@ -1,25 +1,20 @@
 {
-  "ref": "Siddur Ashkenaz, Weekday, Shacharit, Preparatory Prayers, Netilat Yadayim",
+  "ref": "Feigenbaum Teen Siddur, Nusach Ashkenaz, Weekday, Shacharis, Hashkamas Ha'boker, Netilas Yadayim",
   "he": [
     "בָּרוּךְ אַתָּה יְהֹוָה אֱלֹהֵֽינוּ מֶֽלֶךְ הָעוֹלָם אֲשֶׁר קִדְּ֒שָֽׁנוּ בְּמִצְוֹתָיו וְצִוָּנוּ עַל נְטִילַת יָדָֽיִם:"
   ],
   "text": [
-    "Blessed⁽1⁾ are You, Adonoy⁽2⁾ our God, King of the Universe, Who sanctified us with His commandments and commanded us concerning the washing of hands."
+    "OK but I need “tools” in order to apply all this wisdom and accomplish my goals!",
+    "My Body Works!",
+    "You, Hashem, are the Source of everything;",
+    "You take care of us;",
+    "and You rule the entire world; and through Your mitzvos You elevated",
+    "and You commanded us to wash our hands (and thus make sure we put meaning and thought into all we do). You, Hashem, are the Source of everything;",
+    "You take care of us;",
+    "and You rule the entire world; You have formed humans with great wisdom (as scientists are continually discovering) and created within us all sorts of openings and cavities. It is quite obvious that even if just one of them would be torn or blocked it would be impossible for us to survive and stand in front of You (even for a second)! You, Hashem, are the Source of everything;",
+    "You heal all living things and perform constant miracles.",
+    "And I Have a Soul!"
   ],
-  "footnotes": [
-    {
-      "lineIndex": 0,
-      "footnotes": [
-        {
-          "marker": "1",
-          "text": "The word “blessed” is similar in concept to the words: “merciful” or “gracious” when applied to God. Just as merciful means that He is merciful, the source of mercy; so too, blessed means that He is the source of blessing.—Avudraham"
-        },
-        {
-          "marker": "2",
-          "text": "Generally speaking, the name Adonoy is understood as it is pronounced—Adonoy—my Master, and indicates His rule and providence of the universe. When reciting the Shema however, one should bear in mind the written character of the Name which indicates God’s everpresent existence. He was—is—and ever will be.—Vilna Gaon"
-        }
-      ]
-    }
-  ],
-  "heTitle": "netilat_yadayim"
+  "heTitle": "netilat_yadayim",
+  "source": "feigenbaum"
 }
