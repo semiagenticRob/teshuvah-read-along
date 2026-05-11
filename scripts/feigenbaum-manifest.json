@@ -11,14 +11,14 @@
     },
     "netilat_yadayim": {
       "ref": "Feigenbaum Teen Siddur, Nusach Ashkenaz, Weekday, Shacharis, Hashkamas Ha'boker, Netilas Yadayim",
-      "lineStart": 700,
+      "lineStart": 713,
       "lineEnd": 763,
       "hebrewTitle": "עַל נְטִילַת יָדַיִם",
-      "notes": "Feigenbaum bundles Netilas Yadayim + Asher Yatzar under one section heading ('My Body Works!'). Both prayer IDs share this content; editorial split or duplicate accepted. Trimmed to 763 to exclude the next section's 'And I Have a Soul!' heading."
+      "notes": "Feigenbaum bundles Netilas Yadayim + Asher Yatzar under one section heading ('My Body Works!'). Both prayer IDs share the commentary range; editorial split deferred. Start at 713 (first commentary line) to skip the transition heading at 700 and section/Hebrew title at 702-711."
     },
     "asher_yatzar": {
       "ref": "Feigenbaum Teen Siddur, Nusach Ashkenaz, Weekday, Shacharis, Hashkamas Ha'boker, Asher Yatzar",
-      "lineStart": 700,
+      "lineStart": 713,
       "lineEnd": 763,
       "hebrewTitle": "אֲשֶׁר יָצַר",
       "notes": "Shares Feigenbaum's 'My Body Works!' section with netilat_yadayim."

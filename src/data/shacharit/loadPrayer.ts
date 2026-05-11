@@ -114,8 +114,10 @@ export function loadBundledPrayer(prayerId: string): BundledPrayer {
     trLines = [];
   }
 
+  // Translit must align line-by-line with Hebrew for the word-pair renderer.
+  // English is free-form commentary (Feigenbaum's pedagogy doesn't map 1:1 to
+  // Hebrew verses), so use enLines as-is — never truncate to heLines.length.
   const paddedTranslit = heLines.map((_, i) => trLines[i] ?? '');
-  const paddedEnglish = heLines.map((_, i) => enLines[i] ?? '');
 
   const hebrewText   = heLines.join('\n').trim();
   const englishText  = enLines.join('\n').trim();
@@ -133,7 +135,7 @@ export function loadBundledPrayer(prayerId: string): BundledPrayer {
     englishText,
     hebrewLines: heLines,
     translitLines: paddedTranslit,
-    englishLines: paddedEnglish,
+    englishLines: enLines,
     commentary,
     segments,
     source,

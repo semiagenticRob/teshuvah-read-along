@@ -93,6 +93,10 @@ function stripHebrewFragments(text) {
     .replace(/\s+/g, ' ')
     .replace(/\s+([.,;:!?])/g, '$1')
     .replace(/[ \t]+\(\s*\.?\s*$/g, '.') // trailing "( ." or "(." → "."
+    // Leading orphan punctuation from stripped Hebrew at start of paragraph.
+    // Repeat until stable so combinations like "— / / / / Text" fully clean.
+    .replace(/^[\s/,:;.—–]+/g, '')
+    .replace(/^[\s/,:;.—–]+/g, '')
     .trim();
 }
 
