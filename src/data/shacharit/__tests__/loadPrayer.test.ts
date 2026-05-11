@@ -11,11 +11,11 @@ describe('loadBundledPrayer', () => {
     SHACHARIT_STRUCTURE.forEach((sec) => {
       sec.prayerIds.forEach((id) => {
         const p = loadBundledPrayer(id);
-        if (!p.hebrewText && !HEBREW_PENDING.has(id)) {
-          failures.push(`${id}: empty hebrewText`);
+        if (p.hebrewLines.length === 0 && !HEBREW_PENDING.has(id)) {
+          failures.push(`${id}: empty hebrewLines`);
         }
-        if (!p.englishText) failures.push(`${id}: empty englishText`);
-        // translitText may be legitimately empty for some prayers
+        if (p.englishLines.length === 0) failures.push(`${id}: empty englishLines`);
+        // translitLines may be legitimately empty for some prayers
       });
     });
     expect(failures).toEqual([]);
@@ -24,8 +24,8 @@ describe('loadBundledPrayer', () => {
   it('flags pending-Hebrew prayers as such (so they show up in editorial QA)', () => {
     for (const id of HEBREW_PENDING) {
       const p = loadBundledPrayer(id);
-      expect(p.hebrewText).toBe('');
-      expect(p.englishText.length).toBeGreaterThan(0);
+      expect(p.hebrewLines.length).toBe(0);
+      expect(p.englishLines.length).toBeGreaterThan(0);
     }
   });
 });

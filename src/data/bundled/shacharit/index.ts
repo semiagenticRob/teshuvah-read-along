@@ -52,8 +52,8 @@ export interface TextBlock {
 export interface BundledPrayerText {
   ref: string;
   he: string[];
-  text: string[];
-  /** Optional typed view of text[]. When absent, all paragraphs render as 'body'. */
+  /** Typed English paragraphs. Optional only to support loader fallback for
+   *  legacy JSONs; new extractions always emit it. */
   textBlocks?: TextBlock[];
   commentary?: BundledCommentary[];
   segments?: BundledPrayerSegment[];

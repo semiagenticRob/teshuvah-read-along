@@ -8,11 +8,7 @@ import type {
 export interface BundledPrayer {
   englishName: string;
   hebrewName: string;
-  /** Joined newline-delimited text (legacy consumers). */
-  hebrewText: string;
-  translitText: string;
-  englishText: string;
-  /** Per-line arrays — preferred for new consumers (commentary anchoring, minyan-only). */
+  /** Per-line arrays — the rendered data. */
   hebrewLines: string[];
   translitLines: string[];
   englishLines: string[];
@@ -110,7 +106,14 @@ export function loadBundledPrayer(prayerId: string): BundledPrayer {
   const hebrewName  = HEBREW_NAMES[prayerId] ?? '';
 
   const heLines: string[] = Array.isArray(raw.he)   ? raw.he   : [];
-  const enLines: string[] = Array.isArray(raw.text) ? raw.text : [];
+  // English paragraphs come from textBlocks (typed). Fall back to legacy
+  // text[] for any JSON that hasn't been re-extracted under the new shape.
+  const rawTextBlocks: Array<{ text?: string }> = Array.isArray(raw.textBlocks) ? raw.textBlocks : [];
+  const enLines: string[] = rawTextBlocks.length > 0
+    ? rawTextBlocks.map((b) => b.text ?? '')
+    : Array.isArray(raw.text)
+      ? raw.text
+      : [];
 
   let trLines: string[] = [];
   try {
@@ -128,10 +131,6 @@ export function loadBundledPrayer(prayerId: string): BundledPrayer {
   // Hebrew verses), so use enLines as-is — never truncate to heLines.length.
   const paddedTranslit = heLines.map((_, i) => trLines[i] ?? '');
 
-  const hebrewText   = heLines.join('\n').trim();
-  const englishText  = enLines.join('\n').trim();
-  const translitText = paddedTranslit.join('\n').trim();
-
   const commentary: BundledCommentary[] = Array.isArray(raw.commentary) ? raw.commentary : [];
   const segments: BundledPrayerSegment[] = Array.isArray(raw.segments) ? raw.segments : [];
   const source: PrayerSource = raw.source === 'feigenbaum' ? 'feigenbaum' : 'sefaria';
@@ -142,9 +141,6 @@ export function loadBundledPrayer(prayerId: string): BundledPrayer {
   const result: BundledPrayer = {
     englishName,
     hebrewName,
-    hebrewText,
-    translitText,
-    englishText,
     hebrewLines: heLines,
     translitLines: paddedTranslit,
     englishLines: enLines,
@@ -173,7 +169,7 @@ export function getPrayerWordCount(prayerId: string): number {
   if (cached !== undefined) return cached;
   // First call triggers a load; subsequent calls hit cache.
   const p = loadBundledPrayer(prayerId);
-  const count = p.hebrewText.trim().split(/\s+/).filter(Boolean).length;
+  const count = p.hebrewLines.join(' ').trim().split(/\s+/).filter(Boolean).length;
   wordCountCache.set(prayerId, count);
   return count;
 }

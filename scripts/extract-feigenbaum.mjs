@@ -247,7 +247,6 @@ function main() {
   const output = {
     ref: entry.ref,
     he: existing.he,
-    text: englishParagraphs,
     textBlocks,
     heTitle: existing.heTitle ?? args.prayer,
     source: 'feigenbaum',
