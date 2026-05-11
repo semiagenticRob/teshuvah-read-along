@@ -1,1103 +1,313 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>DavenAlong · The Feigenbaum Siddur · Draft</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700;900&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DavenAlong · Weekday Shacharit</title>
 <style>
-/* ----------------------------------------------------------
-   DavenAlong · Feigenbaum Draft
-   Living Parchment design system — Feigenbaum content layer
-   ---------------------------------------------------------- */
-
-:root {
-  --time-bg-a: #f6e9d2;
-  --time-bg-b: #f9e6d0;
-  --time-grain: 0.055;
-
-  --ink:        #2a1d12;
-  --ink-soft:   #5a4835;
-  --ink-faint:  #8a7a64;
-  --accent:     #b07a1c;
-  --accent-hi:  #d9a24a;
-  --accent-lo:  rgba(176,122,28, 0.14);
-
-  --measure-hebrew: 34rem;
-  --measure-english: 30rem;
-}
-
-body[data-time="dawn"]    { --time-bg-a: #f7e3d4; --time-bg-b: #f4d8c6; }
-body[data-time="morning"] { --time-bg-a: #f6e9d2; --time-bg-b: #f9e6d0; }
-body[data-time="midday"]  {
-  --time-bg-a: #f1ede0; --time-bg-b: #ece7d6;
-  --ink: #19202e; --ink-soft: #3e4a5e; --ink-faint: #7d8396;
-}
-
-/* Per-section accent palettes */
-.section-hashkamah  { --accent: #b07a1c; --accent-hi: #d9a24a; --accent-lo: rgba(176,122,28, 0.14); }
-.section-body       { --accent: #c9831a; --accent-hi: #eaae4c; --accent-lo: rgba(201,131,26, 0.13); }
-.section-neshamah   { --accent: #7a4f8c; --accent-hi: #a97bbf; --accent-lo: rgba(122,79,140, 0.15); }
-.section-torah      { --accent: #2b6b4a; --accent-hi: #4a9e72; --accent-lo: rgba(43,107,74, 0.14); }
-
-* { box-sizing: border-box; }
-html, body { margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-
-body {
-  min-height: 100vh;
-  font-family: "EB Garamond", Georgia, serif;
-  font-size: 19px;
-  line-height: 1.6;
-  color: var(--ink);
-  background: var(--time-bg-a);
-  transition: background-color 1.4s ease, color 1.4s ease;
-  overflow-x: hidden;
-}
-
-body::before {
-  content: "";
-  position: fixed; inset: -20%;
-  background:
-    radial-gradient(1200px 800px at 30% 20%, var(--time-bg-b) 0%, transparent 55%),
-    radial-gradient(900px 700px at 75% 75%, var(--time-bg-b) 0%, transparent 60%);
-  opacity: 0.9;
-  animation: drift 42s ease-in-out infinite alternate;
-  pointer-events: none;
-  z-index: 0;
-  transition: background 1.4s ease;
-}
-body::after {
-  content: "";
-  position: fixed; inset: 0;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.15  0 0 0 0 0.12  0 0 0 0 0.08  0 0 0 0.7 0'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.55'/></svg>");
-  opacity: var(--time-grain);
-  mix-blend-mode: multiply;
-  pointer-events: none;
-  z-index: 10;
-}
-
-@keyframes drift {
-  0%   { transform: translate3d(0,0,0)    scale(1);    }
-  50%  { transform: translate3d(-2%,1%,0) scale(1.03); }
-  100% { transform: translate3d(1%,-1%,0) scale(1.015); }
-}
-
-main { position: relative; z-index: 2; }
-
-/* ——— section full-width backgrounds ——— */
-section[class^="section-"] {
-  position: relative;
-  z-index: 0;
-}
-section[class^="section-"]::before {
-  content: "";
-  position: absolute;
-  left: calc(50% - 50vw);
-  right: calc(50% - 50vw);
-  top: 0; bottom: 0;
-  width: 100vw;
-  pointer-events: none;
-  z-index: -2;
-}
-section[class^="section-"]::after {
-  content: "";
-  position: absolute;
-  left: calc(50% - 50vw);
-  right: calc(50% - 50vw);
-  top: 8%; bottom: 8%;
-  width: 100vw;
-  background:
-    radial-gradient(48% 40% at 32% 45%, rgba(255,252,240,0.10), transparent 70%),
-    radial-gradient(42% 38% at 72% 62%, rgba(30,20,10,0.06), transparent 72%);
-  pointer-events: none;
-  z-index: -1;
-  animation: section-drift 42s ease-in-out infinite alternate;
-  opacity: 0.9;
-}
-section[class^="section-"]:nth-child(even)::after {
-  animation-duration: 52s;
-  animation-direction: alternate-reverse;
-}
-@keyframes section-drift {
-  0%   { transform: translate3d(0, 0, 0)    scale(1);    opacity: 0.75; }
-  50%  { transform: translate3d(-2.5%, 2%, 0) scale(1.06); opacity: 1;   }
-  100% { transform: translate3d(2%, -1.5%, 0) scale(1.02); opacity: 0.85; }
-}
-
-.section-hashkamah::before {
-  background: linear-gradient(to bottom,
-    #f2e2ba 0%,
-    #ecd197 10%,
-    #ecd197 86%,
-    #e8c994 100%);
-}
-.section-body::before {
-  background: linear-gradient(to bottom,
-    #e8c994 0%,
-    #e4c17d 10%,
-    #e4c17d 84%,
-    #ddc4c0 100%);
-}
-.section-neshamah::before {
-  background: linear-gradient(to bottom,
-    #ddc4c0 0%,
-    #d6bbd8 16%,
-    #d6bbd8 84%,
-    #c8d8c4 100%);
-}
-.section-torah::before {
-  background: linear-gradient(to bottom,
-    #c8d8c4 0%,
-    #bdd4b8 12%,
-    #bdd4b8 100%);
-}
-
-/* ——— glowing gold section divider ——— */
-section[class^="section-"] + section[class^="section-"] > .section-intro::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: calc(50% - 50vw);
-  right: calc(50% - 50vw);
-  width: 100vw;
-  height: 1px;
-  background: linear-gradient(to right,
-    transparent 0%,
-    rgba(217, 162, 64, 0.25) 15%,
-    #e6b24a 50%,
-    rgba(217, 162, 64, 0.25) 85%,
-    transparent 100%);
-  box-shadow:
-    0 0 10px rgba(230, 178, 74, 0.7),
-    0 0 22px rgba(230, 178, 74, 0.35),
-    0 0 40px rgba(230, 178, 74, 0.18);
-  z-index: 5;
-  pointer-events: none;
-  animation: divider-pulse 5s ease-in-out infinite;
-}
-@keyframes divider-pulse {
-  0%, 100% { opacity: 0.75; }
-  50%      { opacity: 1;    }
-}
-
-/* ——— app header ——— */
-.app-header {
-  position: relative;
-  z-index: 20;
-  text-align: center;
-  padding: 40px 20px 0;
-  background: transparent;
-}
-.app-header-wordmark {
-  font-family: "Frank Ruhl Libre", serif;
-  font-weight: 700;
-  font-size: clamp(2rem, 5vw, 3rem);
-  letter-spacing: -0.02em;
-  color: var(--ink);
-  line-height: 1;
-  margin: 0;
-}
-.app-header-subtitle {
-  font-family: "Cormorant Garamond", serif;
-  font-style: italic;
-  font-size: clamp(0.95rem, 2vw, 1.2rem);
-  color: var(--accent);
-  margin: 6px 0 0;
-  letter-spacing: 0.05em;
-}
-.app-header-draft-badge {
-  display: inline-block;
-  margin-top: 10px;
-  padding: 3px 12px;
-  background: var(--accent-lo);
-  border: 1px solid var(--accent-hi);
-  border-radius: 999px;
-  font-family: "EB Garamond", serif;
-  font-size: 11px;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: var(--accent);
-}
-
-/* ——— entry path selector ——— */
-.entry-selector {
-  position: relative;
-  z-index: 20;
-  display: flex;
-  justify-content: center;
-  gap: 14px;
-  padding: 28px 20px 0;
-  flex-wrap: wrap;
-}
-.entry-btn {
-  all: unset;
-  cursor: pointer;
-  font-family: "EB Garamond", serif;
-  font-size: 1.05rem;
-  font-style: italic;
-  padding: 10px 22px;
-  border-radius: 999px;
-  border: 1.5px solid var(--accent-hi);
-  color: var(--ink-soft);
-  background: rgba(255,252,245,0.5);
-  backdrop-filter: blur(8px);
-  transition: all 0.25s ease;
-  letter-spacing: 0.01em;
-}
-.entry-btn:hover {
-  background: rgba(255,252,245,0.85);
-  color: var(--ink);
-  box-shadow: 0 4px 14px rgba(40,25,10,0.1);
-}
-.entry-btn.active {
-  background: var(--ink);
-  color: var(--time-bg-a);
-  border-color: var(--ink);
-  box-shadow: 0 4px 14px rgba(40,25,10,0.22);
-}
-.entry-btn.active::after {
-  content: " ✓";
-  font-style: normal;
-}
-
-/* ——— section intro ——— */
-.section-intro {
-  padding: 36px 0 14px;
-  position: relative;
-}
-section:first-of-type > .section-intro { padding-top: 28px; }
-
-.feigenbaum-heading {
-  display: inline-block;
-  font-family: "Cormorant Garamond", serif;
-  font-style: italic;
-  font-weight: 500;
-  font-size: clamp(2.2rem, 5vw, 3.2rem);
-  color: var(--accent);
-  line-height: 1.05;
-  margin: 0 0 14px;
-  position: relative;
-}
-.feigenbaum-heading::after {
-  content: "";
-  display: block;
-  height: 2px;
-  width: 60%;
-  background: linear-gradient(to right, var(--accent-hi), transparent);
-  margin-top: 8px;
-  border-radius: 2px;
-}
-
-.section-hebrew-title {
-  font-family: "Frank Ruhl Libre", serif;
-  font-weight: 500;
-  font-size: clamp(2.2rem, 5.5vw, 3.5rem);
-  line-height: 1.1;
-  color: var(--ink);
-  direction: rtl;
-  text-align: right;
-  margin: 0 0 6px;
-  letter-spacing: -0.01em;
-}
-.section-english-title {
-  font-family: "EB Garamond", serif;
-  font-weight: 400;
-  font-style: italic;
-  font-size: clamp(1.1rem, 2vw, 1.4rem);
-  color: var(--ink-soft);
-  margin: 0 0 20px;
-  letter-spacing: 0.02em;
-}
-.section-body-text {
-  font-family: "EB Garamond", serif;
-  font-size: 1.05rem;
-  line-height: 1.7;
-  color: var(--ink-soft);
-  max-width: var(--measure-english);
-}
-
-/* ——— prayer blocks ——— */
-.prayer {
-  position: relative;
-  padding: 26px 0 26px 32px;
-  margin: 10px 0;
-}
-.section-intro + .prayer { margin-top: 4px; padding-top: 20px; }
-.prayer::before {
-  content: "";
-  position: absolute;
-  left: 0; top: 30px; bottom: 30px;
-  width: 2px;
-  background: var(--accent);
-  opacity: 0.28;
-  border-radius: 2px;
-  animation: rule-pulse 5.5s ease-in-out infinite;
-}
-@keyframes rule-pulse {
-  0%, 100% { opacity: 0.18; transform: scaleY(0.96); }
-  50%      { opacity: 0.42; transform: scaleY(1); }
-}
-
-.prayer-eyebrow {
-  font-family: "Cormorant Garamond", serif;
-  font-style: italic;
-  font-weight: 500;
-  font-size: clamp(1.55rem, 3.2vw, 2rem);
-  color: var(--accent);
-  margin: 0 0 4px;
-  line-height: 1.15;
-}
-
-.prayer-title {
-  font-family: "Cormorant Garamond", serif;
-  font-style: italic;
-  font-size: 1.45rem;
-  color: var(--ink);
-  margin: 0 0 2px;
-  font-weight: 500;
-  line-height: 1.2;
-}
-.prayer-title-hebrew {
-  font-family: "Frank Ruhl Libre", serif;
-  font-size: 0.95rem;
-  color: var(--accent);
-  margin-left: 10px;
-  font-weight: 500;
-  font-style: normal;
-  direction: rtl;
-  unicode-bidi: isolate;
-}
-.prayer-subtitle {
-  font-family: "EB Garamond", serif;
-  font-style: italic;
-  font-size: 0.92rem;
-  color: var(--ink-faint);
-  margin: 0 0 12px;
-  max-width: var(--measure-english);
-  line-height: 1.45;
-}
-
-/* ——— Hebrew text ——— */
-.hebrew {
-  font-family: "Frank Ruhl Libre", serif;
-  font-weight: 500;
-  font-size: clamp(1.55rem, 3vw, 1.9rem);
-  line-height: 2.1;
-  direction: rtl;
-  text-align: right;
-  color: var(--ink);
-  max-width: var(--measure-hebrew);
-  margin: 0 0 14px;
-  letter-spacing: 0.005em;
-}
-
-/* ——— transliteration ——— */
-.translit {
-  font-family: "EB Garamond", serif;
-  font-size: 1.02rem;
-  line-height: 1.75;
-  color: var(--ink-soft);
-  max-width: var(--measure-english);
-  margin: 0 0 14px;
-  letter-spacing: 0.01em;
-  font-style: italic;
-}
-
-/* ——— Feigenbaum English explanation ——— */
-.feigenbaum-english {
-  font-family: "EB Garamond", serif;
-  font-size: 1.08rem;
-  line-height: 1.75;
-  color: var(--ink-soft);
-  max-width: var(--measure-english);
-  margin: 0 0 6px;
-  font-style: italic;
-  border-left: 2px solid var(--accent-lo);
-  padding-left: 18px;
-  border-radius: 0 0 0 2px;
-}
-.feigenbaum-english strong {
-  font-style: normal;
-  color: var(--ink);
-  font-weight: 500;
-}
-
-/* display-mode visibility classes */
-body:not(.show-hebrew)   .hebrew    { display: none; }
-body:not(.show-translit) .translit  { display: none; }
-body:not(.show-english)  .feigenbaum-english { display: none; }
-
-/* ——— FAQ card ——— */
-.faq-card {
-  margin: 18px 0 8px;
-  max-width: var(--measure-english);
-  background: rgba(255,252,244,0.72);
-  border: 1px solid rgba(0,0,0,0.07);
-  border-left: 3px solid var(--accent);
-  border-radius: 0 10px 10px 0;
-  backdrop-filter: blur(6px);
-  box-shadow:
-    0 2px 12px rgba(40,25,10,0.07),
-    inset 0 1px 0 rgba(255,255,255,0.55);
-  overflow: hidden;
-}
-.faq-card summary {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  padding: 14px 18px;
-  cursor: pointer;
-  list-style: none;
-  user-select: none;
-}
-.faq-card summary::-webkit-details-marker { display: none; }
-.faq-label {
-  font-family: "EB Garamond", serif;
-  font-size: 10px;
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-  color: var(--accent);
-  font-weight: 600;
-  white-space: nowrap;
-  margin-top: 4px;
-  flex-shrink: 0;
-}
-.faq-question {
-  font-family: "Cormorant Garamond", serif;
-  font-style: italic;
-  font-size: 1.08rem;
-  line-height: 1.5;
-  color: var(--ink);
-  flex: 1;
-}
-.faq-chevron {
-  flex-shrink: 0;
-  width: 18px;
-  height: 18px;
-  color: var(--ink-faint);
-  margin-top: 4px;
-  transition: transform 0.3s ease;
-}
-.faq-card[open] .faq-chevron { transform: rotate(180deg); }
-.faq-body {
-  padding: 0 18px 16px 44px;
-  border-top: 1px solid rgba(0,0,0,0.06);
-  margin-top: -1px;
-}
-.faq-answer {
-  font-family: "EB Garamond", serif;
-  font-size: 1.02rem;
-  line-height: 1.7;
-  color: var(--ink-soft);
-  margin: 12px 0 0;
-}
-.faq-answer em {
-  color: var(--ink);
-  font-style: italic;
-}
-.faq-insight {
-  margin-top: 12px;
-  padding: 10px 14px;
-  background: var(--accent-lo);
-  border-radius: 8px;
-  font-family: "Cormorant Garamond", serif;
-  font-style: italic;
-  font-size: 1.02rem;
-  line-height: 1.65;
-  color: var(--ink-soft);
-}
-.faq-insight-label {
-  display: block;
-  font-family: "EB Garamond", serif;
-  font-style: normal;
-  font-size: 10px;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 4px;
-}
-
-/* ——— bottom floating app bar ——— */
-.appbar {
-  position: fixed;
-  bottom: 22px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 40;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 8px;
-  background: rgba(255,253,247,0.78);
-  backdrop-filter: blur(16px) saturate(1.1);
-  -webkit-backdrop-filter: blur(16px) saturate(1.1);
-  border: 1px solid rgba(0,0,0,0.07);
-  border-radius: 999px;
-  box-shadow:
-    0 8px 30px rgba(40,25,10,0.13),
-    0 2px 6px rgba(40,25,10,0.06),
-    inset 0 1px 0 rgba(255,255,255,0.6);
-  font-family: "EB Garamond", serif;
-}
-
-.modes {
-  display: flex;
-  align-items: center;
-  gap: 2px;
-  padding: 0 4px;
-}
-.modes button {
-  all: unset;
-  cursor: pointer;
-  min-width: 44px;
-  height: 44px;
-  padding: 0 10px;
-  border-radius: 999px;
-  color: var(--ink-faint);
-  font-size: 15px;
-  letter-spacing: 0.04em;
-  text-align: center;
-  transition: all 0.28s ease;
-  position: relative;
-  font-style: italic;
-}
-.modes button .label { display: inline-block; transition: transform 0.28s ease; }
-.modes button.hebrew { font-family: "Frank Ruhl Libre", serif; font-style: normal; font-size: 19px; }
-.modes button:active { transform: scale(0.92); }
-.modes button.on {
-  background: var(--ink);
-  color: var(--time-bg-a);
-  font-style: normal;
-}
-.modes button.on::after {
-  content: "";
-  position: absolute;
-  left: 50%; bottom: 4px;
-  width: 5px; height: 5px;
-  background: var(--accent-hi);
-  border-radius: 50%;
-  transform: translateX(-50%);
-}
-
-.appbar-divider {
-  width: 1px;
-  height: 28px;
-  background: rgba(0,0,0,0.09);
-  margin: 0 2px;
-}
-
-.play {
-  all: unset;
-  cursor: pointer;
-  width: 56px; height: 56px;
-  border-radius: 50%;
-  background: var(--ink);
-  color: var(--time-bg-a);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  transition: transform 0.2s ease, background 0.4s ease, box-shadow 0.3s ease;
-  box-shadow: 0 4px 14px rgba(40,25,10,0.25);
-}
-.play:active { transform: scale(0.93); }
-.play.playing {
-  background: var(--accent);
-  animation: play-pulse 2.4s ease-out infinite;
-}
-@keyframes play-pulse {
-  0%   { box-shadow: 0 0 0 0 var(--accent-lo), 0 4px 14px rgba(40,25,10,0.2); }
-  70%  { box-shadow: 0 0 0 16px rgba(0,0,0,0), 0 4px 14px rgba(40,25,10,0.2); }
-  100% { box-shadow: 0 0 0 0 rgba(0,0,0,0), 0 4px 14px rgba(40,25,10,0.2); }
-}
-.play svg { width: 20px; height: 20px; fill: currentColor; transition: opacity 0.2s ease; }
-.play .icon-pause { display: none; }
-.play.playing .icon-play  { display: none; }
-.play.playing .icon-pause { display: block; }
-.play::before {
-  content: "";
-  position: absolute; inset: -6px;
-  border-radius: 50%;
-  border: 1.5px solid var(--accent-lo);
-  opacity: 0;
-  transition: opacity 0.4s ease;
-}
-.play.playing::before { opacity: 1; }
-
-/* ——— scroll container ——— */
-.scroll {
-  max-width: 760px;
-  margin: 0 auto;
-  padding: 20px 40px 200px;
-  position: relative;
-}
-
-/* ——— right-side progress rail ——— */
-.rail {
-  position: fixed;
-  right: 22px;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 30;
-  display: flex;
-  flex-direction: column;
-  gap: 7px;
-  height: min(480px, 62vh);
-  width: 14px;
-}
-.rail-seg {
-  position: relative;
-  flex: 1;
-  width: 4px;
-  margin: 0 auto;
-  border-radius: 999px;
-  cursor: pointer;
-  opacity: 0.5;
-  transition: opacity 0.4s ease, width 0.28s ease;
-  text-decoration: none;
-}
-.rail-seg:nth-child(1) { background: linear-gradient(to bottom, #eab864 0%, #b07a1c 100%); }
-.rail-seg:nth-child(2) { background: linear-gradient(to bottom, #b07a1c 0%, #c8846e 100%); }
-.rail-seg:nth-child(3) { background: linear-gradient(to bottom, #c8846e 0%, #9a6caa 100%); }
-.rail-seg:nth-child(4) { background: linear-gradient(to bottom, #9a6caa 0%, #4a9e72 100%); }
-.rail-seg:hover, .rail-seg.active { opacity: 1; width: 6px; }
-.rail-label {
-  position: absolute;
-  right: 60px;
-  top: 50%;
-  transform: translateY(-50%) translateX(8px);
-  white-space: nowrap;
-  font-family: "EB Garamond", serif;
-  font-size: 10.5px;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: var(--ink);
-  background: rgba(255,253,247,0.9);
-  border: 1px solid rgba(0,0,0,0.06);
-  padding: 7px 11px;
-  border-radius: 6px;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease, transform 0.3s ease;
-  backdrop-filter: blur(8px);
-  box-shadow: 0 3px 10px rgba(40,25,10,0.08);
-}
-.rail-seg:hover .rail-label { opacity: 0.95; transform: translateY(-50%) translateX(0); }
-.rail-marker {
-  position: absolute;
-  right: 100%;
-  margin-right: 6px;
-  width: 40px; height: 24px;
-  color: var(--accent);
-  pointer-events: none;
-  transition: top 0.45s cubic-bezier(0.3, 0.8, 0.3, 1), color 1s ease;
-  filter:
-    drop-shadow(0 2px 4px rgba(40,25,10,0.28))
-    drop-shadow(0 0 6px rgba(255,252,240,0.35));
-}
-.rail-marker .bird {
-  width: 100%; height: 100%;
-  display: block; overflow: visible;
-  animation: bird-glide 3.4s ease-in-out infinite;
-  transform-origin: 50% 60%;
-}
-@keyframes bird-glide {
-  0%, 100% { transform: translateY(0)    rotate(-3deg); }
-  50%      { transform: translateY(-2px) rotate(3deg);  }
-}
-.bird .wing { stroke: currentColor; stroke-width: 3.2; stroke-linecap: round; fill: none; }
-.bird .body { fill: currentColor; }
-.bird .head { fill: #fffcf3; filter: drop-shadow(0 0 2px rgba(255,255,255,0.4)); }
-.bird .eye  { fill: rgba(40,25,10,0.85); }
-
-/* ——— footer ——— */
-.page-footer {
-  position: relative;
-  z-index: 5;
-  text-align: center;
-  padding: 40px 20px 100px;
-  font-family: "Cormorant Garamond", serif;
-  font-style: italic;
-  font-size: 0.9rem;
-  color: var(--ink-faint);
-  line-height: 1.6;
-}
-.page-footer strong {
-  display: block;
-  font-family: "EB Garamond", serif;
-  font-style: normal;
-  font-size: 10px;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  margin-top: 10px;
-  color: var(--accent);
-}
-
-/* ——— responsive ——— */
-@media (max-width: 680px) {
-  .scroll { padding: 12px 22px 180px; }
-  .hebrew { font-size: 1.4rem; line-height: 2; }
-  .feigenbaum-heading { font-size: 2rem; }
-  .appbar { bottom: 16px; gap: 6px; padding: 6px; }
-  .modes button { min-width: 38px; height: 38px; padding: 0 8px; }
-  .play { width: 48px; height: 48px; }
-  .rail { right: 10px; width: 10px; }
-  .rail-label { display: none; }
-  .entry-selector { gap: 10px; }
-  .entry-btn { font-size: 0.95rem; padding: 8px 16px; }
-  .faq-body { padding-left: 18px; }
-  .app-header { padding-top: 28px; }
-}
+  :root {
+    --gold: #c9a84c;
+    --cream: #faf8f3;
+    --ink: #1a1a1a;
+    --muted: #6b6b6b;
+    --border: #e8e0d0;
+    --section-1: #3d6b4f;
+    --section-2: #4a5568;
+    --section-3: #6b4c7a;
+    --section-4: #8b5e3c;
+    --faq-bg: #f5f0e8;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--cream); color: var(--ink); min-height: 100vh; }
+  header { text-align: center; padding: 32px 20px 20px; border-bottom: 1px solid var(--border); background: white; }
+  header h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; color: var(--ink); }
+  header p { font-size: 13px; color: var(--muted); margin-top: 4px; letter-spacing: 1px; text-transform: uppercase; }
+  .entry-selector { display: flex; justify-content: center; gap: 10px; padding: 16px 20px; background: white; border-bottom: 1px solid var(--border); }
+  .entry-btn { padding: 8px 18px; border-radius: 20px; border: 1px solid var(--border); font-size: 13px; cursor: pointer; background: white; color: var(--muted); transition: all 0.15s; }
+  .entry-btn.active { background: var(--ink); color: white; border-color: var(--ink); }
+  .mode-toggle { display: flex; justify-content: center; gap: 0; padding: 12px 20px; background: var(--cream); border-bottom: 1px solid var(--border); }
+  .mode-btn { padding: 6px 16px; border: 1px solid var(--border); font-size: 12px; cursor: pointer; background: white; color: var(--muted); }
+  .mode-btn:first-child { border-radius: 4px 0 0 4px; }
+  .mode-btn:last-child { border-radius: 0 4px 4px 0; }
+  .mode-btn.active { background: var(--ink); color: white; border-color: var(--ink); }
+  main { max-width: 680px; margin: 0 auto; padding: 0 0 80px; }
+  .section-heading { padding: 40px 28px 24px; border-bottom: 1px solid var(--border); }
+  .section-label { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; direction: ltr; text-align: left; }
+  .section-title { font-size: 32px; font-style: italic; font-weight: 600; direction: ltr; text-align: left; line-height: 1.2; }
+  .section-heading.s1 .section-title { color: var(--section-1); }
+  .section-heading.s2 .section-title { color: var(--section-2); }
+  .section-heading.s3 .section-title { color: var(--section-3); }
+  .section-heading.s4 .section-title { color: var(--section-4); }
+  .prayer-block { padding: 28px 28px; border-bottom: 1px solid var(--border); }
+  .prayer-name { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); direction: ltr; text-align: left; margin-bottom: 18px; }
+  .hebrew { font-family: 'Times New Roman', serif; font-size: 26px; line-height: 1.9; text-align: right; direction: rtl; color: var(--ink); margin-bottom: 20px; }
+  .explanation { font-size: 15px; line-height: 1.8; color: #333; direction: ltr; text-align: left; border-left: 3px solid var(--gold); padding-left: 16px; margin-top: 16px; }
+  .he-inline { font-family: 'Times New Roman', serif; font-size: 17px; color: var(--ink); font-weight: 600; }
+  .transition-text { padding: 20px 28px; font-size: 14px; color: var(--muted); font-style: italic; direction: ltr; text-align: left; border-bottom: 1px solid var(--border); }
+  .faq-card { margin: 0 28px 0; border: 1px solid #d4c9a8; border-radius: 8px; background: var(--faq-bg); overflow: hidden; }
+  .faq-card summary { padding: 16px 20px; font-size: 14px; font-weight: 600; color: var(--section-4); cursor: pointer; list-style: none; direction: ltr; text-align: left; display: flex; align-items: flex-start; gap: 10px; }
+  .faq-card summary::-webkit-details-marker { display: none; }
+  .faq-label { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; background: var(--section-4); color: white; padding: 2px 8px; border-radius: 3px; white-space: nowrap; margin-top: 1px; }
+  .faq-body { padding: 0 20px 20px; direction: ltr; text-align: left; }
+  .faq-answer { font-size: 14px; line-height: 1.7; color: #444; margin-bottom: 14px; }
+  .faq-answer strong { display: block; font-size: 12px; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+  .instant-insight { background: white; border-radius: 6px; padding: 14px 16px; font-size: 13px; line-height: 1.7; color: #555; border-left: 3px solid var(--gold); }
+  .instant-insight strong { display: block; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
+  .he-inline-sm { font-family: 'Times New Roman', serif; font-size: 15px; direction: rtl; }
+  .audio-bar { display: flex; align-items: center; gap: 12px; padding: 12px 0 0; direction: ltr; }
+  .play-btn { width: 36px; height: 36px; border-radius: 50%; background: var(--ink); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; color: white; font-size: 13px; flex-shrink: 0; }
+  .audio-label { font-size: 12px; color: var(--muted); }
+  .audio-title { font-size: 14px; color: var(--ink); font-weight: 500; }
+  .progress-bar { flex: 1; height: 3px; background: var(--border); border-radius: 2px; }
+  .spacer { height: 24px; }
 </style>
 </head>
-<body data-time="morning" class="show-hebrew show-translit show-english">
+<body>
 
-<!-- ——— App header ——— -->
-<header class="app-header" style="position:relative;z-index:20;">
-  <h1 class="app-header-wordmark">DavenAlong</h1>
-  <p class="app-header-subtitle">The Feigenbaum Siddur · Draft</p>
-  <span class="app-header-draft-badge">Preview · Not for Distribution</span>
+<header>
+  <h1>DavenAlong</h1>
+  <p>Weekday Shacharit · Draft</p>
 </header>
 
-<!-- ——— Entry path selector ——— -->
-<div class="entry-selector" id="entry-selector">
-  <button class="entry-btn" id="btn-new" onclick="setPath('new')">New to davening</button>
-  <button class="entry-btn active" id="btn-returning" onclick="setPath('returning')">Coming back to it</button>
+<div class="entry-selector" dir="ltr">
+  <button class="entry-btn active">New to davening</button>
+  <button class="entry-btn">Coming back as a Jew</button>
 </div>
 
-<!-- ——— floating app bar ——— -->
-<div class="appbar">
-  <div class="modes" id="modes">
-    <button class="hebrew on" data-mode="hebrew"  aria-label="Hebrew"><span class="label">א</span></button>
-    <button class="on"         data-mode="translit" aria-label="Transliteration"><span class="label">Aa</span></button>
-    <button class="on"         data-mode="english"  aria-label="English"><span class="label">En</span></button>
-  </div>
-  <div class="appbar-divider"></div>
-  <button class="play" id="play" aria-label="Play / Pause">
-    <svg class="icon-play"  viewBox="0 0 24 24"><path d="M7 5v14l12-7z"/></svg>
-    <svg class="icon-pause" viewBox="0 0 24 24"><path d="M6 5h4v14H6zm8 0h4v14h-4z"/></svg>
-  </button>
+<div class="mode-toggle" dir="ltr">
+  <button class="mode-btn active">Read along</button>
+  <button class="mode-btn">Hebrew only</button>
+  <button class="mode-btn">English only</button>
 </div>
 
 <main>
-<div class="scroll">
 
-  <!-- ═══════════════════════════════════════════════
-       SECTION 1 · HASHKAMAS HABOKER
-       "I Woke Up!"
-  ═══════════════════════════════════════════════ -->
-  <section class="section-hashkamah" id="sec-hashkamah">
-
-    <div class="section-intro">
-      <div class="feigenbaum-heading">"I Woke Up!"</div>
-      <h2 class="section-hebrew-title">הַשְׁכָּמַת הַבֹּקֶר</h2>
-      <p class="section-english-title">Hashkamas HaBoker — the very first moments</p>
-      <p class="section-body-text">
-        Before you've said a word, before you've done a thing — you're already the recipient of a miracle.
-        Feigenbaum's framing is radical in its simplicity: waking up isn't a given. It's a gift. And the first thing a gift demands is acknowledgment.
-      </p>
-    </div>
-
-    <!-- ——— Modeh Ani ——— -->
-    <article class="prayer" id="pr-modeh-ani">
-      <p class="prayer-eyebrow">I Woke Up!</p>
-      <p class="prayer-title">Modeh Ani<span class="prayer-title-hebrew">מוֹדֶה אֲנִי</span></p>
-      <p class="prayer-subtitle">First words on waking — gratitude before you're fully awake</p>
-
-      <p class="hebrew" dir="rtl">
-        מוֹדֶה אֲנִי לְפָנֶֽיךָ מֶֽלֶךְ חַי וְקַיָּם שֶׁהֶחֱזַֽרְתָּ בִּי נִשְׁמָתִי בְּחֶמְלָה, רַבָּה אֱמוּנָתֶֽךָ.
-      </p>
-
-      <p class="translit">
-        Modeh ani l'fanecha melech chai v'kayam, she'hechezarta bi nishmati b'chemlah, rabbah emunatecha.
-      </p>
-
-      <p class="feigenbaum-english">
-        "Thank You, Hashem, for giving my <em>neshamah</em> back to me (which was a merciful thing to do since I have not yet lived up to my full potential, and therefore may not really deserve that);
-        <strong>Your belief in me is very great!</strong>
-        (You believe I am important; my struggles are important; and You believe I can climb up to the next rung — which is why You woke me up. Thank You!)"
-      </p>
-    </article>
-
-  </section>
-
-  <!-- ═══════════════════════════════════════════════
-       SECTION 2 · MY BODY WORKS
-       "My Body Works!"
-  ═══════════════════════════════════════════════ -->
-  <section class="section-body" id="sec-body">
-
-    <div class="section-intro">
-      <div class="feigenbaum-heading">"My Body Works!"</div>
-      <h2 class="section-hebrew-title">אֲשֶׁר יָצַר</h2>
-      <p class="section-english-title">Asher Yatzar — blessing recited after using the bathroom</p>
-      <p class="section-body-text">
-        Scientists spend careers on what this blessing covers in thirty seconds.
-        Every organ, every passage, every cavity — functioning right now, without your permission or effort.
-        Feigenbaum insists we feel this before we move on.
-      </p>
-    </div>
-
-    <!-- ——— Asher Yatzar ——— -->
-    <article class="prayer" id="pr-asher-yatzar">
-      <p class="prayer-eyebrow">My Body Works!</p>
-      <p class="prayer-title">Asher Yatzar<span class="prayer-title-hebrew">אֲשֶׁר יָצַר</span></p>
-      <p class="prayer-subtitle">The body's miraculous, ordinary function — said every morning</p>
-
-      <p class="hebrew" dir="rtl">
-        בָּרוּךְ אַתָּה יְהֹוָה אֱלֹהֵֽינוּ מֶֽלֶךְ הָעוֹלָם, אֲשֶׁר יָצַר אֶת הָאָדָם בְּחָכְמָה, וּבָרָא בוֹ נְקָבִים נְקָבִים, חֲלוּלִים חֲלוּלִים. גָּלוּי וְיָדוּעַ לִפְנֵי כִסֵּא כְבוֹדֶֽךָ, שֶׁאִם יִפָּתֵחַ אֶחָד מֵהֶם, אוֹ יִסָּתֵם אֶחָד מֵהֶם, אִי אֶפְשַׁר לְהִתְקַיֵּם וְלַעֲמוֹד לְפָנֶֽיךָ. בָּרוּךְ אַתָּה יְהֹוָה, רוֹפֵא כָל בָּשָׂר וּמַפְלִיא לַעֲשׂוֹת.
-      </p>
-
-      <p class="translit">
-        Baruch atah Adonai Eloheinu melech ha'olam, asher yatzar et ha'adam b'chochmah, u'vara vo n'kavim n'kavim, chalulim chalulim. Galui v'yadu'a lifnei chisei ch'vodecha, she'im yipate'ach echad meihem, o yisatem echad meihem, i efshar l'hitkayem v'la'amod l'fanecha. Baruch atah Adonai, rofei chol basar u'mafli la'asot.
-      </p>
-
-      <p class="feigenbaum-english">
-        "You have formed humans with <strong>great wisdom</strong> (as scientists are continually discovering) and created within us all sorts of openings and cavities.
-        It is quite obvious that even if just one of them would be torn or blocked — it would be <em>impossible</em> for us to survive and stand in front of You (even for a second)!
-        You, Hashem, are the Source of everything; You heal all living things and perform constant miracles."
-      </p>
-    </article>
-
-  </section>
-
-  <!-- ═══════════════════════════════════════════════
-       SECTION 3 · AND I HAVE A SOUL
-       "And I Have a Soul!"
-  ═══════════════════════════════════════════════ -->
-  <section class="section-neshamah" id="sec-neshamah">
-
-    <div class="section-intro">
-      <div class="feigenbaum-heading">"And I Have a Soul!"</div>
-      <h2 class="section-hebrew-title">אֱלֹהַי נְשָׁמָה</h2>
-      <p class="section-english-title">Elohai Neshamah — the soul's origin and destination</p>
-      <p class="section-body-text">
-        The body was remarkable. Now the soul. Feigenbaum's commentary on this blessing turns it into an autobiography:
-        who put it there, how it's being kept alive, and what happens when it's taken back.
-        All of it, addressed to you personally.
-      </p>
-    </div>
-
-    <!-- ——— Elohai Neshamah ——— -->
-    <article class="prayer" id="pr-neshamah">
-      <p class="prayer-eyebrow">And I Have a Soul!</p>
-      <p class="prayer-title">Elohai Neshamah<span class="prayer-title-hebrew">אֱלֹהַי נְשָׁמָה</span></p>
-      <p class="prayer-subtitle">My God, the soul You gave me — pure</p>
-
-      <p class="hebrew" dir="rtl">
-        אֱלֹהַי נְשָׁמָה שֶׁנָּתַתָּ בִּי טְהוֹרָה הִיא. אַתָּה בְרָאתָהּ, אַתָּה יְצַרְתָּהּ, אַתָּה נְפַחְתָּהּ בִּי, וְאַתָּה מְשַׁמְּרָהּ בְּקִרְבִּי, וְאַתָּה עָתִיד לִיטְּלָהּ מִמֶּנִּי, וּלְהַחֲזִירָהּ בִּי לֶעָתִיד לָבוֹא. בָּרוּךְ אַתָּה יְהֹוָה, הַמַּחֲזִיר נְשָׁמוֹת לִפְגָרִים מֵתִים.
-      </p>
-
-      <p class="translit">
-        Elohai neshamah shenatata bi tehorah hi. Atah v'ratah, atah yetzartah, atah nefachtah bi, v'atah m'shamrah b'kirbi, v'atah atid lit'lah mimeni, u'lehachazirah bi le'atid lavo. Baruch atah Adonai, hamachazir neshamot lifgarim meitim.
-      </p>
-
-      <p class="feigenbaum-english">
-        "Hashem Who takes care of me — the <em>neshamah</em> that You personally placed in me is a <strong>pure</strong> <em>neshamah</em>!
-        You formed it (uniquely for me); You breathed it into me, You make sure it stays in me (and keeps me alive);
-        and I know that eventually You will take it back.
-        <strong>(Therefore, I must take advantage of it while I can!)</strong>
-        And I believe that You will return it to me at Techiyas Hameisim."
-      </p>
-    </article>
-
-  </section>
-
-  <!-- ═══════════════════════════════════════════════
-       SECTION 4 · I HAVE A TORAH
-       "I Have a Torah!"
-  ═══════════════════════════════════════════════ -->
-  <section class="section-torah" id="sec-torah">
-
-    <div class="section-intro">
-      <div class="feigenbaum-heading">"I Have a Torah!"</div>
-      <h2 class="section-hebrew-title">בִּרְכוֹת הַתּוֹרָה</h2>
-      <p class="section-english-title">Birchot HaTorah — blessings before Torah study</p>
-      <p class="section-body-text">
-        From body to soul to purpose. The Torah blessings are where Feigenbaum gets pastoral —
-        he knows many of us in this room feel ambivalent about the whole enterprise.
-        He doesn't pretend that away. He just says: start anyway.
-      </p>
-    </div>
-
-    <!-- ——— Birchot HaTorah ——— -->
-    <article class="prayer" id="pr-birchot-torah">
-      <p class="prayer-eyebrow">I Have a Torah!</p>
-      <p class="prayer-title">Birchot HaTorah<span class="prayer-title-hebrew">בִּרְכוֹת הַתּוֹרָה</span></p>
-      <p class="prayer-subtitle">Sanctifying Torah study — the day's first intellectual act</p>
-
-      <p class="hebrew" dir="rtl">
-        בָּרוּךְ אַתָּה יְהֹוָה אֱלֹהֵֽינוּ מֶֽלֶךְ הָעוֹלָם, אֲשֶׁר קִדְּשָֽׁנוּ בְּמִצְוֹתָיו, וְצִוָּֽנוּ לַעֲסֹק בְּדִבְרֵי תוֹרָה.
-      </p>
-
-      <p class="translit">
-        Baruch atah Adonai Eloheinu melech ha'olam, asher kid'shanu b'mitzvotav, v'tzivanu la'asok b'divrei Torah.
-      </p>
-
-      <p class="feigenbaum-english">
-        "through Your mitzvos You elevated us; and You commanded us to be continually involved with the words of Torah.
-        (Even though I do not always understand them or find them easy to apply.)
-        But I know that Torah really IS sweet — and therefore I ask:
-        <strong>Please, Hashem, make the words of Your Torah sweet (enjoyable and understandable) to us and to all Jews everywhere.</strong>"
-      </p>
-
-      <!-- FAQ Card -->
-      <details class="faq-card" id="faq-chosen">
-        <summary>
-          <span class="faq-label">FAQ</span>
-          <span class="faq-question">But I do NOT understand the Torah, and to be honest, I am NOT happy that I was stuck being part of the Chosen People! What's so great about it?</span>
-          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="6 9 12 15 18 9"></polyline>
-          </svg>
-        </summary>
-        <div class="faq-body">
-          <p class="faq-answer">
-            Famous question! The bedrock of our emunah is that Hashem spoke at Har Sinai and chose us for a mission.
-            You have questions? Fine. It will take a lifetime to ask all the questions and get answers.
-            But until that happens — <em>get involved with the Torah, get with the program, do the best you can.</em>
-            A good understanding of Torah is given to those who practice it.
-          </p>
-          <div class="faq-insight">
-            <span class="faq-insight-label">Instant Insight</span>
-            As much as we all wish that our daily experience of Torah and mitzvos be uplifting, meaningful, and exciting,
-            the truth is that for many of us, at times in our lives it is not.
-            But therefore, simply put, we must get with the program!
-          </div>
-        </div>
-      </details>
-
-    </article>
-
-  </section>
-
-</div>
-
-<!-- right-side progress rail -->
-<nav class="rail" id="rail" aria-label="Hashkamas HaBoker progress">
-  <a class="rail-seg" href="#sec-hashkamah">
-    <span class="rail-label">I Woke Up!</span>
-  </a>
-  <a class="rail-seg" href="#sec-body">
-    <span class="rail-label">My Body Works!</span>
-  </a>
-  <a class="rail-seg" href="#sec-neshamah">
-    <span class="rail-label">And I Have a Soul!</span>
-  </a>
-  <a class="rail-seg" href="#sec-torah">
-    <span class="rail-label">I Have a Torah!</span>
-  </a>
-  <div class="rail-marker" id="rail-marker">
-    <svg class="bird" viewBox="0 0 42 24" aria-hidden="true">
-      <path class="wing" d="M2 16 Q 9 3, 18 13"/>
-      <path class="wing" d="M24 13 Q 33 3, 40 16"/>
-      <ellipse class="body" cx="21" cy="15" rx="4.6" ry="3.3"/>
-      <circle class="head" cx="21" cy="11.4" r="2.4"/>
-      <circle class="eye"  cx="21.3" cy="11" r="0.75"/>
-    </svg>
+  <div class="section-heading s1">
+    <div class="section-label">השכמת הבוקר · Hashkamas Ha'boker</div>
+    <div class="section-title">"I Woke Up!"</div>
   </div>
-</nav>
+
+  <div class="prayer-block">
+    <div class="prayer-name">מודה אני · Modeh Ani</div>
+    <div class="hebrew">
+      מוֹדֶה אֲנִי לְפָנֶֽיךָ מֶֽלֶךְ חַי<br>
+      וְקַיָּם, שֶׁהֶחֱזַרְתָּ בִּי נִשְׁמָתִי<br>
+      בְּחֶמְלָה, רַבָּה אֱמוּנָתֶֽךָ׃
+    </div>
+    <div class="explanation">
+      <span class="he-inline">מֹודֶה אֲנִי</span> — Thank You, Hashem, for giving my neshamah back to me (which was a merciful thing to do since I have not yet lived up to my full potential, and therefore may not really deserve that); <span class="he-inline">רַבָּה אֱמּונָתֶֽך</span> — Your belief in me is very great! (You believe I am important; my struggles are important; and You believe I can climb up to the next rung — which is why You woke me up. Thank You!)
+    </div>
+    <div class="audio-bar">
+      <button class="play-btn">▶</button>
+      <div><div class="audio-label">Listen</div><div class="audio-title">Modeh Ani</div></div>
+      <div class="progress-bar"></div>
+    </div>
+  </div>
+
+  <div class="prayer-block">
+    <div class="prayer-name">ראשית חכמה</div>
+    <div class="hebrew">
+      רֵאשִׁית חָכְמָה יִרְאַת יְהֹוָה,<br>
+      שֵׂכֶל טוֹב לְכָל עֹשֵׂיהֶם,<br>
+      תְּהִלָּתוֹ עֹמֶדֶת לָעַד׃
+    </div>
+    <div class="hebrew" style="font-size:22px; margin-top:8px;">
+      בָּרוּךְ שֵׁם כְּבוֹד מַלְכוּתוֹ לְעוֹלָם וָעֶד׃
+    </div>
+    <div class="explanation">
+      <span class="he-inline">רֵאשִׁית חָכְמָה</span> — The root of gaining wisdom is יִרְאַת הַשֵּׁם. (If we show Hashem that we are willing to follow the Torah even when we do NOT understand it — then He will reward us by giving us understanding!) A good understanding of Torah is given to those who put it into practice (rather than learn it just to get a good grade, impress others — or get into yeshiva or seminary!). The praise of such a person is eternal (it goes beyond the report card — it will help them navigate life!). We DO want to see Hashem in our lives, therefore we proclaim: May our perception of Hashem's Presence and rulership (<span class="he-inline">שֵׁם כְּבֹוד מַלְכּותוֹ</span>) be increased (<span class="he-inline">בָּרוּךְ</span>) forever (<span class="he-inline">לְעֹולָם וָעֶד</span>).
+    </div>
+  </div>
+
+  <div class="prayer-block">
+    <div class="prayer-name">תורה צוה</div>
+    <div class="hebrew">
+      תּוֹרָה צִוָּה לָנוּ מֹשֶׁה,<br>
+      מוֹרָשָׁה קְהִלַּת יַעֲקֹב׃<br>
+      שְׁמַע בְּנִי מוּסַר אָבִיךָ,<br>
+      וְאַל תִּטֹּשׁ תּוֹרַת אִמֶּךָ׃<br>
+      תּוֹרָה תְּהֵא אֱמוּנָתִי,<br>
+      וְאֵל שַׁדַּי בְּעֶזְרָתִי׃<br>
+      וְאַתֶּם הַדְּבֵקִים בַּיהֹוָה אֱלֹהֵיכֶם,<br>
+      חַיִּים כֻּלְּכֶם הַיּוֹם׃<br>
+      לִישׁוּעָתְךָ קִוִּיתִי יְהֹוָה׃
+    </div>
+    <div class="explanation">
+      <span class="he-inline">תּוֹרָה צִּוָה</span> — The very same Torah that Moshe commanded us (at Har Sinai) is the eternal inheritance of the entire Bnei Yisrael (including me!). Help me understand and to never abandon all that has been handed down to us throughout the generations. May the Torah be the bedrock of my faith and may Hashem assist me in my growth, because I know that those who remain firm and close to Hashem are the ones who are really alive today. Hashem! I look to You for help in dealing with all my struggles!
+    </div>
+  </div>
+
+  <div class="transition-text">OK — but I need "tools" in order to apply all this wisdom and accomplish my goals!</div>
+
+  <div class="section-heading s2">
+    <div class="section-label">על נטילת ידים / אשר יצר</div>
+    <div class="section-title">"My Body Works!"</div>
+  </div>
+
+  <div class="prayer-block">
+    <div class="prayer-name">על נטילת ידים · Al Netilat Yadayim</div>
+    <div class="hebrew">
+      בָּרוּךְ אַתָּה יְהֹוָה אֱלֹהֵֽינוּ<br>
+      מֶֽלֶךְ הָעוֹלָם, אֲשֶׁר קִדְּשָֽׁנוּ<br>
+      בְּמִצְוֹתָיו, וְצִוָּֽנוּ עַל נְטִילַת יָדָֽיִם׃
+    </div>
+    <div class="explanation">
+      <span class="he-inline">בָּרוּךְ אַתָּה יְהֹוָה</span> — You, Hashem, are the Source of everything; <span class="he-inline">אֱלֹהֵינּו</span> — You take care of us; <span class="he-inline">מֶלֶךְ הָעֹולָם</span> — and You rule the entire world; <span class="he-inline">אֲשֶׁר קִדְּשָֽׁנּו בְּמִצְוֹתָיו</span> — and through Your mitzvos You elevated us, <span class="he-inline">וְצִּוָֽנּו עַל נְטִילַת יָדִים</span> — and You commanded us to wash our hands (and thus make sure we put meaning and thought into all we do).
+    </div>
+    <div class="audio-bar">
+      <button class="play-btn">▶</button>
+      <div><div class="audio-label">Listen</div><div class="audio-title">Al Netilat Yadayim</div></div>
+      <div class="progress-bar"></div>
+    </div>
+  </div>
+
+  <div class="prayer-block">
+    <div class="prayer-name">אשר יצר · Asher Yatzar</div>
+    <div class="hebrew">
+      בָּרוּךְ אַתָּה יְהֹוָה אֱלֹהֵינוּ מֶלֶךְ<br>
+      הָעוֹלָם, אֲשֶׁר יָצַר אֶת הָאָדָם<br>
+      בְּחָכְמָה, וּבָרָא בוֹ נְקָבִים נְקָבִים,<br>
+      חֲלוּלִים חֲלוּלִים. גָּלוּי וְיָדוּעַ<br>
+      לִפְנֵי כִּסֵּא כְבוֹדֶךָ, שֶׁאִם יִפָּתֵחַ<br>
+      אֶחָד מֵהֶם אוֹ יִסָּתֵם אֶחָד מֵהֶם,<br>
+      אִי אֶפְשַׁר לְהִתְקַיֵּם וְלַעֲמֹד לְפָנֶיךָ<br>
+      [אֲפִלּוּ שָׁעָה אֶחָת].<br>
+      בָּרוּךְ אַתָּה יְהֹוָה, רוֹפֵא כָל בָּשָׂר<br>
+      וּמַפְלִיא לַעֲשׂוֹת׃
+    </div>
+    <div class="explanation">
+      <span class="he-inline">בָּרוּךְ אַתָּה יְהֹוָה</span> — You, Hashem, are the Source of everything; <span class="he-inline">אֱלֹהֵינּו</span> — You take care of us; <span class="he-inline">מֶלֶךְ הָעֹולָם</span> — and You rule the entire world; You have formed humans with great wisdom (as scientists are continually discovering) and created within us all sorts of openings and cavities. It is quite obvious that even if just one of them would be torn or blocked — it would be impossible for us to survive and stand in front of You (even for a second)! <span class="he-inline">בָּרוּךְ אַתָּה יְהֹוָה</span> — You, Hashem, are the Source of everything; <span class="he-inline">רוֹפֵא כָל בָּשָׂר וּמַפְלִיא לַעֲשׂוֹת</span> — You heal all living things and perform constant miracles.
+    </div>
+    <div class="audio-bar">
+      <button class="play-btn">▶</button>
+      <div><div class="audio-label">Listen</div><div class="audio-title">Asher Yatzar</div></div>
+      <div class="progress-bar"></div>
+    </div>
+  </div>
+
+  <div class="section-heading s3">
+    <div class="section-label">אלהי נשמה · Elohai Neshamah</div>
+    <div class="section-title">"And I Have a Soul!"</div>
+  </div>
+
+  <div class="prayer-block">
+    <div class="prayer-name">אלהי נשמה · Elohai Neshamah</div>
+    <div class="hebrew">
+      אֱלֹהַי, נְשָׁמָה שֶׁנָּתַתָּ בִּי<br>
+      טְהוֹרָה הִיא׃ אַתָּה בְרָאתָהּ,<br>
+      אַתָּה יְצַרְתָּהּ, אַתָּה נְפַחְתָּהּ בִּי,<br>
+      וְאַתָּה מְשַׁמְּרָהּ בְּקִרְבִּי,<br>
+      וְאַתָּה עָתִיד לִטְּלָהּ מִמֶּנִּי,<br>
+      וּלְהַחֲזִירָהּ בִּי לֶעָתִיד לָבוֹא׃<br>
+      כָּל זְמַן שֶׁהַנְּשָׁמָה בְּקִרְבִּי<br>
+      מוֹדֶה אֲנִי לְפָנֶיךָ יְהֹוָה אֱלֹהַי<br>
+      וֵאלֹהֵי אֲבוֹתַי, רִבּוֹן כָּל הַמַּעֲשִׂים<br>
+      אֲדוֹן כָּל הַנְּשָׁמוֹת׃<br>
+      בָּרוּךְ אַתָּה יְהֹוָה, הַמַּחֲזִיר<br>
+      נְשָׁמוֹת לִפְגָרִים מֵתִים׃
+    </div>
+    <div class="explanation">
+      <span class="he-inline">אֱלֹהַי נְשָׁמָה</span> — Hashem Who takes care of me — the neshamah that You personally placed in me is a pure neshamah! You formed it (uniquely for me); You breathed it into me, You make sure it stays in me (and keeps me alive); and I know that eventually You will take it back. (Therefore, I must take advantage of it while I can!) And I believe that You will return it to me at Techiyas Hameisim. As long as my neshamah is in me, I thank You, Hashem, Who takes care of me and Bnei Yisrael throughout our history; You are the Master of all that happens and of all souls. <span class="he-inline">בָּרוּךְ אַתָּה יְהֹוָה</span> — You, Hashem, are the Source of everything; <span class="he-inline">הַמַּחֲזִיר נְשָׁמוֹת לִפְגָרִים מֵתִים</span> — Who restores the neshamahs to dead bodies.
+    </div>
+    <div class="audio-bar">
+      <button class="play-btn">▶</button>
+      <div><div class="audio-label">Listen</div><div class="audio-title">Elohai Neshamah</div></div>
+      <div class="progress-bar"></div>
+    </div>
+  </div>
+
+  <div class="transition-text">OK — I have a body and a soul. What can I do to ensure they work together successfully?</div>
+
+  <div class="section-heading s4">
+    <div class="section-label">ברכות התורה · Birchot HaTorah</div>
+    <div class="section-title">"I Have a Torah!"</div>
+  </div>
+
+  <div class="prayer-block">
+    <div class="prayer-name">ברכות התורה · Birchot HaTorah</div>
+
+    <div class="hebrew">
+      בָּרוּךְ אַתָּה יְהֹוָה אֱלֹהֵֽינוּ<br>
+      מֶֽלֶךְ הָעוֹלָם, אֲשֶׁר קִדְּשָֽׁנוּ<br>
+      בְּמִצְוֹתָיו, וְצִוָּֽנוּ לַעֲסֹק<br>
+      בְּדִבְרֵי תוֹרָה׃
+    </div>
+    <div class="explanation">
+      <span class="he-inline">בָּרוּךְ אַתָּה יְהֹוָה</span> — You, Hashem, are the Source of everything; <span class="he-inline">אֱלֹהֵינּו</span> — You take care of us; <span class="he-inline">מֶלֶךְ הָעֹולָם</span> — and You rule the entire world; <span class="he-inline">אֲשֶׁר קִדְּשָׁנּו בְּמִצְוֹתָיו</span> — and through Your mitzvos You elevated us; <span class="he-inline">וְצִּוָנּו לַעֲסֹוק בְּדִבְרֵי תֹורָה</span> — and You commanded us to be continually involved with the words of Torah. (Even though I do not always understand them or find them easy to apply.)
+    </div>
+
+    <div class="spacer"></div>
+
+    <div class="hebrew">
+      וְהַעֲרֶב נָא יְהֹוָה אֱלֹהֵינוּ,<br>
+      אֶת דִּבְרֵי תוֹרָתְךָ בְּפִינוּ<br>
+      וּבְפִיּוֹת עַמְּךָ בֵּית יִשְׂרָאֵל,<br>
+      וְנִהְיֶה אֲנַחְנוּ וְצֶאֱצָאֵינוּ<br>
+      וְצֶאֱצָאֵי עַמְּךָ בֵּית יִשְׂרָאֵל,<br>
+      כֻּלָּנוּ יוֹדְעֵי שְׁמֶךָ,<br>
+      וְלוֹמְדֵי תוֹרָתֶך לִשְׁמָהּ׃<br>
+      בָּרוּךְ אַתָּה יְהֹוָה,<br>
+      הַמְלַמֵּד תּוֹרָה לְעַמּוֹ יִשְׂרָאֵל׃
+    </div>
+    <div class="explanation">
+      But I know that Torah really IS sweet — and therefore I ask: <span class="he-inline">וְהַעֲרֶב נָא</span> — Please, Hashem, make the words of Your Torah sweet (enjoyable and understandable) to us and to all Jews everywhere; so that all of us, and our children and our grandchildren, will all acknowledge Your constant Presence (in our lives) and we will all study Your Torah for its own sake (not just to get reward). <span class="he-inline">בָּרוּךְ אַתָּה יְהֹוָה</span> — You, Hashem, are the Source of everything; <span class="he-inline">הַמְלַמֵּד תּוֹרָה לְעַמּוֹ יִשְׂרָאֵל</span> — Who personally teaches Torah to (each member of) His nation — Bnei Yisrael (including me!).
+    </div>
+
+    <div class="spacer"></div>
+
+    <div class="hebrew">
+      בָּרוּךְ אַתָּה יְהֹוָה אֱלֹהֵינוּ<br>
+      מֶלֶךְ הָעוֹלָם, אֲשֶׁר בָּחַר בָּנוּ<br>
+      מִכָּל הָעַמִּים וְנָתַן לָנוּ<br>
+      אֶת תּוֹרָתוֹ׃<br>
+      בָּרוּךְ אַתָּה יְהֹוָה נוֹתֵן הַתּוֹרָה׃
+    </div>
+    <div class="explanation">
+      I don't feel, "Oh, my bad luck! I'm stuck with this Torah." Rather, I'm proud to be part of this great mission to the world — and therefore I proclaim: <span class="he-inline">אֲשֶׁר בָּחַר בָּנּו מִכָּל הָעַמִּים</span> — (we are so happy that) You have chosen us, Bnei Yisrael, out of all the nations of the world; <span class="he-inline">וְנָתַן לָנּו אֶת תּוֹרָתוֹ</span> — and have given us Your Torah. <span class="he-inline">בָּרוּךְ אַתָּה יְהֹוָה נוֹתֵן הַתּוֹרָה</span> — You, Hashem, are the Source of everything; Who gives (us) the Torah.
+    </div>
+
+    <div class="audio-bar">
+      <button class="play-btn">▶</button>
+      <div><div class="audio-label">Listen</div><div class="audio-title">Birchot HaTorah</div></div>
+      <div class="progress-bar"></div>
+    </div>
+  </div>
+
+  <details class="faq-card">
+    <summary>
+      <span class="faq-label">FAQ</span>
+      But I do NOT understand the Torah, and to be honest, I am NOT happy that I was stuck being part of the Chosen People! What's so great about it?
+    </summary>
+    <div class="faq-body">
+      <div class="faq-answer">
+        <strong>Answer</strong>
+        Famous question! See Appendix 4.
+      </div>
+      <div class="instant-insight">
+        <strong>Instant Insight</strong>
+        As much as we all wish that our daily experience of Torah and mitzvos be uplifting, meaningful, and exciting, the truth is that for many of us, at times in our lives it is not. But the bedrock of our emunah is that Hashem spoke at Har Sinai and chose us for a mission (which is borne out by our miraculous existence until today — to the consternation of much of the rest of the world!), and therefore, simply put, we must get with the program! That is the first brachah of <span class="he-inline-sm">לַעֲסֹוק</span> — you just have to do it to the best of your ability. You have questions? Fine. It will take a lifetime to ask all the questions and get answers. But until that happens, we must start with <span class="he-inline-sm">לַעֲסֹוק</span> — get involved with the Torah, get with the program, and do the best we can. As we said earlier: <span class="he-inline-sm">שֵׂכֶל טוֹב</span> — A good understanding of Torah is given <span class="he-inline-sm">לְכָל עֹשֵׂיהֶם</span> — to those who practice it.<br><br>
+        Despite this need to "do it" no matter what, since we all know deep down that there must be "A Plan" and that there is depth to Torah that we simply don't understand yet, we then ask Hashem <span class="he-inline-sm">וְהַעֲרֶב נָא</span> — please, make it sweet and understandable. Why? First of all, it is easier to "take vitamins and medicines" (it is Torah that keeps us spiritually healthy) that are sweet. But in addition, <span class="he-inline-sm">וְנִהְיֶה אֲנַחְנוּ וְצֶאֱצָאֵינוּ</span> — it will be easier for us to hand it down to OUR kids if we and they enjoy it! We then end the series of three brachos by proclaiming that as much as we do or don't understand — <span class="he-inline-sm">אֲשֶׁר בָּחַר בָּנוּ</span> — we thank Hashem for choosing us for His great mission to the world.
+      </div>
+    </div>
+  </details>
+
+  <div class="spacer"></div>
 
 </main>
 
-<!-- ——— Footer ——— -->
-<footer class="page-footer" style="position:relative;z-index:5;">
-  Content from <em>The Feigenbaum Siddur</em> (Mosaica Press, 2022).<br>
-  Draft prototype — not for distribution.
-  <strong>DavenAlong · Feigenbaum Draft · For Review Only</strong>
-</footer>
-
 <script>
-/* ——————————————————————————————————————
-   Entry path selector
-—————————————————————————————————————— */
-function setPath(path) {
-  document.getElementById('btn-new').classList.toggle('active', path === 'new');
-  document.getElementById('btn-returning').classList.toggle('active', path === 'returning');
-  // In production, path would control which UI elements are shown
-  // (e.g., "new" might default to transliteration + English only)
-  if (path === 'new') {
-    document.body.classList.remove('show-hebrew');
-    document.body.classList.add('show-translit', 'show-english');
-    // Update mode buttons
-    document.querySelector('[data-mode="hebrew"]').classList.remove('on');
-    document.querySelector('[data-mode="translit"]').classList.add('on');
-    document.querySelector('[data-mode="english"]').classList.add('on');
-  } else {
-    document.body.classList.add('show-hebrew', 'show-translit', 'show-english');
-    document.querySelector('[data-mode="hebrew"]').classList.add('on');
-    document.querySelector('[data-mode="translit"]').classList.add('on');
-    document.querySelector('[data-mode="english"]').classList.add('on');
-  }
-}
-
-/* ——————————————————————————————————————
-   Display mode toggle (multi-select)
-—————————————————————————————————————— */
-document.getElementById('modes').addEventListener('click', function(e) {
-  const btn = e.target.closest('button[data-mode]');
-  if (!btn) return;
-  const mode = btn.dataset.mode;
-  const on = btn.classList.toggle('on');
-  document.body.classList.toggle('show-' + mode, on);
-});
-
-/* ——————————————————————————————————————
-   Play button (visual toggle only — no audio wired in prototype)
-—————————————————————————————————————— */
-document.getElementById('play').addEventListener('click', function() {
-  this.classList.toggle('playing');
-});
-
-/* ——————————————————————————————————————
-   Right-side rail — active segment on scroll
-—————————————————————————————————————— */
-(function() {
-  const sections = [
-    { id: 'sec-hashkamah', seg: 0 },
-    { id: 'sec-body',      seg: 1 },
-    { id: 'sec-neshamah',  seg: 2 },
-    { id: 'sec-torah',     seg: 3 }
-  ];
-  const segs = document.querySelectorAll('.rail-seg');
-  const marker = document.getElementById('rail-marker');
-  const rail   = document.getElementById('rail');
-
-  function updateRail() {
-    const mid = window.innerHeight / 2;
-    let active = 0;
-    sections.forEach(function(s) {
-      const el = document.getElementById(s.id);
-      if (!el) return;
-      const rect = el.getBoundingClientRect();
-      if (rect.top <= mid) active = s.seg;
+  document.querySelectorAll('.entry-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.entry-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
     });
-    segs.forEach(function(seg, i) {
-      seg.classList.toggle('active', i === active);
+  });
+  document.querySelectorAll('.mode-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
     });
-    // Position the bird marker alongside the active segment
-    if (segs[active]) {
-      const segRect  = segs[active].getBoundingClientRect();
-      const railRect = rail.getBoundingClientRect();
-      const segMid   = segRect.top + segRect.height / 2 - railRect.top;
-      marker.style.top = segMid + 'px';
-    }
-  }
-
-  window.addEventListener('scroll', updateRail, { passive: true });
-  updateRail();
-})();
-
-/* ——————————————————————————————————————
-   Time-of-day body attribute
-—————————————————————————————————————— */
-(function() {
-  const h = new Date().getHours();
-  const time = h < 7 ? 'dawn' : h < 13 ? 'morning' : 'midday';
-  document.body.dataset.time = time;
-})();
+  });
 </script>
 </body>
 </html>
