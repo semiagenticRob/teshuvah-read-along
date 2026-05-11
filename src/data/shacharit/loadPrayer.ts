@@ -1,9 +1,23 @@
+import type {
+  BundledCommentary,
+  BundledPrayerSegment,
+  PrayerSource,
+} from '../bundled/shacharit';
+
 export interface BundledPrayer {
   englishName: string;
   hebrewName: string;
+  /** Joined newline-delimited text (legacy consumers). */
   hebrewText: string;
   translitText: string;
   englishText: string;
+  /** Per-line arrays — preferred for new consumers (commentary anchoring, minyan-only). */
+  hebrewLines: string[];
+  translitLines: string[];
+  englishLines: string[];
+  commentary: BundledCommentary[];
+  segments: BundledPrayerSegment[];
+  source: PrayerSource;
 }
 
 // Lazy require thunks. Metro still bundles every JSON (static require paths are
@@ -100,15 +114,30 @@ export function loadBundledPrayer(prayerId: string): BundledPrayer {
     trLines = [];
   }
 
-  // Pad translit to match he-line count so whitespace-based word alignment works.
-  // Missing/unvoweled lines become empty strings → no translit rendered for those words.
   const paddedTranslit = heLines.map((_, i) => trLines[i] ?? '');
+  const paddedEnglish = heLines.map((_, i) => enLines[i] ?? '');
 
   const hebrewText   = heLines.join('\n').trim();
   const englishText  = enLines.join('\n').trim();
   const translitText = paddedTranslit.join('\n').trim();
 
-  const result: BundledPrayer = { englishName, hebrewName, hebrewText, translitText, englishText };
+  const commentary: BundledCommentary[] = Array.isArray(raw.commentary) ? raw.commentary : [];
+  const segments: BundledPrayerSegment[] = Array.isArray(raw.segments) ? raw.segments : [];
+  const source: PrayerSource = raw.source === 'feigenbaum' ? 'feigenbaum' : 'sefaria';
+
+  const result: BundledPrayer = {
+    englishName,
+    hebrewName,
+    hebrewText,
+    translitText,
+    englishText,
+    hebrewLines: heLines,
+    translitLines: paddedTranslit,
+    englishLines: paddedEnglish,
+    commentary,
+    segments,
+    source,
+  };
   cache.set(prayerId, result);
   return result;
 }

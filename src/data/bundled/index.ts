@@ -8,7 +8,14 @@ import { getBundledPrayerText as getMinchaText } from './mincha';
 import { getBundledPrayerText as getMaarivText } from './maariv';
 import { getBundledPrayerText as getBirkatHamazonText } from './birkatHamazon';
 
-export type { BundledPrayerText, BundledFootnoteEntry } from './shacharit';
+export type {
+  BundledPrayerText,
+  BundledCommentary,
+  BundledPrayerSegment,
+  CommentaryTone,
+  PrayerSource,
+  VariantTag,
+} from './shacharit';
 
 const SERVICE_BUNDLED: Record<string, (prayerId: string) => BundledPrayerText | undefined> = {
   shacharit: getShacharitText,

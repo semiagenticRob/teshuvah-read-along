@@ -15,15 +15,16 @@
     "@expo-google-fonts/cormorant-garamond": "^0.4.1",
     "@expo-google-fonts/eb-garamond": "^0.4.2",
     "@expo-google-fonts/frank-ruhl-libre": "^0.4.1",
+    "@hebcal/core": "^6.4.1",
     "@react-native-async-storage/async-storage": "2.1.2",
     "@react-native-community/slider": "4.5.5",
     "@react-navigation/native": "^7.0.0",
     "@react-navigation/stack": "^7.0.0",
-    "axios": "^1.7.0",
     "expo": "~52.0.0",
     "expo-av": "~15.0.2",
     "expo-font": "~13.0.4",
     "expo-linear-gradient": "~14.0.2",
+    "expo-location": "~18.0.10",
     "expo-speech": "~13.0.0",
     "react": "18.3.1",
     "react-native": "0.76.0",
@@ -60,6 +61,12 @@
       "js",
       "jsx",
       "json"
-    ]
+    ],
+    "transformIgnorePatterns": [
+      "node_modules/(?!((jest-)?react-native|@react-native(-community)?|expo(nent)?|@expo(nent)?/.*|@expo-google-fonts/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|react-native-svg))"
+    ],
+    "moduleNameMapper": {
+      "^@hebcal/core$": "<rootDir>/node_modules/@hebcal/core/dist/esm/index.js"
+    }
   }
 }

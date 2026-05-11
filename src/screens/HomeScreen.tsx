@@ -14,6 +14,7 @@ import type { StackScreenProps } from '@react-navigation/stack';
 import { RootStackParamList } from '../types';
 import { getAvailableServices } from '../data/serviceRegistry';
 import { FONTS, INK, PARCHMENT, SECTIONS } from '../theme/shacharitTheme';
+import { ZmanimHeader } from '../components/ZmanimHeader';
 
 type Props = StackScreenProps<RootStackParamList, 'Home'>;
 
@@ -45,17 +46,19 @@ export const HomeScreen: React.FC<Props> = ({ navigation }) => {
           </ImageBackground>
         </View>
 
+        <ZmanimHeader />
+
         {/* Service cards */}
         <View style={styles.serviceList}>
           {SERVICES.map((service) => (
             <Pressable
               key={service.id}
               disabled={!service.available}
-              onPress={() =>
-                service.id === 'shacharit'
-                  ? navigation.navigate('ShacharitScroll')
-                  : navigation.navigate('PrayerList', { serviceId: service.id })
-              }
+              onPress={() => {
+                if (service.id === 'shacharit') {
+                  navigation.navigate('ShacharitScroll');
+                }
+              }}
               style={({ pressed }) => [
                 styles.serviceCard,
                 !service.available && styles.serviceCardDisabled,

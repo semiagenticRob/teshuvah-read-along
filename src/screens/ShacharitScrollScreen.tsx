@@ -116,12 +116,14 @@ function PrayerItem({
           sectionId={sectionId}
           englishName={data.englishName}
           hebrewName={data.hebrewName}
-          hebrewText={data.hebrewText}
-          translitText={data.translitText}
-          englishText={data.englishText}
+          hebrewLines={data.hebrewLines}
+          translitLines={data.translitLines}
+          englishLines={data.englishLines}
           startIdx={startIdx}
           onTapWord={onTapWord}
           renderHalo={renderHalo}
+          commentary={data.commentary}
+          segments={data.segments}
         />
       </View>
     </View>

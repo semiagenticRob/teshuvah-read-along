@@ -1,0 +1,13 @@
+{
+  "_comment": "Maps prayer IDs to their line ranges in content/feigenbaum/feigenbaum-siddur-extracted.txt. Editorial work — extracted line ranges must be verified against the PDF before extraction is run. Add entries here as content production progresses.",
+  "source": "content/feigenbaum/feigenbaum-siddur-extracted.txt",
+  "prayers": {
+    "modeh_ani": {
+      "ref": "Feigenbaum Teen Siddur, Nusach Ashkenaz, Weekday, Shacharis, Hashkamas Ha'boker, Modeh Ani",
+      "lineStart": 623,
+      "lineEnd": 668,
+      "hebrewTitle": "מוֹדֶה אֲנִי",
+      "notes": "Sefaria groups Modeh Ani + Reishis Chochmah under prayer id modeh_ani; Torah Tzivah belongs to birchot_hatorah. Line range 623-668 covers Modeh Ani + Reishis Chochmah's Hebrew and English commentary in Feigenbaum's combined section."
+    }
+  }
+}

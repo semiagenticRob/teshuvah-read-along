@@ -7,18 +7,21 @@ import AudioPlayerPlaceholder from './AudioPlayerPlaceholder';
 import PairRow from './PairRow';
 import { PRAYER_META } from '../../data/shacharit/prayerMeta';
 import { useSettingsStore } from '../../store/settingsStore';
+import type { BundledCommentary, BundledPrayerSegment } from '../../data/bundled/shacharit';
 
 interface Props {
   prayerId: string;
   englishName: string;
   hebrewName: string;
   sectionId: SectionId;
-  hebrewText: string;
-  translitText: string;
-  englishText: string;
+  hebrewLines: string[];
+  translitLines: string[];
+  englishLines: string[];
   startIdx: number;
   onTapWord: (globalIdx: number) => void;
   renderHalo: (globalIdx: number) => React.ReactNode;
+  commentary?: BundledCommentary[];
+  segments?: BundledPrayerSegment[];
 }
 
 function PrayerBlock(p: Props) {
@@ -27,6 +30,10 @@ function PrayerBlock(p: Props) {
   const spec = SECTIONS[p.sectionId];
   const meta = PRAYER_META[p.prayerId];
   const lanes = useSettingsStore(s => s.displayLanes);
+
+  const englishBlock = lanes.english
+    ? p.englishLines.filter(Boolean).join('\n')
+    : '';
 
   return (
     <View style={[styles.wrap, { borderLeftColor: spec.accent }]}>
@@ -57,18 +64,20 @@ function PrayerBlock(p: Props) {
 
       {(lanes.hebrew || lanes.translit) && (
         <PairRow
-          hebrew={p.hebrewText}
-          translit={p.translitText}
+          prayerId={p.prayerId}
+          hebrewLines={p.hebrewLines}
+          translitLines={p.translitLines}
           showHebrew={lanes.hebrew}
           showTranslit={lanes.translit}
           prayerStartIdx={p.startIdx}
           onTapWord={p.onTapWord}
           renderHalo={p.renderHalo}
+          commentary={p.commentary}
+          segments={p.segments}
+          accent={spec.accent}
         />
       )}
-      {lanes.english && p.englishText ? (
-        <Text style={styles.english}>{p.englishText}</Text>
-      ) : null}
+      {englishBlock ? <Text style={styles.english}>{englishBlock}</Text> : null}
     </View>
   );
 }

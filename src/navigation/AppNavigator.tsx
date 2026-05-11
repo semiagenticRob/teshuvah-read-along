@@ -3,65 +3,81 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { RootStackParamList } from '../types';
 import { HomeScreen } from '../screens/HomeScreen';
-import { PrayerListScreen } from '../screens/PrayerListScreen';
-import { ReadAlongScreen } from '../screens/ReadAlongScreen';
 import ShacharitScrollScreen from '../screens/ShacharitScrollScreen';
 import { SettingsScreen } from '../screens/SettingsScreen';
 import { AboutScreen } from '../screens/AboutScreen';
+import { WelcomeScreen } from '../screens/onboarding/WelcomeScreen';
+import { SkillTierScreen } from '../screens/onboarding/SkillTierScreen';
+import { LocationPermissionScreen } from '../screens/onboarding/LocationPermissionScreen';
+import { useSettingsStore } from '../store/settingsStore';
+import { PARCHMENT, INK } from '../theme/shacharitTheme';
 
 const Stack = createStackNavigator<RootStackParamList>();
 
 export const AppNavigator: React.FC = () => {
+  const hasCompletedOnboarding = useSettingsStore((state) => state.hasCompletedOnboarding);
+
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="Home"
         screenOptions={{
           headerStyle: {
-            backgroundColor: '#FDFAF6',
+            backgroundColor: PARCHMENT,
             elevation: 0,
             shadowOpacity: 0,
             borderBottomWidth: 0,
           },
-          headerTintColor: '#1A365D',
+          headerTintColor: INK.strong,
           headerTitleStyle: {
             fontWeight: '600',
           },
           cardStyle: {
-            backgroundColor: '#FDFAF6',
+            backgroundColor: PARCHMENT,
           },
         }}
       >
-        <Stack.Screen
-          name="Home"
-          component={HomeScreen}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="PrayerList"
-          component={PrayerListScreen}
-          options={{ title: 'Prayers' }}
-        />
-        <Stack.Screen
-          name="ReadAlong"
-          component={ReadAlongScreen}
-          options={{ title: 'Read Along' }}
-        />
-        <Stack.Screen
-          name="ShacharitScroll"
-          component={ShacharitScrollScreen}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="Settings"
-          component={SettingsScreen}
-          options={{ title: 'Settings' }}
-        />
-        <Stack.Screen
-          name="About"
-          component={AboutScreen}
-          options={{ title: 'About' }}
-        />
+        {hasCompletedOnboarding ? (
+          <>
+            <Stack.Screen
+              name="Home"
+              component={HomeScreen}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="ShacharitScroll"
+              component={ShacharitScrollScreen}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="Settings"
+              component={SettingsScreen}
+              options={{ title: 'Settings' }}
+            />
+            <Stack.Screen
+              name="About"
+              component={AboutScreen}
+              options={{ title: 'About' }}
+            />
+          </>
+        ) : (
+          <>
+            <Stack.Screen
+              name="Welcome"
+              component={WelcomeScreen}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="SkillTier"
+              component={SkillTierScreen}
+              options={{ headerShown: false, gestureEnabled: true }}
+            />
+            <Stack.Screen
+              name="LocationPermission"
+              component={LocationPermissionScreen}
+              options={{ headerShown: false, gestureEnabled: true }}
+            />
+          </>
+        )}
       </Stack.Navigator>
     </NavigationContainer>
   );

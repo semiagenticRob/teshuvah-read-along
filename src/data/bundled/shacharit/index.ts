@@ -1,18 +1,49 @@
 /**
  * Index of bundled Shacharit prayer text data.
- * Pre-fetched from Sefaria API — no network required for these prayers.
+ * Sefaria-sourced today; Feigenbaum-sourced after V1 content migration.
  */
 
-export interface BundledFootnoteEntry {
+export type CommentaryTone =
+  | 'kavanah'
+  | 'halacha'
+  | 'historical'
+  | 'translation-help'
+  | 'faq';
+
+export interface BundledCommentary {
   lineIndex: number;
-  footnotes: { marker: string; text: string }[];
+  wordIndex?: number;
+  marker: string;
+  text: string;
+  audioUri?: string;
+  tone?: CommentaryTone;
+  estimatedReadMs?: number;
 }
+
+export type VariantTag =
+  | 'tachanun-skip'
+  | 'rosh-chodesh'
+  | 'aseret-ymei-teshuva'
+  | 'fast';
+
+export interface BundledPrayerSegment {
+  lineIndex: number;
+  minyanOnly?: boolean;
+  minyanLabel?: string;
+  variantTag?: VariantTag;
+  variantMode?: 'omit' | 'include-only';
+  simplifiedOmit?: boolean;
+}
+
+export type PrayerSource = 'sefaria' | 'feigenbaum';
 
 export interface BundledPrayerText {
   ref: string;
   he: string[];
   text: string[];
-  footnotes?: BundledFootnoteEntry[];
+  commentary?: BundledCommentary[];
+  segments?: BundledPrayerSegment[];
+  source?: PrayerSource;
   heTitle: string;
 }
 

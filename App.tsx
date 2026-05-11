@@ -13,6 +13,7 @@ import { usePrayerProgress } from './src/hooks/usePrayerProgress';
 
 const App: React.FC = () => {
   const loadSettings = useSettingsStore((state) => state.loadSettings);
+  const settingsLoaded = useSettingsStore((state) => state.isLoaded);
 
   useEffect(() => {
     loadSettings();
@@ -28,7 +29,7 @@ const App: React.FC = () => {
     CormorantGaramond_500Medium_Italic,
   });
 
-  if (!fontsLoaded) {
+  if (!fontsLoaded || !settingsLoaded) {
     return (
       <View style={{ flex: 1, backgroundColor: '#f6e9d2', alignItems: 'center', justifyContent: 'center' }}>
         <ActivityIndicator color="#b07a1c" />

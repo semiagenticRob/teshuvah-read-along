@@ -31,7 +31,7 @@ const SERVICE_REGISTRY: ServiceDefinition[] = [
     eyebrow: 'II · Afternoon',
     nusach: 'ashkenaz',
     getPrayers: getMinchaPrayers,
-    available: true,
+    available: false,
   },
   {
     id: 'maariv',
@@ -40,7 +40,7 @@ const SERVICE_REGISTRY: ServiceDefinition[] = [
     eyebrow: 'III · Evening',
     nusach: 'ashkenaz',
     getPrayers: getMaarivPrayers,
-    available: true,
+    available: false,
   },
   {
     id: 'birkat_hamazon',
@@ -49,7 +49,7 @@ const SERVICE_REGISTRY: ServiceDefinition[] = [
     eyebrow: 'Blessing',
     nusach: 'ashkenaz',
     getPrayers: getBirkatHamazonPrayers,
-    available: true,
+    available: false,
   },
 ];
 

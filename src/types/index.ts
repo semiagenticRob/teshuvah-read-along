@@ -93,27 +93,30 @@ export interface PrayerService {
   prayers: Prayer[];
 }
 
-// ===== Sefaria API Types =====
-
-export interface SefariaTextResponse {
-  ref: string;
-  he: string | string[];
-  text: string | string[];
-  sectionNames: string[];
-  titleVariants: string[];
-  heTitle: string;
-}
-
 // ===== Navigation Types =====
 
 export type RootStackParamList = {
+  Welcome: undefined;
+  SkillTier: undefined;
+  LocationPermission: undefined;
   Home: undefined;
-  PrayerList: { serviceId: string };
-  ReadAlong: { serviceId: string; prayerIndex: number };
   ShacharitScroll: undefined;
   Settings: undefined;
   About: undefined;
 };
+
+// ===== Onboarding / user profile =====
+
+export type UserTier = 'new' | 'returning' | 'fluent';
+
+export type PrayerSetSize = 'simplified' | 'full';
+
+export interface UserLocation {
+  latitude: number;
+  longitude: number;
+  label?: string;
+  source: 'device' | 'manual';
+}
 
 // ===== Day of Week (for varying prayers) =====
 

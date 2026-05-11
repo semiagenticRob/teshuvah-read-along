@@ -13,7 +13,13 @@
       "package": "com.semiagenticrob.teshuvahreadalong"
     },
     "plugins": [
-      "expo-font"
+      "expo-font",
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "Daven Along uses your location to show today's davening times (zmanim) for where you are."
+        }
+      ]
     ]
   }
 }
