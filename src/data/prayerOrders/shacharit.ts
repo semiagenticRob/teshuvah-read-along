@@ -175,7 +175,8 @@ const SHACHARIT_PRAYERS: PrayerDefinition[] = [
 
 /**
  * Returns the full Shacharit prayer list as Prayer objects.
- * Text content (sections/lines) is initially empty — loaded via prayerTextService.
+ * Text content (sections/lines) is initially empty — actual Hebrew/English/
+ * transliteration is loaded by `loadBundledPrayer` in src/data/shacharit/.
  */
 export function getShacharitPrayers(): Prayer[] {
   return SHACHARIT_PRAYERS.map((def) => ({
