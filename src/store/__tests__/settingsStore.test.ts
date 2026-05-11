@@ -8,7 +8,6 @@ jest.mock('@react-native-async-storage/async-storage', () =>
 const resetStoreToDefaults = () => {
   useSettingsStore.setState({
     textSize: 'medium',
-    displayMode: 'all',
     defaultSpeed: 1.0,
     nusach: 'ashkenaz',
     isLoaded: false,
@@ -113,7 +112,7 @@ describe('loadSettings migration', () => {
   it('treats existing core-settings install as upgrading user → returning + onboarded', async () => {
     await AsyncStorage.setItem(
       '@teshuvah_settings',
-      JSON.stringify({ textSize: 'large', displayMode: 'hebrew_translit', defaultSpeed: 1.0, nusach: 'ashkenaz' }),
+      JSON.stringify({ textSize: 'large', defaultSpeed: 1.0, nusach: 'ashkenaz' }),
     );
     await useSettingsStore.getState().loadSettings();
     const s = useSettingsStore.getState();

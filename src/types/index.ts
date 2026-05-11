@@ -4,8 +4,6 @@ export type Nusach = 'ashkenaz' | 'sefard' | 'edot_hamizrach';
 
 export type AudioSource = 'recorded' | 'tts';
 
-export type DisplayMode = 'hebrew' | 'hebrew_translit' | 'hebrew_english' | 'all';
-
 export type TextSize = 'small' | 'medium' | 'large' | 'xlarge';
 
 export type PlaybackSpeed = number;

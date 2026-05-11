@@ -1,7 +1,6 @@
 import { create } from 'zustand';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
-  DisplayMode,
   Nusach,
   PlaybackSpeed,
   PrayerSetSize,
@@ -29,7 +28,6 @@ interface PersistedProfile {
 
 interface SettingsState {
   textSize: TextSize;
-  displayMode: DisplayMode;
   defaultSpeed: PlaybackSpeed;
   nusach: Nusach;
   isLoaded: boolean;
@@ -41,7 +39,6 @@ interface SettingsState {
   location: UserLocation | null;
 
   setTextSize: (size: TextSize) => void;
-  setDisplayMode: (mode: DisplayMode) => void;
   setDefaultSpeed: (speed: PlaybackSpeed) => void;
   setNusach: (nusach: Nusach) => void;
   loadSettings: () => Promise<void>;
@@ -73,7 +70,6 @@ const persistCoreSettings = async (state: SettingsState) => {
     SETTINGS_STORAGE_KEY,
     JSON.stringify({
       textSize: state.textSize,
-      displayMode: state.displayMode,
       defaultSpeed: state.defaultSpeed,
       nusach: state.nusach,
     }),
@@ -96,7 +92,6 @@ const persistLanes = async (lanes: DisplayLanes) => {
 
 export const useSettingsStore = create<SettingsState>((set, get) => ({
   textSize: 'medium',
-  displayMode: 'all',
   defaultSpeed: 1.0,
   nusach: 'ashkenaz',
   isLoaded: false,
@@ -109,11 +104,6 @@ export const useSettingsStore = create<SettingsState>((set, get) => ({
 
   setTextSize: (textSize) => {
     set({ textSize });
-    persistCoreSettings(get());
-  },
-
-  setDisplayMode: (displayMode) => {
-    set({ displayMode });
     persistCoreSettings(get());
   },
 
@@ -183,7 +173,6 @@ export const useSettingsStore = create<SettingsState>((set, get) => ({
         const parsed = JSON.parse(stored);
         set({
           textSize: parsed.textSize ?? 'medium',
-          displayMode: parsed.displayMode ?? 'all',
           defaultSpeed: parsed.defaultSpeed ?? 1.0,
           nusach: parsed.nusach ?? 'ashkenaz',
         });

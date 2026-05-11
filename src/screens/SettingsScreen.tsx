@@ -15,7 +15,6 @@ import * as Location from 'expo-location';
 import type { StackScreenProps } from '@react-navigation/stack';
 import { useSettingsStore } from '../store/settingsStore';
 import {
-  DisplayMode,
   PLAYBACK_SPEED_PRESETS,
   PrayerSetSize,
   RootStackParamList,
@@ -39,13 +38,6 @@ const TIER_LABELS: Record<UserTier, { label: string; description: string }> = {
   new: { label: 'New to davening', description: 'Hebrew + transliteration + English, simplified set' },
   returning: { label: 'Returning', description: 'Hebrew + transliteration, full service' },
   fluent: { label: 'Fluent', description: 'Hebrew only, full service' },
-};
-
-const DISPLAY_MODE_LABELS: Record<DisplayMode, string> = {
-  hebrew: 'Hebrew only',
-  hebrew_translit: 'Hebrew + transliteration',
-  hebrew_english: 'Hebrew + English',
-  all: 'All three',
 };
 
 export const SettingsScreen: React.FC<Props> = () => {
@@ -332,26 +324,6 @@ export const SettingsScreen: React.FC<Props> = () => {
               <Text style={[styles.segmentLabel, store.textSize === size && styles.segmentLabelSelected]}>
                 {TEXT_SIZE_LABELS[size]}
               </Text>
-            </Pressable>
-          ))}
-        </View>
-      </Section>
-
-      {/* Display mode (legacy enum — kept for any consumer still reading it) */}
-      <Section title="Display preset" subtitle="Quick preset, overridden by the lane toggles above.">
-        <View style={styles.column}>
-          {(Object.keys(DISPLAY_MODE_LABELS) as DisplayMode[]).map((mode) => (
-            <Pressable
-              key={mode}
-              onPress={() => store.setDisplayMode(mode)}
-              style={({ pressed }) => [
-                styles.rowCard,
-                store.displayMode === mode && styles.rowCardSelected,
-                pressed && styles.cardPressed,
-              ]}
-            >
-              <Text style={styles.rowLabel}>{DISPLAY_MODE_LABELS[mode]}</Text>
-              {store.displayMode === mode && <Text style={styles.rowAction}>Selected</Text>}
             </Pressable>
           ))}
         </View>
