@@ -48,6 +48,8 @@ export const SHACHARIT_STRUCTURE: SectionSpec[] = [
       'ashrei_uva_letziyon',// Ashrei + U'Va L'Tziyon (post-Amidah)
       'aleinu',             // Aleinu
       'shir_shel_yom',      // Shir Shel Yom (Song of the Day)
+      'pitum_haketores',    // Pitum Ha'Ketores (incense recitation)
+      'shesh_zechiros',     // Shesh Zechiros (six remembrances)
     ],
   },
 ];

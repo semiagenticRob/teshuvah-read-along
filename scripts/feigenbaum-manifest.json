@@ -12,16 +12,16 @@
     "netilat_yadayim": {
       "ref": "Feigenbaum Teen Siddur, Nusach Ashkenaz, Weekday, Shacharis, Hashkamas Ha'boker, Netilas Yadayim",
       "lineStart": 713,
-      "lineEnd": 763,
+      "lineEnd": 726,
       "hebrewTitle": "עַל נְטִילַת יָדַיִם",
-      "notes": "Feigenbaum bundles Netilas Yadayim + Asher Yatzar under one section heading ('My Body Works!'). Both prayer IDs share the commentary range; editorial split deferred. Start at 713 (first commentary line) to skip the transition heading at 700 and section/Hebrew title at 702-711."
+      "notes": "Feigenbaum bundles Netilas Yadayim + Asher Yatzar under 'My Body Works!'. Split at line 727 where the second 'Baruch Atah Adonai' starts the Asher Yatzar commentary. NY range 713-726 covers the netilat-yadayim bracha lemma walk-through."
     },
     "asher_yatzar": {
       "ref": "Feigenbaum Teen Siddur, Nusach Ashkenaz, Weekday, Shacharis, Hashkamas Ha'boker, Asher Yatzar",
-      "lineStart": 713,
+      "lineStart": 727,
       "lineEnd": 763,
       "hebrewTitle": "אֲשֶׁר יָצַר",
-      "notes": "Shares Feigenbaum's 'My Body Works!' section with netilat_yadayim."
+      "notes": "Asher Yatzar commentary starts at line 727 (second 'Baruch Atah Adonai'). Walks through asher yatzar's body description (nekavim, chalulim) and the closing rofei kol basar u'mafli la'asot. Lines 750-762 are the Hebrew bracha block (no English here)."
     },
     "elokai_neshama": {
       "ref": "Feigenbaum Teen Siddur, Nusach Ashkenaz, Weekday, Shacharis, Hashkamas Ha'boker, Elokai Neshama",
@@ -106,6 +106,20 @@
       "lineEnd": 10794,
       "hebrewTitle": "שִׁיר שֶׁל יוֹם",
       "notes": "Daily Psalm. Includes seven sub-prayers (one per day of week). Pages 107+. End at 10794 (final commentary line 'happens, praise Hashem!'); excludes the post-Shacharit L'Dovid Hashem section that starts at the page header on line 10796."
+    },
+    "pitum_haketores": {
+      "ref": "Feigenbaum Teen Siddur, Nusach Ashkenaz, Weekday, Shacharis, Pitum Ha'ketores",
+      "lineStart": 11036,
+      "lineEnd": 11365,
+      "hebrewTitle": "פִּטּוּם הַקְּטֹרֶת",
+      "notes": "Incense recitation. Pages 113-115. Hebrew bracha text TODO (needs canonical sourcing); Feigenbaum English commentary lands now."
+    },
+    "shesh_zechiros": {
+      "ref": "Feigenbaum Teen Siddur, Nusach Ashkenaz, Weekday, Shacharis, Shesh Zechiros",
+      "lineStart": 11366,
+      "lineEnd": 11428,
+      "hebrewTitle": "שֵׁשׁ זְכִירוֹת",
+      "notes": "Six Remembrances. Page 116. Hebrew bracha text TODO (needs canonical sourcing); Feigenbaum English commentary lands now."
     }
   }
 }

@@ -79,6 +79,8 @@ const bundledShacharit: Record<string, BundledPrayerText> = {
   ashrei_uva_letziyon: require('./ashrei_uva_letziyon.json'),
   aleinu: require('./aleinu.json'),
   shir_shel_yom: require('./shir_shel_yom.json'),
+  pitum_haketores: require('./pitum_haketores.json'),
+  shesh_zechiros: require('./shesh_zechiros.json'),
 };
 
 export function getBundledPrayerText(prayerId: string): BundledPrayerText | undefined {

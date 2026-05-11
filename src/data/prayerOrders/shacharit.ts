@@ -153,6 +153,24 @@ const SHACHARIT_PRAYERS: PrayerDefinition[] = [
     audioSource: 'recorded',
     instructions: 'The daily psalm varies by day of the week.',
   },
+  {
+    id: 'pitum_haketores',
+    sefariaRef: 'Siddur Ashkenaz, Weekday, Shacharit, Concluding Prayers, Pitum HaKetores',
+    nameHebrew: 'פטום הקטורת',
+    nameEnglish: 'Pitum HaKetores',
+    nameTransliteration: 'Pitum HaKetores',
+    audioSource: 'recorded',
+    instructions: 'Recitation of the incense formula.',
+  },
+  {
+    id: 'shesh_zechiros',
+    sefariaRef: 'Siddur Ashkenaz, Weekday, Shacharit, Concluding Prayers, Shesh Zechiros',
+    nameHebrew: 'שש זכירות',
+    nameEnglish: 'Six Remembrances',
+    nameTransliteration: 'Shesh Zechiros',
+    audioSource: 'recorded',
+    instructions: 'Six biblical verses recited daily.',
+  },
 ];
 
 /**

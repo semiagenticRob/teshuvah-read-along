@@ -81,4 +81,14 @@ export const PRAYER_META: Record<string, PrayerMeta> = {
     commentary: "Each weekday has its own psalm, sung in the Temple as the Levites dismissed the day's service. Today's psalm returns us to ordinary time, equipped.",
     audioDuration: "2:55",
   },
+  pitum_haketores: {
+    subtitle: "Recitation of the incense formula — a daily echo of the Temple",
+    commentary: "A Talmudic baraita listing the eleven spices of the daily incense, recited so that the morning service ends with the sweetness that once rose from the altar.",
+    audioDuration: "3:30",
+  },
+  shesh_zechiros: {
+    subtitle: "Six biblical remembrances — what to carry every day",
+    commentary: "Six verses the sages set aside as daily reminders: the exodus from Egypt, Sinai, Amalek, the golden calf, Miriam, and Shabbat. The history that frames every Jewish day.",
+    audioDuration: "1:45",
+  },
 };

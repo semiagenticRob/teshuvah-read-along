@@ -43,6 +43,8 @@ const bundledLoaders: Record<string, () => any> = {
   ashrei_uva_letziyon: () => require('../bundled/shacharit/ashrei_uva_letziyon.json'),
   aleinu:              () => require('../bundled/shacharit/aleinu.json'),
   shir_shel_yom:       () => require('../bundled/shacharit/shir_shel_yom.json'),
+  pitum_haketores:     () => require('../bundled/shacharit/pitum_haketores.json'),
+  shesh_zechiros:      () => require('../bundled/shacharit/shesh_zechiros.json'),
 };
 
 const translitLoaders: Record<string, () => any> = {
@@ -61,6 +63,8 @@ const translitLoaders: Record<string, () => any> = {
   ashrei_uva_letziyon: () => require('../bundled/shacharit/ashrei_uva_letziyon.translit.json'),
   aleinu:              () => require('../bundled/shacharit/aleinu.translit.json'),
   shir_shel_yom:       () => require('../bundled/shacharit/shir_shel_yom.translit.json'),
+  pitum_haketores:     () => require('../bundled/shacharit/pitum_haketores.translit.json'),
+  shesh_zechiros:      () => require('../bundled/shacharit/shesh_zechiros.translit.json'),
 };
 
 const HEBREW_NAMES: Record<string, string> = {
@@ -79,6 +83,8 @@ const HEBREW_NAMES: Record<string, string> = {
   ashrei_uva_letziyon: 'אַשְׁרֵי וּבָא לְצִיּוֹן',
   aleinu:              'עָלֵינוּ',
   shir_shel_yom:       'שִׁיר שֶׁל יוֹם',
+  pitum_haketores:     'פִּטּוּם הַקְּטֹרֶת',
+  shesh_zechiros:      'שֵׁשׁ זְכִירוֹת',
 };
 
 function englishNameFromRef(ref: string, fallback: string): string {
