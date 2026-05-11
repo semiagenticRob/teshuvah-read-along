@@ -4,10 +4,10 @@
   "prayers": {
     "modeh_ani": {
       "ref": "Feigenbaum Teen Siddur, Nusach Ashkenaz, Weekday, Shacharis, Hashkamas Ha'boker, Modeh Ani",
-      "lineStart": 623,
+      "lineStart": 624,
       "lineEnd": 668,
       "hebrewTitle": "מוֹדֶה אֲנִי",
-      "notes": "Sefaria groups Modeh Ani + Reishis Chochmah under prayer id modeh_ani; Torah Tzivah belongs to birchot_hatorah. Line range 623-668 covers Modeh Ani + Reishis Chochmah's Hebrew and English commentary in Feigenbaum's combined section."
+      "notes": "Sefaria groups Modeh Ani + Reishis Chochmah under prayer id modeh_ani; Torah Tzivah belongs to birchot_hatorah. Line 623 (combined title 'Modeh Ani / Reishis Chochmah / Torah Tzivah') is excluded because Torah Tzivah's title would inflate Hebrew coverage. Range 624-668 covers Modeh Ani body + Reishis Chochmah body + Baruch Shem K'vod."
     }
   }
 }

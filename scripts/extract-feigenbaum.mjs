@@ -66,6 +66,34 @@ function classifyLine(line) {
 }
 
 /**
+ * Strip Feigenbaum's inline Hebrew-lemma fragments from an English paragraph.
+ *
+ * Feigenbaum's pedagogical format inlines `‫ HEBREW ‬— English` pairs inside
+ * what reads otherwise as continuous English commentary. For the English
+ * display lane (`text[]`), we want clean English. The Hebrew lemmas live
+ * separately on `commentary[]` once anchor-commentary.mjs runs.
+ *
+ * This stripper:
+ *   - Removes bidi-isolated Hebrew runs (anything between U+202B/U+202E and
+ *     U+202C, plus loose Hebrew letters/marks not enclosed in markers).
+ *   - Drops the leading em-dash if it now starts a clause (was a lemma
+ *     separator).
+ *   - Collapses doubled whitespace and punctuation that the removal leaves.
+ */
+function stripHebrewFragments(text) {
+  return text
+    .replace(/[‪-‮⁦-⁩]/g, '')           // remove bidi isolate/embedding marks
+    .replace(/[֐-׿]+/g, '')             // remove all Hebrew letters + nikud
+    .replace(/\s+—\s+/g, ' — ')         // normalize em-dash spacing
+    .replace(/(^|\s)—\s+/g, '$1')        // drop leading em-dash (was lemma sep)
+    .replace(/\(\s*\)/g, '')             // empty parens from stripped Hebrew
+    .replace(/[;,]\s*[;,]/g, ',')        // doubled punctuation
+    .replace(/\s+/g, ' ')
+    .replace(/\s+([.,;:!?])/g, '$1')
+    .trim();
+}
+
+/**
  * Walk the slice and collect English commentary paragraphs.
  * Hebrew-only lines and page headers act as paragraph terminators.
  */
@@ -86,7 +114,7 @@ function extractEnglishParagraphs(rawLines) {
   if (current.length > 0) {
     paragraphs.push(current.join(' ').replace(/\s+/g, ' ').trim());
   }
-  return paragraphs.filter(Boolean);
+  return paragraphs.map(stripHebrewFragments).filter(Boolean);
 }
 
 function loadExistingBundled(prayerId) {
