@@ -7,12 +7,9 @@
     "A section from Maseches Kerisos describing in detail the exact ingredients of the Ketores, how the Ketores was made, and what invalidated the Ketores.",
     "In the beis medrash of Eliyahu it was taught: Anyone who studies halachah every day is!assured a place in Olam Haba",
     "Said Rabbi Elazar in the name of Rabbi Chanina: Talmidei chachamim increase peace in the world. Those who love Torah will have peace (will not fear from their enemies), and the yetzer hara will not place stumbling blocks in their path. May there be peace (from wars) in Yerushalayim, serenity, and calm within its inhabitants. May the Beis Hamikdash be rebuilt, and may Hashem give all of Bnei Yisrael strength (to conquer our spiritual and physical enemies) and!grant us all (inner and outer) peace",
-    "( The, person saying Kaddish proclaims our hope that) soon, in our lifetime, the entire world, which Hashem: created precisely according to His. Will, will recognize Hashem as,, the Source of all and will see the,",
     "sanctity, perfection, and purpose,,. of all He has done.. ( ( We all enthusiastically, ) respond:) Absolutely correct!:, May everyone (including me!), everywhere, and forever, see",
     "that all His actions are great and",
-    "deserving of praise! ( ( The person saying.) Kaddish then points out that) in reality, the true greatness and power of Hashem far exceeds any: praises that we mere humans could say. And to that we respond:: Absolutely correct!",
-    "( The person",
-    "saying Kaddish requests:) May: there be abundant peace, mercy, kindness, long life, and material abundance from our Father in Heaven upon all of Bnei Yisrael, and specifically upon our teachers, their students, and all who study Torah here and everywhere! And to that we respond: Absolutely, we agree! ( The person saying Kaddish requests:) May there be abundant peace, that comes from Heaven, and life, upon us and upon all of Bnei Yisrael! And to that we respond: Absolutely, we agree! (The person saying Kaddish requests:) May He Who makes peace in the Heavens bring about peace upon us and upon all of Bnei Yisrael! And to that we respond: Absolutely, we agree! In Israel, on days when the Torah is not read, some have the custom of saying Barchu."
+    "( The person"
   ],
   "textBlocks": [
     {
@@ -37,10 +34,6 @@
     },
     {
       "kind": "body",
-      "text": "( The, person saying Kaddish proclaims our hope that) soon, in our lifetime, the entire world, which Hashem: created precisely according to His. Will, will recognize Hashem as,, the Source of all and will see the,"
-    },
-    {
-      "kind": "body",
       "text": "sanctity, perfection, and purpose,,. of all He has done.. ( ( We all enthusiastically, ) respond:) Absolutely correct!:, May everyone (including me!), everywhere, and forever, see"
     },
     {
@@ -48,16 +41,8 @@
       "text": "that all His actions are great and"
     },
     {
-      "kind": "body",
-      "text": "deserving of praise! ( ( The person saying.) Kaddish then points out that) in reality, the true greatness and power of Hashem far exceeds any: praises that we mere humans could say. And to that we respond:: Absolutely correct!"
-    },
-    {
       "kind": "heading",
       "text": "( The person"
-    },
-    {
-      "kind": "body",
-      "text": "saying Kaddish requests:) May: there be abundant peace, mercy, kindness, long life, and material abundance from our Father in Heaven upon all of Bnei Yisrael, and specifically upon our teachers, their students, and all who study Torah here and everywhere! And to that we respond: Absolutely, we agree! ( The person saying Kaddish requests:) May there be abundant peace, that comes from Heaven, and life, upon us and upon all of Bnei Yisrael! And to that we respond: Absolutely, we agree! (The person saying Kaddish requests:) May He Who makes peace in the Heavens bring about peace upon us and upon all of Bnei Yisrael! And to that we respond: Absolutely, we agree! In Israel, on days when the Torah is not read, some have the custom of saying Barchu."
     }
   ],
   "heTitle": "pitum_haketores",

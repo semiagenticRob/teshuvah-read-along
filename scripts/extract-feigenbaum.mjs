@@ -122,6 +122,34 @@ function stripHebrewFragments(text) {
  *                    sentence-internal periods.
  *   - 'body'       — Everything else (the running commentary).
  */
+/**
+ * Detect Feigenbaum English paragraphs that describe or translate
+ * minyan-required content (Kaddish, Borchu, Kedushah responsives, Birkat
+ * Cohanim). The app is a solo-davener tool — minyan-required content is
+ * deliberately omitted from rendering, so these paragraphs are dropped
+ * from text[]/textBlocks[] at extraction time.
+ *
+ * Patterns are aggressive on purpose. If a paragraph mentions Kaddish or
+ * carries the canonical Kaddish responsive ("And to that we respond:
+ * Absolutely, we agree!"), it goes.
+ */
+function isMinyanContent(text) {
+  if (!text) return false;
+  if (/\bKaddish\b/i.test(text)) return true;
+  if (/yehei\s+shemei\s+rabba/i.test(text)) return true;
+  if (/\byisga?dd?al\b/i.test(text)) return true;
+  if (/yisbarach v.?yishtabach/i.test(text)) return true;
+  if (/oseh\s+shalom\s+bi[mn]romav/i.test(text)) return true;
+  if (/\bBorchu\b/i.test(text)) return true;
+  if (/\bKedushah\b/i.test(text)) return true;
+  if (/\bBirkat\s+Cohanim\b/i.test(text)) return true;
+  if (/\bduchanen\b/i.test(text)) return true;
+  // The canonical Kaddish response, used by Feigenbaum after every Kaddish
+  // recitation. Distinct enough that it only appears in Kaddish translation.
+  if (/and to that we respond.{0,20}absolutely.{0,5}we agree/i.test(text)) return true;
+  return false;
+}
+
 function classifyParagraph(text) {
   const t = text.trim();
   if (!t) return 'body';
@@ -173,7 +201,10 @@ function extractEnglishParagraphs(rawLines) {
   }
   flush();
 
-  return paragraphs.map(stripHebrewFragments).filter(Boolean);
+  return paragraphs
+    .map(stripHebrewFragments)
+    .filter(Boolean)
+    .filter((p) => !isMinyanContent(p));
 }
 
 function loadExistingBundled(prayerId) {
