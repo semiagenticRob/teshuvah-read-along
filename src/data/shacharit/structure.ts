@@ -3,6 +3,16 @@ import type { SectionId } from '../../theme/shacharitTheme';
 export interface SectionSpec {
   id: SectionId;
   prayerIds: string[];
+  /**
+   * Optional transition text rendered as a standalone block BETWEEN prayers
+   * (after the listed prayerId, before the next prayer in the section).
+   * Keyed by the prayerId the subheader follows.
+   *
+   * Feigenbaum uses these as pedagogical bridges between prayers — short
+   * declarative lines that frame the next prayer's purpose. Rendered in the
+   * section's accent color with italic display type.
+   */
+  subheadersAfter?: Record<string, string>;
 }
 
 // Each prayerId below corresponds to a bundled JSON filename in
@@ -28,6 +38,9 @@ export const SHACHARIT_STRUCTURE: SectionSpec[] = [
       'akedah',           // Akedah
       'korbanot',         // Korbanot
     ],
+    subheadersAfter: {
+      modeh_ani: "OK — but I can’t climb to the next rung if I don’t understand what to do!",
+    },
   },
   {
     id: 'pesukei',

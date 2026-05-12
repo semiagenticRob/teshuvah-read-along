@@ -13,6 +13,7 @@ import { PARCHMENT, TIMING, SECTIONS, INK, type SectionId } from '../theme/shach
 import SectionIntro from '../components/shacharit/SectionIntro';
 import SectionDivider from '../components/shacharit/SectionDivider';
 import PrayerBlock from '../components/shacharit/PrayerBlock';
+import SubheaderItem from '../components/shacharit/SubheaderItem';
 import Halo from '../components/shacharit/Halo';
 import { loadBundledPrayer } from '../data/shacharit/loadPrayer';
 import { usePrayerStore } from '../store/prayerStore';
@@ -27,7 +28,8 @@ import WORD_COUNTS from '../data/bundled/shacharit/wordCounts.json';
 // tick loop and halo targeting work before any prayer JSON is parsed.
 type Item =
   | { kind: 'intro'; key: string; sectionId: SectionId; isFirst: boolean }
-  | { kind: 'prayer'; key: string; sectionId: SectionId; prayerId: string; startIdx: number; endIdx: number };
+  | { kind: 'prayer'; key: string; sectionId: SectionId; prayerId: string; startIdx: number; endIdx: number }
+  | { kind: 'subheader'; key: string; sectionId: SectionId; text: string };
 
 const ITEMS: Item[] = (() => {
   const out: Item[] = [];
@@ -39,6 +41,10 @@ const ITEMS: Item[] = (() => {
       const start = running;
       running += wc;
       out.push({ kind: 'prayer', key: `prayer-${pid}`, sectionId: sec.id, prayerId: pid, startIdx: start, endIdx: running });
+      const subhdr = sec.subheadersAfter?.[pid];
+      if (subhdr) {
+        out.push({ kind: 'subheader', key: `subheader-${sec.id}-${pid}`, sectionId: sec.id, text: subhdr });
+      }
     });
   });
   return out;
@@ -56,6 +62,7 @@ const EST_INTRO_HEIGHT = 360;
 const EST_PX_PER_WORD = 18;
 function estimatedHeight(item: Item): number {
   if (item.kind === 'intro') return EST_INTRO_HEIGHT;
+  if (item.kind === 'subheader') return 120;
   const wc = (WORD_COUNTS as Record<string, number>)[item.prayerId] ?? 0;
   return Math.max(140, wc * EST_PX_PER_WORD);
 }
@@ -253,15 +260,22 @@ export default function ShacharitScrollScreen() {
   );
 
   const renderItem = useCallback(({ item }: { item: Item }) => {
-    const body = item.kind === 'intro'
-      ? <IntroItemMemo sectionId={item.sectionId} isFirst={item.isFirst} />
-      : <PrayerItemMemo
+    let body: React.ReactNode;
+    if (item.kind === 'intro') {
+      body = <IntroItemMemo sectionId={item.sectionId} isFirst={item.isFirst} />;
+    } else if (item.kind === 'subheader') {
+      body = <SubheaderItem sectionId={item.sectionId} text={item.text} />;
+    } else {
+      body = (
+        <PrayerItemMemo
           prayerId={item.prayerId}
           sectionId={item.sectionId}
           startIdx={item.startIdx}
           onTapWord={onTapWord}
           renderHalo={renderHalo}
-        />;
+        />
+      );
+    }
     return (
       <View onLayout={(e) => onItemHeight(item.key, e.nativeEvent.layout.height)}>
         {body}
