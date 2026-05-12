@@ -7,9 +7,7 @@ interface Props {
   hebrewName: string;
   subtitle: string;
   accent: string;
-  commentaryOpen: boolean;
   audioOpen: boolean;
-  onToggleCommentary: () => void;
   onToggleAudio: () => void;
 }
 
@@ -20,13 +18,8 @@ export default function PrayerHeader(p: Props) {
         <Text style={styles.name}>{p.englishName}</Text>
         <Text style={[styles.hebrewName, { color: p.accent }]}>{p.hebrewName}</Text>
       </View>
-      <Text style={styles.subtitle}>{p.subtitle}</Text>
+      {p.subtitle ? <Text style={styles.subtitle}>{p.subtitle}</Text> : null}
       <View style={styles.toggles}>
-        <Pressable onPress={p.onToggleCommentary}>
-          <Text style={[styles.toggle, { color: p.accent }]}>
-            {p.commentaryOpen ? 'Commentary ×' : 'Commentary +'}
-          </Text>
-        </Pressable>
         <Pressable onPress={p.onToggleAudio}>
           <Text style={[styles.toggle, { color: p.accent }]}>
             {p.audioOpen ? 'Audio & Notes ×' : 'Audio & Notes +'}

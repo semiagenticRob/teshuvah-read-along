@@ -30,6 +30,15 @@ const SHACHARIT_PRAYERS: PrayerDefinition[] = [
     instructions: 'Said immediately upon waking, before washing hands.',
   },
   {
+    id: 'reishis_chochmah',
+    sefariaRef: 'Siddur Ashkenaz, Weekday, Shacharit, Preparatory Prayers, Reishis Chochmah',
+    nameHebrew: 'ראשית חכמה',
+    nameEnglish: 'The Root of Gaining',
+    nameTransliteration: 'Reishis Chochmah',
+    audioSource: 'recorded',
+    instructions: 'Said immediately after Modeh Ani.',
+  },
+  {
     id: 'netilat_yadayim',
     sefariaRef: 'Siddur Ashkenaz, Weekday, Shacharit, Preparatory Prayers, Netilat Yadayim',
     nameHebrew: 'נטילת ידיים',

@@ -25,6 +25,7 @@ export interface BundledPrayer {
 // parsed up front — each prayer pays its own parse cost the first time it renders.
 const bundledLoaders: Record<string, () => any> = {
   modeh_ani:           () => require('../bundled/shacharit/modeh_ani.json'),
+  reishis_chochmah:    () => require('../bundled/shacharit/reishis_chochmah.json'),
   netilat_yadayim:     () => require('../bundled/shacharit/netilat_yadayim.json'),
   asher_yatzar:        () => require('../bundled/shacharit/asher_yatzar.json'),
   elokai_neshama:      () => require('../bundled/shacharit/elokai_neshama.json'),
@@ -45,6 +46,7 @@ const bundledLoaders: Record<string, () => any> = {
 
 const translitLoaders: Record<string, () => any> = {
   modeh_ani:           () => require('../bundled/shacharit/modeh_ani.translit.json'),
+  reishis_chochmah:    () => require('../bundled/shacharit/reishis_chochmah.translit.json'),
   netilat_yadayim:     () => require('../bundled/shacharit/netilat_yadayim.translit.json'),
   asher_yatzar:        () => require('../bundled/shacharit/asher_yatzar.translit.json'),
   elokai_neshama:      () => require('../bundled/shacharit/elokai_neshama.translit.json'),
@@ -65,6 +67,7 @@ const translitLoaders: Record<string, () => any> = {
 
 const HEBREW_NAMES: Record<string, string> = {
   modeh_ani:           'מוֹדֶה אֲנִי',
+  reishis_chochmah:    'רֵאשִׁית חָכְמָה',
   netilat_yadayim:     'נְטִילַת יָדַיִם',
   asher_yatzar:        'אַשֶּׁר יָצַר',
   elokai_neshama:      'אֱלֹהַי נְשָׁמָה',

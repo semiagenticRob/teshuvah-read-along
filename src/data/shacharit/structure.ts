@@ -19,6 +19,7 @@ export const SHACHARIT_STRUCTURE: SectionSpec[] = [
     id: 'birchot',
     prayerIds: [
       'modeh_ani',        // Modeh Ani
+      'reishis_chochmah', // Reishis Chochmah ("The Root of Gaining")
       'netilat_yadayim',  // Netilat Yadayim
       'asher_yatzar',     // Asher Yatzar
       'elokai_neshama',   // Elohai Neshamah

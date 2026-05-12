@@ -63,6 +63,7 @@ export interface BundledPrayerText {
 
 const bundledShacharit: Record<string, BundledPrayerText> = {
   modeh_ani: require('./modeh_ani.json'),
+  reishis_chochmah: require('./reishis_chochmah.json'),
   netilat_yadayim: require('./netilat_yadayim.json'),
   asher_yatzar: require('./asher_yatzar.json'),
   elokai_neshama: require('./elokai_neshama.json'),

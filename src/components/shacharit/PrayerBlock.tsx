@@ -30,7 +30,6 @@ interface Props {
 }
 
 function PrayerBlock(p: Props) {
-  const [openCommentary, setOpenCommentary] = useState(false);
   const [openAudio, setOpenAudio] = useState(false);
   const spec = SECTIONS[p.sectionId];
   const meta = PRAYER_META[p.prayerId];
@@ -52,16 +51,9 @@ function PrayerBlock(p: Props) {
         hebrewName={p.hebrewName}
         subtitle={meta?.subtitle ?? ''}
         accent={spec.accent}
-        commentaryOpen={openCommentary}
         audioOpen={openAudio}
-        onToggleCommentary={() => setOpenCommentary(o => !o)}
         onToggleAudio={() => setOpenAudio(o => !o)}
       />
-      <ExpandablePanel open={openCommentary}>
-        <View style={[styles.commentaryBlock, { borderLeftColor: spec.accent }]}>
-          <Text style={styles.commentaryText}>{meta?.commentary ?? ''}</Text>
-        </View>
-      </ExpandablePanel>
       <ExpandablePanel open={openAudio}>
         <AudioPlayerPlaceholder
           title={`Rabbi Feigenbaum · ${p.englishName}`}
@@ -144,22 +136,6 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     position: 'relative',
     borderLeftWidth: 2,
-  },
-  commentaryBlock: { borderLeftWidth: 1.5, paddingLeft: 16, paddingVertical: 3 },
-  commentaryText: {
-    fontFamily: FONTS.displayItalic,
-    fontSize: 16,
-    lineHeight: 25,
-    color: INK.soft,
-    fontStyle: 'italic',
-  },
-  english: {
-    fontFamily: FONTS.serifBodyItalic,
-    fontSize: 17,
-    color: INK.soft,
-    lineHeight: 28,
-    marginTop: 10,
-    fontStyle: 'italic',
   },
   englishGroup: {
     marginTop: 14,
