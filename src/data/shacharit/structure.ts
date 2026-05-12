@@ -41,6 +41,7 @@ export const SHACHARIT_STRUCTURE: SectionSpec[] = [
     subheadersAfter: {
       modeh_ani: "OK — but I can’t climb to the next rung if I don’t understand what to do!",
       reishis_chochmah: "OK — but I need “tools” in order to apply all this wisdom and accomplish my goals!",
+      elokai_neshama: "OK — I have a body and a soul. What can I do to ensure they work together successfully?",
     },
   },
   {
