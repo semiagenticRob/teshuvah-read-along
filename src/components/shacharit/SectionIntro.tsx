@@ -5,7 +5,6 @@ import ExpandablePanel from './ExpandablePanel';
 import AudioPlayerPlaceholder from './AudioPlayerPlaceholder';
 import {
   SECTION_BODY,
-  SECTION_COMMENTARY,
   SECTION_AUDIO_NOTES,
   SECTION_AUDIO_DURATIONS,
 } from '../../data/shacharit/sectionCopy';
@@ -15,7 +14,6 @@ interface Props {
 }
 
 export default function SectionIntro({ sectionId }: Props) {
-  const [openCommentary, setOpenCommentary] = useState(false);
   const [openAudio, setOpenAudio] = useState(false);
   const spec = SECTIONS[sectionId];
 
@@ -27,26 +25,12 @@ export default function SectionIntro({ sectionId }: Props) {
       <Text style={[styles.body, { color: INK.soft }]}>{SECTION_BODY[sectionId]}</Text>
 
       <View style={styles.toggles}>
-        <Pressable onPress={() => setOpenCommentary(o => !o)}>
-          <Text style={[styles.toggle, { color: spec.accent }]}>
-            {openCommentary ? 'Commentary ×' : 'Commentary +'}
-          </Text>
-        </Pressable>
         <Pressable onPress={() => setOpenAudio(o => !o)}>
           <Text style={[styles.toggle, { color: spec.accent }]}>
             {openAudio ? 'Audio & Notes ×' : 'Audio & Notes +'}
           </Text>
         </Pressable>
       </View>
-
-      <ExpandablePanel open={openCommentary}>
-        <View style={[styles.commentaryBlock, { borderLeftColor: spec.accent }]}>
-          <Text style={styles.commentaryText}>{SECTION_COMMENTARY[sectionId]}</Text>
-          <Text style={[styles.attribution, { color: INK.faint }]}>
-            — Placeholder · Feigenbaum Commentary
-          </Text>
-        </View>
-      </ExpandablePanel>
 
       <ExpandablePanel open={openAudio}>
         <AudioPlayerPlaceholder
@@ -91,21 +75,6 @@ const styles = StyleSheet.create({
     fontFamily: FONTS.serifBody,
     fontSize: 13,
     letterSpacing: 2.2,
-    textTransform: 'uppercase',
-  },
-  commentaryBlock: { borderLeftWidth: 2, paddingLeft: 22, paddingVertical: 4 },
-  commentaryText: {
-    fontFamily: FONTS.displayItalic,
-    fontSize: 18,
-    lineHeight: 28,
-    color: INK.soft,
-    fontStyle: 'italic',
-  },
-  attribution: {
-    fontFamily: FONTS.serifBody,
-    fontSize: 11,
-    letterSpacing: 2.4,
-    marginTop: 10,
     textTransform: 'uppercase',
   },
 });

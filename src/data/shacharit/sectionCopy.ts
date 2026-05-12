@@ -11,17 +11,6 @@ export const SECTION_BODY: Record<SectionId, string> = {
     'The service ends with a turn outward. Alenu speaks of the world as it is and the world as it could be, then Kaddish raises the name of God in the voice of the community.',
 };
 
-export const SECTION_COMMENTARY: Record<SectionId, string> = {
-  birchot:
-    'Before reciting Birchot HaShachar, the tradition asks us to pause at the threshold of consciousness. The soul, returned by God in the night, is greeted with thanks before a single need is named. The structure of the blessings — body, then mind, then spirit — mirrors the order of waking itself.',
-  pesukei:
-    'The Talmud calls these verses "the warmup of the service." One does not leap into the presence of God; one prepares the voice, the body, the attention.',
-  shema:
-    'The Shema is the only prayer the tradition insists we recite with full concentration, even if every other word of the service slips past us. Its six words — "Hear O Israel, the Lord our God, the Lord is One" — are said to contain the entire argument of Jewish theology in miniature.',
-  concluding:
-    'We do not end with another petition but with a declaration of responsibility. The prayer has shaped us; now it releases us, equipped, back into ordinary time.',
-};
-
 export const SECTION_AUDIO_NOTES: Record<SectionId, string> = {
   birchot:
     'The morning blessings evolved from private practices recited at home into the communal opening of Shacharit. Listening while reading allows the learner to absorb both the cantillation and the reasoning behind each blessing in a single pass.',
