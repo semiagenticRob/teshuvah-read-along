@@ -52,7 +52,14 @@
   "jest": {
     "preset": "jest-expo",
     "transform": {
-      "^.+\\.tsx?$": "ts-jest"
+      "^.+\\.tsx?$": [
+        "ts-jest",
+        {
+          "tsconfig": {
+            "jsx": "react"
+          }
+        }
+      ]
     },
     "moduleFileExtensions": [
       "ts",

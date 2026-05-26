@@ -1,116 +1,61 @@
-import React, { useCallback } from 'react';
-import { View, StyleSheet } from 'react-native';
+// src/siddur/components/LineRow.tsx
+import React from 'react';
+import { View, Text, StyleSheet } from 'react-native';
 import WordPair from './WordPair';
-// TODO(Task 9): copy FootnoteMarker / FootnotePanel into src/siddur/components/
-// and switch these to local sibling imports. For now we point at the originals
-// in src/components/shacharit/ so this new copy compiles.
-import FootnoteMarker from '../../components/shacharit/FootnoteMarker';
-import FootnotePanel from '../../components/shacharit/FootnotePanel';
-import { pairWords } from '../../utils/pairWords';
-import { footnoteKey, useFootnoteStore } from '../../store/footnoteStore';
-import type { BundledCommentary, BundledPrayerSegment } from '../../data/bundled/shacharit';
+import { FONTS, INK } from '../../theme/siddurTheme';
+import type { HebrewLine, TranslitLine, EnglishParagraph } from '../types';
 
 interface Props {
-  prayerId: string;
-  lineIndex: number;
-  hebrew: string;
-  translit: string;
+  hebrewLine?: HebrewLine;
+  translitLine?: TranslitLine;
+  englishParagraph?: EnglishParagraph;
+  activeWordIndex: number | null;
   showHebrew: boolean;
   showTranslit: boolean;
-  /** Flat global word offset for the first word on this line. */
-  lineGlobalStart: number;
-  onTapWord: (globalIdx: number) => void;
-  renderHalo: (globalIdx: number) => React.ReactNode;
-  segment?: BundledPrayerSegment;
-  /** Commentary entries anchored to this line, keyed by wordIndex (`-1` = whole line). */
-  commentaryByWord?: Map<number, BundledCommentary>;
-  accent: string;
+  showEnglish: boolean;
 }
 
-function LineRow(p: Props) {
-  const openKey = useFootnoteStore((s) => s.openKey);
-  const toggle = useFootnoteStore((s) => s.toggle);
-
-  const pairs = React.useMemo(
-    () => pairWords(p.hebrew, p.translit),
-    [p.hebrew, p.translit],
-  );
-
-  const onMarkerPress = useCallback(
-    (wordIndex: number) => toggle(footnoteKey(p.prayerId, p.lineIndex, wordIndex)),
-    [toggle, p.prayerId, p.lineIndex],
-  );
-
-  const lineLevelCommentary = p.commentaryByWord?.get(-1);
-  const lineLevelKey = footnoteKey(p.prayerId, p.lineIndex, undefined);
-  const isLineLevelOpen = openKey === lineLevelKey;
-
-  // Determine which word (if any) currently has its panel open on this line.
-  let activeWordIndex: number | null = null;
-  if (p.commentaryByWord) {
-    for (const wordIdx of p.commentaryByWord.keys()) {
-      if (wordIdx < 0) continue;
-      const key = footnoteKey(p.prayerId, p.lineIndex, wordIdx);
-      if (openKey === key) {
-        activeWordIndex = wordIdx;
-        break;
-      }
-    }
-  }
-
-  const direction = p.showHebrew ? 'rtl' : 'ltr';
+function LineRow({
+  hebrewLine,
+  translitLine,
+  englishParagraph,
+  activeWordIndex,
+  showHebrew,
+  showTranslit,
+  showEnglish,
+}: Props) {
+  const showAnyKaraoke = showHebrew || showTranslit;
+  const hasKaraokeContent = !!hebrewLine && showAnyKaraoke;
 
   return (
     <View style={styles.lineWrap}>
-      <View style={[styles.pairs, { direction } as object]}>
-        {pairs.map((pair, i) => {
-          const commentary = p.commentaryByWord?.get(i);
-          const markerKey = commentary ? footnoteKey(p.prayerId, p.lineIndex, i) : null;
-          const isOpen = markerKey != null && openKey === markerKey;
-          return (
-            <View key={i} style={styles.pairAndMarker}>
+      {hasKaraokeContent && (
+        <View style={styles.pairs}>
+          {hebrewLine!.words.map((word, i) => {
+            const translitText = translitLine?.words[i]?.text ?? null;
+            return (
               <WordPair
-                hebrew={pair.hebrew}
-                translit={pair.translit}
-                showHebrew={p.showHebrew}
-                showTranslit={p.showTranslit}
-                idx={p.lineGlobalStart + i}
-                onTapWord={p.onTapWord}
-                renderHalo={p.renderHalo}
+                key={`${word.globalIndex}-${i}`}
+                hebrew={word.text}
+                translit={translitText ?? ''}
+                showHebrew={showHebrew}
+                showTranslit={showTranslit && translitText !== null}
+                idx={word.globalIndex}
+                onTapWord={undefined}
+                renderHalo={undefined}
+                isActive={activeWordIndex !== null && word.globalIndex === activeWordIndex}
               />
-              {commentary && (
-                <FootnoteMarker
-                  marker={commentary.marker}
-                  accent={p.accent}
-                  isOpen={isOpen}
-                  onPress={() => onMarkerPress(i)}
-                />
-              )}
-            </View>
-          );
-        })}
-        {lineLevelCommentary && (
-          <FootnoteMarker
-            marker={lineLevelCommentary.marker}
-            accent={p.accent}
-            isOpen={isLineLevelOpen}
-            onPress={() => toggle(lineLevelKey)}
-          />
-        )}
-      </View>
-
-      {/* Footnote panel for whichever marker on this line is active. */}
-      <FootnotePanel
-        commentary={
-          activeWordIndex != null
-            ? p.commentaryByWord?.get(activeWordIndex) ?? null
-            : isLineLevelOpen
-              ? lineLevelCommentary ?? null
-              : null
-        }
-        accent={p.accent}
-        isOpen={activeWordIndex != null || isLineLevelOpen}
-      />
+            );
+          })}
+        </View>
+      )}
+      {showEnglish && englishParagraph && (
+        // TODO(Plan A Task 10): swap this for <ItalicEnglishText spans={englishParagraph.spans} />
+        // which will render italic interpretive spans with the dedicated font.
+        <Text style={styles.english}>
+          {englishParagraph.spans.map((s) => s.text).join('')}
+        </Text>
+      )}
     </View>
   );
 }
@@ -128,8 +73,11 @@ const styles = StyleSheet.create({
     columnGap: 14,
     alignItems: 'flex-end',
   },
-  pairAndMarker: {
-    flexDirection: 'row',
-    alignItems: 'flex-start',
+  english: {
+    fontFamily: FONTS.serifBody,
+    fontSize: 15,
+    lineHeight: 23,
+    color: INK.strong,
+    marginTop: 6,
   },
 });
