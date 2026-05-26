@@ -1,0 +1,54 @@
+{
+  "blocks": [
+    {
+      "sectionId": "barchu",
+      "reason": "barchu",
+      "match": { "wholeSection": true }
+    },
+    {
+      "sectionId": "krias_hatorah",
+      "reason": "krias_hatorah",
+      "match": { "wholeSection": true }
+    },
+    {
+      "sectionId": "shemoneh_esrei_shacharit",
+      "reason": "kedushah",
+      "match": { "rawTextContains": "קָדוֹשׁ קָדוֹשׁ קָדוֹשׁ" }
+    },
+    {
+      "sectionId": "shemoneh_esrei_shacharit",
+      "reason": "birkas_cohanim",
+      "match": { "rawTextContains": "יְבָרֶכְךָ" }
+    },
+    {
+      "sectionId": "shemoneh_esrei_mincha",
+      "reason": "kedushah",
+      "match": { "rawTextContains": "קָדוֹשׁ קָדוֹשׁ קָדוֹשׁ" }
+    },
+    {
+      "sectionId": "shemoneh_esrei_mincha",
+      "reason": "birkas_cohanim",
+      "match": { "rawTextContains": "יְבָרֶכְךָ" }
+    },
+    {
+      "sectionId": "mussaf_rosh_chodesh",
+      "reason": "kedushah",
+      "match": { "rawTextContains": "קָדוֹשׁ קָדוֹשׁ קָדוֹשׁ" }
+    },
+    {
+      "sectionId": "mussaf_rosh_chodesh",
+      "reason": "birkas_cohanim",
+      "match": { "rawTextContains": "יְבָרֶכְךָ" }
+    },
+    {
+      "sectionId": "mussaf_chol_hamoed",
+      "reason": "kedushah",
+      "match": { "rawTextContains": "קָדוֹשׁ קָדוֹשׁ קָדוֹשׁ" }
+    },
+    {
+      "sectionId": "mussaf_chol_hamoed",
+      "reason": "birkas_cohanim",
+      "match": { "rawTextContains": "יְבָרֶכְךָ" }
+    }
+  ]
+}

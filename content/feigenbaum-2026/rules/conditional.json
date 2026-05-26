@@ -1,0 +1,104 @@
+{
+  "sectionLevel": [
+    {
+      "sectionId": "hallel",
+      "rule": { "type": "hallel" }
+    },
+    {
+      "sectionId": "mussaf_rosh_chodesh",
+      "rule": { "type": "rosh_chodesh_only" }
+    },
+    {
+      "sectionId": "mussaf_chol_hamoed",
+      "rule": { "type": "chol_hamoed_only" }
+    },
+    {
+      "sectionId": "sefiras_haomer",
+      "rule": { "type": "sefirah_only" }
+    },
+    {
+      "sectionId": "maariv_motzaei_shabbos",
+      "rule": { "type": "motzaei_shabbos_only" }
+    },
+    {
+      "sectionId": "netilas_lulav",
+      "rule": { "type": "sukkos_only" }
+    },
+    {
+      "sectionId": "barchi_nafshi",
+      "rule": { "type": "rosh_chodesh_only" }
+    },
+    {
+      "sectionId": "ldovid_hashem_shacharit",
+      "rule": {
+        "type": "date_window",
+        "start": { "month": 6, "day": 1 },
+        "end":   { "month": 7, "day": 22 }
+      }
+    },
+    {
+      "sectionId": "ldovid_hashem_maariv",
+      "rule": {
+        "type": "date_window",
+        "start": { "month": 6, "day": 1 },
+        "end":   { "month": 7, "day": 22 }
+      }
+    }
+  ],
+  "blockLevel": [
+    {
+      "sectionId": "tachanun_shacharit",
+      "blockMatch": { "wholeSection": true },
+      "rule": {
+        "type": "skip_on",
+        "days": [
+          "rosh_chodesh", "rosh_hashana", "yom_kippur",
+          "sukkos", "shmini_atzeres", "simchas_torah",
+          "chanukah", "purim", "purim_katan", "tu_bishvat",
+          "lag_baomer", "pesach", "shavuos", "isru_chag",
+          "erev_yom_tov", "chol_hamoed"
+        ]
+      }
+    },
+    {
+      "sectionId": "tachanun_mincha",
+      "blockMatch": { "wholeSection": true },
+      "rule": {
+        "type": "skip_on",
+        "days": [
+          "rosh_chodesh", "rosh_hashana", "yom_kippur",
+          "sukkos", "shmini_atzeres", "simchas_torah",
+          "chanukah", "purim", "purim_katan", "tu_bishvat",
+          "lag_baomer", "pesach", "shavuos", "isru_chag",
+          "erev_yom_tov", "chol_hamoed"
+        ]
+      }
+    },
+    {
+      "sectionId": "avinu_malkeinu_shacharit",
+      "blockMatch": { "wholeSection": true },
+      "rule": {
+        "type": "date_window",
+        "start": { "month": 7, "day": 1 },
+        "end":   { "month": 7, "day": 10 }
+      }
+    },
+    {
+      "sectionId": "avinu_malkeinu_mincha",
+      "blockMatch": { "wholeSection": true },
+      "rule": {
+        "type": "date_window",
+        "start": { "month": 7, "day": 1 },
+        "end":   { "month": 7, "day": 10 }
+      }
+    },
+    {
+      "sectionId": "krias_hatorah",
+      "blockMatch": { "wholeSection": true },
+      "rule": {
+        "type": "days_of_week_only",
+        "days": ["monday", "thursday"]
+      }
+    }
+  ]
+}
