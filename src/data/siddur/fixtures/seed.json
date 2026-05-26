@@ -1,0 +1,84 @@
+{
+  "id": "seed",
+  "cardId": "shacharit",
+  "title": { "he": "מוֹדֶה אֲנִי (זרע)", "en": "Modeh Ani (seed)" },
+  "source": "feigenbaum",
+  "sourcePages": [2, 3],
+  "blocks": [
+    {
+      "kind": "heading",
+      "he": "הַשְׁכָּמַת הַבּוֹקֶר",
+      "en": "Waking up in the morning"
+    },
+    {
+      "kind": "prayer",
+      "he": [
+        {
+          "lineIndex": 0,
+          "words": [
+            { "globalIndex": 0, "text": "מוֹדֶה" },
+            { "globalIndex": 1, "text": "אֲנִי" },
+            { "globalIndex": 2, "text": "לְפָנֶיךָ" }
+          ]
+        }
+      ],
+      "en": [
+        {
+          "spans": [
+            { "text": "I gratefully thank You" },
+            { "text": " (right when I wake up) ", "style": "italic" },
+            { "text": "for restoring my soul." }
+          ],
+          "anchorLine": 0
+        }
+      ],
+      "translit": [
+        {
+          "lineIndex": 0,
+          "words": [
+            { "text": "Modeh" },
+            { "text": "ani" },
+            { "text": "lefanecha" }
+          ],
+          "source": "sefaria-ported"
+        }
+      ],
+      "wordIndexStart": 0,
+      "wordIndexEnd": 2
+    },
+    {
+      "kind": "faq",
+      "title": "Why this prayer first?",
+      "body": [
+        {
+          "spans": [
+            { "text": "Modeh Ani is said before anything else because it expresses gratitude for the gift of another day of life." }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "minyan_only",
+      "reason": "barchu",
+      "he": [
+        {
+          "lineIndex": 0,
+          "words": [
+            { "globalIndex": -1, "text": "בָּרְכוּ" },
+            { "globalIndex": -1, "text": "אֶת" },
+            { "globalIndex": -1, "text": "ה'" }
+          ]
+        }
+      ],
+      "en": [
+        {
+          "spans": [{ "text": "Bless Hashem (recited only with a minyan)." }]
+        }
+      ]
+    },
+    {
+      "kind": "learn_link",
+      "essayId": "appendix_01_how_davening_works"
+    }
+  ]
+}
