@@ -1,0 +1,72 @@
+{
+  "_comment": "Maps new section IDs to legacy bundled Hebrew source files. Each entry lists one or more legacy files whose 'he' lines are concatenated to produce the prayer Hebrew for that section. Sections not listed here get empty he: [] (no karaoke). Legacy paths are relative to src/data/bundled/.",
+  "shacharit/hashkamas_haboker": [
+    "shacharit/modeh_ani",
+    "shacharit/reishis_chochmah",
+    "shacharit/elokai_neshama",
+    "shacharit/asher_yatzar"
+  ],
+  "shacharit/birchos_hashachar": [
+    "shacharit/birchot_hashachar",
+    "shacharit/netilat_yadayim",
+    "shacharit/birchot_hatorah"
+  ],
+  "shacharit/pesukei_dzimrah": [
+    "shacharit/korbanot",
+    "shacharit/akedah",
+    "shacharit/pesukei_dezimrah",
+    "shacharit/ashrei_uva_letziyon"
+  ],
+  "shacharit/birchos_krias_shema_shacharit": [
+    "shacharit/shema"
+  ],
+  "shacharit/shemoneh_esrei_shacharit": [
+    "shacharit/amidah"
+  ],
+  "shacharit/tachanun_shacharit": [
+    "shacharit/tachanun"
+  ],
+  "shacharit/aleinu_shacharit": [
+    "shacharit/aleinu"
+  ],
+  "shacharit/shir_shel_yom": [
+    "shacharit/shir_shel_yom"
+  ],
+  "shacharit/pitum_haketores": [
+    "shacharit/pitum_haketores"
+  ],
+  "shacharit/shesh_zechiros": [
+    "shacharit/shesh_zechiros"
+  ],
+  "mincha/mincha_ashrei": [
+    "mincha/mincha_ashrei"
+  ],
+  "mincha/shemoneh_esrei_mincha": [
+    "mincha/mincha_amidah"
+  ],
+  "mincha/tachanun_mincha": [
+    "mincha/mincha_tachanun"
+  ],
+  "mincha/aleinu_mincha": [
+    "mincha/mincha_aleinu"
+  ],
+  "maariv/maariv_opening": [
+    "maariv/maariv_vehu_rachum"
+  ],
+  "maariv/birchos_krias_shema_maariv": [
+    "maariv/maariv_shema"
+  ],
+  "maariv/shemoneh_esrei_maariv": [
+    "maariv/maariv_amidah"
+  ],
+  "maariv/aleinu_maariv": [
+    "maariv/maariv_aleinu"
+  ],
+  "birkat_hamazon/birchas_hamazon": [
+    "birkatHamazon/bh_zimmun",
+    "birkatHamazon/bh_hazan",
+    "birkatHamazon/bh_yerushalayim",
+    "birkatHamazon/bh_haaretz",
+    "birkatHamazon/bh_hatov"
+  ]
+}

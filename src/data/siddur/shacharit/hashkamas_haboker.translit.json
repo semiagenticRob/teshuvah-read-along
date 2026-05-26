@@ -6,46 +6,40 @@
         "lineIndex": 0,
         "words": [
           {
-            "text": null
-          }
-        ],
-        "source": "sefaria-ported"
-      },
-      {
-        "lineIndex": 1,
-        "words": [
-          {
-            "text": "lerotzon"
-          }
-        ],
-        "source": "sefaria-ported"
-      },
-      {
-        "lineIndex": 2,
-        "words": [
-          {
-            "text": "imreiy"
-          }
-        ],
-        "source": "sefaria-ported"
-      },
-      {
-        "lineIndex": 3,
-        "words": [
-          {
-            "text": "fi"
+            "text": "mode"
           },
           {
-            "text": "libi"
-          }
-        ],
-        "source": "sefaria-ported"
-      },
-      {
-        "lineIndex": 4,
-        "words": [
+            "text": "ani"
+          },
           {
-            "text": "vehegyon"
+            "text": "lefoneycho"
+          },
+          {
+            "text": "melech"
+          },
+          {
+            "text": "chay"
+          },
+          {
+            "text": "vekayom"
+          },
+          {
+            "text": "shehechezarto"
+          },
+          {
+            "text": "bi"
+          },
+          {
+            "text": "nishmosi"
+          },
+          {
+            "text": "bechemlo,"
+          },
+          {
+            "text": "rabo"
+          },
+          {
+            "text": "emunosecho:"
           }
         ],
         "source": "sefaria-ported"
@@ -59,7 +53,207 @@
         "lineIndex": 0,
         "words": [
           {
+            "text": "reishis"
+          },
+          {
+            "text": "chochmo"
+          },
+          {
+            "text": "yiras"
+          },
+          {
+            "text": "Adonoy,"
+          },
+          {
+            "text": "seichel"
+          },
+          {
+            "text": "tov"
+          },
+          {
+            "text": "lecholoseiyhem,"
+          },
+          {
+            "text": "tehiloso"
+          },
+          {
+            "text": "omedes"
+          },
+          {
+            "text": "load:"
+          },
+          {
+            "text": "boruch"
+          },
+          {
+            "text": "sheim"
+          },
+          {
+            "text": "kevod"
+          },
+          {
+            "text": "malchuso"
+          },
+          {
+            "text": "leolom"
+          },
+          {
+            "text": "voed:"
+          }
+        ],
+        "source": "sefaria-ported"
+      }
+    ]
+  },
+  {
+    "blockIndex": 4,
+    "translit": [
+      {
+        "lineIndex": 0,
+        "words": [
+          {
+            "text": "elohay"
+          },
+          {
+            "text": "neshomo"
+          },
+          {
+            "text": "shenosato"
+          },
+          {
+            "text": "bi"
+          },
+          {
+            "text": "tehoro"
+          },
+          {
+            "text": "hi"
+          },
+          {
+            "text": "ato"
+          },
+          {
+            "text": "veroso"
+          },
+          {
+            "text": "ato"
+          },
+          {
+            "text": "yetzarto"
+          },
+          {
+            "text": "ato"
+          },
+          {
+            "text": "nefachto"
+          },
+          {
+            "text": "bi"
+          },
+          {
+            "text": "veato"
+          },
+          {
+            "text": "meshamro"
+          },
+          {
+            "text": "bekirbi"
+          },
+          {
+            "text": "veato"
+          },
+          {
+            "text": "osid"
+          },
+          {
+            "text": "litlo"
+          },
+          {
+            "text": "mimeni"
+          },
+          {
+            "text": "vlhachaziro"
+          },
+          {
+            "text": "bi"
+          },
+          {
+            "text": "leosid"
+          },
+          {
+            "text": "lovo,"
+          },
+          {
+            "text": "kol"
+          },
+          {
+            "text": "zeman"
+          },
+          {
+            "text": "shehanshomo"
+          },
+          {
+            "text": "vekirbi"
+          },
+          {
+            "text": "mode"
+          },
+          {
+            "text": "ani"
+          },
+          {
             "text": "lefoneycho"
+          },
+          {
+            "text": "Adonoy"
+          },
+          {
+            "text": "elohay"
+          },
+          {
+            "text": "veiloheiy"
+          },
+          {
+            "text": "avosay"
+          },
+          {
+            "text": "ribon"
+          },
+          {
+            "text": "kol"
+          },
+          {
+            "text": "hamaasim"
+          },
+          {
+            "text": "adon"
+          },
+          {
+            "text": "kol"
+          },
+          {
+            "text": "hanshomos:"
+          },
+          {
+            "text": "boruch"
+          },
+          {
+            "text": "ato"
+          },
+          {
+            "text": "Adonoy"
+          },
+          {
+            "text": "hamachazir"
+          },
+          {
+            "text": "neshomos"
+          },
+          {
+            "text": "lifgorim"
+          },
+          {
+            "text": "meisim:"
           }
         ],
         "source": "sefaria-ported"
@@ -73,742 +267,136 @@
         "lineIndex": 0,
         "words": [
           {
-            "text": null
+            "text": "boruch"
           },
           {
-            "text": null
+            "text": "ato"
           },
           {
-            "text": null
+            "text": "Adonoy"
           },
           {
-            "text": null
+            "text": "eloheiynu"
           },
           {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      }
-    ]
-  },
-  {
-    "blockIndex": 14,
-    "translit": [
-      {
-        "lineIndex": 0,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 1,
-        "words": [
-          {
-            "text": "vehodoos"
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "sefaria-ported"
-      },
-      {
-        "lineIndex": 2,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 3,
-        "words": [
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 4,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 5,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": "esrei"
-          }
-        ],
-        "source": "sefaria-ported"
-      },
-      {
-        "lineIndex": 6,
-        "words": [
-          {
-            "text": "ovinu"
-          },
-          {
-            "text": "malkeinu"
-          }
-        ],
-        "source": "sefaria-ported"
-      },
-      {
-        "lineIndex": 7,
-        "words": [
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 8,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 9,
-        "words": [
-          {
-            "text": "oleiynu"
-          }
-        ],
-        "source": "sefaria-ported"
-      },
-      {
-        "lineIndex": 10,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "sefaria-ported"
-      },
-      {
-        "lineIndex": 11,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": "nafshi"
-          }
-        ],
-        "source": "sefaria-ported"
-      },
-      {
-        "lineIndex": 12,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 13,
-        "words": [
-          {
-            "text": "pitum"
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "sefaria-ported"
-      },
-      {
-        "lineIndex": 14,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 15,
-        "words": [
-          {
-            "text": "shelsho"
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "sefaria-ported"
-      },
-      {
-        "lineIndex": 16,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "sefaria-ported"
-      },
-      {
-        "lineIndex": 17,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 18,
-        "words": [
-          {
-            "text": "borei"
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "sefaria-ported"
-      },
-      {
-        "lineIndex": 19,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 20,
-        "words": [
-          {
-            "text": "mincho"
-          }
-        ],
-        "source": "sefaria-ported"
-      },
-      {
-        "lineIndex": 21,
-        "words": [
-          {
-            "text": null
+            "text": "melech"
           },
           {
-            "text": "esrei"
-          }
-        ],
-        "source": "sefaria-ported"
-      },
-      {
-        "lineIndex": 22,
-        "words": [
-          {
-            "text": "ovinu"
-          },
-          {
-            "text": "malkeinu"
-          }
-        ],
-        "source": "sefaria-ported"
-      },
-      {
-        "lineIndex": 23,
-        "words": [
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      }
-    ]
-  },
-  {
-    "blockIndex": 15,
-    "translit": [
-      {
-        "lineIndex": 0,
-        "words": [
-          {
-            "text": "oleiynu"
-          }
-        ],
-        "source": "sefaria-ported"
-      },
-      {
-        "lineIndex": 1,
-        "words": [
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 2,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 3,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": "esrei"
-          }
-        ],
-        "source": "sefaria-ported"
-      },
-      {
-        "lineIndex": 4,
-        "words": [
-          {
-            "text": "oleiynu"
-          }
-        ],
-        "source": "sefaria-ported"
-      },
-      {
-        "lineIndex": 5,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 6,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 7,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 8,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": "ami"
-          },
-          {
-            "text": null
+            "text": "hoolom"
           },
           {
-            "text": null
-          }
-        ],
-        "source": "sefaria-ported"
-      },
-      {
-        "lineIndex": 9,
-        "words": [
-          {
-            "text": "netilas"
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "sefaria-ported"
-      },
-      {
-        "lineIndex": 10,
-        "words": [
-          {
-            "text": "haleil"
-          }
-        ],
-        "source": "sefaria-ported"
-      },
-      {
-        "lineIndex": 11,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 12,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      }
-    ]
-  },
-  {
-    "blockIndex": 18,
-    "translit": [
-      {
-        "lineIndex": 0,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
+            "text": "asher"
           },
           {
-            "text": null
+            "text": "yotzar"
           },
           {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 1,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      }
-    ]
-  },
-  {
-    "blockIndex": 19,
-    "translit": [
-      {
-        "lineIndex": 0,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
+            "text": "eshoodom"
           },
           {
-            "text": null
+            "text": "bechochmo"
           },
           {
-            "text": null
+            "text": "vvoro"
           },
           {
-            "text": null
+            "text": "vo"
           },
           {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      }
-    ]
-  },
-  {
-    "blockIndex": 20,
-    "translit": [
-      {
-        "lineIndex": 0,
-        "words": [
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 1,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
+            "text": "nekovim"
           },
           {
-            "text": null
+            "text": "nekovim"
           },
           {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      }
-    ]
-  },
-  {
-    "blockIndex": 21,
-    "translit": [
-      {
-        "lineIndex": 0,
-        "words": [
-          {
-            "text": null
+            "text": "chalulim"
           },
           {
-            "text": null
+            "text": "chalulim"
           },
           {
-            "text": null
+            "text": "goluy"
           },
           {
-            "text": null
+            "text": "veyodua"
           },
           {
-            "text": null
+            "text": "lifneiy"
           },
           {
-            "text": null
+            "text": "chisei"
           },
           {
-            "text": null
+            "text": "chevodecho"
           },
           {
-            "text": null
+            "text": "sheim"
           },
           {
-            "text": null
+            "text": "yiposeicha"
           },
           {
-            "text": null
+            "text": "echod"
           },
           {
-            "text": null
+            "text": "meihem"
           },
           {
-            "text": null
+            "text": "o"
           },
           {
-            "text": null
+            "text": "yisoseim"
           },
           {
-            "text": null
+            "text": "echod"
           },
           {
-            "text": null
+            "text": "meihem"
           },
           {
-            "text": null
+            "text": "i"
           },
           {
-            "text": null
+            "text": "efshar"
           },
           {
-            "text": null
+            "text": "lehiskayeim"
           },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      }
-    ]
-  },
-  {
-    "blockIndex": 22,
-    "translit": [
-      {
-        "lineIndex": 0,
-        "words": [
           {
-            "text": null
+            "text": "velaamod"
           },
           {
-            "text": null
+            "text": "lefoneycho"
           },
           {
-            "text": null
+            "text": "afilu"
           },
           {
-            "text": null
+            "text": "shoo"
           },
           {
-            "text": null
+            "text": "echos."
           },
           {
-            "text": null
+            "text": "boruch"
           },
           {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      }
-    ]
-  },
-  {
-    "blockIndex": 23,
-    "translit": [
-      {
-        "lineIndex": 0,
-        "words": [
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 1,
-        "words": [
-          {
-            "text": null
+            "text": "ato"
           },
           {
-            "text": null
+            "text": "Adonoy"
           },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      }
-    ]
-  },
-  {
-    "blockIndex": 26,
-    "translit": [
-      {
-        "lineIndex": 0,
-        "words": [
           {
-            "text": null
+            "text": "rofei"
           },
           {
-            "text": null
+            "text": "cholbosor"
           },
           {
-            "text": ")."
+            "text": "vmafli"
           },
           {
-            "text": null
+            "text": "laasos:"
           }
         ],
         "source": "sefaria-ported"

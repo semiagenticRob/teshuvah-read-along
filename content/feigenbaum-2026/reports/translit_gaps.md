@@ -4,56 +4,56 @@ Counts translit words with non-null text vs total translit word slots.
 
 ## shacharit
 
-hashkamas_haboker: 26/144 words have translit (18%)
-birchos_hashachar: 46/905 words have translit (5%)
-pesukei_dzimrah: 38/7208 words have translit (1%)
-barchu: 1/244 words have translit (0%)
-birchos_krias_shema_shacharit: 43/3502 words have translit (1%)
-shemoneh_esrei_shacharit: 64/5300 words have translit (1%)
-avinu_malkeinu_shacharit: 18/1889 words have translit (1%)
-tachanun_shacharit: 27/2455 words have translit (1%)
-krias_hatorah: 36/4515 words have translit (1%)
-aleinu_shacharit: 2/444 words have translit (0%)
-shir_shel_yom: 13/543 words have translit (2%)
-barchi_nafshi: 4/513 words have translit (1%)
-ldovid_hashem_shacharit: 4/700 words have translit (1%)
+hashkamas_haboker: 120/120 words have translit (100%)
+birchos_hashachar: 401/401 words have translit (100%)
+pesukei_dzimrah: 2992/3301 words have translit (91%)
+barchu: 0/0 words have translit (0%)
+birchos_krias_shema_shacharit: 837/904 words have translit (93%)
+shemoneh_esrei_shacharit: 1118/1598 words have translit (70%)
+avinu_malkeinu_shacharit: 0/0 words have translit (0%)
+tachanun_shacharit: 372/382 words have translit (97%)
+krias_hatorah: 0/0 words have translit (0%)
+aleinu_shacharit: 171/173 words have translit (99%)
+shir_shel_yom: 694/743 words have translit (93%)
+barchi_nafshi: 0/0 words have translit (0%)
+ldovid_hashem_shacharit: 0/0 words have translit (0%)
 pitum_haketores: 10/1070 words have translit (1%)
 shesh_zechiros: 1/479 words have translit (0%)
-shloshah_asar_ikarim: 4/784 words have translit (1%)
-hallel: 21/3298 words have translit (1%)
-mussaf_rosh_chodesh: 30/4280 words have translit (1%)
-mussaf_chol_hamoed: 41/5175 words have translit (1%)
+shloshah_asar_ikarim: 0/0 words have translit (0%)
+hallel: 0/0 words have translit (0%)
+mussaf_rosh_chodesh: 0/0 words have translit (0%)
+mussaf_chol_hamoed: 0/0 words have translit (0%)
 
 ## birkat_hamazon
 
-birchas_hamazon: 49/3582 words have translit (1%)
-al_hamichyah: 5/460 words have translit (1%)
-borei_nefashos: 4/665 words have translit (1%)
+birchas_hamazon: 161/962 words have translit (17%)
+al_hamichyah: 0/0 words have translit (0%)
+borei_nefashos: 0/0 words have translit (0%)
 
 ## tefillos
 
-tefillas_haderech: 4/562 words have translit (1%)
-sefiras_haomer: 6/1925 words have translit (0%)
-krias_shema_al_hamitah: 25/2624 words have translit (1%)
-netilas_lulav: 6/302 words have translit (2%)
+tefillas_haderech: 0/0 words have translit (0%)
+sefiras_haomer: 0/0 words have translit (0%)
+krias_shema_al_hamitah: 0/0 words have translit (0%)
+netilas_lulav: 0/0 words have translit (0%)
 
 ## mincha
 
-mincha_ashrei: 21/2743 words have translit (1%)
-shemoneh_esrei_mincha: 40/5823 words have translit (1%)
-avinu_malkeinu_mincha: 16/1306 words have translit (1%)
-tachanun_mincha: 6/594 words have translit (1%)
-aleinu_mincha: 12/432 words have translit (3%)
+mincha_ashrei: 147/204 words have translit (72%)
+shemoneh_esrei_mincha: 1117/1788 words have translit (62%)
+avinu_malkeinu_mincha: 0/0 words have translit (0%)
+tachanun_mincha: 215/217 words have translit (99%)
+aleinu_mincha: 171/173 words have translit (99%)
 
 ## maariv
 
-maariv_opening: 2/243 words have translit (1%)
-birchos_krias_shema_maariv: 17/2390 words have translit (1%)
-shemoneh_esrei_maariv: 35/4984 words have translit (1%)
-aleinu_maariv: 8/989 words have translit (1%)
-ldovid_hashem_maariv: 6/119 words have translit (5%)
-maariv_motzaei_shabbos: 13/551 words have translit (2%)
+maariv_opening: 14/57 words have translit (25%)
+birchos_krias_shema_maariv: 224/878 words have translit (26%)
+shemoneh_esrei_maariv: 955/1495 words have translit (64%)
+aleinu_maariv: 171/173 words have translit (99%)
+ldovid_hashem_maariv: 0/0 words have translit (0%)
+maariv_motzaei_shabbos: 0/0 words have translit (0%)
 
 ---
-Total: 704/73742 words have translit (1%)
-Generated: 2026-05-26T21:40:00.761Z
+Total: 9891/15118 words have translit (65%)
+Generated: 2026-05-26T22:52:54.781Z

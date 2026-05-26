@@ -6,66 +6,280 @@
         "lineIndex": 0,
         "words": [
           {
-            "text": null
+            "text": "vayomer"
           },
           {
-            "text": "ashreiy"
+            "text": "dovid"
+          },
+          {
+            "text": "elgod"
+          },
+          {
+            "text": "tzarli"
+          },
+          {
+            "text": "meod"
+          },
+          {
+            "text": "niplohno"
+          },
+          {
+            "text": "veyadyhovo"
+          },
+          {
+            "text": "kirabim"
+          },
+          {
+            "text": "rachamoyv"
+          },
+          {
+            "text": "vvyadodom"
+          },
+          {
+            "text": "alepolo:"
           }
         ],
         "source": "sefaria-ported"
-      }
-    ]
-  },
-  {
-    "blockIndex": 1,
-    "translit": [
-      {
-        "lineIndex": 0,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
       },
       {
         "lineIndex": 1,
         "words": [
           {
-            "text": null
+            "text": "rachum"
           },
           {
-            "text": null
+            "text": "vechanun"
+          },
+          {
+            "text": "chotosi"
+          },
+          {
+            "text": "lefoneycho"
+          },
+          {
+            "text": "Adonoy"
+          },
+          {
+            "text": "molei"
+          },
+          {
+            "text": "rachamim"
+          },
+          {
+            "text": "racheim"
+          },
+          {
+            "text": "olay"
+          },
+          {
+            "text": "vekabeil"
+          },
+          {
+            "text": "tachanunoy:"
+          },
+          {
+            "text": "Adonoy"
+          },
+          {
+            "text": "albapcho"
+          },
+          {
+            "text": "sochicheini"
+          },
+          {
+            "text": "vealbachamoscho"
+          },
+          {
+            "text": "seyasreini:"
+          },
+          {
+            "text": "choneini"
+          },
+          {
+            "text": "Adonoy"
+          },
+          {
+            "text": "ki"
+          },
+          {
+            "text": "umlal"
+          },
+          {
+            "text": "oni"
+          },
+          {
+            "text": "refoeini"
+          },
+          {
+            "text": "Adonoy"
+          },
+          {
+            "text": "ki"
+          },
+          {
+            "text": "nivhalu"
+          },
+          {
+            "text": "atzomoy:"
+          },
+          {
+            "text": "venafshi"
+          },
+          {
+            "text": "nivhalo"
+          },
+          {
+            "text": "meod"
+          },
+          {
+            "text": "veato"
+          },
+          {
+            "text": "Adonoy"
+          },
+          {
+            "text": "admosoy:"
+          },
+          {
+            "text": "shuvo"
+          },
+          {
+            "text": "Adonoy"
+          },
+          {
+            "text": "chaltzo"
+          },
+          {
+            "text": "nafshi"
+          },
+          {
+            "text": "hoshieini"
+          },
+          {
+            "text": "lemaan"
+          },
+          {
+            "text": "chasdecho:"
+          },
+          {
+            "text": "ki"
+          },
+          {
+            "text": "eiyn"
+          },
+          {
+            "text": "bamoves"
+          },
+          {
+            "text": "zichrecho"
+          },
+          {
+            "text": "bishol"
+          },
+          {
+            "text": "miyode"
+          },
+          {
+            "text": "loch:"
+          },
+          {
+            "text": "yogatibanchosi"
+          },
+          {
+            "text": "asche"
+          },
+          {
+            "text": "vechollaylo"
+          },
+          {
+            "text": "mitosi"
+          },
+          {
+            "text": "bedimosi"
+          },
+          {
+            "text": "arsi"
+          },
+          {
+            "text": "amse:"
+          },
+          {
+            "text": "oshsho"
+          },
+          {
+            "text": "mikaas"
+          },
+          {
+            "text": "eiyni"
+          },
+          {
+            "text": "osko"
+          },
+          {
+            "text": "becholtzorroy:"
+          },
+          {
+            "text": "mimeni"
+          },
+          {
+            "text": "kolpoaleiy"
+          },
+          {
+            "text": "oven"
+          },
+          {
+            "text": "kishoma"
+          },
+          {
+            "text": "Adonoy"
           },
           {
             "text": "kol"
           },
           {
-            "text": "melech"
+            "text": "bichyi:"
+          },
+          {
+            "text": "shoma"
+          },
+          {
+            "text": "Adonoy"
+          },
+          {
+            "text": "techinosi"
+          },
+          {
+            "text": "Adonoy"
+          },
+          {
+            "text": "tefilosi"
+          },
+          {
+            "text": "yikoch:"
+          },
+          {
+            "text": "yeivshu"
+          },
+          {
+            "text": "veyibohalu"
+          },
+          {
+            "text": "meod"
+          },
+          {
+            "text": "koloyvoy"
+          },
+          {
+            "text": "yoshuvu"
+          },
+          {
+            "text": "yeivshu"
+          },
+          {
+            "text": "roga:"
+          },
+          {
+            "text": null
           }
         ],
         "source": "sefaria-ported"
@@ -74,2284 +288,412 @@
         "lineIndex": 2,
         "words": [
           {
-            "text": null
+            "text": "shomeir"
           },
           {
-            "text": null
+            "text": "yisroeil"
           },
           {
-            "text": null
+            "text": "shemor"
           },
           {
-            "text": null
+            "text": "sheeiris"
           },
           {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 3,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 4,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 5,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 6,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      }
-    ]
-  },
-  {
-    "blockIndex": 2,
-    "translit": [
-      {
-        "lineIndex": 0,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 1,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 2,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 3,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 4,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      }
-    ]
-  },
-  {
-    "blockIndex": 3,
-    "translit": [
-      {
-        "lineIndex": 0,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 1,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 2,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 3,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 4,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 5,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 6,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 7,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 8,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 9,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      }
-    ]
-  },
-  {
-    "blockIndex": 4,
-    "translit": [
-      {
-        "lineIndex": 0,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 1,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 2,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
+            "text": "yisroeil"
           },
           {
-            "text": null
+            "text": "veal"
           },
           {
-            "text": null
+            "text": "yovad"
           },
           {
-            "text": null
+            "text": "yisroeil"
           },
           {
-            "text": null
+            "text": "hoomrim"
           },
           {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 3,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 4,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 5,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
+            "text": "shema"
           },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 6,
-        "words": [
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      }
-    ]
-  },
-  {
-    "blockIndex": 5,
-    "translit": [
-      {
-        "lineIndex": 0,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 1,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 2,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 3,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 4,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 5,
-        "words": [
           {
-            "text": "eis"
+            "text": "yisroeil:"
           }
         ],
         "source": "sefaria-ported"
       },
       {
-        "lineIndex": 6,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 7,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 8,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 9,
-        "words": [
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 10,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      }
-    ]
-  },
-  {
-    "blockIndex": 6,
-    "translit": [
-      {
-        "lineIndex": 0,
-        "words": [
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 1,
-        "words": [
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 2,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
         "lineIndex": 3,
         "words": [
           {
-            "text": null
+            "text": "shomeir"
           },
           {
-            "text": null
+            "text": "goy"
           },
           {
-            "text": null
+            "text": "echod"
           },
           {
-            "text": null
+            "text": "shemor"
           },
           {
-            "text": null
+            "text": "sheeiris"
           },
           {
-            "text": null
+            "text": "am"
           },
           {
-            "text": null
+            "text": "echod"
           },
           {
-            "text": null
+            "text": "veal"
           },
           {
-            "text": null
+            "text": "yovad"
           },
           {
-            "text": null
+            "text": "goy"
           },
           {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 4,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 5,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 6,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 7,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 8,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 9,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 10,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 11,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 12,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 13,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 14,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      }
-    ]
-  },
-  {
-    "blockIndex": 7,
-    "translit": [
-      {
-        "lineIndex": 0,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": "kadish"
-          }
-        ],
-        "source": "sefaria-ported"
-      },
-      {
-        "lineIndex": 1,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 2,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 3,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 4,
-        "words": [
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 5,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 6,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 7,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 8,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 9,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 10,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 11,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 12,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 13,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "sefaria-ported"
-      },
-      {
-        "lineIndex": 14,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 15,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 16,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 17,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
+            "text": "echod"
           },
           {
-            "text": null
+            "text": "hamyachadim"
           },
           {
-            "text": null
+            "text": "shimcho"
           },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 18,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 19,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 20,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 21,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 22,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 23,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 24,
-        "words": [
           {
-            "text": null
+            "text": "Adonoy"
           },
           {
             "text": "eloheiynu"
+          },
+          {
+            "text": "Adonoy"
+          },
+          {
+            "text": "echod:"
           }
         ],
         "source": "sefaria-ported"
       },
       {
-        "lineIndex": 25,
+        "lineIndex": 4,
         "words": [
           {
-            "text": null
+            "text": "shomeir"
           },
           {
-            "text": null
+            "text": "goy"
+          },
+          {
+            "text": "kodosh"
+          },
+          {
+            "text": "shemor"
+          },
+          {
+            "text": "sheeiris"
+          },
+          {
+            "text": "am"
+          },
+          {
+            "text": "kodosh"
+          },
+          {
+            "text": "veal"
+          },
+          {
+            "text": "yovad"
+          },
+          {
+            "text": "goy"
+          },
+          {
+            "text": "kodosh"
+          },
+          {
+            "text": "hamshalshim"
+          },
+          {
+            "text": "besholsh"
+          },
+          {
+            "text": "kedushos"
+          },
+          {
+            "text": "lekodosh:"
           }
         ],
-        "source": "missing"
+        "source": "sefaria-ported"
       },
       {
-        "lineIndex": 26,
+        "lineIndex": 5,
         "words": [
           {
-            "text": null
+            "text": "misratze"
           },
           {
-            "text": null
+            "text": "berachamim"
           },
           {
-            "text": null
+            "text": "vmispayeis"
           },
           {
-            "text": null
+            "text": "besachanunim"
           },
           {
-            "text": null
+            "text": "hisratze"
           },
           {
-            "text": null
+            "text": "vehispayeis"
           },
           {
-            "text": null
+            "text": "ledor"
           },
           {
-            "text": null
+            "text": "oni"
           },
           {
-            "text": null
+            "text": "ki"
           },
           {
-            "text": null
+            "text": "eiyn"
           },
           {
-            "text": null
+            "text": "ozeir:"
           },
           {
-            "text": null
+            "text": "ovinu"
           },
           {
-            "text": null
+            "text": "malkeinu"
+          },
+          {
+            "text": "choneinu"
+          },
+          {
+            "text": "vaaneinu"
+          },
+          {
+            "text": "ki"
+          },
+          {
+            "text": "eiyn"
+          },
+          {
+            "text": "bonu"
+          },
+          {
+            "text": "maasim"
+          },
+          {
+            "text": "asei"
+          },
+          {
+            "text": "imonu"
+          },
+          {
+            "text": "tzedoko"
+          },
+          {
+            "text": "vochesed"
+          },
+          {
+            "text": "vehoshieinu:"
           }
         ],
-        "source": "missing"
+        "source": "sefaria-ported"
       },
       {
-        "lineIndex": 27,
+        "lineIndex": 6,
         "words": [
           {
-            "text": null
+            "text": "vaanachnu"
           },
           {
-            "text": null
+            "text": "lo"
           },
           {
-            "text": null
+            "text": "neida"
           },
           {
-            "text": null
+            "text": "ma"
           },
           {
-            "text": null
+            "text": "naase"
           },
           {
-            "text": null
+            "text": "ki"
           },
           {
-            "text": null
+            "text": "oleycho"
           },
           {
-            "text": null
+            "text": "eiyneiynu:"
           },
           {
-            "text": null
+            "text": "zechor"
           },
           {
-            "text": null
+            "text": "rachameycho"
           },
           {
-            "text": null
+            "text": "Adonoy"
+          },
+          {
+            "text": "vachasodeycho"
+          },
+          {
+            "text": "ki"
+          },
+          {
+            "text": "meiolom"
+          },
+          {
+            "text": "heimo:"
+          },
+          {
+            "text": "yehi"
+          },
+          {
+            "text": "chasdcho"
+          },
+          {
+            "text": "Adonoy"
+          },
+          {
+            "text": "oleiynu"
+          },
+          {
+            "text": "kaasher"
+          },
+          {
+            "text": "yichalnu"
+          },
+          {
+            "text": "loch:"
+          },
+          {
+            "text": "al"
+          },
+          {
+            "text": "tizkor"
+          },
+          {
+            "text": "lonu"
+          },
+          {
+            "text": "aonos"
+          },
+          {
+            "text": "rishonim"
+          },
+          {
+            "text": "maheir"
+          },
+          {
+            "text": "yekadmunu"
+          },
+          {
+            "text": "rachameycho"
+          },
+          {
+            "text": "ki"
+          },
+          {
+            "text": "dalonu"
+          },
+          {
+            "text": "meod:"
+          },
+          {
+            "text": "choneinu"
+          },
+          {
+            "text": "Adonoy"
+          },
+          {
+            "text": "choneinu"
+          },
+          {
+            "text": "kirav"
+          },
+          {
+            "text": "sovanu"
+          },
+          {
+            "text": ":"
+          },
+          {
+            "text": "berogez"
+          },
+          {
+            "text": "racheim"
+          },
+          {
+            "text": "tizkor:"
+          },
+          {
+            "text": "ki"
+          },
+          {
+            "text": "yoda"
+          },
+          {
+            "text": "yitzreinu"
+          },
+          {
+            "text": "zochur"
+          },
+          {
+            "text": "ki"
+          },
+          {
+            "text": "ofor"
+          },
+          {
+            "text": "anochnu:"
+          },
+          {
+            "text": "ozreinu"
+          },
+          {
+            "text": "eloheiy"
+          },
+          {
+            "text": "yisheinu"
+          },
+          {
+            "text": "aldvar"
+          },
+          {
+            "text": "kevodshmecho"
+          },
+          {
+            "text": "vehatzileinu"
+          },
+          {
+            "text": "vechapeir"
+          },
+          {
+            "text": "alchatoseiynu"
+          },
+          {
+            "text": "lemaan"
+          },
+          {
+            "text": "shemecho:"
           },
           {
             "text": null
           }
         ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 28,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 29,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 30,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 31,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
-      },
-      {
-        "lineIndex": 32,
-        "words": [
-          {
-            "text": null
-          },
-          {
-            "text": null
-          },
-          {
-            "text": null
-          }
-        ],
-        "source": "missing"
+        "source": "sefaria-ported"
       }
     ]
   }
