@@ -1,11 +1,8 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import WordPair from './WordPair';
-import FootnoteMarker from './FootnoteMarker';
-import FootnotePanel from './FootnotePanel';
 import { pairWords } from '../../utils/pairWords';
-import { footnoteKey, useFootnoteStore } from '../../store/footnoteStore';
-import type { BundledCommentary, BundledPrayerSegment } from '../../data/bundled/shacharit';
+import type { BundledPrayerSegment } from '../../data/bundled/shacharit';
 
 interface Props {
   prayerId: string;
@@ -19,95 +16,34 @@ interface Props {
   onTapWord: (globalIdx: number) => void;
   renderHalo: (globalIdx: number) => React.ReactNode;
   segment?: BundledPrayerSegment;
-  /** Commentary entries anchored to this line, keyed by wordIndex (`-1` = whole line). */
-  commentaryByWord?: Map<number, BundledCommentary>;
   accent: string;
 }
 
 function LineRow(p: Props) {
-  const openKey = useFootnoteStore((s) => s.openKey);
-  const toggle = useFootnoteStore((s) => s.toggle);
-
   const pairs = React.useMemo(
     () => pairWords(p.hebrew, p.translit),
     [p.hebrew, p.translit],
   );
-
-  const onMarkerPress = useCallback(
-    (wordIndex: number) => toggle(footnoteKey(p.prayerId, p.lineIndex, wordIndex)),
-    [toggle, p.prayerId, p.lineIndex],
-  );
-
-  const lineLevelCommentary = p.commentaryByWord?.get(-1);
-  const lineLevelKey = footnoteKey(p.prayerId, p.lineIndex, undefined);
-  const isLineLevelOpen = openKey === lineLevelKey;
-
-  // Determine which word (if any) currently has its panel open on this line.
-  let activeWordIndex: number | null = null;
-  if (p.commentaryByWord) {
-    for (const wordIdx of p.commentaryByWord.keys()) {
-      if (wordIdx < 0) continue;
-      const key = footnoteKey(p.prayerId, p.lineIndex, wordIdx);
-      if (openKey === key) {
-        activeWordIndex = wordIdx;
-        break;
-      }
-    }
-  }
 
   const direction = p.showHebrew ? 'rtl' : 'ltr';
 
   return (
     <View style={styles.lineWrap}>
       <View style={[styles.pairs, { direction } as object]}>
-        {pairs.map((pair, i) => {
-          const commentary = p.commentaryByWord?.get(i);
-          const markerKey = commentary ? footnoteKey(p.prayerId, p.lineIndex, i) : null;
-          const isOpen = markerKey != null && openKey === markerKey;
-          return (
-            <View key={i} style={styles.pairAndMarker}>
-              <WordPair
-                hebrew={pair.hebrew}
-                translit={pair.translit}
-                showHebrew={p.showHebrew}
-                showTranslit={p.showTranslit}
-                idx={p.lineGlobalStart + i}
-                onTapWord={p.onTapWord}
-                renderHalo={p.renderHalo}
-              />
-              {commentary && (
-                <FootnoteMarker
-                  marker={commentary.marker}
-                  accent={p.accent}
-                  isOpen={isOpen}
-                  onPress={() => onMarkerPress(i)}
-                />
-              )}
-            </View>
-          );
-        })}
-        {lineLevelCommentary && (
-          <FootnoteMarker
-            marker={lineLevelCommentary.marker}
-            accent={p.accent}
-            isOpen={isLineLevelOpen}
-            onPress={() => toggle(lineLevelKey)}
-          />
-        )}
+        {pairs.map((pair, i) => (
+          <View key={i} style={styles.pairAndMarker}>
+            <WordPair
+              hebrew={pair.hebrew}
+              translit={pair.translit}
+              showHebrew={p.showHebrew}
+              showTranslit={p.showTranslit}
+              idx={p.lineGlobalStart + i}
+              onTapWord={p.onTapWord}
+              renderHalo={p.renderHalo}
+            />
+          </View>
+        ))}
       </View>
-
-      {/* Footnote panel for whichever marker on this line is active. */}
-      <FootnotePanel
-        commentary={
-          activeWordIndex != null
-            ? p.commentaryByWord?.get(activeWordIndex) ?? null
-            : isLineLevelOpen
-              ? lineLevelCommentary ?? null
-              : null
-        }
-        accent={p.accent}
-        isOpen={activeWordIndex != null || isLineLevelOpen}
-      />
     </View>
   );
 }

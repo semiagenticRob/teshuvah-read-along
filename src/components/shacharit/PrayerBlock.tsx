@@ -8,7 +8,6 @@ import PairRow from './PairRow';
 import { PRAYER_META } from '../../data/shacharit/prayerMeta';
 import { useSettingsStore } from '../../store/settingsStore';
 import type {
-  BundledCommentary,
   BundledPrayerSegment,
   TextBlock,
 } from '../../data/bundled/shacharit';
@@ -25,7 +24,6 @@ interface Props {
   startIdx: number;
   onTapWord: (globalIdx: number) => void;
   renderHalo: (globalIdx: number) => React.ReactNode;
-  commentary?: BundledCommentary[];
   segments?: BundledPrayerSegment[];
 }
 
@@ -74,7 +72,6 @@ function PrayerBlock(p: Props) {
           prayerStartIdx={p.startIdx}
           onTapWord={p.onTapWord}
           renderHalo={p.renderHalo}
-          commentary={p.commentary}
           segments={p.segments}
           accent={spec.accent}
         />

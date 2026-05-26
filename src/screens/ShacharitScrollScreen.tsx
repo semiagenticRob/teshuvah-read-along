@@ -130,7 +130,6 @@ function PrayerItem({
           startIdx={startIdx}
           onTapWord={onTapWord}
           renderHalo={renderHalo}
-          commentary={data.commentary}
           segments={data.segments}
         />
       </View>

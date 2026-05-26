@@ -1,7 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 import LineRow from './LineRow';
-import type { BundledCommentary, BundledPrayerSegment } from '../../data/bundled/shacharit';
+import type { BundledPrayerSegment } from '../../data/bundled/shacharit';
 
 interface Props {
   prayerId: string;
@@ -12,7 +12,6 @@ interface Props {
   prayerStartIdx: number;
   onTapWord: (globalIdx: number) => void;
   renderHalo: (globalIdx: number) => React.ReactNode;
-  commentary?: BundledCommentary[];
   segments?: BundledPrayerSegment[];
   accent: string;
 }
@@ -31,20 +30,6 @@ function PairRow(p: Props) {
     }
     return offsets;
   }, [p.hebrewLines, p.translitLines]);
-
-  // Index commentary by (lineIndex, wordIndex). wordIndex `undefined` → line-level (-1).
-  const commentaryByLine = React.useMemo(() => {
-    const map = new Map<number, Map<number, BundledCommentary>>();
-    for (const c of p.commentary ?? []) {
-      let lineMap = map.get(c.lineIndex);
-      if (!lineMap) {
-        lineMap = new Map();
-        map.set(c.lineIndex, lineMap);
-      }
-      lineMap.set(c.wordIndex ?? -1, c);
-    }
-    return map;
-  }, [p.commentary]);
 
   const segmentByLine = React.useMemo(() => {
     const map = new Map<number, BundledPrayerSegment>();
@@ -69,7 +54,6 @@ function PairRow(p: Props) {
           onTapWord={p.onTapWord}
           renderHalo={p.renderHalo}
           segment={segmentByLine.get(lineIdx)}
-          commentaryByWord={commentaryByLine.get(lineIdx)}
           accent={p.accent}
         />
       ))}
