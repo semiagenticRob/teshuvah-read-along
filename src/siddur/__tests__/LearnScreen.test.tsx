@@ -86,13 +86,62 @@ test('renders Glossary section header', () => {
   expect(flat).toMatch('Glossary');
 });
 
-test('EssayScreen renders the essay title from the route param', () => {
+test('EssayScreen renders the essay title', () => {
   const tree = TestRenderer.create(
     React.createElement(EssayScreen, {
       navigation,
-      route: { params: { essayId: 'appendix_01' } },
+      route: { params: { essayId: 'appendix_09_korbanos' } },
     }),
   ).toJSON();
   const flat = JSON.stringify(tree);
-  expect(flat).toMatch('appendix_01');
+  expect(flat).toMatch('Korbanos');
+});
+
+test('EssayScreen renders body content', () => {
+  const tree = TestRenderer.create(
+    React.createElement(EssayScreen, {
+      navigation,
+      route: { params: { essayId: 'appendix_09_korbanos' } },
+    }),
+  ).toJSON();
+  const flat = JSON.stringify(tree);
+  // Body should have content beyond just the title
+  expect(flat.length).toBeGreaterThan(200);
+  expect(flat).toMatch('Korbanos');
+});
+
+test('EssayScreen shows anchoredFrom rows', () => {
+  const tree = TestRenderer.create(
+    React.createElement(EssayScreen, {
+      navigation,
+      route: { params: { essayId: 'appendix_09_korbanos' } },
+    }),
+  ).toJSON();
+  const flat = JSON.stringify(tree);
+  expect(flat).toMatch('pitum_haketores');
+});
+
+test('EssayScreen tapping a reverse-link navigates to SiddurScroll', () => {
+  const nav = { ...navigation, navigate: jest.fn() };
+  const renderer = TestRenderer.create(
+    React.createElement(EssayScreen, {
+      navigation: nav,
+      route: { params: { essayId: 'appendix_09_korbanos' } },
+    }),
+  );
+
+  const { Pressable } = require('react-native');
+  const pressables = renderer.root.findAllByType(Pressable);
+  // Find the anchor row pressable (not the back button)
+  // The back button is first; anchor rows come after body content
+  const anchorPressable = pressables.find((p: any) => {
+    const onPress = p.props.onPress;
+    return onPress && p !== pressables[0];
+  });
+  expect(anchorPressable).toBeDefined();
+  anchorPressable.props.onPress();
+  expect(nav.navigate).toHaveBeenCalledWith(
+    'SiddurScroll',
+    expect.objectContaining({ cardId: 'shacharit' }),
+  );
 });
