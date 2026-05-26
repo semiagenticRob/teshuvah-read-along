@@ -69,3 +69,57 @@ test('LearnEssay carries essayKind discriminator', () => {
   };
   expect(essay.essayKind).toBe('appendix');
 });
+
+test('SiddurBlock switch is exhaustive over all 8 block kinds', () => {
+  // If a new variant is added or one removed without updating this switch,
+  // TypeScript will error at the `_exhaustive: never` line.
+  function assertExhaustive(block: SiddurBlock): string {
+    switch (block.kind) {
+      case 'prayer':          return 'prayer';
+      case 'heading':         return 'heading';
+      case 'subsection':      return 'subsection';
+      case 'rubric':          return 'rubric';
+      case 'faq':             return 'faq';
+      case 'callout':         return 'callout';
+      case 'instant_insight': return 'instant_insight';
+      case 'minyan_only':     return 'minyan_only';
+      case 'learn_link':      return 'learn_link';
+      case 'variant':         return 'variant';
+      case 'omer_count':      return 'omer_count';
+      default: {
+        const _exhaustive: never = block;
+        return _exhaustive;
+      }
+    }
+  }
+  const sample: SiddurBlock = { kind: 'prayer', he: [], en: [], wordIndexStart: 0, wordIndexEnd: -1 };
+  expect(assertExhaustive(sample)).toBe('prayer');
+});
+
+test('ConditionalRule switch is exhaustive over all 15 rule types', () => {
+  function assertExhaustive(rule: ConditionalRule): string {
+    switch (rule.type) {
+      case 'skip_on':              return 'skip_on';
+      case 'rosh_chodesh_only':    return 'rosh_chodesh_only';
+      case 'chanukah_only':        return 'chanukah_only';
+      case 'purim_only':           return 'purim_only';
+      case 'chol_hamoed_only':     return 'chol_hamoed_only';
+      case 'sefirah_only':         return 'sefirah_only';
+      case 'motzaei_shabbos_only': return 'motzaei_shabbos_only';
+      case 'fast_day_only':        return 'fast_day_only';
+      case 'days_of_week_only':    return 'days_of_week_only';
+      case 'date_window':          return 'date_window';
+      case 'amidah_winter':        return 'amidah_winter';
+      case 'amidah_summer':        return 'amidah_summer';
+      case 'amidah_geshem_only':   return 'amidah_geshem_only';
+      case 'hallel':               return 'hallel';
+      case 'community_minhag':     return 'community_minhag';
+      default: {
+        const _exhaustive: never = rule;
+        return _exhaustive;
+      }
+    }
+  }
+  const sample: ConditionalRule = { type: 'rosh_chodesh_only' };
+  expect(assertExhaustive(sample)).toBe('rosh_chodesh_only');
+});

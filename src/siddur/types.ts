@@ -56,7 +56,9 @@ export interface PrayerBlock {
   he: HebrewLine[];
   en: EnglishParagraph[];
   translit?: TranslitLine[];
+  /** Inclusive: globalIndex of the first karaoke word in this block. */
   wordIndexStart: number;
+  /** Inclusive: globalIndex of the last karaoke word in this block. */
   wordIndexEnd: number;
 }
 
@@ -66,6 +68,13 @@ export interface HebrewLine {
 }
 
 export interface HebrewWord {
+  /**
+   * Karaoke sequence index, contiguous from 0 per `SiddurSection` across
+   * all `PrayerBlock` instances. Sentinel `-1` (any negative value) marks
+   * words that appear in the Hebrew text but are NOT part of the karaoke
+   * advance sequence — used by `MinyanOnlyBlock` and by non-primary
+   * variants of `VariantBlock`. The data invariant test enforces this.
+   */
   globalIndex: number;
   text: string;
 }
@@ -144,6 +153,13 @@ export interface VariantOption {
 
 export interface OmerCountBlock {
   kind: 'omer_count';
+  /**
+   * At MVP, omer-count blocks render as static text matching the
+   * printed siddur (no karaoke advance). Words use sentinel
+   * `globalIndex: -1` per the same convention as `MinyanOnlyBlock`.
+   * V2 will replace this with a dynamic block computed from today's
+   * date.
+   */
   he: HebrewLine[];
   en: EnglishParagraph[];
 }
