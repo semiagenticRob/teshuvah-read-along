@@ -1,0 +1,97 @@
+{
+  "anchors": [
+    {
+      "essayId": "appendix_01_how_davening_works",
+      "anchorAt": [
+        { "cardId": "shacharit", "sectionId": "birchos_hashachar", "position": "before-first-prayer" }
+      ]
+    },
+    {
+      "essayId": "appendix_02_tzaddik_vra_lo",
+      "anchorAt": [
+        { "cardId": "shacharit", "sectionId": "tachanun_shacharit", "position": "before-first-prayer" }
+      ]
+    },
+    {
+      "essayId": "appendix_03_positive_power_of_mistakes",
+      "anchorAt": [
+        { "cardId": "shacharit", "sectionId": "tachanun_shacharit", "position": "after-last-prayer" }
+      ]
+    },
+    {
+      "essayId": "appendix_04_am_segulah",
+      "anchorAt": [
+        { "cardId": "shacharit", "sectionId": "birchos_hashachar", "position": "after-last-prayer" }
+      ]
+    },
+    {
+      "essayId": "appendix_05_bechirah_chofshis",
+      "anchorAt": [
+        { "cardId": "shacharit", "sectionId": "shemoneh_esrei_shacharit", "position": "after-last-prayer" }
+      ]
+    },
+    {
+      "essayId": "appendix_06_siyata_dshmaya",
+      "anchorAt": [
+        { "cardId": "shacharit", "sectionId": "shemoneh_esrei_shacharit", "position": "before-first-prayer" }
+      ]
+    },
+    {
+      "essayId": "appendix_07_all_hashem_does_is_good",
+      "anchorAt": [
+        { "cardId": "shacharit", "sectionId": "tachanun_shacharit", "position": "after-last-prayer" }
+      ]
+    },
+    {
+      "essayId": "appendix_08_our_material_world",
+      "anchorAt": [
+        { "cardId": "shacharit", "sectionId": "pesukei_dzimrah", "position": "after-last-prayer" }
+      ]
+    },
+    {
+      "essayId": "appendix_09_korbanos",
+      "anchorAt": [
+        { "cardId": "shacharit", "sectionId": "pitum_haketores", "position": "before-first-prayer" }
+      ]
+    },
+    {
+      "essayId": "appendix_10_making_hashem_happy",
+      "anchorAt": [
+        { "cardId": "shacharit", "sectionId": "pesukei_dzimrah", "position": "before-first-prayer" }
+      ]
+    },
+    {
+      "essayId": "appendix_11_ben_torah_bas_yisrael",
+      "anchorAt": [
+        { "cardId": "shacharit", "sectionId": "shloshah_asar_ikarim", "position": "after-last-prayer" }
+      ]
+    },
+    {
+      "essayId": "appendix_12_halachos",
+      "anchorAt": [
+        { "cardId": "shacharit", "sectionId": "birchos_hashachar", "position": "before-first-prayer" },
+        { "cardId": "shacharit", "sectionId": "shemoneh_esrei_shacharit", "position": "before-first-prayer" },
+        { "cardId": "mincha", "sectionId": "mincha_ashrei", "position": "before-first-prayer" },
+        { "cardId": "maariv", "sectionId": "maariv_opening", "position": "before-first-prayer" }
+      ]
+    },
+    {
+      "essayId": "introduction_for_teens",
+      "anchorAt": [
+        { "cardId": "shacharit", "sectionId": "hashkamas_haboker", "position": "before-first-prayer" }
+      ]
+    },
+    {
+      "essayId": "personal_note_to_teens",
+      "anchorAt": [
+        { "cardId": "shacharit", "sectionId": "hashkamas_haboker", "position": "before-first-prayer" }
+      ]
+    },
+    {
+      "essayId": "glossary",
+      "anchorAt": [
+        { "cardId": "shacharit", "sectionId": "birchos_hashachar", "position": "before-first-prayer" }
+      ]
+    }
+  ]
+}
