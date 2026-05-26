@@ -1,0 +1,1219 @@
+{
+  "id": "hashkamas_haboker",
+  "cardId": "shacharit",
+  "title": {
+    "he": "הַשְׁכָּמַת הַבֹּקֶר",
+    "en": "Waking Up in the Morning"
+  },
+  "source": "feigenbaum",
+  "sourcePages": [
+    2,
+    9
+  ],
+  "blocks": [
+    {
+      "kind": "learn_link",
+      "essayId": "introduction_for_teens",
+      "promptText": "Introduction for Teens"
+    },
+    {
+      "kind": "learn_link",
+      "essayId": "personal_note_to_teens",
+      "promptText": "A Personal Note from Rabbi Feigenbaum for Teens"
+    },
+    {
+      "kind": "prayer",
+      "he": [
+        {
+          "lineIndex": 0,
+          "words": [
+            {
+              "text": "יהיו",
+              "globalIndex": 0
+            }
+          ]
+        },
+        {
+          "lineIndex": 1,
+          "words": [
+            {
+              "text": "לרצון",
+              "globalIndex": 1
+            }
+          ]
+        },
+        {
+          "lineIndex": 2,
+          "words": [
+            {
+              "text": "אמרי",
+              "globalIndex": 2
+            }
+          ]
+        },
+        {
+          "lineIndex": 3,
+          "words": [
+            {
+              "text": "פי",
+              "globalIndex": 3
+            },
+            {
+              "text": "לבי",
+              "globalIndex": 4
+            }
+          ]
+        },
+        {
+          "lineIndex": 4,
+          "words": [
+            {
+              "text": "והגיון",
+              "globalIndex": 5
+            }
+          ]
+        }
+      ],
+      "wordIndexStart": 0,
+      "wordIndexEnd": 5,
+      "en": []
+    },
+    {
+      "kind": "prayer",
+      "he": [
+        {
+          "lineIndex": 0,
+          "words": [
+            {
+              "text": "לפניך",
+              "globalIndex": 6
+            }
+          ]
+        }
+      ],
+      "wordIndexStart": 6,
+      "wordIndexEnd": 6,
+      "en": []
+    },
+    {
+      "kind": "callout",
+      "body": [
+        {
+          "spans": [
+            {
+              "text": "The FOR WEEKDAYS"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "prayer",
+      "he": [
+        {
+          "lineIndex": 0,
+          "words": [
+            {
+              "text": "סדור",
+              "globalIndex": 7
+            },
+            {
+              "text": "לימות",
+              "globalIndex": 8
+            },
+            {
+              "text": "החול",
+              "globalIndex": 9
+            },
+            {
+              "text": "נוסח",
+              "globalIndex": 10
+            },
+            {
+              "text": "אשכנז",
+              "globalIndex": 11
+            }
+          ]
+        }
+      ],
+      "wordIndexStart": 7,
+      "wordIndexEnd": 11,
+      "en": []
+    },
+    {
+      "kind": "callout",
+      "body": [
+        {
+          "spans": [
+            {
+              "text": "The complete weekday davening with an  easy-to-follow and insightful  translation/explanation",
+              "style": "italic"
+            },
+            {
+              "text": "and"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "callout",
+      "body": [
+        {
+          "spans": [
+            {
+              "text": "NUSACH ASHKENAZ"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "callout",
+      "body": [
+        {
+          "spans": [
+            {
+              "text": "BY R ABBI YITZCHAK FEIGENBAUM A PROJECT OF NAVON EDUCATIONAL FOUNDATION"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "callout",
+      "body": [
+        {
+          "spans": [
+            {
+              "text": "Copyright © 2022 by Mosaica Press"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "callout",
+      "body": [
+        {
+          "spans": [
+            {
+              "text": "ISBN: 978-1-952370-74-8"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "callout",
+      "body": [
+        {
+          "spans": [
+            {
+              "text": "and"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "callout",
+      "body": [
+        {
+          "spans": [
+            {
+              "text": "Published by Mosaica Press, Inc. www.mosaicapress.com info@mosaicapress.com TABLE OF CONTENTS"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "callout",
+      "body": [
+        {
+          "spans": [
+            {
+              "text": "VI",
+              "style": "bold"
+            },
+            {
+              "text": "and"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "prayer",
+      "he": [
+        {
+          "lineIndex": 0,
+          "words": [
+            {
+              "text": "השכמת",
+              "globalIndex": 12
+            },
+            {
+              "text": "הבוקר",
+              "globalIndex": 13
+            }
+          ]
+        },
+        {
+          "lineIndex": 1,
+          "words": [
+            {
+              "text": "ברכות",
+              "globalIndex": 14
+            },
+            {
+              "text": "השחר",
+              "globalIndex": 15
+            }
+          ]
+        },
+        {
+          "lineIndex": 2,
+          "words": [
+            {
+              "text": "פסוקי",
+              "globalIndex": 16
+            },
+            {
+              "text": "דזמרה",
+              "globalIndex": 17
+            }
+          ]
+        },
+        {
+          "lineIndex": 3,
+          "words": [
+            {
+              "text": "ברכו",
+              "globalIndex": 18
+            }
+          ]
+        },
+        {
+          "lineIndex": 4,
+          "words": [
+            {
+              "text": "קריאת",
+              "globalIndex": 19
+            },
+            {
+              "text": "שמע",
+              "globalIndex": 20
+            },
+            {
+              "text": "וברכותיה",
+              "globalIndex": 21
+            }
+          ]
+        },
+        {
+          "lineIndex": 5,
+          "words": [
+            {
+              "text": "שמנה",
+              "globalIndex": 22
+            },
+            {
+              "text": "עשרה",
+              "globalIndex": 23
+            }
+          ]
+        },
+        {
+          "lineIndex": 6,
+          "words": [
+            {
+              "text": "אבינו",
+              "globalIndex": 24
+            },
+            {
+              "text": "מלכנו",
+              "globalIndex": 25
+            }
+          ]
+        },
+        {
+          "lineIndex": 7,
+          "words": [
+            {
+              "text": "תחנון",
+              "globalIndex": 26
+            }
+          ]
+        },
+        {
+          "lineIndex": 8,
+          "words": [
+            {
+              "text": "סדר",
+              "globalIndex": 27
+            },
+            {
+              "text": "קריאת",
+              "globalIndex": 28
+            },
+            {
+              "text": "התורה",
+              "globalIndex": 29
+            }
+          ]
+        },
+        {
+          "lineIndex": 9,
+          "words": [
+            {
+              "text": "עלינו",
+              "globalIndex": 30
+            }
+          ]
+        },
+        {
+          "lineIndex": 10,
+          "words": [
+            {
+              "text": "שיר",
+              "globalIndex": 31
+            },
+            {
+              "text": "של",
+              "globalIndex": 32
+            },
+            {
+              "text": "יום",
+              "globalIndex": 33
+            }
+          ]
+        },
+        {
+          "lineIndex": 11,
+          "words": [
+            {
+              "text": "ברכי",
+              "globalIndex": 34
+            },
+            {
+              "text": "נפשי",
+              "globalIndex": 35
+            }
+          ]
+        },
+        {
+          "lineIndex": 12,
+          "words": [
+            {
+              "text": "לדוד",
+              "globalIndex": 36
+            },
+            {
+              "text": "ה'",
+              "globalIndex": 37
+            },
+            {
+              "text": "אורי",
+              "globalIndex": 38
+            }
+          ]
+        },
+        {
+          "lineIndex": 13,
+          "words": [
+            {
+              "text": "פטום",
+              "globalIndex": 39
+            },
+            {
+              "text": "הקטורת",
+              "globalIndex": 40
+            }
+          ]
+        },
+        {
+          "lineIndex": 14,
+          "words": [
+            {
+              "text": "שש",
+              "globalIndex": 41
+            },
+            {
+              "text": "זכירות",
+              "globalIndex": 42
+            }
+          ]
+        },
+        {
+          "lineIndex": 15,
+          "words": [
+            {
+              "text": "שלשה",
+              "globalIndex": 43
+            },
+            {
+              "text": "עשר",
+              "globalIndex": 44
+            },
+            {
+              "text": "עיקרים",
+              "globalIndex": 45
+            }
+          ]
+        },
+        {
+          "lineIndex": 16,
+          "words": [
+            {
+              "text": "ברכת",
+              "globalIndex": 46
+            },
+            {
+              "text": "המזון",
+              "globalIndex": 47
+            }
+          ]
+        },
+        {
+          "lineIndex": 17,
+          "words": [
+            {
+              "text": "ברכה",
+              "globalIndex": 48
+            },
+            {
+              "text": "מעין",
+              "globalIndex": 49
+            },
+            {
+              "text": "שלש",
+              "globalIndex": 50
+            },
+            {
+              "text": "על",
+              "globalIndex": 51
+            },
+            {
+              "text": "המחיה",
+              "globalIndex": 52
+            }
+          ]
+        },
+        {
+          "lineIndex": 18,
+          "words": [
+            {
+              "text": "בורא",
+              "globalIndex": 53
+            },
+            {
+              "text": "נפשות",
+              "globalIndex": 54
+            }
+          ]
+        },
+        {
+          "lineIndex": 19,
+          "words": [
+            {
+              "text": "תפילת",
+              "globalIndex": 55
+            },
+            {
+              "text": "הדרך",
+              "globalIndex": 56
+            }
+          ]
+        },
+        {
+          "lineIndex": 20,
+          "words": [
+            {
+              "text": "מנחה",
+              "globalIndex": 57
+            }
+          ]
+        },
+        {
+          "lineIndex": 21,
+          "words": [
+            {
+              "text": "שמנה",
+              "globalIndex": 58
+            },
+            {
+              "text": "עשרה",
+              "globalIndex": 59
+            }
+          ]
+        },
+        {
+          "lineIndex": 22,
+          "words": [
+            {
+              "text": "אבינו",
+              "globalIndex": 60
+            },
+            {
+              "text": "מלכנו",
+              "globalIndex": 61
+            }
+          ]
+        },
+        {
+          "lineIndex": 23,
+          "words": [
+            {
+              "text": "תחנון",
+              "globalIndex": 62
+            }
+          ]
+        }
+      ],
+      "wordIndexStart": 12,
+      "wordIndexEnd": 62,
+      "en": [
+        {
+          "spans": [
+            {
+              "text": "VI",
+              "style": "bold"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "prayer",
+      "he": [
+        {
+          "lineIndex": 0,
+          "words": [
+            {
+              "text": "עלינו",
+              "globalIndex": 63
+            }
+          ]
+        },
+        {
+          "lineIndex": 1,
+          "words": [
+            {
+              "text": "מעריב",
+              "globalIndex": 64
+            }
+          ]
+        },
+        {
+          "lineIndex": 2,
+          "words": [
+            {
+              "text": "קריאת",
+              "globalIndex": 65
+            },
+            {
+              "text": "שמע",
+              "globalIndex": 66
+            },
+            {
+              "text": "וברכותיה",
+              "globalIndex": 67
+            }
+          ]
+        },
+        {
+          "lineIndex": 3,
+          "words": [
+            {
+              "text": "שמנה",
+              "globalIndex": 68
+            },
+            {
+              "text": "עשרה",
+              "globalIndex": 69
+            }
+          ]
+        },
+        {
+          "lineIndex": 4,
+          "words": [
+            {
+              "text": "עלינו",
+              "globalIndex": 70
+            }
+          ]
+        },
+        {
+          "lineIndex": 5,
+          "words": [
+            {
+              "text": "לדוד",
+              "globalIndex": 71
+            },
+            {
+              "text": "ה'",
+              "globalIndex": 72
+            },
+            {
+              "text": "אורי",
+              "globalIndex": 73
+            }
+          ]
+        },
+        {
+          "lineIndex": 6,
+          "words": [
+            {
+              "text": "מעריב",
+              "globalIndex": 74
+            },
+            {
+              "text": "למוצאי",
+              "globalIndex": 75
+            },
+            {
+              "text": "שבת",
+              "globalIndex": 76
+            }
+          ]
+        },
+        {
+          "lineIndex": 7,
+          "words": [
+            {
+              "text": "ספירת",
+              "globalIndex": 77
+            },
+            {
+              "text": "העומר",
+              "globalIndex": 78
+            }
+          ]
+        },
+        {
+          "lineIndex": 8,
+          "words": [
+            {
+              "text": "קריאת",
+              "globalIndex": 79
+            },
+            {
+              "text": "שמע",
+              "globalIndex": 80
+            },
+            {
+              "text": "על",
+              "globalIndex": 81
+            },
+            {
+              "text": "המטה",
+              "globalIndex": 82
+            }
+          ]
+        },
+        {
+          "lineIndex": 9,
+          "words": [
+            {
+              "text": "נטילת",
+              "globalIndex": 83
+            },
+            {
+              "text": "לולב",
+              "globalIndex": 84
+            }
+          ]
+        },
+        {
+          "lineIndex": 10,
+          "words": [
+            {
+              "text": "הלל",
+              "globalIndex": 85
+            }
+          ]
+        },
+        {
+          "lineIndex": 11,
+          "words": [
+            {
+              "text": "מוסף",
+              "globalIndex": 86
+            },
+            {
+              "text": "לראש",
+              "globalIndex": 87
+            },
+            {
+              "text": "חודש",
+              "globalIndex": 88
+            }
+          ]
+        },
+        {
+          "lineIndex": 12,
+          "words": [
+            {
+              "text": "מוסף",
+              "globalIndex": 89
+            },
+            {
+              "text": "לחול",
+              "globalIndex": 90
+            },
+            {
+              "text": "המועד",
+              "globalIndex": 91
+            }
+          ]
+        }
+      ],
+      "wordIndexStart": 63,
+      "wordIndexEnd": 91,
+      "en": []
+    },
+    {
+      "kind": "callout",
+      "body": [
+        {
+          "spans": [
+            {
+              "text": "and"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "callout",
+      "body": [
+        {
+          "spans": [
+            {
+              "text": "and"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "prayer",
+      "he": [
+        {
+          "lineIndex": 0,
+          "words": [
+            {
+              "text": "סדור",
+              "globalIndex": 92
+            },
+            {
+              "text": "זכרון",
+              "globalIndex": 93
+            },
+            {
+              "text": "גליקל",
+              "globalIndex": 94
+            },
+            {
+              "text": "חנה",
+              "globalIndex": 95
+            }
+          ]
+        },
+        {
+          "lineIndex": 1,
+          "words": [
+            {
+              "text": "לימות",
+              "globalIndex": 96
+            },
+            {
+              "text": "החול",
+              "globalIndex": 97
+            }
+          ]
+        }
+      ],
+      "wordIndexStart": 92,
+      "wordIndexEnd": 97,
+      "en": []
+    },
+    {
+      "kind": "prayer",
+      "he": [
+        {
+          "lineIndex": 0,
+          "words": [
+            {
+              "text": "גליקל",
+              "globalIndex": 98
+            },
+            {
+              "text": "חנה",
+              "globalIndex": 99
+            },
+            {
+              "text": "בת",
+              "globalIndex": 100
+            },
+            {
+              "text": "חיים",
+              "globalIndex": 101
+            },
+            {
+              "text": "וחיה",
+              "globalIndex": 102
+            },
+            {
+              "text": "צינה",
+              "globalIndex": 103
+            },
+            {
+              "text": "ע”ה",
+              "globalIndex": 104
+            }
+          ]
+        }
+      ],
+      "wordIndexStart": 98,
+      "wordIndexEnd": 104,
+      "en": []
+    },
+    {
+      "kind": "prayer",
+      "he": [
+        {
+          "lineIndex": 0,
+          "words": [
+            {
+              "text": "ע”ה",
+              "globalIndex": 105
+            }
+          ]
+        },
+        {
+          "lineIndex": 1,
+          "words": [
+            {
+              "text": "נפ'",
+              "globalIndex": 106
+            },
+            {
+              "text": "כ”ח",
+              "globalIndex": 107
+            },
+            {
+              "text": "שבט",
+              "globalIndex": 108
+            },
+            {
+              "text": "תשע”ד",
+              "globalIndex": 109
+            }
+          ]
+        }
+      ],
+      "wordIndexStart": 105,
+      "wordIndexEnd": 109,
+      "en": []
+    },
+    {
+      "kind": "prayer",
+      "he": [
+        {
+          "lineIndex": 0,
+          "words": [
+            {
+              "text": "וְ",
+              "globalIndex": 110
+            },
+            {
+              "text": "נָ",
+              "globalIndex": 111
+            },
+            {
+              "text": "ַת",
+              "globalIndex": 112
+            },
+            {
+              "text": "ִּתי",
+              "globalIndex": 113
+            },
+            {
+              "text": "לָ",
+              "globalIndex": 114
+            },
+            {
+              "text": "ֶהם",
+              "globalIndex": 115
+            },
+            {
+              "text": "בְּ",
+              "globalIndex": 116
+            },
+            {
+              "text": "בֵ",
+              "globalIndex": 117
+            },
+            {
+              "text": "יתִ",
+              "globalIndex": 118
+            },
+            {
+              "text": "י",
+              "globalIndex": 119
+            },
+            {
+              "text": "וּבְ",
+              "globalIndex": 120
+            },
+            {
+              "text": "חוֹ",
+              "globalIndex": 121
+            },
+            {
+              "text": "מ",
+              "globalIndex": 122
+            },
+            {
+              "text": "ַֹתי",
+              "globalIndex": 123
+            },
+            {
+              "text": "יָ",
+              "globalIndex": 124
+            },
+            {
+              "text": "ד",
+              "globalIndex": 125
+            },
+            {
+              "text": "וָ",
+              "globalIndex": 126
+            },
+            {
+              "text": "שֵׁ",
+              "globalIndex": 127
+            },
+            {
+              "text": "ם",
+              "globalIndex": 128
+            }
+          ]
+        }
+      ],
+      "wordIndexStart": 110,
+      "wordIndexEnd": 128,
+      "en": [
+        {
+          "spans": [
+            {
+              "text": "Shoah",
+              "style": "italic"
+            },
+            {
+              "text": ", her parents emigrated to Canada to begin life anew, while retaining the Torah values of their \nupbringing.\nNamed after two grandmothers, she was a bridge to the Torah and Yiddishkeit that infused the shtetls of Staszow and Kusnica, where \nmost of the Jewish residents perished"
+            },
+            {
+              "text": "al Kiddush Hashem.",
+              "style": "italic"
+            },
+            {
+              "text": "Family, Torah and"
+            },
+            {
+              "text": "tefillah",
+              "style": "italic"
+            },
+            {
+              "text": "were her life, and a siddur and"
+            },
+            {
+              "text": "Tehillimtefillah",
+              "style": "italic"
+            },
+            {
+              "text": "and"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "prayer",
+      "he": [
+        {
+          "lineIndex": 0,
+          "words": [
+            {
+              "text": "שרה",
+              "globalIndex": 129
+            },
+            {
+              "text": "טעלצא",
+              "globalIndex": 130
+            },
+            {
+              "text": "בת",
+              "globalIndex": 131
+            },
+            {
+              "text": "יבדלחט”א",
+              "globalIndex": 132
+            },
+            {
+              "text": "לוי",
+              "globalIndex": 133
+            },
+            {
+              "text": "שמחה",
+              "globalIndex": 134
+            },
+            {
+              "text": "גאלדמאן",
+              "globalIndex": 135
+            }
+          ]
+        }
+      ],
+      "wordIndexStart": 129,
+      "wordIndexEnd": 135,
+      "en": []
+    },
+    {
+      "kind": "prayer",
+      "he": [
+        {
+          "lineIndex": 0,
+          "words": [
+            {
+              "text": "ע”ה",
+              "globalIndex": 136
+            }
+          ]
+        },
+        {
+          "lineIndex": 1,
+          "words": [
+            {
+              "text": "כ”ב",
+              "globalIndex": 137
+            },
+            {
+              "text": "שבט",
+              "globalIndex": 138
+            },
+            {
+              "text": "תשע”ט",
+              "globalIndex": 139
+            }
+          ]
+        }
+      ],
+      "wordIndexStart": 136,
+      "wordIndexEnd": 139,
+      "en": [
+        {
+          "spans": [
+            {
+              "text": "tefillahtefillahmiddos",
+              "style": "italic"
+            },
+            {
+              "text": "and"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "callout",
+      "body": [
+        {
+          "spans": [
+            {
+              "text": "Li’chvod",
+              "style": "italic"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "callout",
+      "body": [
+        {
+          "spans": [
+            {
+              "text": "VI",
+              "style": "bold"
+            },
+            {
+              "text": "shmuzim",
+              "style": "italic"
+            },
+            {
+              "text": "and still hear your"
+            },
+            {
+              "text": "niggunim",
+              "style": "italic"
+            },
+            {
+              "text": "for the Rosh Hashanah and Yom Kippur davening in my head every year. I wish you much"
+            },
+            {
+              "text": "mazal",
+              "style": "italic"
+            },
+            {
+              "text": "and"
+            },
+            {
+              "text": "brachah",
+              "style": "italic"
+            },
+            {
+              "text": "on the completion of this siddur. May Hashem bless you, your"
+            },
+            {
+              "text": "rebbetzin",
+              "style": "italic"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "prayer",
+      "he": [
+        {
+          "lineIndex": 0,
+          "words": [
+            {
+              "text": "ואלו",
+              "globalIndex": 140
+            },
+            {
+              "text": "יעמדו",
+              "globalIndex": 141
+            },
+            {
+              "text": "על",
+              "globalIndex": 142
+            },
+            {
+              "text": "הברכה",
+              "globalIndex": 143
+            }
+          ]
+        }
+      ],
+      "wordIndexStart": 140,
+      "wordIndexEnd": 143,
+      "en": []
+    }
+  ]
+}

@@ -1,0 +1,818 @@
+[
+  {
+    "blockIndex": 2,
+    "translit": [
+      {
+        "lineIndex": 0,
+        "words": [
+          {
+            "text": null
+          }
+        ],
+        "source": "sefaria-ported"
+      },
+      {
+        "lineIndex": 1,
+        "words": [
+          {
+            "text": "lerotzon"
+          }
+        ],
+        "source": "sefaria-ported"
+      },
+      {
+        "lineIndex": 2,
+        "words": [
+          {
+            "text": "imreiy"
+          }
+        ],
+        "source": "sefaria-ported"
+      },
+      {
+        "lineIndex": 3,
+        "words": [
+          {
+            "text": "fi"
+          },
+          {
+            "text": "libi"
+          }
+        ],
+        "source": "sefaria-ported"
+      },
+      {
+        "lineIndex": 4,
+        "words": [
+          {
+            "text": "vehegyon"
+          }
+        ],
+        "source": "sefaria-ported"
+      }
+    ]
+  },
+  {
+    "blockIndex": 3,
+    "translit": [
+      {
+        "lineIndex": 0,
+        "words": [
+          {
+            "text": "lefoneycho"
+          }
+        ],
+        "source": "sefaria-ported"
+      }
+    ]
+  },
+  {
+    "blockIndex": 5,
+    "translit": [
+      {
+        "lineIndex": 0,
+        "words": [
+          {
+            "text": null
+          },
+          {
+            "text": null
+          },
+          {
+            "text": null
+          },
+          {
+            "text": null
+          },
+          {
+            "text": null
+          }
+        ],
+        "source": "missing"
+      }
+    ]
+  },
+  {
+    "blockIndex": 14,
+    "translit": [
+      {
+        "lineIndex": 0,
+        "words": [
+          {
+            "text": null
+          },
+          {
+            "text": null
+          }
+        ],
+        "source": "missing"
+      },
+      {
+        "lineIndex": 1,
+        "words": [
+          {
+            "text": "vehodoos"
+          },
+          {
+            "text": null
+          }
+        ],
+        "source": "sefaria-ported"
+      },
+      {
+        "lineIndex": 2,
+        "words": [
+          {
+            "text": null
+          },
+          {
+            "text": null
+          }
+        ],
+        "source": "missing"
+      },
+      {
+        "lineIndex": 3,
+        "words": [
+          {
+            "text": null
+          }
+        ],
+        "source": "missing"
+      },
+      {
+        "lineIndex": 4,
+        "words": [
+          {
+            "text": null
+          },
+          {
+            "text": null
+          },
+          {
+            "text": null
+          }
+        ],
+        "source": "missing"
+      },
+      {
+        "lineIndex": 5,
+        "words": [
+          {
+            "text": null
+          },
+          {
+            "text": "esrei"
+          }
+        ],
+        "source": "sefaria-ported"
+      },
+      {
+        "lineIndex": 6,
+        "words": [
+          {
+            "text": "ovinu"
+          },
+          {
+            "text": "malkeinu"
+          }
+        ],
+        "source": "sefaria-ported"
+      },
+      {
+        "lineIndex": 7,
+        "words": [
+          {
+            "text": null
+          }
+        ],
+        "source": "missing"
+      },
+      {
+        "lineIndex": 8,
+        "words": [
+          {
+            "text": null
+          },
+          {
+            "text": null
+          },
+          {
+            "text": null
+          }
+        ],
+        "source": "missing"
+      },
+      {
+        "lineIndex": 9,
+        "words": [
+          {
+            "text": "oleiynu"
+          }
+        ],
+        "source": "sefaria-ported"
+      },
+      {
+        "lineIndex": 10,
+        "words": [
+          {
+            "text": null
+          },
+          {
+            "text": null
+          },
+          {
+            "text": null
+          }
+        ],
+        "source": "sefaria-ported"
+      },
+      {
+        "lineIndex": 11,
+        "words": [
+          {
+            "text": null
+          },
+          {
+            "text": "nafshi"
+          }
+        ],
+        "source": "sefaria-ported"
+      },
+      {
+        "lineIndex": 12,
+        "words": [
+          {
+            "text": null
+          },
+          {
+            "text": null
+          },
+          {
+            "text": null
+          }
+        ],
+        "source": "missing"
+      },
+      {
+        "lineIndex": 13,
+        "words": [
+          {
+            "text": "pitum"
+          },
+          {
+            "text": null
+          }
+        ],
+        "source": "sefaria-ported"
+      },
+      {
+        "lineIndex": 14,
+        "words": [
+          {
+            "text": null
+          },
+          {
+            "text": null
+          }
+        ],
+        "source": "missing"
+      },
+      {
+        "lineIndex": 15,
+        "words": [
+          {
+            "text": "shelsho"
+          },
+          {
+            "text": null
+          },
+          {
+            "text": null
+          }
+        ],
+        "source": "sefaria-ported"
+      },
+      {
+        "lineIndex": 16,
+        "words": [
+          {
+            "text": null
+          },
+          {
+            "text": null
+          }
+        ],
+        "source": "sefaria-ported"
+      },
+      {
+        "lineIndex": 17,
+        "words": [
+          {
+            "text": null
+          },
+          {
+            "text": null
+          },
+          {
+            "text": null
+          },
+          {
+            "text": null
+          },
+          {
+            "text": null
+          }
+        ],
+        "source": "missing"
+      },
+      {
+        "lineIndex": 18,
+        "words": [
+          {
+            "text": "borei"
+          },
+          {
+            "text": null
+          }
+        ],
+        "source": "sefaria-ported"
+      },
+      {
+        "lineIndex": 19,
+        "words": [
+          {
+            "text": null
+          },
+          {
+            "text": null
+          }
+        ],
+        "source": "missing"
+      },
+      {
+        "lineIndex": 20,
+        "words": [
+          {
+            "text": "mincho"
+          }
+        ],
+        "source": "sefaria-ported"
+      },
+      {
+        "lineIndex": 21,
+        "words": [
+          {
+            "text": null
+          },
+          {
+            "text": "esrei"
+          }
+        ],
+        "source": "sefaria-ported"
+      },
+      {
+        "lineIndex": 22,
+        "words": [
+          {
+            "text": "ovinu"
+          },
+          {
+            "text": "malkeinu"
+          }
+        ],
+        "source": "sefaria-ported"
+      },
+      {
+        "lineIndex": 23,
+        "words": [
+          {
+            "text": null
+          }
+        ],
+        "source": "missing"
+      }
+    ]
+  },
+  {
+    "blockIndex": 15,
+    "translit": [
+      {
+        "lineIndex": 0,
+        "words": [
+          {
+            "text": "oleiynu"
+          }
+        ],
+        "source": "sefaria-ported"
+      },
+      {
+        "lineIndex": 1,
+        "words": [
+          {
+            "text": null
+          }
+        ],
+        "source": "missing"
+      },
+      {
+        "lineIndex": 2,
+        "words": [
+          {
+            "text": null
+          },
+          {
+            "text": null
+          },
+          {
+            "text": null
+          }
+        ],
+        "source": "missing"
+      },
+      {
+        "lineIndex": 3,
+        "words": [
+          {
+            "text": null
+          },
+          {
+            "text": "esrei"
+          }
+        ],
+        "source": "sefaria-ported"
+      },
+      {
+        "lineIndex": 4,
+        "words": [
+          {
+            "text": "oleiynu"
+          }
+        ],
+        "source": "sefaria-ported"
+      },
+      {
+        "lineIndex": 5,
+        "words": [
+          {
+            "text": null
+          },
+          {
+            "text": null
+          },
+          {
+            "text": null
+          }
+        ],
+        "source": "missing"
+      },
+      {
+        "lineIndex": 6,
+        "words": [
+          {
+            "text": null
+          },
+          {
+            "text": null
+          },
+          {
+            "text": null
+          }
+        ],
+        "source": "missing"
+      },
+      {
+        "lineIndex": 7,
+        "words": [
+          {
+            "text": null
+          },
+          {
+            "text": null
+          }
+        ],
+        "source": "missing"
+      },
+      {
+        "lineIndex": 8,
+        "words": [
+          {
+            "text": null
+          },
+          {
+            "text": "ami"
+          },
+          {
+            "text": null
+          },
+          {
+            "text": null
+          }
+        ],
+        "source": "sefaria-ported"
+      },
+      {
+        "lineIndex": 9,
+        "words": [
+          {
+            "text": "netilas"
+          },
+          {
+            "text": null
+          }
+        ],
+        "source": "sefaria-ported"
+      },
+      {
+        "lineIndex": 10,
+        "words": [
+          {
+            "text": "haleil"
+          }
+        ],
+        "source": "sefaria-ported"
+      },
+      {
+        "lineIndex": 11,
+        "words": [
+          {
+            "text": null
+          },
+          {
+            "text": null
+          },
+          {
+            "text": null
+          }
+        ],
+        "source": "missing"
+      },
+      {
+        "lineIndex": 12,
+        "words": [
+          {
+            "text": null
+          },
+          {
+            "text": null
+          },
+          {
+            "text": null
+          }
+        ],
+        "source": "missing"
+      }
+    ]
+  },
+  {
+    "blockIndex": 18,
+    "translit": [
+      {
+        "lineIndex": 0,
+        "words": [
+          {
+            "text": null
+          },
+          {
+            "text": null
+          },
+          {
+            "text": null
+          },
+          {
+            "text": null
+          }
+        ],
+        "source": "missing"
+      },
+      {
+        "lineIndex": 1,
+        "words": [
+          {
+            "text": null
+          },
+          {
+            "text": null
+          }
+        ],
+        "source": "missing"
+      }
+    ]
+  },
+  {
+    "blockIndex": 19,
+    "translit": [
+      {
+        "lineIndex": 0,
+        "words": [
+          {
+            "text": null
+          },
+          {
+            "text": null
+          },
+          {
+            "text": null
+          },
+          {
+            "text": null
+          },
+          {
+            "text": null
+          },
+          {
+            "text": null
+          },
+          {
+            "text": null
+          }
+        ],
+        "source": "missing"
+      }
+    ]
+  },
+  {
+    "blockIndex": 20,
+    "translit": [
+      {
+        "lineIndex": 0,
+        "words": [
+          {
+            "text": null
+          }
+        ],
+        "source": "missing"
+      },
+      {
+        "lineIndex": 1,
+        "words": [
+          {
+            "text": null
+          },
+          {
+            "text": null
+          },
+          {
+            "text": null
+          },
+          {
+            "text": null
+          }
+        ],
+        "source": "missing"
+      }
+    ]
+  },
+  {
+    "blockIndex": 21,
+    "translit": [
+      {
+        "lineIndex": 0,
+        "words": [
+          {
+            "text": null
+          },
+          {
+            "text": null
+          },
+          {
+            "text": null
+          },
+          {
+            "text": null
+          },
+          {
+            "text": null
+          },
+          {
+            "text": null
+          },
+          {
+            "text": null
+          },
+          {
+            "text": null
+          },
+          {
+            "text": null
+          },
+          {
+            "text": null
+          },
+          {
+            "text": null
+          },
+          {
+            "text": null
+          },
+          {
+            "text": null
+          },
+          {
+            "text": null
+          },
+          {
+            "text": null
+          },
+          {
+            "text": null
+          },
+          {
+            "text": null
+          },
+          {
+            "text": null
+          },
+          {
+            "text": null
+          }
+        ],
+        "source": "missing"
+      }
+    ]
+  },
+  {
+    "blockIndex": 22,
+    "translit": [
+      {
+        "lineIndex": 0,
+        "words": [
+          {
+            "text": null
+          },
+          {
+            "text": null
+          },
+          {
+            "text": null
+          },
+          {
+            "text": null
+          },
+          {
+            "text": null
+          },
+          {
+            "text": null
+          },
+          {
+            "text": null
+          }
+        ],
+        "source": "missing"
+      }
+    ]
+  },
+  {
+    "blockIndex": 23,
+    "translit": [
+      {
+        "lineIndex": 0,
+        "words": [
+          {
+            "text": null
+          }
+        ],
+        "source": "missing"
+      },
+      {
+        "lineIndex": 1,
+        "words": [
+          {
+            "text": null
+          },
+          {
+            "text": null
+          },
+          {
+            "text": null
+          }
+        ],
+        "source": "missing"
+      }
+    ]
+  },
+  {
+    "blockIndex": 26,
+    "translit": [
+      {
+        "lineIndex": 0,
+        "words": [
+          {
+            "text": null
+          },
+          {
+            "text": null
+          },
+          {
+            "text": ")."
+          },
+          {
+            "text": null
+          }
+        ],
+        "source": "sefaria-ported"
+      }
+    ]
+  }
+]

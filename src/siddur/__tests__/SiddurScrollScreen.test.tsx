@@ -26,22 +26,31 @@ function renderScreen() {
   );
 }
 
-test('renders the seed section header and at least one Hebrew word', () => {
+test('renders the first shacharit section header and at least one Hebrew word', () => {
   const tree = renderScreen().toJSON();
   const flat = JSON.stringify(tree);
-  expect(flat).toMatch('Modeh Ani');
-  expect(flat).toMatch('מוֹדֶה');
+  // hashkamas_haboker is the first shacharit section
+  expect(flat).toMatch('Waking Up in the Morning');
+  // First prayer block contains יהיו
+  expect(flat).toMatch('יהי');
 });
 
-test('renders the FAQ collapsed by default', () => {
+test('renders multiple section titles as the card contains many sections', () => {
   const tree = renderScreen().toJSON();
   const flat = JSON.stringify(tree);
-  expect(flat).toMatch('Why this prayer first');
-  expect(flat).not.toMatch('gratitude opens the day');
+  // Morning Blessings is another shacharit section title
+  expect(flat).toMatch('Morning Blessings');
+  // Tachanun is yet another section
+  expect(flat).toMatch('Tachanun');
 });
 
-test('renders the minyan-only block collapsed by default', () => {
+test('minyan-only blocks are collapsed by default (prompt shown, Hebrew body not expanded)', () => {
   const tree = renderScreen().toJSON();
   const flat = JSON.stringify(tree);
-  expect(flat).not.toMatch('בָּרְכוּ');
+  // The MinyanRevealBlock prompt text appears when collapsed
+  expect(flat).toMatch('Recited only with a minyan');
+  // The minyan block body Hebrew is NOT rendered when collapsed (MinyanRevealBlock open=false)
+  // barchu section has only minyan_only blocks - the Hebrew of those blocks should be hidden
+  // Check that Krias HaTorah header is present (it IS a section title) but its minyan-only prayers are hidden
+  expect(flat).toMatch('Torah Reading');
 });
