@@ -10,6 +10,9 @@ import { WelcomeScreen } from '../screens/onboarding/WelcomeScreen';
 import { SkillTierScreen } from '../screens/onboarding/SkillTierScreen';
 import { LocationPermissionScreen } from '../screens/onboarding/LocationPermissionScreen';
 import TranslationPhilosophyScreen from '../screens/TranslationPhilosophyScreen';
+import SiddurScrollScreen from '../siddur/SiddurScrollScreen';
+import LearnScreen from '../siddur/LearnScreen';
+import EssayScreen from '../siddur/EssayScreen';
 import { useSettingsStore } from '../store/settingsStore';
 import { PARCHMENT, INK } from '../theme/shacharitTheme';
 
@@ -47,6 +50,21 @@ export const AppNavigator: React.FC = () => {
             <Stack.Screen
               name="ShacharitScroll"
               component={ShacharitScrollScreen}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="SiddurScroll"
+              component={SiddurScrollScreen}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="Learn"
+              component={LearnScreen}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="Essay"
+              component={EssayScreen}
               options={{ headerShown: false }}
             />
             <Stack.Screen

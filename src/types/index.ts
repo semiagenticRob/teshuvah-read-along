@@ -100,6 +100,13 @@ export type RootStackParamList = {
   TranslationPhilosophy: undefined;
   Home: undefined;
   ShacharitScroll: undefined;
+  SiddurScroll: {
+    cardId: 'shacharit' | 'birkat_hamazon' | 'mincha' | 'maariv' | 'tefillos';
+    sectionId?: string;
+    wordIndex?: number;
+  };
+  Learn: undefined;
+  Essay: { essayId: string; returnTo?: any };
   Settings: undefined;
   About: undefined;
 };
