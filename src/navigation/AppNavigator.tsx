@@ -9,6 +9,7 @@ import { AboutScreen } from '../screens/AboutScreen';
 import { WelcomeScreen } from '../screens/onboarding/WelcomeScreen';
 import { SkillTierScreen } from '../screens/onboarding/SkillTierScreen';
 import { LocationPermissionScreen } from '../screens/onboarding/LocationPermissionScreen';
+import TranslationPhilosophyScreen from '../screens/TranslationPhilosophyScreen';
 import { useSettingsStore } from '../store/settingsStore';
 import { PARCHMENT, INK } from '../theme/shacharitTheme';
 
@@ -58,6 +59,12 @@ export const AppNavigator: React.FC = () => {
               component={AboutScreen}
               options={{ title: 'About' }}
             />
+            <Stack.Screen
+              name="TranslationPhilosophy"
+              options={{ headerShown: false }}
+            >
+              {(props) => <TranslationPhilosophyScreen {...props} mode="settings" />}
+            </Stack.Screen>
           </>
         ) : (
           <>
@@ -76,6 +83,17 @@ export const AppNavigator: React.FC = () => {
               component={LocationPermissionScreen}
               options={{ headerShown: false, gestureEnabled: true }}
             />
+            <Stack.Screen
+              name="TranslationPhilosophy"
+              options={{ headerShown: false, gestureEnabled: true }}
+            >
+              {() => (
+                <TranslationPhilosophyScreen
+                  mode="onboarding"
+                  onComplete={() => useSettingsStore.getState().completeOnboarding()}
+                />
+              )}
+            </Stack.Screen>
           </>
         )}
       </Stack.Navigator>

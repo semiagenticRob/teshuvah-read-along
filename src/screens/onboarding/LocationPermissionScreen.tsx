@@ -8,9 +8,8 @@ import { onboardingStyles as s } from './onboardingStyles';
 
 type Props = StackScreenProps<RootStackParamList, 'LocationPermission'>;
 
-export const LocationPermissionScreen: React.FC<Props> = () => {
+export const LocationPermissionScreen: React.FC<Props> = ({ navigation }) => {
   const setLocation = useSettingsStore((state) => state.setLocation);
-  const completeOnboarding = useSettingsStore((state) => state.completeOnboarding);
   const [isRequesting, setIsRequesting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -63,7 +62,7 @@ export const LocationPermissionScreen: React.FC<Props> = () => {
   };
 
   const finish = () => {
-    completeOnboarding();
+    navigation.navigate('TranslationPhilosophy');
   };
 
   return (

@@ -40,7 +40,7 @@ const TIER_LABELS: Record<UserTier, { label: string; description: string }> = {
   fluent: { label: 'Fluent', description: 'Hebrew only, full service' },
 };
 
-export const SettingsScreen: React.FC<Props> = () => {
+export const SettingsScreen: React.FC<Props> = ({ navigation }) => {
   const store = useSettingsStore();
   const [showTierPicker, setShowTierPicker] = useState(false);
   const [showManualEntry, setShowManualEntry] = useState(false);
@@ -348,6 +348,22 @@ export const SettingsScreen: React.FC<Props> = () => {
             </Pressable>
           ))}
         </View>
+      </Section>
+
+      {/* About this translation */}
+      <Section title="About">
+        <Pressable
+          onPress={() => navigation.navigate('TranslationPhilosophy')}
+          style={({ pressed }) => [styles.rowCard, pressed && styles.cardPressed]}
+        >
+          <View style={styles.rowContent}>
+            <Text style={styles.rowLabel}>About this translation</Text>
+            <Text style={styles.rowDescription}>
+              How Rabbi Feigenbaum's English renders the tefillah, with key word choices.
+            </Text>
+          </View>
+          <Text style={styles.rowAction}>Open</Text>
+        </Pressable>
       </Section>
 
       {/* Reset onboarding */}

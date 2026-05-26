@@ -97,6 +97,7 @@ export type RootStackParamList = {
   Welcome: undefined;
   SkillTier: undefined;
   LocationPermission: undefined;
+  TranslationPhilosophy: undefined;
   Home: undefined;
   ShacharitScroll: undefined;
   Settings: undefined;
