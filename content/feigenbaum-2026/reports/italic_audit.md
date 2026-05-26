@@ -42,4 +42,4 @@ maariv/shemoneh_esrei_maariv: 208 italic spans
 mincha/shemoneh_esrei_mincha: 213 italic spans
 shacharit/shemoneh_esrei_shacharit: 278 italic spans
 
-Generated: 2026-05-26T21:32:52.986Z
+Generated: 2026-05-26T21:40:00.797Z

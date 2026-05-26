@@ -56,4 +56,4 @@ maariv_motzaei_shabbos: 13/551 words have translit (2%)
 
 ---
 Total: 704/73742 words have translit (1%)
-Generated: 2026-05-26T21:32:52.950Z
+Generated: 2026-05-26T21:40:00.761Z

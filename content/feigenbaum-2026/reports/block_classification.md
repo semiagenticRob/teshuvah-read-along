@@ -44,4 +44,4 @@ shacharit/mussaf_chol_hamoed: prayer=63 callout=7 heading=1 subheading=0 rubric=
 
 ALL: prayer=802 callout=93 heading=21 subheading=0 rubric=12 learn_link=18 minyan_only=76 other=3
 
-Generated: 2026-05-26T21:32:53.020Z
+Generated: 2026-05-26T21:40:00.831Z
