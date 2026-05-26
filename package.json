@@ -9,7 +9,9 @@
     "ios": "expo run:ios",
     "prebuild": "expo prebuild",
     "test": "jest",
-    "lint": "eslint . --ext .ts,.tsx"
+    "lint": "eslint . --ext .ts,.tsx",
+    "siddur:pipeline": "node scripts/siddur/01_extract_raw.mjs && node scripts/siddur/02_detect_sections.mjs && node scripts/siddur/03_classify_blocks.mjs && node scripts/siddur/04_extract_hebrew.mjs && node scripts/siddur/05_extract_english.mjs && node scripts/siddur/06_port_translit.mjs && node scripts/siddur/07_detect_minyan.mjs && node scripts/siddur/08_tag_conditional.mjs && node scripts/siddur/09_anchor_learn.mjs && node scripts/siddur/10_assemble.mjs && node scripts/siddur/11_verify.mjs",
+    "siddur:verify": "node scripts/siddur/11_verify.mjs"
   },
   "dependencies": {
     "@expo-google-fonts/cormorant-garamond": "^0.4.1",

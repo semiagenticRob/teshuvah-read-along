@@ -1,0 +1,10 @@
+{
+  "pdfPath": "/Users/robertwarren/Desktop/100Reps Project/Daven Along/218b_feigenbaum_interior_R1 - reprint Ashk.pdf",
+  "totalPages": 296,
+  "rulesDir": "content/feigenbaum-2026/rules",
+  "rawDir": "content/feigenbaum-2026/raw",
+  "intermediateDir": "content/feigenbaum-2026/intermediate",
+  "reportsDir": "content/feigenbaum-2026/reports",
+  "outputDataDir": "src/data/siddur",
+  "legacyTranslitDir": "src/data/bundled/shacharit"
+}
