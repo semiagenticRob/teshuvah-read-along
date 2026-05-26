@@ -4,6 +4,7 @@ import { ScrollView, View, Text, StyleSheet, Pressable } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import BlockRenderer from './components/BlockRenderer';
 import SectionJumpSheet from './components/SectionJumpSheet';
+import { useKaraokeTickLoop } from './hooks/useKaraokeTickLoop';
 import { getSiddurSection, listSectionIds } from '../data/siddur';
 import { useSiddurStore, SectionBounds } from '../store/siddurStore';
 import { useSettingsStore } from '../store/settingsStore';
@@ -38,6 +39,10 @@ export default function SiddurScrollScreen({ route, navigation }: Props) {
   const activeWordIndex = useSiddurStore((s) => s.activeWordIndex);
   const activeSectionId = useSiddurStore((s) => s.activeSectionId);
   const setActiveSection = useSiddurStore((s) => s.setActiveSection);
+  const isPlaying = useSiddurStore((s) => s.isPlaying);
+  const setIsPlaying = useSiddurStore((s) => s.setIsPlaying);
+
+  useKaraokeTickLoop();
 
   const [jumpSheetVisible, setJumpSheetVisible] = React.useState(false);
   const scrollViewRef = React.useRef<ScrollView>(null);
@@ -77,6 +82,9 @@ export default function SiddurScrollScreen({ route, navigation }: Props) {
       <View style={styles.header}>
         <Pressable onPress={navigation.goBack} hitSlop={8}>
           <Text style={styles.back}>‹ Home</Text>
+        </Pressable>
+        <Pressable onPress={() => setIsPlaying(!isPlaying)} hitSlop={8} style={styles.playButton}>
+          <Text style={styles.playButtonText}>{isPlaying ? '⏸' : '▶'}</Text>
         </Pressable>
         <Text style={styles.title} numberOfLines={1}>
           {sections[0].title.en}
@@ -139,6 +147,8 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
   },
   back: { fontFamily: FONTS.serifBody, fontSize: 15, color: INK.soft },
+  playButton: { paddingHorizontal: 8 },
+  playButtonText: { fontSize: 18, color: INK.strong },
   title: { fontFamily: FONTS.display, fontSize: 18, color: INK.strong },
   scroll: { paddingHorizontal: 16, paddingBottom: 64 },
   jumpButton: { width: 60, alignItems: 'flex-end', justifyContent: 'center' },
