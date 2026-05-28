@@ -21,6 +21,7 @@ interface Props {
 function BlockRenderer({ block, activeWordIndex, showHebrew, showTranslit, showEnglish, onLearnLinkPress }: Props) {
   switch (block.kind) {
     case 'prayer':
+      if (block.he.length === 0 && block.en.length === 0) return null;
       return (
         <PrayerBlock
           data={block}
@@ -32,6 +33,7 @@ function BlockRenderer({ block, activeWordIndex, showHebrew, showTranslit, showE
       );
     case 'heading':
     case 'subsection':
+      if (!block.he && /^\d+$/.test((block.en ?? '').trim())) return null;
       return (
         <View style={styles.headingWrap}>
           {block.he && <Text style={styles.headingHebrew}>{block.he}</Text>}
@@ -47,8 +49,11 @@ function BlockRenderer({ block, activeWordIndex, showHebrew, showTranslit, showE
       );
     case 'faq':
     case 'callout':
-    case 'instant_insight':
+    case 'instant_insight': {
+      const bodyText = block.body?.flatMap((p) => p.spans?.map((s) => s.text) ?? []).join('') ?? '';
+      if (bodyText.trim().length < 12) return null;
       return <FaqPanel data={block} />;
+    }
     case 'minyan_only':
       return <MinyanRevealBlock data={block} />;
     case 'learn_link':

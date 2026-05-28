@@ -3,13 +3,16 @@ import React, { useCallback, useMemo } from 'react';
 import { ScrollView, View, Text, StyleSheet, Pressable } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import BlockRenderer from './components/BlockRenderer';
+import SiddurSectionIntroCard from './components/SiddurSectionIntroCard';
 import SectionJumpSheet from './components/SectionJumpSheet';
+import AppBar from '../components/shacharit/AppBar';
 import { useKaraokeTickLoop } from './hooks/useKaraokeTickLoop';
 import { getSiddurSection, listSectionIds } from '../data/siddur';
+import { getCard } from '../data/siddur/cards';
 import { useSiddurStore, SectionBounds } from '../store/siddurStore';
 import { useSettingsStore } from '../store/settingsStore';
 import { FONTS, INK, PARCHMENT } from '../theme/siddurTheme';
-import type { CardId, SiddurSection, PrayerBlock } from './types';
+import type { CardId, SiddurSection, PrayerBlock, FaqBlock } from './types';
 
 interface Props {
   route: { params: { cardId: CardId; sectionId?: string; wordIndex?: number } };
@@ -30,6 +33,7 @@ function computeBounds(sections: SiddurSection[]): SectionBounds[] {
 
 export default function SiddurScrollScreen({ route, navigation }: Props) {
   const { cardId } = route.params;
+  const card = useMemo(() => getCard(cardId), [cardId]);
   const sections = useMemo(() => {
     return listSectionIds(cardId)
       .map((id) => getSiddurSection(cardId, id))
@@ -41,6 +45,10 @@ export default function SiddurScrollScreen({ route, navigation }: Props) {
   const setActiveSection = useSiddurStore((s) => s.setActiveSection);
   const isPlaying = useSiddurStore((s) => s.isPlaying);
   const setIsPlaying = useSiddurStore((s) => s.setIsPlaying);
+  const speed = useSiddurStore((s) => s.speed);
+  const setSpeed = useSiddurStore((s) => s.setSpeed);
+  const displayLanes = useSettingsStore((s) => s.displayLanes);
+  const setDisplayLane = useSettingsStore((s) => s.setDisplayLane);
 
   useKaraokeTickLoop();
 
@@ -83,39 +91,68 @@ export default function SiddurScrollScreen({ route, navigation }: Props) {
         <Pressable onPress={navigation.goBack} hitSlop={8}>
           <Text style={styles.back}>‹ Home</Text>
         </Pressable>
-        <Pressable onPress={() => setIsPlaying(!isPlaying)} hitSlop={8} style={styles.playButton}>
-          <Text style={styles.playButtonText}>{isPlaying ? '⏸' : '▶'}</Text>
-        </Pressable>
         <Text style={styles.title} numberOfLines={1}>
-          {sections[0].title.en}
+          {card.title.en}
         </Text>
         <Pressable onPress={() => setJumpSheetVisible(true)} hitSlop={8} style={styles.jumpButton}>
           <Text style={styles.jumpButtonText}>§</Text>
         </Pressable>
       </View>
       <ScrollView ref={scrollViewRef} contentContainerStyle={styles.scroll}>
-        {sections.map((section) => (
-          <View
-            key={section.id}
-            onLayout={(e) => { sectionLayoutsRef.current[section.id] = e.nativeEvent.layout.y; }}
-          >
-            <View style={styles.sectionHeader}>
-              <Text style={styles.sectionHeaderHe}>{section.title.he}</Text>
-              <Text style={styles.sectionHeaderEn}>{section.title.en}</Text>
+        {sections.map((section, sectionIndex) => {
+          // For the first section of a card, extract any intro callout blocks that
+          // appear before the first prayer block and display them as a section intro card.
+          const isFirst = sectionIndex === 0;
+          let introBlocks: FaqBlock[] = [];
+          let blocksToRender = section.blocks;
+
+          if (isFirst) {
+            const firstPrayerIdx = section.blocks.findIndex((b) => b.kind === 'prayer');
+            if (firstPrayerIdx > 0) {
+              const preBlocks = section.blocks.slice(0, firstPrayerIdx);
+              introBlocks = preBlocks.filter(
+                (b): b is FaqBlock =>
+                  b.kind === 'faq' || b.kind === 'callout' || b.kind === 'instant_insight',
+              );
+              // Keep learn_links and other pre-prayer blocks in the render list
+              blocksToRender = [
+                ...preBlocks.filter((b) => b.kind !== 'faq' && b.kind !== 'callout' && b.kind !== 'instant_insight'),
+                ...section.blocks.slice(firstPrayerIdx),
+              ];
+            }
+          }
+
+          return (
+            <View
+              key={section.id}
+              onLayout={(e) => { sectionLayoutsRef.current[section.id] = e.nativeEvent.layout.y; }}
+            >
+              {isFirst ? (
+                <SiddurSectionIntroCard
+                  cardTitle={card.title}
+                  sectionIndex={sectionIndex}
+                  introBlocks={introBlocks}
+                />
+              ) : (
+                <View style={styles.sectionHeader}>
+                  <Text style={styles.sectionHeaderHe}>{section.title.he}</Text>
+                  <Text style={styles.sectionHeaderEn}>{section.title.en}</Text>
+                </View>
+              )}
+              {blocksToRender.map((block, i) => (
+                <BlockRenderer
+                  key={i}
+                  block={block}
+                  activeWordIndex={activeWordIndex}
+                  showHebrew={showHebrew}
+                  showTranslit={showTranslit}
+                  showEnglish={showEnglish}
+                  onLearnLinkPress={onLearnLinkPress}
+                />
+              ))}
             </View>
-            {section.blocks.map((block, i) => (
-              <BlockRenderer
-                key={i}
-                block={block}
-                activeWordIndex={activeWordIndex}
-                showHebrew={showHebrew}
-                showTranslit={showTranslit}
-                showEnglish={showEnglish}
-                onLearnLinkPress={onLearnLinkPress}
-              />
-            ))}
-          </View>
-        ))}
+          );
+        })}
       </ScrollView>
       <SectionJumpSheet
         visible={jumpSheetVisible}
@@ -129,6 +166,14 @@ export default function SiddurScrollScreen({ route, navigation }: Props) {
           }
         }}
         onClose={() => setJumpSheetVisible(false)}
+      />
+      <AppBar
+        lanes={displayLanes}
+        onToggleLane={(lane) => setDisplayLane(lane, !displayLanes[lane])}
+        playing={isPlaying}
+        onTogglePlay={() => setIsPlaying(!isPlaying)}
+        speed={speed}
+        onSpeedChange={setSpeed}
       />
     </SafeAreaView>
   );
@@ -147,10 +192,8 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
   },
   back: { fontFamily: FONTS.serifBody, fontSize: 15, color: INK.soft },
-  playButton: { paddingHorizontal: 8 },
-  playButtonText: { fontSize: 18, color: INK.strong },
-  title: { fontFamily: FONTS.display, fontSize: 18, color: INK.strong },
-  scroll: { paddingHorizontal: 16, paddingBottom: 64 },
+  title: { fontFamily: FONTS.display, fontSize: 18, color: INK.strong, flex: 1, textAlign: 'center' },
+  scroll: { paddingHorizontal: 16, paddingBottom: 120 },
   jumpButton: { width: 60, alignItems: 'flex-end', justifyContent: 'center' },
   jumpButtonText: { fontFamily: FONTS.serifBody, fontSize: 20, color: INK.soft },
   sectionHeader: { marginTop: 16, marginBottom: 12, alignItems: 'center' },

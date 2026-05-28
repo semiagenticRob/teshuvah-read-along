@@ -160,11 +160,23 @@ function annotateParaRuns(paraText, htmlRuns) {
  * @param {boolean} isFirst
  * @returns {string}
  */
+/**
+ * Returns true if the text is predominantly Hebrew (prayer content) rather than
+ * mostly English with a few quoted Hebrew words (commentary content).
+ * Threshold: Hebrew base letters must make up ≥20% of non-whitespace characters.
+ */
+function isPredominantlyHebrew(text) {
+  const nonWS = text.replace(/\s/g, '');
+  if (!nonWS.length) return false;
+  const heCount = (text.match(/[א-ת]/g) || []).length;
+  return heCount / nonWS.length >= 0.20;
+}
+
 function classifyBlock(rawText, runs, isFirst) {
   if (!rawText) return null;
 
-  // 1. Prayer
-  if (hasHebrew(rawText)) {
+  // 1. Prayer — has Hebrew AND is predominantly Hebrew (≥20% Hebrew chars)
+  if (hasHebrew(rawText) && isPredominantlyHebrew(rawText)) {
     return 'prayer';
   }
 

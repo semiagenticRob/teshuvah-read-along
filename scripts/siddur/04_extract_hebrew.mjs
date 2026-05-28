@@ -169,8 +169,22 @@ for (const filename of classifiedFiles) {
       wordCounter = nextIndex;
     }
 
-    // Interleave: all prayer blocks first, then non-prayer blocks.
-    outputBlocks = [...prayerBlocks, ...nonPrayerBlocks];
+    // Feigenbaum line-by-line commentary callouts start with a dash or open-paren
+    // (verse citation format: "— Hebrew verse English translation").
+    // Section-intro callouts (describing the section) don't follow this pattern.
+    // Split non-prayer blocks at the first commentary callout so intro text lands
+    // before the legacy prayer and line-by-line commentary lands after.
+    const firstCommentaryIdx = data.blocks.findIndex(b => {
+      if (b.kind === 'prayer') return false;
+      const stripped = (b.rawText || '')
+        .replace(/[​-‏‪-‮]/g, '')
+        .trim();
+      return /^[-—–(]/.test(stripped);
+    });
+    const splitIdx = firstCommentaryIdx === -1 ? data.blocks.length : firstCommentaryIdx;
+    const prefixBlocks = data.blocks.slice(0, splitIdx).filter(b => b.kind !== 'prayer');
+    const suffixBlocks = data.blocks.slice(splitIdx).filter(b => b.kind !== 'prayer');
+    outputBlocks = [...prefixBlocks, ...prayerBlocks, ...suffixBlocks];
   } else {
     // ── Unmapped: keep non-prayer blocks; prayer blocks get empty Hebrew ───────
     globalStats.unmapped++;

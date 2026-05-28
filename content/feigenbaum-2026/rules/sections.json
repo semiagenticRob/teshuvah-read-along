@@ -3,8 +3,8 @@
     {
       "id": "hashkamas_haboker",
       "cardId": "shacharit",
-      "pageStart": 2,
-      "pageEnd": 9,
+      "pageStart": 26,
+      "pageEnd": 33,
       "title": {
         "he": "הַשְׁכָּמַת הַבֹּקֶר",
         "en": "Hashkamas HaBoker"
@@ -13,8 +13,8 @@
     {
       "id": "birchos_hashachar",
       "cardId": "shacharit",
-      "pageStart": 10,
-      "pageEnd": 28,
+      "pageStart": 34,
+      "pageEnd": 52,
       "title": {
         "he": "בִּרְכוֹת הַשַּׁחַר",
         "en": "Birchos HaShachar"
@@ -23,8 +23,8 @@
     {
       "id": "pesukei_dzimrah",
       "cardId": "shacharit",
-      "pageStart": 29,
-      "pageEnd": 49,
+      "pageStart": 53,
+      "pageEnd": 73,
       "title": {
         "he": "פְּסוּקֵי דְזִמְרָה",
         "en": "Pesukei D'Zimrah"
@@ -33,8 +33,8 @@
     {
       "id": "barchu",
       "cardId": "shacharit",
-      "pageStart": 50,
-      "pageEnd": 50,
+      "pageStart": 74,
+      "pageEnd": 74,
       "title": {
         "he": "בָּרְכוּ",
         "en": "Barchu"
@@ -43,8 +43,8 @@
     {
       "id": "birchos_krias_shema_shacharit",
       "cardId": "shacharit",
-      "pageStart": 51,
-      "pageEnd": 59,
+      "pageStart": 75,
+      "pageEnd": 83,
       "title": {
         "he": "קְרִיאַת שְׁמַע וּבִרְכוֹתֶיהָ",
         "en": "Birchos Krias Shema"
@@ -53,8 +53,8 @@
     {
       "id": "shemoneh_esrei_shacharit",
       "cardId": "shacharit",
-      "pageStart": 60,
-      "pageEnd": 77,
+      "pageStart": 84,
+      "pageEnd": 101,
       "title": {
         "he": "שְׁמוֹנֶה עֶשְׂרֵה",
         "en": "Shemoneh Esrei"
@@ -63,8 +63,8 @@
     {
       "id": "avinu_malkeinu_shacharit",
       "cardId": "shacharit",
-      "pageStart": 78,
-      "pageEnd": 82,
+      "pageStart": 102,
+      "pageEnd": 106,
       "title": {
         "he": "אָבִינוּ מַלְכֵּנוּ",
         "en": "Avinu Malkeinu"
@@ -73,8 +73,8 @@
     {
       "id": "tachanun_shacharit",
       "cardId": "shacharit",
-      "pageStart": 83,
-      "pageEnd": 90,
+      "pageStart": 107,
+      "pageEnd": 114,
       "title": {
         "he": "תַּחֲנוּן",
         "en": "Tachanun"
@@ -83,8 +83,8 @@
     {
       "id": "krias_hatorah",
       "cardId": "shacharit",
-      "pageStart": 91,
-      "pageEnd": 104,
+      "pageStart": 115,
+      "pageEnd": 128,
       "title": {
         "he": "סֵדֶר קְרִיאַת הַתּוֹרָה",
         "en": "Krias HaTorah"
@@ -93,8 +93,8 @@
     {
       "id": "aleinu_shacharit",
       "cardId": "shacharit",
-      "pageStart": 105,
-      "pageEnd": 106,
+      "pageStart": 129,
+      "pageEnd": 130,
       "title": {
         "he": "עָלֵינוּ",
         "en": "Aleinu"
@@ -103,8 +103,8 @@
     {
       "id": "shir_shel_yom",
       "cardId": "shacharit",
-      "pageStart": 107,
-      "pageEnd": 108,
+      "pageStart": 131,
+      "pageEnd": 132,
       "title": {
         "he": "שִׁיר שֶׁל יוֹם",
         "en": "Shir shel Yom"
@@ -113,8 +113,8 @@
     {
       "id": "barchi_nafshi",
       "cardId": "shacharit",
-      "pageStart": 109,
-      "pageEnd": 110,
+      "pageStart": 133,
+      "pageEnd": 134,
       "title": {
         "he": "בָּרְכִי נַפְשִׁי",
         "en": "Barchi Nafshi"
@@ -123,8 +123,8 @@
     {
       "id": "ldovid_hashem_shacharit",
       "cardId": "shacharit",
-      "pageStart": 111,
-      "pageEnd": 112,
+      "pageStart": 135,
+      "pageEnd": 136,
       "title": {
         "he": "לְדָוִד ה' אוֹרִי",
         "en": "L'Dovid Hashem"
@@ -133,8 +133,8 @@
     {
       "id": "pitum_haketores",
       "cardId": "shacharit",
-      "pageStart": 113,
-      "pageEnd": 115,
+      "pageStart": 137,
+      "pageEnd": 139,
       "title": {
         "he": "פִּטּוּם הַקְּטֹרֶת",
         "en": "Pitum HaKetores"
@@ -143,8 +143,8 @@
     {
       "id": "shesh_zechiros",
       "cardId": "shacharit",
-      "pageStart": 116,
-      "pageEnd": 116,
+      "pageStart": 140,
+      "pageEnd": 140,
       "title": {
         "he": "שֵׁשׁ זְכִירוֹת",
         "en": "Shesh Zechiros"
@@ -153,8 +153,8 @@
     {
       "id": "shloshah_asar_ikarim",
       "cardId": "shacharit",
-      "pageStart": 117,
-      "pageEnd": 118,
+      "pageStart": 141,
+      "pageEnd": 142,
       "title": {
         "he": "שְׁלֹשָׁה עָשָׂר עִקָּרִים",
         "en": "Shloshah Asar Ikarim"
@@ -163,8 +163,8 @@
     {
       "id": "birchas_hamazon",
       "cardId": "birkat_hamazon",
-      "pageStart": 119,
-      "pageEnd": 128,
+      "pageStart": 143,
+      "pageEnd": 152,
       "title": {
         "he": "בִּרְכַּת הַמָּזוֹן",
         "en": "Birkas HaMazon"
@@ -173,8 +173,8 @@
     {
       "id": "al_hamichyah",
       "cardId": "birkat_hamazon",
-      "pageStart": 129,
-      "pageEnd": 129,
+      "pageStart": 153,
+      "pageEnd": 153,
       "title": {
         "he": "בְּרָכָה מֵעֵין שָׁלֹשׁ — עַל הַמִּחְיָה",
         "en": "Al HaMichyah"
@@ -183,8 +183,8 @@
     {
       "id": "borei_nefashos",
       "cardId": "birkat_hamazon",
-      "pageStart": 130,
-      "pageEnd": 130,
+      "pageStart": 154,
+      "pageEnd": 154,
       "title": {
         "he": "בּוֹרֵא נְפָשׁוֹת",
         "en": "Borei Nefashos"
@@ -193,8 +193,8 @@
     {
       "id": "tefillas_haderech",
       "cardId": "tefillos",
-      "pageStart": 131,
-      "pageEnd": 131,
+      "pageStart": 155,
+      "pageEnd": 155,
       "title": {
         "he": "תְּפִלַּת הַדֶּרֶךְ",
         "en": "Tefillas HaDerech"
@@ -203,8 +203,8 @@
     {
       "id": "mincha_ashrei",
       "cardId": "mincha",
-      "pageStart": 132,
-      "pageEnd": 137,
+      "pageStart": 156,
+      "pageEnd": 161,
       "title": {
         "he": "מִנְחָה",
         "en": "Minchah"
@@ -213,8 +213,8 @@
     {
       "id": "shemoneh_esrei_mincha",
       "cardId": "mincha",
-      "pageStart": 138,
-      "pageEnd": 154,
+      "pageStart": 162,
+      "pageEnd": 178,
       "title": {
         "he": "שְׁמוֹנֶה עֶשְׂרֵה",
         "en": "Shemoneh Esrei — Minchah"
@@ -223,8 +223,8 @@
     {
       "id": "avinu_malkeinu_mincha",
       "cardId": "mincha",
-      "pageStart": 155,
-      "pageEnd": 159,
+      "pageStart": 179,
+      "pageEnd": 183,
       "title": {
         "he": "אָבִינוּ מַלְכֵּנוּ",
         "en": "Avinu Malkeinu — Minchah"
@@ -233,8 +233,8 @@
     {
       "id": "tachanun_mincha",
       "cardId": "mincha",
-      "pageStart": 160,
-      "pageEnd": 161,
+      "pageStart": 184,
+      "pageEnd": 185,
       "title": {
         "he": "תַּחֲנוּן",
         "en": "Tachanun — Minchah"
@@ -243,8 +243,8 @@
     {
       "id": "aleinu_mincha",
       "cardId": "mincha",
-      "pageStart": 162,
-      "pageEnd": 163,
+      "pageStart": 186,
+      "pageEnd": 187,
       "title": {
         "he": "עָלֵינוּ",
         "en": "Aleinu — Minchah"
@@ -253,8 +253,8 @@
     {
       "id": "maariv_opening",
       "cardId": "maariv",
-      "pageStart": 164,
-      "pageEnd": 164,
+      "pageStart": 188,
+      "pageEnd": 188,
       "title": {
         "he": "מַעֲרִיב",
         "en": "Maariv"
@@ -263,8 +263,8 @@
     {
       "id": "birchos_krias_shema_maariv",
       "cardId": "maariv",
-      "pageStart": 165,
-      "pageEnd": 171,
+      "pageStart": 189,
+      "pageEnd": 195,
       "title": {
         "he": "קְרִיאַת שְׁמַע וּבִרְכוֹתֶיהָ",
         "en": "Birchos Krias Shema — Maariv"
@@ -273,8 +273,8 @@
     {
       "id": "shemoneh_esrei_maariv",
       "cardId": "maariv",
-      "pageStart": 172,
-      "pageEnd": 185,
+      "pageStart": 196,
+      "pageEnd": 209,
       "title": {
         "he": "שְׁמוֹנֶה עֶשְׂרֵה",
         "en": "Shemoneh Esrei — Maariv"
@@ -283,8 +283,8 @@
     {
       "id": "aleinu_maariv",
       "cardId": "maariv",
-      "pageStart": 186,
-      "pageEnd": 187,
+      "pageStart": 210,
+      "pageEnd": 211,
       "title": {
         "he": "עָלֵינוּ",
         "en": "Aleinu — Maariv"
@@ -293,8 +293,8 @@
     {
       "id": "ldovid_hashem_maariv",
       "cardId": "maariv",
-      "pageStart": 188,
-      "pageEnd": 188,
+      "pageStart": 212,
+      "pageEnd": 212,
       "title": {
         "he": "לְדָוִד ה' אוֹרִי",
         "en": "L'Dovid Hashem — Maariv"
@@ -303,8 +303,8 @@
     {
       "id": "maariv_motzaei_shabbos",
       "cardId": "maariv",
-      "pageStart": 189,
-      "pageEnd": 190,
+      "pageStart": 213,
+      "pageEnd": 214,
       "title": {
         "he": "מַעֲרִיב לְמוֹצָאֵי שַׁבָּת",
         "en": "Maariv for Motzaei Shabbos"
@@ -313,8 +313,8 @@
     {
       "id": "sefiras_haomer",
       "cardId": "tefillos",
-      "pageStart": 191,
-      "pageEnd": 194,
+      "pageStart": 215,
+      "pageEnd": 218,
       "title": {
         "he": "סְפִירַת הָעֹמֶר",
         "en": "Sefiras HaOmer"
@@ -323,8 +323,8 @@
     {
       "id": "krias_shema_al_hamitah",
       "cardId": "tefillos",
-      "pageStart": 195,
-      "pageEnd": 202,
+      "pageStart": 219,
+      "pageEnd": 226,
       "title": {
         "he": "קְרִיאַת שְׁמַע עַל הַמִּטָּה",
         "en": "Krias Shema al HaMitah"
@@ -333,8 +333,8 @@
     {
       "id": "netilas_lulav",
       "cardId": "tefillos",
-      "pageStart": 203,
-      "pageEnd": 203,
+      "pageStart": 227,
+      "pageEnd": 227,
       "title": {
         "he": "נְטִילַת לוּלָב",
         "en": "Netilas Lulav"
@@ -343,8 +343,8 @@
     {
       "id": "hallel",
       "cardId": "shacharit",
-      "pageStart": 204,
-      "pageEnd": 211,
+      "pageStart": 228,
+      "pageEnd": 235,
       "title": {
         "he": "הַלֵּל",
         "en": "Hallel"
@@ -353,8 +353,8 @@
     {
       "id": "mussaf_rosh_chodesh",
       "cardId": "shacharit",
-      "pageStart": 212,
-      "pageEnd": 222,
+      "pageStart": 236,
+      "pageEnd": 246,
       "title": {
         "he": "מוּסָף לְרֹאשׁ חֹדֶשׁ",
         "en": "Mussaf for Rosh Chodesh"
@@ -363,8 +363,8 @@
     {
       "id": "mussaf_chol_hamoed",
       "cardId": "shacharit",
-      "pageStart": 223,
-      "pageEnd": 238,
+      "pageStart": 247,
+      "pageEnd": 262,
       "title": {
         "he": "מוּסָף לְחוֹל הַמּוֹעֵד",
         "en": "Mussaf for Chol Hamoed"
@@ -375,8 +375,8 @@
     {
       "id": "acknowledgments",
       "essayKind": "personal_note",
-      "pageStart": 11,
-      "pageEnd": 13,
+      "pageStart": 35,
+      "pageEnd": 37,
       "title": {
         "en": "Acknowledgments"
       }
@@ -384,8 +384,8 @@
     {
       "id": "introduction_for_parents",
       "essayKind": "introduction",
-      "pageStart": 14,
-      "pageEnd": 17,
+      "pageStart": 38,
+      "pageEnd": 41,
       "title": {
         "en": "Introduction for Parents, Mechanchim, and Mechanchos"
       }
@@ -393,8 +393,8 @@
     {
       "id": "introduction_for_teens",
       "essayKind": "introduction",
-      "pageStart": 18,
-      "pageEnd": 25,
+      "pageStart": 42,
+      "pageEnd": 49,
       "title": {
         "en": "Introduction for Teens"
       }
@@ -402,8 +402,8 @@
     {
       "id": "personal_note_to_parents",
       "essayKind": "personal_note",
-      "pageStart": 239,
-      "pageEnd": 239,
+      "pageStart": 263,
+      "pageEnd": 263,
       "title": {
         "en": "A Personal Note from Rabbi Feigenbaum for Parents, Mechanchim, and Mechanchos"
       }
@@ -411,8 +411,8 @@
     {
       "id": "personal_note_to_teens",
       "essayKind": "personal_note",
-      "pageStart": 240,
-      "pageEnd": 241,
+      "pageStart": 264,
+      "pageEnd": 265,
       "title": {
         "en": "A Personal Note from Rabbi Feigenbaum for Teens"
       }
@@ -420,8 +420,8 @@
     {
       "id": "appendix_01_how_davening_works",
       "essayKind": "appendix",
-      "pageStart": 242,
-      "pageEnd": 246,
+      "pageStart": 266,
+      "pageEnd": 270,
       "title": {
         "en": "How and Why Davening Works and What It Accomplishes"
       }
@@ -429,8 +429,8 @@
     {
       "id": "appendix_02_tzaddik_vra_lo",
       "essayKind": "appendix",
-      "pageStart": 247,
-      "pageEnd": 249,
+      "pageStart": 271,
+      "pageEnd": 273,
       "title": {
         "en": "Tzaddik V'Ra Lo"
       }
@@ -438,8 +438,8 @@
     {
       "id": "appendix_03_positive_power_of_mistakes",
       "essayKind": "appendix",
-      "pageStart": 250,
-      "pageEnd": 251,
+      "pageStart": 274,
+      "pageEnd": 275,
       "title": {
         "en": "The Positive Power of Making Mistakes"
       }
@@ -447,8 +447,8 @@
     {
       "id": "appendix_04_am_segulah",
       "essayKind": "appendix",
-      "pageStart": 252,
-      "pageEnd": 253,
+      "pageStart": 276,
+      "pageEnd": 277,
       "title": {
         "en": "Am Segulah/Am Nivchar — the Chosen People"
       }
@@ -456,8 +456,8 @@
     {
       "id": "appendix_05_bechirah_chofshis",
       "essayKind": "appendix",
-      "pageStart": 254,
-      "pageEnd": 255,
+      "pageStart": 278,
+      "pageEnd": 279,
       "title": {
         "en": "Bechirah Chofshis — Free Will"
       }
@@ -465,8 +465,8 @@
     {
       "id": "appendix_06_siyata_dshmaya",
       "essayKind": "appendix",
-      "pageStart": 256,
-      "pageEnd": 256,
+      "pageStart": 280,
+      "pageEnd": 280,
       "title": {
         "en": "Siyata D'Shmaya — Asking for Divine Assistance"
       }
@@ -474,8 +474,8 @@
     {
       "id": "appendix_07_all_hashem_does_is_good",
       "essayKind": "appendix",
-      "pageStart": 257,
-      "pageEnd": 257,
+      "pageStart": 281,
+      "pageEnd": 281,
       "title": {
         "en": "All Hashem Does Is Good"
       }
@@ -483,8 +483,8 @@
     {
       "id": "appendix_08_our_material_world",
       "essayKind": "appendix",
-      "pageStart": 258,
-      "pageEnd": 258,
+      "pageStart": 282,
+      "pageEnd": 282,
       "title": {
         "en": "Our Material World"
       }
@@ -492,8 +492,8 @@
     {
       "id": "appendix_09_korbanos",
       "essayKind": "appendix",
-      "pageStart": 259,
-      "pageEnd": 260,
+      "pageStart": 283,
+      "pageEnd": 284,
       "title": {
         "en": "Korbanos"
       }
@@ -501,8 +501,8 @@
     {
       "id": "appendix_10_making_hashem_happy",
       "essayKind": "appendix",
-      "pageStart": 261,
-      "pageEnd": 261,
+      "pageStart": 285,
+      "pageEnd": 285,
       "title": {
         "en": "Making Hashem \"Happy\""
       }
@@ -510,8 +510,8 @@
     {
       "id": "appendix_11_ben_torah_bas_yisrael",
       "essayKind": "appendix",
-      "pageStart": 262,
-      "pageEnd": 264,
+      "pageStart": 286,
+      "pageEnd": 288,
       "title": {
         "en": "Ben Torah/Bas Yisrael"
       }
@@ -519,8 +519,8 @@
     {
       "id": "appendix_12_halachos",
       "essayKind": "appendix",
-      "pageStart": 265,
-      "pageEnd": 268,
+      "pageStart": 289,
+      "pageEnd": 292,
       "title": {
         "en": "Halachos"
       }
@@ -528,8 +528,8 @@
     {
       "id": "glossary",
       "essayKind": "glossary",
-      "pageStart": 269,
-      "pageEnd": 271,
+      "pageStart": 293,
+      "pageEnd": 295,
       "title": {
         "en": "Glossary"
       }

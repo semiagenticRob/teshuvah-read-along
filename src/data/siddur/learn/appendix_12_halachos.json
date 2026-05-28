@@ -9,68 +9,7 @@
     0,
     0
   ],
-  "body": [
-    {
-      "spans": [
-        {
-          "text": "265",
-          "style": "bold"
-        },
-        {
-          "text": "Appendix 12\nAPPENDIX 12\nHALACHOS\nThis is a very simplified overview of the most common \nmistakes people make, and a very basic “Uh-oh, what \ndo I do now?” guide. This will not cover all possibilities, \nand of course in certain areas, there are multiple \nopinions. Preferably, you should consult your"
-        },
-        {
-          "text": "posek",
-          "style": "italic"
-        },
-        {
-          "text": "for \ndetailed guidance of what to do when such issues arise.\nIf you did not yet say Hashem’s name in the"
-        },
-        {
-          "text": "brachah",
-          "style": "italic"
-        },
-        {
-          "text": "of םהרבא ןגמ, go \n12:1\nback and say םייחל ונרכז and continue from there. If you already said \nםיִּי ַח ְל וּנ ֵר ְכָז\nHashem’s name, do not go back.\nIf you did not yet say Hashem’s name in the"
-        },
-        {
-          "text": "brachah",
-          "style": "italic"
-        },
-        {
-          "text": "of םיתמה היחמ, \n12:1\ngo back and say ךומכ ימ and continue from there. If you already said \nךָוֹמ ָכ י ִמ \nHashem’s name, do not go back.\nםי ִמ ֲח ַר ָה ב ָא\nIf you made a mistake and said שודקה ל-אה, then it depends: If you \n12:1\nremembered immediately (the time it takes to say the phrase “םולש \nשׁוֹד ָּק ַה ךְֶל ֶּמ ַה\nיבר  ךילע”), then quickly correct yourself and say שודקה  ךלמה. But if more time has passed, you must start your"
-        },
-        {
-          "text": "Shemoneh Esrei",
-          "style": "italic"
-        },
-        {
-          "text": "over again from the beginning. If you are not sure what you said, we assume you said what is normally said during the year, and thus you must go back and start"
-        },
-        {
-          "text": "Shemoneh Esrei",
-          "style": "italic"
-        },
-        {
-          "text": "over again.\nIf you did not yet say Hashem’s name in the"
-        },
-        {
-          "text": "brachah",
-          "style": "italic"
-        },
-        {
-          "text": "of ךמש בוטה, go \n12:2\nback and say םיבוט םייחל בותכו and continue from there. If you already \nםי ִבוֹט םיִּי ַח ְל בֹת ְכוּ\nsaid Hashem’s name, do not go back.\nIf you did not yet say Hashem’s name in the"
-        },
-        {
-          "text": "brachah",
-          "style": "italic"
-        },
-        {
-          "text": "of ומע תא ךרבמה \n12:2\nלארשי, go back and say םייח  רפסב and continue from there. If you \nםיִּי ַח ר ֶפ ֵס ְבּ\nalready said Hashem’s name, do not go back."
-        }
-      ]
-    }
-  ],
+  "body": [],
   "anchoredFrom": [
     {
       "cardId": "shacharit",

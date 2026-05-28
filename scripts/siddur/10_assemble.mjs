@@ -20,6 +20,20 @@ const REPO_ROOT = join(__dirname, '..', '..');
 const SECTIONS_DIR = join(REPO_ROOT, 'content', 'feigenbaum-2026', 'intermediate', 'sections');
 const ESSAYS_DIR = join(REPO_ROOT, 'content', 'feigenbaum-2026', 'intermediate', 'essays');
 const OUTPUT_DIR = join(REPO_ROOT, 'src', 'data', 'siddur');
+const MANIFEST_PATH = join(REPO_ROOT, 'content', 'feigenbaum-2026', 'intermediate', 'section_manifest.json');
+
+// ─── Load liturgical order from manifest ──────────────────────────────────────
+
+const manifest = JSON.parse(readFileSync(MANIFEST_PATH, 'utf8'));
+const manifestSections = manifest.sections || manifest;
+// Build per-card ordering map: { cardId: [sectionId, ...] }
+const LITURGICAL_ORDER = {};
+for (const s of manifestSections) {
+  const cardId = s.cardId;
+  const id = s.id || s.sectionId;
+  if (!LITURGICAL_ORDER[cardId]) LITURGICAL_ORDER[cardId] = [];
+  LITURGICAL_ORDER[cardId].push(id);
+}
 
 // ─── Hebrew month mapping (Nisan-based, 1=Nisan) ─────────────────────────────
 
@@ -443,7 +457,17 @@ for (const [cardId, sections] of Object.entries(cardSections)) {
     `export const SECTIONS = {`,
   ];
 
-  for (const sectionId of sections.sort()) {
+  // Sort by liturgical order from manifest; fall back to alphabetical for unlisted sections
+  const liturgicalOrder = LITURGICAL_ORDER[cardId] || [];
+  const sorted = [...sections].sort((a, b) => {
+    const ia = liturgicalOrder.indexOf(a);
+    const ib = liturgicalOrder.indexOf(b);
+    if (ia === -1 && ib === -1) return a.localeCompare(b);
+    if (ia === -1) return 1;
+    if (ib === -1) return -1;
+    return ia - ib;
+  });
+  for (const sectionId of sorted) {
     lines.push(`  ${sectionId}: () => require('./${sectionId}.json') as SiddurSection,`);
   }
 

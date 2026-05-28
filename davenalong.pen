@@ -1,0 +1,1635 @@
+{
+  "version": "2.11",
+  "children": [
+    {
+      "type": "frame",
+      "id": "bi8Au",
+      "x": 0,
+      "y": 0,
+      "name": "Roadmap",
+      "width": 1920,
+      "height": 1540,
+      "fill": "$parchment",
+      "layout": "vertical",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "rectangle",
+          "id": "IIBM9",
+          "name": "borderTop",
+          "opacity": 0.55,
+          "fill": "$accent-gold",
+          "width": "fill_container",
+          "height": 6
+        },
+        {
+          "type": "frame",
+          "id": "v4v6p",
+          "name": "titleBlock",
+          "width": "fill_container",
+          "fill": "$parchment",
+          "layout": "vertical",
+          "gap": 12,
+          "padding": [
+            44,
+            40,
+            28,
+            40
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "wYJxj",
+              "name": "bhe",
+              "fill": "$ink-faint",
+              "content": "ב״ה",
+              "fontFamily": "$hebrew-font",
+              "fontSize": 14,
+              "fontWeight": "500",
+              "letterSpacing": 1
+            },
+            {
+              "type": "text",
+              "id": "dQ0W7",
+              "name": "mainTitle",
+              "fill": "$ink-strong",
+              "content": "DavenAlong  ×  The Feigenbaum Siddur",
+              "textAlign": "center",
+              "fontFamily": "$english-display",
+              "fontSize": 80,
+              "fontWeight": "500",
+              "letterSpacing": 1
+            },
+            {
+              "type": "rectangle",
+              "id": "Y6vCE",
+              "name": "subtitleRule",
+              "opacity": 0.6,
+              "fill": "$accent-gold",
+              "width": 120,
+              "height": 1
+            },
+            {
+              "type": "text",
+              "id": "jvKW2",
+              "name": "subtitle",
+              "fill": "$ink-soft",
+              "content": "A roadmap — from collaboration to practice",
+              "textAlign": "center",
+              "fontFamily": "$english-display",
+              "fontSize": 20,
+              "fontWeight": "600",
+              "letterSpacing": 2,
+              "fontStyle": "italic"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "lvJdA",
+          "name": "Canvas",
+          "width": 1920,
+          "height": 1220,
+          "fill": {
+            "type": "gradient",
+            "gradientType": "radial",
+            "enabled": true,
+            "rotation": 0,
+            "size": {
+              "width": 1.3,
+              "height": 1.3
+            },
+            "colors": [
+              {
+                "color": "#faecd0",
+                "position": 0
+              },
+              {
+                "color": "#e8d4a8",
+                "position": 1
+              }
+            ]
+          },
+          "layout": "none",
+          "children": [
+            {
+              "type": "frame",
+              "id": "Hpdh7",
+              "x": 60,
+              "y": 584,
+              "name": "Brick Road",
+              "width": 1800,
+              "height": 32,
+              "fill": "$parchment-shadow",
+              "layout": "none",
+              "children": [
+                {
+                  "type": "rectangle",
+                  "id": "yOgnJ",
+                  "x": 0,
+                  "y": 0,
+                  "name": "rt",
+                  "opacity": 0.65,
+                  "fill": "$parchment-deep",
+                  "width": 1800,
+                  "height": 1
+                },
+                {
+                  "type": "rectangle",
+                  "id": "XetIi",
+                  "x": 0,
+                  "y": 16,
+                  "name": "rm",
+                  "opacity": 0.22,
+                  "fill": "$accent-deep",
+                  "width": 1800,
+                  "height": 1
+                },
+                {
+                  "type": "rectangle",
+                  "id": "rEh7Q",
+                  "x": 0,
+                  "y": 31,
+                  "name": "rb",
+                  "opacity": 0.55,
+                  "fill": "$accent-deep",
+                  "width": 1800,
+                  "height": 1
+                },
+                {
+                  "type": "path",
+                  "id": "PmwbP",
+                  "x": 0,
+                  "y": 0,
+                  "name": "rj",
+                  "opacity": 0.38,
+                  "geometry": "M80 0l0 16m78-16l0 16m86-16l0 16m74-16l0 16m84-16l0 16m75-16l0 16m85-16l0 16m79-16l0 16m83-16l0 16m74-16l0 16m83-16l0 16m75-16l0 16m86-16l0 16m77-16l0 16m79-16l0 16m80-16l0 16m83-16l0 16m81-16l0 16m79-16l0 16m78-16l0 16m84-16l0 16m79-16l0 16m-1720 0l0 16m80-16l0 16m76-16l0 16m84-16l0 16m75-16l0 16m84-16l0 16m81-16l0 16m75-16l0 16m81-16l0 16m83-16l0 16m77-16l0 16m85-16l0 16m80-16l0 16m79-16l0 16m76-16l0 16m83-16l0 16m77-16l0 16m84-16l0 16m81-16l0 16m75-16l0 16m83-16l0 16m81-16l0 16m76-16l0 16",
+                  "viewBox": [
+                    0,
+                    0,
+                    1800,
+                    32
+                  ],
+                  "width": 1800,
+                  "height": 32,
+                  "stroke": {
+                    "align": "center",
+                    "thickness": 1,
+                    "fill": "$accent-deep"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "rectangle",
+              "id": "pHEvn",
+              "x": 60,
+              "y": 584,
+              "name": "Road fade left",
+              "fill": {
+                "type": "gradient",
+                "gradientType": "linear",
+                "enabled": true,
+                "rotation": 270,
+                "size": {
+                  "height": 1
+                },
+                "colors": [
+                  {
+                    "color": "#f6e9d2",
+                    "position": 0
+                  },
+                  {
+                    "color": "#f6e9d200",
+                    "position": 1
+                  }
+                ]
+              },
+              "width": 90,
+              "height": 32
+            },
+            {
+              "type": "rectangle",
+              "id": "KHVGT",
+              "x": 1770,
+              "y": 584,
+              "name": "Road fade right",
+              "fill": {
+                "type": "gradient",
+                "gradientType": "linear",
+                "enabled": true,
+                "rotation": 90,
+                "size": {
+                  "height": 1
+                },
+                "colors": [
+                  {
+                    "color": "#f6e9d2",
+                    "position": 0
+                  },
+                  {
+                    "color": "#f6e9d200",
+                    "position": 1
+                  }
+                ]
+              },
+              "width": 90,
+              "height": 32
+            },
+            {
+              "type": "ellipse",
+              "id": "clVWG",
+              "x": 242,
+              "y": 576,
+              "name": "Stone I",
+              "fill": "$accent-gold",
+              "width": 48,
+              "height": 48,
+              "stroke": {
+                "align": "center",
+                "thickness": 3,
+                "fill": "$ink-strong"
+              }
+            },
+            {
+              "type": "ellipse",
+              "id": "q16Sm",
+              "x": 348,
+              "y": 576,
+              "name": "Stone II",
+              "fill": "$accent-gold",
+              "width": 48,
+              "height": 48,
+              "stroke": {
+                "align": "center",
+                "thickness": 3,
+                "fill": "$ink-strong"
+              }
+            },
+            {
+              "type": "ellipse",
+              "id": "pwMcP",
+              "x": 736,
+              "y": 576,
+              "name": "V1 marker",
+              "fill": "$parchment-deep",
+              "width": 48,
+              "height": 48,
+              "stroke": {
+                "align": "center",
+                "thickness": 3,
+                "fill": "$accent-gold"
+              }
+            },
+            {
+              "type": "ellipse",
+              "id": "RjGHS",
+              "x": 929,
+              "y": 576,
+              "name": "V2 marker",
+              "opacity": 0.92,
+              "fill": "$parchment-deep",
+              "width": 48,
+              "height": 48,
+              "stroke": {
+                "align": "center",
+                "thickness": 3,
+                "fill": "$accent-gold"
+              }
+            },
+            {
+              "type": "ellipse",
+              "id": "U7Z3g0",
+              "x": 1206,
+              "y": 576,
+              "name": "V3 marker",
+              "opacity": 0.83,
+              "fill": "$parchment-deep",
+              "width": 48,
+              "height": 48,
+              "stroke": {
+                "align": "center",
+                "thickness": 3,
+                "fill": "$accent-gold"
+              }
+            },
+            {
+              "type": "ellipse",
+              "id": "eqWjZ",
+              "x": 1518,
+              "y": 576,
+              "name": "V4 marker",
+              "opacity": 0.74,
+              "fill": "$parchment-deep",
+              "width": 48,
+              "height": 48,
+              "stroke": {
+                "align": "center",
+                "thickness": 3,
+                "fill": "$accent-gold"
+              }
+            },
+            {
+              "type": "ellipse",
+              "id": "cRC6g",
+              "x": 1658,
+              "y": 576,
+              "name": "V5 marker",
+              "opacity": 0.66,
+              "fill": "$parchment-deep",
+              "width": 48,
+              "height": 48,
+              "stroke": {
+                "align": "center",
+                "thickness": 3,
+                "fill": "$accent-gold"
+              }
+            },
+            {
+              "type": "text",
+              "id": "Qk0yt",
+              "x": 736,
+              "y": 576,
+              "name": "v1Label",
+              "fill": "$accent-deep",
+              "textGrowth": "fixed-width-height",
+              "width": 48,
+              "height": 48,
+              "content": "3",
+              "textAlign": "center",
+              "textAlignVertical": "middle",
+              "fontFamily": "$hebrew-font",
+              "fontSize": 28,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "RzQlS",
+              "x": 929,
+              "y": 576,
+              "name": "v2Label",
+              "opacity": 0.92,
+              "fill": "$accent-deep",
+              "textGrowth": "fixed-width-height",
+              "width": 48,
+              "height": 48,
+              "content": "4",
+              "textAlign": "center",
+              "textAlignVertical": "middle",
+              "fontFamily": "$hebrew-font",
+              "fontSize": 28,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "s4k76F",
+              "x": 1206,
+              "y": 576,
+              "name": "v3Label",
+              "opacity": 0.83,
+              "fill": "$accent-deep",
+              "textGrowth": "fixed-width-height",
+              "width": 48,
+              "height": 48,
+              "content": "5",
+              "textAlign": "center",
+              "textAlignVertical": "middle",
+              "fontFamily": "$hebrew-font",
+              "fontSize": 28,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "qDxYt",
+              "x": 1518,
+              "y": 576,
+              "name": "v4Label",
+              "opacity": 0.74,
+              "fill": "$accent-deep",
+              "textGrowth": "fixed-width-height",
+              "width": 48,
+              "height": 48,
+              "content": "6",
+              "textAlign": "center",
+              "textAlignVertical": "middle",
+              "fontFamily": "$hebrew-font",
+              "fontSize": 28,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "mG3MT",
+              "x": 1658,
+              "y": 576,
+              "name": "v5Label",
+              "opacity": 0.66,
+              "fill": "$accent-deep",
+              "textGrowth": "fixed-width-height",
+              "width": 48,
+              "height": 48,
+              "content": "7",
+              "textAlign": "center",
+              "textAlignVertical": "middle",
+              "fontFamily": "$hebrew-font",
+              "fontSize": 28,
+              "fontWeight": "700"
+            },
+            {
+              "type": "frame",
+              "id": "m9cXWc",
+              "x": 30,
+              "y": 40,
+              "name": "Card Stone I",
+              "rotation": -1.5000000000000002,
+              "width": 472,
+              "fill": "$parchment-deep",
+              "cornerRadius": 6,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1.5,
+                "fill": "$accent-gold"
+              },
+              "layout": "vertical",
+              "gap": 12,
+              "padding": [
+                26,
+                24,
+                24,
+                24
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "d5gUY",
+                  "name": "c1h",
+                  "fill": "$accent-deep",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "שִׁתּוּף פְּעֻלָּה",
+                  "textAlign": "center",
+                  "fontFamily": "$hebrew-font",
+                  "fontSize": 44,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "L5HWkE",
+                  "name": "c1s",
+                  "fill": "$ink-soft",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "COLLABORATION",
+                  "textAlign": "center",
+                  "fontFamily": "$english-display",
+                  "fontSize": 17,
+                  "fontWeight": "600",
+                  "letterSpacing": 4,
+                  "fontStyle": "italic"
+                },
+                {
+                  "type": "rectangle",
+                  "id": "ffCMV",
+                  "name": "c1r",
+                  "fill": "$accent-gold",
+                  "width": 50,
+                  "height": 1
+                },
+                {
+                  "type": "frame",
+                  "id": "xhZXK",
+                  "name": "c1b",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 14,
+                  "padding": [
+                    8,
+                    4,
+                    4,
+                    4
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "gfvg4",
+                      "name": "c1b1",
+                      "fill": "$ink-strong",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Active collaboration with Team Feigenbaum",
+                      "lineHeight": 1.4,
+                      "textAlign": "center",
+                      "fontFamily": "$english-body",
+                      "fontSize": 22,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "l74YlZ",
+                      "name": "c1b2",
+                      "fill": "$ink-strong",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Feigenbaum Siddur as canonical text & commentary",
+                      "lineHeight": 1.4,
+                      "textAlign": "center",
+                      "fontFamily": "$english-body",
+                      "fontSize": 22,
+                      "fontWeight": "700"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "ncVmV",
+              "x": 130,
+              "y": 700,
+              "name": "Card Stone II",
+              "rotation": 1,
+              "width": 483,
+              "fill": "$parchment-deep",
+              "cornerRadius": 6,
+              "stroke": {
+                "align": "inside",
+                "thickness": 2.5,
+                "fill": "$accent-gold-hi"
+              },
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "#7a521240",
+                "offset": {
+                  "x": 0,
+                  "y": 8
+                },
+                "blur": 28
+              },
+              "layout": "vertical",
+              "gap": 12,
+              "padding": [
+                26,
+                24,
+                24,
+                24
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "y35c7",
+                  "name": "c2h",
+                  "fill": "$accent-deep",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "תַּרְגּוּם",
+                  "textAlign": "center",
+                  "fontFamily": "$hebrew-font",
+                  "fontSize": 44,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "fc3fT",
+                  "name": "c2s",
+                  "fill": "$ink-soft",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "BRINGING IT IN",
+                  "textAlign": "center",
+                  "fontFamily": "$english-display",
+                  "fontSize": 17,
+                  "fontWeight": "600",
+                  "letterSpacing": 4,
+                  "fontStyle": "italic"
+                },
+                {
+                  "type": "rectangle",
+                  "id": "aaPmp",
+                  "name": "c2r",
+                  "fill": "$accent-gold",
+                  "width": 50,
+                  "height": 1
+                },
+                {
+                  "type": "frame",
+                  "id": "ZB9wZ",
+                  "name": "c2b",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 14,
+                  "padding": [
+                    8,
+                    4,
+                    4,
+                    4
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "o8bJW7",
+                      "name": "c2b1",
+                      "fill": "$ink-strong",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Hebrew, English & transliteration in one flow",
+                      "lineHeight": 1.4,
+                      "textAlign": "center",
+                      "fontFamily": "$english-body",
+                      "fontSize": 22,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "q7CYa",
+                      "name": "c2b2",
+                      "fill": "$ink-strong",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Commentary anchored word by word",
+                      "lineHeight": 1.4,
+                      "textAlign": "center",
+                      "fontFamily": "$english-body",
+                      "fontSize": 22,
+                      "fontWeight": "700"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "xhJoG",
+              "x": 510,
+              "y": 40,
+              "name": "Card V1 Shacharit",
+              "rotation": -0.6,
+              "width": 500,
+              "fill": "$parchment",
+              "cornerRadius": 6,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1.5,
+                "fill": "$accent-gold"
+              },
+              "layout": "vertical",
+              "gap": 12,
+              "padding": [
+                18,
+                24,
+                22,
+                24
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "j2F1A",
+                  "name": "c3h",
+                  "fill": "$accent-deep",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "שַׁחֲרִית",
+                  "textAlign": "center",
+                  "fontFamily": "$hebrew-font",
+                  "fontSize": 44,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "uEeSJ",
+                  "name": "c3s",
+                  "fill": "$ink-soft",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "MORNING DAVENING",
+                  "textAlign": "center",
+                  "fontFamily": "$english-display",
+                  "fontSize": 17,
+                  "fontWeight": "600",
+                  "letterSpacing": 4,
+                  "fontStyle": "italic"
+                },
+                {
+                  "type": "rectangle",
+                  "id": "H8bdc",
+                  "name": "c3r",
+                  "fill": "$accent-gold",
+                  "width": 50,
+                  "height": 1
+                },
+                {
+                  "type": "frame",
+                  "id": "j1S0fO",
+                  "name": "c3b",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 14,
+                  "padding": [
+                    8,
+                    4,
+                    4,
+                    4
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "HciDU",
+                      "name": "c3b1",
+                      "fill": "$ink-strong",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Weekday Shacharit, Feigenbaum-integrated",
+                      "lineHeight": 1.4,
+                      "textAlign": "center",
+                      "fontFamily": "$english-body",
+                      "fontSize": 22,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "MeZd7",
+                      "name": "c3b2",
+                      "fill": "$ink-strong",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Word-level highlight; tap to anchor",
+                      "lineHeight": 1.4,
+                      "textAlign": "center",
+                      "fontFamily": "$english-body",
+                      "fontSize": 22,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "q9Fvc",
+                      "name": "c3b3",
+                      "fill": "$ink-strong",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Inline commentary; calendar-aware zmanim",
+                      "lineHeight": 1.4,
+                      "textAlign": "center",
+                      "fontFamily": "$english-body",
+                      "fontSize": 22,
+                      "fontWeight": "700"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "hYLJv",
+              "x": 743,
+              "y": 700,
+              "name": "Card V2 Chazan",
+              "opacity": 0.92,
+              "rotation": 1.8,
+              "width": 420,
+              "fill": "$parchment",
+              "cornerRadius": 6,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1.5,
+                "fill": "$accent-gold"
+              },
+              "layout": "vertical",
+              "gap": 12,
+              "padding": [
+                26,
+                24,
+                24,
+                24
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "tTiVO",
+                  "name": "c4h",
+                  "fill": "$accent-deep",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "קוֹל חַזָּן",
+                  "textAlign": "center",
+                  "fontFamily": "$hebrew-font",
+                  "fontSize": 44,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "GPiqB",
+                  "name": "c4s",
+                  "fill": "$ink-soft",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "VOICE OF THE CHAZAN",
+                  "textAlign": "center",
+                  "fontFamily": "$english-display",
+                  "fontSize": 17,
+                  "fontWeight": "600",
+                  "letterSpacing": 4,
+                  "fontStyle": "italic"
+                },
+                {
+                  "type": "rectangle",
+                  "id": "zZX03",
+                  "name": "c4r",
+                  "fill": "$accent-gold",
+                  "width": 50,
+                  "height": 1
+                },
+                {
+                  "type": "frame",
+                  "id": "wM553",
+                  "name": "c4b",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 14,
+                  "padding": [
+                    8,
+                    4,
+                    4,
+                    4
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "QjnYB",
+                      "name": "c4b1",
+                      "fill": "$ink-strong",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Recorded davening, word-synced",
+                      "lineHeight": 1.4,
+                      "textAlign": "center",
+                      "fontFamily": "$english-body",
+                      "fontSize": 22,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "EmEY9",
+                      "name": "c4b2",
+                      "fill": "$ink-strong",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Eyes-up davening — follow by ear",
+                      "lineHeight": 1.4,
+                      "textAlign": "center",
+                      "fontFamily": "$english-body",
+                      "fontSize": 22,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "U5Hb7s",
+                      "name": "c4b3",
+                      "fill": "$ink-strong",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Adjustable pace; never lose your place",
+                      "lineHeight": 1.4,
+                      "textAlign": "center",
+                      "fontFamily": "$english-body",
+                      "fontSize": 22,
+                      "fontWeight": "700"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "K7ro7",
+              "x": 1020,
+              "y": 40,
+              "name": "Card V3 Weekday",
+              "opacity": 0.83,
+              "rotation": -1.3,
+              "width": 420,
+              "fill": "$parchment",
+              "cornerRadius": 6,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1.5,
+                "fill": "$accent-gold"
+              },
+              "layout": "vertical",
+              "gap": 12,
+              "padding": [
+                26,
+                24,
+                24,
+                24
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "lHyuv",
+                  "name": "c5h",
+                  "fill": "$accent-deep",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "יְמֵי הַחוֹל",
+                  "textAlign": "center",
+                  "fontFamily": "$hebrew-font",
+                  "fontSize": 44,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "U10KPG",
+                  "name": "c5s",
+                  "fill": "$ink-soft",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "THE WEEKDAY ROUND",
+                  "textAlign": "center",
+                  "fontFamily": "$english-display",
+                  "fontSize": 17,
+                  "fontWeight": "600",
+                  "letterSpacing": 4,
+                  "fontStyle": "italic"
+                },
+                {
+                  "type": "rectangle",
+                  "id": "BTvF3",
+                  "name": "c5r",
+                  "fill": "$accent-gold",
+                  "width": 50,
+                  "height": 1
+                },
+                {
+                  "type": "frame",
+                  "id": "B3fn9",
+                  "name": "c5b",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 14,
+                  "padding": [
+                    8,
+                    4,
+                    4,
+                    4
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "M6gcg",
+                      "name": "c5b1",
+                      "fill": "$ink-strong",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Mincha, Maariv, and Birkat Hamazon",
+                      "lineHeight": 1.4,
+                      "textAlign": "center",
+                      "fontFamily": "$english-body",
+                      "fontSize": 22,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "ZIkof",
+                      "name": "c5b2",
+                      "fill": "$ink-strong",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Tachanun skipped on the right days",
+                      "lineHeight": 1.4,
+                      "textAlign": "center",
+                      "fontFamily": "$english-body",
+                      "fontSize": 22,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "ByFXd",
+                      "name": "c5b3",
+                      "fill": "$ink-strong",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Rosh Chodesh & Chol Hamoed variants",
+                      "lineHeight": 1.4,
+                      "textAlign": "center",
+                      "fontFamily": "$english-body",
+                      "fontSize": 22,
+                      "fontWeight": "700"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "UC2hF",
+              "x": 1292,
+              "y": 700,
+              "name": "Card V4 Shabbat",
+              "opacity": 0.74,
+              "rotation": -0.7,
+              "width": 499,
+              "fill": "$parchment",
+              "cornerRadius": 6,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1.5,
+                "fill": "$accent-gold"
+              },
+              "layout": "vertical",
+              "gap": 12,
+              "padding": [
+                26,
+                24,
+                24,
+                24
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "Om61z",
+                  "name": "c6h",
+                  "fill": "$accent-deep",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "שַׁבָּת וְיוֹם טוֹב",
+                  "textAlign": "center",
+                  "fontFamily": "$hebrew-font",
+                  "fontSize": 44,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "qjHKf",
+                  "name": "c6s",
+                  "fill": "$ink-soft",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "SHABBAT & YOM TOV",
+                  "textAlign": "center",
+                  "fontFamily": "$english-display",
+                  "fontSize": 17,
+                  "fontWeight": "600",
+                  "letterSpacing": 4,
+                  "fontStyle": "italic"
+                },
+                {
+                  "type": "rectangle",
+                  "id": "nP0uW",
+                  "name": "c6r",
+                  "fill": "$accent-gold",
+                  "width": 50,
+                  "height": 1
+                },
+                {
+                  "type": "frame",
+                  "id": "Fin97",
+                  "name": "c6b",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 14,
+                  "padding": [
+                    8,
+                    4,
+                    4,
+                    4
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "vKaoQ",
+                      "name": "c6b1",
+                      "fill": "$ink-strong",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Kabbalat Shabbat, Shabbat Shacharit, Mussar",
+                      "lineHeight": 1.4,
+                      "textAlign": "center",
+                      "fontFamily": "$english-body",
+                      "fontSize": 22,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "FBx51",
+                      "name": "c6b2",
+                      "fill": "$ink-strong",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "The three regalim",
+                      "lineHeight": 1.4,
+                      "textAlign": "center",
+                      "fontFamily": "$english-body",
+                      "fontSize": 22,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "WRokZ",
+                      "name": "c6b3",
+                      "fill": "$ink-strong",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Yamim Noraim — Rosh Hashanah & Yom Kippur",
+                      "lineHeight": 1.4,
+                      "textAlign": "center",
+                      "fontFamily": "$english-body",
+                      "fontSize": 22,
+                      "fontWeight": "700"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "B9K4v",
+              "x": 1472,
+              "y": 40,
+              "name": "Card V5 Sustaining",
+              "opacity": 0.66,
+              "rotation": 1.4,
+              "width": 420,
+              "fill": "$parchment",
+              "cornerRadius": 6,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1.5,
+                "fill": "$accent-gold"
+              },
+              "layout": "vertical",
+              "gap": 12,
+              "padding": [
+                26,
+                24,
+                24,
+                24
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "i3VXf",
+                  "name": "c7h",
+                  "fill": "$accent-deep",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "קִיּוּם",
+                  "textAlign": "center",
+                  "fontFamily": "$hebrew-font",
+                  "fontSize": 44,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "L967fQ",
+                  "name": "c7s",
+                  "fill": "$ink-soft",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "CARRYING IT FORWARD",
+                  "textAlign": "center",
+                  "fontFamily": "$english-display",
+                  "fontSize": 17,
+                  "fontWeight": "600",
+                  "letterSpacing": 4,
+                  "fontStyle": "italic"
+                },
+                {
+                  "type": "rectangle",
+                  "id": "jI72U",
+                  "name": "c7r",
+                  "fill": "$accent-gold",
+                  "width": 50,
+                  "height": 1
+                },
+                {
+                  "type": "frame",
+                  "id": "MbQKM",
+                  "name": "c7b",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 14,
+                  "padding": [
+                    8,
+                    4,
+                    4,
+                    4
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "TK99B",
+                      "name": "c7b1",
+                      "fill": "$ink-strong",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Additional commentary layers",
+                      "lineHeight": 1.4,
+                      "textAlign": "center",
+                      "fontFamily": "$english-body",
+                      "fontSize": 22,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "MGOir",
+                      "name": "c7b2",
+                      "fill": "$ink-strong",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Recorded shiurim in the davening flow",
+                      "lineHeight": 1.4,
+                      "textAlign": "center",
+                      "fontFamily": "$english-body",
+                      "fontSize": 22,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "FPmin",
+                      "name": "c7b3",
+                      "fill": "$ink-strong",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Chavrutas, shared progress, oral readings",
+                      "lineHeight": 1.4,
+                      "textAlign": "center",
+                      "fontFamily": "$english-body",
+                      "fontSize": 22,
+                      "fontWeight": "700"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "rectangle",
+              "id": "fTMBg",
+              "x": 265.25,
+              "y": 324,
+              "name": "Conn Stone I",
+              "opacity": 0.45,
+              "fill": "$accent-deep",
+              "width": 1.5,
+              "height": 254
+            },
+            {
+              "type": "rectangle",
+              "id": "qLo7z",
+              "x": 371.25,
+              "y": 622,
+              "name": "Conn Stone II",
+              "opacity": 0.45,
+              "fill": "$accent-deep",
+              "width": 1.5,
+              "height": 78
+            },
+            {
+              "type": "rectangle",
+              "id": "SLOhX",
+              "x": 952.25,
+              "y": 622,
+              "name": "Conn V2",
+              "opacity": 0.45,
+              "fill": "$accent-deep",
+              "width": 1.5,
+              "height": 78
+            },
+            {
+              "type": "rectangle",
+              "id": "i84cx",
+              "x": 1229.25,
+              "y": 369,
+              "name": "Conn V3",
+              "opacity": 0.45,
+              "fill": "$accent-deep",
+              "width": 1.5,
+              "height": 209
+            },
+            {
+              "type": "rectangle",
+              "id": "NsokP",
+              "x": 1541.25,
+              "y": 622,
+              "name": "Conn V4",
+              "opacity": 0.45,
+              "fill": "$accent-deep",
+              "width": 1.5,
+              "height": 78
+            },
+            {
+              "type": "rectangle",
+              "id": "SJhIb",
+              "x": 1681.25,
+              "y": 369,
+              "name": "Conn V5",
+              "opacity": 0.45,
+              "fill": "$accent-deep",
+              "width": 1.5,
+              "height": 209
+            },
+            {
+              "type": "frame",
+              "id": "ppHNj",
+              "x": 469.7641628635789,
+              "y": 429,
+              "name": "Yad pointer",
+              "rotation": -35.49109784182071,
+              "width": 40,
+              "height": 146,
+              "layout": "none",
+              "children": [
+                {
+                  "type": "ellipse",
+                  "id": "VB6mZ",
+                  "x": 11,
+                  "y": 0,
+                  "name": "y_finial",
+                  "fill": "$accent-gold-hi",
+                  "width": 18,
+                  "height": 18,
+                  "stroke": {
+                    "align": "center",
+                    "thickness": 1.5,
+                    "fill": "$accent-deep"
+                  }
+                },
+                {
+                  "type": "rectangle",
+                  "id": "mS0Za",
+                  "x": 12,
+                  "y": 19,
+                  "name": "y_band1",
+                  "fill": "$accent-deep",
+                  "width": 16,
+                  "height": 2
+                },
+                {
+                  "type": "ellipse",
+                  "id": "U19WRb",
+                  "x": 9,
+                  "y": 22,
+                  "name": "y_bead",
+                  "fill": "$accent-gold",
+                  "width": 22,
+                  "height": 7,
+                  "stroke": {
+                    "align": "center",
+                    "thickness": 0.8,
+                    "fill": "$accent-deep"
+                  }
+                },
+                {
+                  "type": "rectangle",
+                  "id": "ETveQ",
+                  "x": 12,
+                  "y": 31,
+                  "name": "y_band2",
+                  "fill": "$accent-deep",
+                  "width": 16,
+                  "height": 2
+                },
+                {
+                  "type": "rectangle",
+                  "id": "h3cMqq",
+                  "x": 17.5,
+                  "y": 35,
+                  "name": "y_shaft",
+                  "fill": "$accent-gold",
+                  "width": 5,
+                  "height": 72
+                },
+                {
+                  "type": "rectangle",
+                  "id": "a6Rtao",
+                  "x": 18,
+                  "y": 36,
+                  "name": "y_shaft_hl",
+                  "opacity": 0.7,
+                  "fill": "$accent-gold-hi",
+                  "width": 1,
+                  "height": 70
+                },
+                {
+                  "type": "rectangle",
+                  "id": "D3GUM",
+                  "x": 12,
+                  "y": 108,
+                  "name": "y_band3",
+                  "fill": "$accent-deep",
+                  "width": 16,
+                  "height": 2
+                },
+                {
+                  "type": "rectangle",
+                  "id": "o49PLP",
+                  "x": 9,
+                  "y": 111,
+                  "name": "y_collar",
+                  "fill": "$accent-gold-hi",
+                  "width": 22,
+                  "height": 4
+                },
+                {
+                  "type": "rectangle",
+                  "id": "p4OFq2",
+                  "x": 12,
+                  "y": 116,
+                  "name": "y_band4",
+                  "fill": "$accent-deep",
+                  "width": 16,
+                  "height": 2
+                },
+                {
+                  "type": "ellipse",
+                  "id": "Dsv5Y",
+                  "x": 9,
+                  "y": 120,
+                  "name": "y_fist",
+                  "fill": "$accent-gold",
+                  "width": 22,
+                  "height": 12,
+                  "stroke": {
+                    "align": "center",
+                    "thickness": 1,
+                    "fill": "$accent-deep"
+                  }
+                },
+                {
+                  "type": "rectangle",
+                  "cornerRadius": [
+                    0,
+                    0,
+                    2.5,
+                    2.5
+                  ],
+                  "id": "i7rZZE",
+                  "x": 17.5,
+                  "y": 131,
+                  "name": "y_finger",
+                  "fill": "$accent-gold",
+                  "width": 5,
+                  "height": 14,
+                  "stroke": {
+                    "align": "center",
+                    "thickness": 0.8,
+                    "fill": "$accent-deep"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "ovC98",
+              "x": 266,
+              "y": 369,
+              "name": "We are here label",
+              "width": 480,
+              "height": 60,
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "x3Z7db",
+                  "name": "labelEng",
+                  "fill": "$accent-deep",
+                  "effect": [
+                    {
+                      "type": "shadow",
+                      "shadowType": "outer",
+                      "color": "#d9a24a",
+                      "blur": 24,
+                      "spread": 2
+                    },
+                    {
+                      "type": "shadow",
+                      "shadowType": "outer",
+                      "color": "#f6e9d2",
+                      "blur": 8
+                    }
+                  ],
+                  "content": "WE ARE HERE",
+                  "fontFamily": "$english-display",
+                  "fontSize": 56,
+                  "fontWeight": "700",
+                  "letterSpacing": 5
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "wETeZ",
+              "x": 242,
+              "y": 576,
+              "name": "Stone 1 label",
+              "fill": "$ink-strong",
+              "textGrowth": "fixed-width-height",
+              "width": 48,
+              "height": 48,
+              "content": "1",
+              "textAlign": "center",
+              "textAlignVertical": "middle",
+              "fontFamily": "$hebrew-font",
+              "fontSize": 28,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "Q0k2S",
+              "x": 348,
+              "y": 576,
+              "name": "Stone 2 label",
+              "fill": "$ink-strong",
+              "textGrowth": "fixed-width-height",
+              "width": 48,
+              "height": 48,
+              "content": "2",
+              "textAlign": "center",
+              "textAlignVertical": "middle",
+              "fontFamily": "$hebrew-font",
+              "fontSize": 28,
+              "fontWeight": "700"
+            },
+            {
+              "type": "rectangle",
+              "id": "TUQhW",
+              "x": 759.25,
+              "y": 370,
+              "name": "Conn V1",
+              "opacity": 0.45,
+              "fill": "$accent-deep",
+              "width": 1.5,
+              "height": 206
+            }
+          ]
+        },
+        {
+          "type": "rectangle",
+          "id": "STTlL",
+          "name": "borderBottom",
+          "opacity": 0.55,
+          "fill": "$accent-gold",
+          "width": "fill_container",
+          "height": 6
+        }
+      ]
+    }
+  ],
+  "variables": {
+    "accent-deep": {
+      "type": "color",
+      "value": "#7a5212"
+    },
+    "accent-gold": {
+      "type": "color",
+      "value": "#b07a1c"
+    },
+    "accent-gold-hi": {
+      "type": "color",
+      "value": "#d9a24a"
+    },
+    "english-body": {
+      "type": "string",
+      "value": "EB Garamond"
+    },
+    "english-display": {
+      "type": "string",
+      "value": "Cormorant Garamond"
+    },
+    "hebrew-font": {
+      "type": "string",
+      "value": "Frank Ruhl Libre"
+    },
+    "ink-faint": {
+      "type": "color",
+      "value": "#8a7a64"
+    },
+    "ink-soft": {
+      "type": "color",
+      "value": "#5a4835"
+    },
+    "ink-strong": {
+      "type": "color",
+      "value": "#2a1d12"
+    },
+    "parchment": {
+      "type": "color",
+      "value": "#f6e9d2"
+    },
+    "parchment-deep": {
+      "type": "color",
+      "value": "#f0dcb0"
+    },
+    "parchment-shadow": {
+      "type": "color",
+      "value": "#d4b078"
+    }
+  }
+}

@@ -50,8 +50,14 @@ function PrayerBlock({ data, activeWordIndex, showHebrew, showTranslit, showEngl
 
 export default React.memo(PrayerBlock);
 
+const ACCENT = '#b07a1c';
+
 const styles = StyleSheet.create({
   block: {
-    marginVertical: 12,
+    paddingLeft: 32,
+    paddingVertical: 26,
+    marginVertical: 10,
+    borderLeftWidth: 2,
+    borderLeftColor: ACCENT,
   },
 });

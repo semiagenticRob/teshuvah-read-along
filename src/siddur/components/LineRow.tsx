@@ -24,34 +24,47 @@ function LineRow({
   showTranslit,
   showEnglish,
 }: Props) {
-  const showAnyKaraoke = showHebrew || showTranslit;
-  const hasKaraokeContent = !!hebrewLine && showAnyKaraoke;
-
   return (
     <View style={styles.lineWrap}>
-      {hasKaraokeContent && (
-        <View style={styles.pairs}>
-          {hebrewLine!.words.map((word, i) => {
+      {showHebrew && hebrewLine && (
+        <Text style={styles.hebrewLine}>
+          {hebrewLine.words.map((word, i) => (
+            <Text
+              key={`${word.globalIndex}-${i}`}
+              style={activeWordIndex === word.globalIndex ? styles.hebrewActive : styles.hebrewWord}
+            >
+              {word.text}{i < hebrewLine.words.length - 1 ? ' ' : ''}
+            </Text>
+          ))}
+        </Text>
+      )}
+      {showTranslit && !showHebrew && hebrewLine && (
+        <View style={styles.translitRow}>
+          {hebrewLine.words.map((word, i) => {
             const translitText = translitLine?.words[i]?.text ?? null;
+            if (!translitText) return null;
             return (
               <WordPair
                 key={`${word.globalIndex}-${i}`}
-                hebrew={word.text}
-                translit={translitText ?? ''}
-                showHebrew={showHebrew}
-                showTranslit={showTranslit && translitText !== null}
+                hebrew={null}
+                translit={translitText}
+                showHebrew={false}
+                showTranslit={true}
                 idx={word.globalIndex}
-                onTapWord={undefined}
-                renderHalo={undefined}
-                isActive={activeWordIndex !== null && word.globalIndex === activeWordIndex}
+                isActive={activeWordIndex === word.globalIndex}
               />
             );
           })}
         </View>
       )}
+      {showTranslit && showHebrew && hebrewLine && translitLine && (
+        <Text style={styles.translitLine}>
+          {translitLine.words.map((tw, i) => (
+            <Text key={i} style={styles.translitWord}>{tw.text}{i < translitLine.words.length - 1 ? ' ' : ''}</Text>
+          ))}
+        </Text>
+      )}
       {showEnglish && englishParagraph && (
-        // TODO(Plan A Task 10): swap this for <ItalicEnglishText spans={englishParagraph.spans} />
-        // which will render italic interpretive spans with the dedicated font.
         <Text style={styles.english}>
           {englishParagraph.spans.map((s) => s.text).join('')}
         </Text>
@@ -66,12 +79,37 @@ const styles = StyleSheet.create({
   lineWrap: {
     marginVertical: 4,
   },
-  pairs: {
+  hebrewLine: {
+    fontFamily: FONTS.hebrew,
+    fontSize: 24,
+    lineHeight: 36,
+    color: INK.strong,
+    writingDirection: 'rtl',
+    textAlign: 'right',
+    width: '100%',
+  },
+  hebrewWord: {
+    color: INK.strong,
+  },
+  hebrewActive: {
+    color: '#b07a1c',
+  },
+  translitLine: {
+    fontFamily: FONTS.serifBodyItalic,
+    fontSize: 11,
+    lineHeight: 16,
+    color: INK.faint,
+    textAlign: 'right',
+    fontStyle: 'italic',
+    width: '100%',
+    marginTop: 2,
+  },
+  translitWord: {
+    color: INK.faint,
+  },
+  translitRow: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    rowGap: 10,
-    columnGap: 14,
-    alignItems: 'flex-end',
   },
   english: {
     fontFamily: FONTS.serifBody,

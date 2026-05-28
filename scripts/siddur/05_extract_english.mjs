@@ -46,6 +46,68 @@ const HEBREW_RE = /[א-ת]/;
 // We look for \n\n or multi-space/newline combos.
 const PARA_BREAK_RE = /\n\n+|(?:\r?\n){2,}/;
 
+// ─── Commentary pairing helpers ───────────────────────────────────────────────
+
+/**
+ * Extract Hebrew base consonants (alef-tav only, no niqqud/cantillation/spaces).
+ * @param {string} text
+ * @returns {string}
+ */
+function extractHebConsonants(text) {
+  return text.split('').filter(c => c >= 'א' && c <= 'ת').join('');
+}
+
+/**
+ * Find which HebrewLine in heLines best matches the Hebrew lemma in rawText.
+ * Uses consonant-level substring matching with an 8-character window.
+ * Returns lineIndex of the matched line, or null if no confident match.
+ *
+ * @param {Array<{lineIndex: number, words: Array<{text: string}>}>} heLines
+ * @param {string} rawText
+ * @returns {number|null}
+ */
+function findAnchorLine(heLines, rawText) {
+  const rawConsonants = extractHebConsonants(rawText);
+  if (rawConsonants.length < 6) return null;
+
+  // Build consonant strings for all lines once.
+  const lineConsonants = heLines.map(line => ({
+    lineIndex: line.lineIndex,
+    consonants: extractHebConsonants(line.words.map(w => w.text).join('')),
+  }));
+
+  // Try windows from position 0 outward (window-first order so that the lemma
+  // at the beginning of rawText takes precedence over later incidental matches).
+  const maxStart = Math.min(rawConsonants.length - 8, 50);
+  for (let start = 0; start <= maxStart; start++) {
+    const sub = rawConsonants.slice(start, start + 8);
+    if (sub.length < 6) continue;
+    for (const { lineIndex, consonants } of lineConsonants) {
+      if (consonants.includes(sub)) return lineIndex;
+    }
+  }
+  return null;
+}
+
+/**
+ * Extract the English explanation from a commentary callout's rawText.
+ * Strips Hebrew chars, RTL/LTR marks, leading punctuation.
+ * @param {string} rawText
+ * @returns {string}
+ */
+function extractCommentaryEnglish(rawText) {
+  return rawText
+    .replace(/[ְ-ׇא-ת֑-֯]/g, '') // Hebrew + niqqud + cantillation
+    .replace(/[​-‏‪-‮﻿]/g, '')          // directional marks
+    .replace(/[^\x20-\x7E\n]/g, ' ')                             // remaining non-ASCII → space
+    .replace(/[ \t]{2,}/g, ' ')
+    .replace(/\n{3,}/g, '\n\n')
+    .replace(/^[\s,\-—–‒()]+/, '')                // strip leading punctuation
+    .trim();
+}
+
+// ─── Block kind classifier ────────────────────────────────────────────────────
+
 /**
  * Detects whether a paragraph's first span text starts with a sidebar marker.
  * @param {Array<{text: string, style?: string}>} spans
@@ -145,72 +207,22 @@ for (const filename of hebrewFiles) {
   let sectionPrayerBlocks = 0;
   let sectionEnParagraphs = 0;
   let sectionItalicSpans = 0;
+  let sectionCommentaryPaired = 0;
 
-  const outputBlocks = data.blocks.map(block => {
+  const outputBlocks = [];
+  // Points at the processed prayer block most recently added to outputBlocks.
+  // Commentary callout blocks that follow are paired into this block's en[].
+  let currentPrayerBlock = null;
+
+  for (const block of data.blocks) {
     const kind = block.kind;
 
-    // ── prayer ──────────────────────────────────────────────────────────────
-    if (kind === 'prayer') {
-      const runs = block.runs || [];
+    // ── heading / subsection — reset commentary target ────────────────────────
+    if (kind === 'heading' || kind === 'subsection') {
+      currentPrayerBlock = null;
 
-      // Filter out runs containing any Hebrew letters.
-      const englishRuns = runs.filter(run => !HEBREW_RE.test(run.text));
-
-      // Split into paragraphs and convert to spans.
-      const paragraphs = runsToParagraphs(englishRuns);
-
-      // Detect inline FAQ / Instant Insight paragraphs.
-      const annotatedParagraphs = paragraphs.map(para => {
-        const sidebarKind = detectSidebarKind(para.spans);
-        if (sidebarKind) {
-          globalStats.sidebarParagraphsDetected++;
-          return { ...para, _sidebarKind: sidebarKind };
-        }
-        return para;
-      });
-
-      // Count italic spans for stats.
-      for (const para of annotatedParagraphs) {
-        for (const span of para.spans) {
-          if (span.style === 'italic') sectionItalicSpans++;
-        }
-      }
-
-      sectionPrayerBlocks++;
-      sectionEnParagraphs += annotatedParagraphs.length;
-
-      // Keep runs off the output (they've been processed); retain he and other fields.
-      const { runs: _removed, ...restBlock } = block;
-      return {
-        ...restBlock,
-        en: annotatedParagraphs,
-      };
-    }
-
-    // ── faq / instant_insight / callout ─────────────────────────────────────
-    if (kind === 'faq' || kind === 'instant_insight' || kind === 'callout') {
-      const runs = block.runs || [];
-      const paragraphs = runsToParagraphs(runs);
-
-      for (const para of paragraphs) {
-        for (const span of para.spans) {
-          if (span.style === 'italic') sectionItalicSpans++;
-        }
-      }
-
-      const { runs: _removed, ...restBlock } = block;
-      return {
-        ...restBlock,
-        body: paragraphs,
-      };
-    }
-
-    // ── heading ──────────────────────────────────────────────────────────────
-    if (kind === 'heading') {
       const runs = block.runs || [];
       const spans = runsToSpans(runs);
-
-      // Partition into Hebrew and English text.
       const hebrewParts = [];
       const englishParts = [];
       for (const span of spans) {
@@ -220,36 +232,100 @@ for (const filename of hebrewFiles) {
           englishParts.push(span.text);
         }
       }
-
       const { runs: _removed, rawText, ...restBlock } = block;
       const result = { ...restBlock };
-
-      if (hebrewParts.length > 0) {
-        result.he = hebrewParts.join(' ').trim();
-      }
+      if (hebrewParts.length > 0) result.he = hebrewParts.join(' ').trim();
       result.en = englishParts.join(' ').trim();
+      if (!result.en && rawText) result.en = rawText.trim();
+      outputBlocks.push(result);
+      continue;
+    }
 
-      // If rawText was present and en is empty, fall back to rawText.
-      if (!result.en && rawText) {
-        result.en = rawText.trim();
+    // ── prayer ──────────────────────────────────────────────────────────────
+    if (kind === 'prayer') {
+      const runs = block.runs || [];
+      const englishRuns = runs.filter(run => !HEBREW_RE.test(run.text));
+      const paragraphs = runsToParagraphs(englishRuns);
+      const annotatedParagraphs = paragraphs.map(para => {
+        const sidebarKind = detectSidebarKind(para.spans);
+        if (sidebarKind) {
+          globalStats.sidebarParagraphsDetected++;
+          return { ...para, _sidebarKind: sidebarKind };
+        }
+        return para;
+      });
+      for (const para of annotatedParagraphs) {
+        for (const span of para.spans) {
+          if (span.style === 'italic') sectionItalicSpans++;
+        }
+      }
+      sectionPrayerBlocks++;
+      sectionEnParagraphs += annotatedParagraphs.length;
+      const { runs: _removed, ...restBlock } = block;
+      const prayerOut = { ...restBlock, en: annotatedParagraphs };
+      outputBlocks.push(prayerOut);
+      currentPrayerBlock = prayerOut;
+      continue;
+    }
+
+    // ── faq / instant_insight / callout ──────────────────────────────────────
+    if (kind === 'faq' || kind === 'instant_insight' || kind === 'callout') {
+      // If a prayer block precedes this, treat it as verse-level commentary:
+      // pair the English text with the matching Hebrew line in that block.
+      if (currentPrayerBlock) {
+        const rawText = block.rawText || '';
+        const englishText = extractCommentaryEnglish(rawText);
+        if (englishText.length > 10) {
+          const anchorLine = currentPrayerBlock.he.length > 0
+            ? findAnchorLine(currentPrayerBlock.he, rawText)
+            : null;
+          const para = anchorLine !== null
+            ? { spans: [{ text: englishText }], anchorLine }
+            : { spans: [{ text: englishText }] };
+          currentPrayerBlock.en.push(para);
+          sectionCommentaryPaired++;
+          continue;
+        }
+        // Fall through to normal FaqPanel rendering if English text is too short.
       }
 
-      return result;
+      // No preceding prayer block — render as standalone FaqPanel.
+      const rawText = block.rawText || '';
+      let paragraphs;
+      if (rawText.trim().length > 0) {
+        const cleaned = rawText
+          .replace(/[א-ת֑-ׇ‏‎‪-‮]/g, '')
+          .replace(/[^\x20-\x7E\n]/g, ' ')
+          .replace(/[ \t]{2,}/g, ' ')
+          .replace(/\n{3,}/g, '\n\n')
+          .trim();
+        const parts = cleaned.split(/\n\n+/).map(p => p.replace(/\s+/g, ' ').trim()).filter(Boolean);
+        paragraphs = parts.map(text => ({ spans: [{ text }] }));
+      } else {
+        const runs = block.runs || [];
+        paragraphs = runsToParagraphs(runs);
+      }
+      for (const para of paragraphs) {
+        for (const span of para.spans) {
+          if (span.style === 'italic') sectionItalicSpans++;
+        }
+      }
+      const { runs: _removed, rawText: _rawRemoved, ...restBlock } = block;
+      outputBlocks.push({ ...restBlock, body: paragraphs });
+      continue;
     }
 
     // ── rubric ────────────────────────────────────────────────────────────────
     if (kind === 'rubric') {
       const rawText = block.rawText || '';
       const { runs: _removedRuns, rawText: _removedRaw, ...restBlock } = block;
-      return {
-        ...restBlock,
-        text: { en: rawText },
-      };
+      outputBlocks.push({ ...restBlock, text: { en: rawText } });
+      continue;
     }
 
     // ── unknown — pass through unchanged ─────────────────────────────────────
-    return { ...block };
-  });
+    outputBlocks.push({ ...block });
+  }
 
   const output = {
     sectionId: data.sectionId,
@@ -266,8 +342,9 @@ for (const filename of hebrewFiles) {
   globalStats.totalEnglishParagraphs += sectionEnParagraphs;
   globalStats.sections++;
 
+  const pairedNote = sectionCommentaryPaired > 0 ? `, ${sectionCommentaryPaired} commentary paired` : '';
   console.log(
-    `  ${sectionId}: ${sectionPrayerBlocks} prayer blocks, ${sectionEnParagraphs} en-paragraphs, ${sectionItalicSpans} italic spans`
+    `  ${sectionId}: ${sectionPrayerBlocks} prayer blocks, ${sectionEnParagraphs} en-paragraphs, ${sectionItalicSpans} italic spans${pairedNote}`
   );
 }
 

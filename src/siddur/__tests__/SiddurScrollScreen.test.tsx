@@ -26,12 +26,12 @@ function renderScreen() {
   );
 }
 
-test('renders the first shacharit section header and at least one Hebrew word', () => {
+test('renders the card title and at least one Hebrew word', () => {
   const tree = renderScreen().toJSON();
   const flat = JSON.stringify(tree);
-  // hashkamas_haboker is the first shacharit section
-  expect(flat).toMatch('Waking Up in the Morning');
-  // First prayer block contains יהיו
+  // Card title appears in nav bar and section intro card
+  expect(flat).toMatch('Shacharit');
+  // First prayer block contains Hebrew
   expect(flat).toMatch('יהי');
 });
 

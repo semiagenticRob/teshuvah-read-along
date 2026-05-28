@@ -95,7 +95,7 @@ export const useSettingsStore = create<SettingsState>((set, get) => ({
   defaultSpeed: 1.0,
   nusach: 'ashkenaz',
   isLoaded: false,
-  displayLanes: { hebrew: true, translit: true, english: false },
+  displayLanes: { hebrew: true, translit: true, english: true },
 
   userTier: null,
   hasCompletedOnboarding: false,
