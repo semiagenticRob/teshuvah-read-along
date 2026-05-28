@@ -3,18 +3,50 @@
   "cardId": "maariv",
   "title": {
     "he": "מַעֲרִיב",
-    "en": "Maariv Opening"
+    "en": "Maariv"
   },
   "source": "feigenbaum",
   "sourcePages": [
-    164,
-    164
+    188,
+    188
   ],
   "blocks": [
     {
-      "kind": "learn_link",
-      "essayId": "appendix_12_halachos",
-      "promptText": "Halachos"
+      "kind": "subsection",
+      "he": "",
+      "en": "My Day Is Ending, but the New One Just Started—Time to Daven!"
+    },
+    {
+      "kind": "callout",
+      "body": [
+        {
+          "spans": [
+            {
+              "text": "In the morning, we awaken and begin our day by affirming our commitment to our mission (the Shema) and we make our requests (Shemoneh Esrei) for what we need spiritually and materially in order to fulfill our mission successfully. Now, we end our day and set the tone for the next day (since each day really begins the night before) by once again affirming our commitment to our mission (the Shema) and again putting in our requests for the spiritual and material things we need to be successful. Still, in our heart of hearts we know that we did not really use all that Hashem gave us (our talents, character traits, our neshamah, and spiritual gifts) in the best way possible. Therefore, we start by focusing on the fact that Hashem is והוא רחום יכפר עון—He is all-merciful and ready to give us another day and another chance! With that confidence, we can stand in front of Him and declare our readiness to try again to maximize our potential. That gives us the ability to once again ask Hashem for the things we need, even though we wasted some of them today!"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "subsection",
+      "he": "",
+      "en": "Hashem Is Always Ready to Give Us Another Day and Another Chance!"
+    },
+    {
+      "kind": "callout",
+      "tags": [
+        "rubric"
+      ],
+      "body": [
+        {
+          "spans": [
+            {
+              "text": "וְהוּא רַחוּם"
+            }
+          ]
+        }
+      ]
     },
     {
       "kind": "prayer",
@@ -23,172 +55,56 @@
           "lineIndex": 0,
           "words": [
             {
-              "text": "כשיגיע",
+              "text": "וְהוּא",
               "globalIndex": 0
             },
             {
-              "text": "הלילה",
+              "text": "רַחוּם",
               "globalIndex": 1
             },
             {
-              "text": "יתפלל",
+              "text": "יְכַפֵּר",
               "globalIndex": 2
             },
             {
-              "text": "תפלת",
+              "text": "עָוֹן",
               "globalIndex": 3
             },
             {
-              "text": "ערבית.",
+              "text": "וְלֹא",
               "globalIndex": 4
             },
             {
-              "text": "ואינה",
+              "text": "יַשְׁחִית,",
               "globalIndex": 5
             },
             {
-              "text": "חובה",
+              "text": "וְהִרְבָּה",
               "globalIndex": 6
             },
             {
-              "text": "שלא",
+              "text": "לְהָשִׁיב",
               "globalIndex": 7
             },
             {
-              "text": "נתקנה",
+              "text": "אַפּוֹ,",
               "globalIndex": 8
             },
             {
-              "text": "אלא",
+              "text": "וְלֹא",
               "globalIndex": 9
             },
             {
-              "text": "כנגד",
+              "text": "יָעִיר",
               "globalIndex": 10
             },
             {
-              "text": "איברים",
+              "text": "כָּל",
               "globalIndex": 11
             },
             {
-              "text": "ופדרים",
+              "text": "חֲמָתוֹ:",
               "globalIndex": 12
-            },
-            {
-              "text": "של",
-              "globalIndex": 13
-            },
-            {
-              "text": "תמיד",
-              "globalIndex": 14
-            },
-            {
-              "text": "של",
-              "globalIndex": 15
-            },
-            {
-              "text": "בין",
-              "globalIndex": 16
-            },
-            {
-              "text": "הערבים",
-              "globalIndex": 17
-            },
-            {
-              "text": "שלא",
-              "globalIndex": 18
-            },
-            {
-              "text": "נתעכלו",
-              "globalIndex": 19
-            },
-            {
-              "text": "ביום",
-              "globalIndex": 20
-            },
-            {
-              "text": "שקרבין",
-              "globalIndex": 21
-            },
-            {
-              "text": "והולכין",
-              "globalIndex": 22
-            },
-            {
-              "text": "כל",
-              "globalIndex": 23
-            },
-            {
-              "text": "הלילה.",
-              "globalIndex": 24
-            },
-            {
-              "text": "ומ\"מ",
-              "globalIndex": 25
-            },
-            {
-              "text": "מצוה",
-              "globalIndex": 26
-            },
-            {
-              "text": "איכא",
-              "globalIndex": 27
-            },
-            {
-              "text": "ואין",
-              "globalIndex": 28
-            },
-            {
-              "text": "לבטלה.",
-              "globalIndex": 29
-            },
-            {
-              "text": "ורב",
-              "globalIndex": 30
-            },
-            {
-              "text": "אלפס",
-              "globalIndex": 31
-            },
-            {
-              "text": "כתב",
-              "globalIndex": 32
-            },
-            {
-              "text": "דהאידנא",
-              "globalIndex": 33
-            },
-            {
-              "text": "קבעוה",
-              "globalIndex": 34
-            },
-            {
-              "text": "חובה",
-              "globalIndex": 35
-            },
-            {
-              "text": "ואין",
-              "globalIndex": 36
-            },
-            {
-              "text": "לבטלה",
-              "globalIndex": 37
-            },
-            {
-              "text": "כלל",
-              "globalIndex": 38
-            },
-            {
-              "text": "(טור",
-              "globalIndex": 39
-            },
-            {
-              "text": "או\"ח",
-              "globalIndex": 40
-            },
-            {
-              "text": "רל\"ה)",
-              "globalIndex": 41
             }
           ]
         },
@@ -196,132 +112,124 @@
           "lineIndex": 1,
           "words": [
             {
-              "text": "וְהוּא",
-              "globalIndex": 42
+              "text": "יְהוָה",
+              "globalIndex": 13
             },
             {
-              "text": "רַחוּם",
-              "globalIndex": 43
+              "text": "הוֹשִׁיעָה,",
+              "globalIndex": 14
             },
             {
-              "text": "יְכַפֵּר",
-              "globalIndex": 44
+              "text": "הַמֶּלֶךְ",
+              "globalIndex": 15
             },
             {
-              "text": "עָוֹן",
-              "globalIndex": 45
+              "text": "יַעֲנֵנוּ",
+              "globalIndex": 16
             },
             {
-              "text": "וְלֹא־יַשְׁחִית",
-              "globalIndex": 46
+              "text": "בְיוֹם",
+              "globalIndex": 17
             },
             {
-              "text": "וְהִרְבָּה",
-              "globalIndex": 47
+              "text": "קָרְאֵנוּ:",
+              "globalIndex": 18
+            }
+          ]
+        },
+        {
+          "lineIndex": 2,
+          "words": [
+            {
+              "text": "חזן:",
+              "globalIndex": 19
+            }
+          ]
+        },
+        {
+          "lineIndex": 3,
+          "words": [
+            {
+              "text": "בָּרְכוּ",
+              "globalIndex": 20
             },
             {
-              "text": "לְהָשִׁיב",
-              "globalIndex": 48
+              "text": "אֶת",
+              "globalIndex": 21
             },
             {
-              "text": "אַפּוֹ",
-              "globalIndex": 49
+              "text": "יְהוָה",
+              "globalIndex": 22
             },
             {
-              "text": "וְלֹא־יָעִיר",
-              "globalIndex": 50
+              "text": "הַמְּבֹרָךְ:",
+              "globalIndex": 23
+            }
+          ]
+        },
+        {
+          "lineIndex": 4,
+          "words": [
+            {
+              "text": "קהל",
+              "globalIndex": 24
             },
             {
-              "text": "כָּל־חֲמָתוֹ:",
-              "globalIndex": 51
+              "text": "וחזן:",
+              "globalIndex": 25
+            }
+          ]
+        },
+        {
+          "lineIndex": 5,
+          "words": [
+            {
+              "text": "בָּרוּךְ",
+              "globalIndex": 26
             },
             {
-              "text": "יְהֹוָה",
-              "globalIndex": 52
+              "text": "יְהוָה",
+              "globalIndex": 27
             },
             {
-              "text": "הוֹשִׁיעָה",
-              "globalIndex": 53
+              "text": "הַמְּבֹרָךְ",
+              "globalIndex": 28
             },
             {
-              "text": "הַמֶּֽלֶךְ",
-              "globalIndex": 54
+              "text": "לְעוֹלָם",
+              "globalIndex": 29
             },
             {
-              "text": "יַעֲנֵֽנוּ",
-              "globalIndex": 55
-            },
-            {
-              "text": "בְיוֹם־קָרְאֵֽנוּ:",
-              "globalIndex": 56
+              "text": "וָעֶד:",
+              "globalIndex": 30
             }
           ]
         }
       ],
-      "wordIndexStart": 0,
-      "wordIndexEnd": 56,
-      "_legacySource": "maariv/maariv_vehu_rachum",
-      "en": []
-    },
-    {
-      "kind": "callout",
-      "body": [
+      "en": [
         {
           "spans": [
             {
-              "text": "who have fallen ("
-            },
-            {
-              "text": "physically and spiritually",
-              "style": "italic"
-            },
-            {
-              "text": "); You heal the sick ("
-            },
-            {
-              "text": "both physically and emotionally ill",
-              "style": "italic"
-            },
-            {
-              "text": ") and free those in prison ("
-            },
-            {
-              "text": "whether in real prisons or trapped in their own sense of limitations",
-              "style": "italic"
-            },
-            {
-              "text": "); and You keep the covenant You made with our ancestors. There is no other power like You at all; You have total control over our lives and our ultimate salvation. ("
-            },
-            {
-              "text": "And that is why we are turning to You and only You with the upcoming requests in our Shemoneh Esrei.",
-              "style": "italic"
-            },
-            {
-              "text": ")"
-            },
-            {
-              "text": "all",
-              "style": "bold"
+              "text": "And (because) Hashem is merciful, He repeatedly forgives our sins and does not destroy us! Hashem, please save us and answer us when we call out to You!"
             }
-          ]
-        }
-      ]
-    },
-    {
-      "kind": "callout",
-      "body": [
+          ],
+          "anchorLine": 0
+        },
         {
           "spans": [
             {
-              "text": ")"
-            },
-            {
-              "text": "During Aseres Yemei Teshuvah add: (If you forgot — see Appendix 12:1)",
-              "style": "italic"
+              "text": "(—בָּרְכוּ אֶת יְהוָה הַמְּבֹרָךְ The chazzan calls us to action and says to us:) We must make the world realize (by how we speak and how we conduct ourselves daily) that Hashem is the Source of all, and that everything He does is perfect and for the ultimate best."
             }
-          ]
+          ],
+          "anchorLine": 3
         }
-      ]
+      ],
+      "_legacySource": null
+    },
+    {
+      "kind": "subsection",
+      "he": "",
+      "en": "Our Mission in Simple Terms"
     }
   ]
 }

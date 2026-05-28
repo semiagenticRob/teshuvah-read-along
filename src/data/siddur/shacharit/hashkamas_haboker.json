@@ -3,23 +3,23 @@
   "cardId": "shacharit",
   "title": {
     "he": "הַשְׁכָּמַת הַבֹּקֶר",
-    "en": "Waking Up in the Morning"
+    "en": "Hashkamas HaBoker"
   },
   "source": "feigenbaum",
   "sourcePages": [
-    2,
-    9
+    26,
+    33
   ],
   "blocks": [
     {
-      "kind": "learn_link",
-      "essayId": "introduction_for_teens",
-      "promptText": "Introduction for Teens"
+      "kind": "subsection",
+      "he": "השכמת הבוקר",
+      "en": ""
     },
     {
-      "kind": "learn_link",
-      "essayId": "personal_note_to_teens",
-      "promptText": "A Personal Note from Rabbi Feigenbaum for Teens"
+      "kind": "subsection",
+      "he": "",
+      "en": "I Woke Up!"
     },
     {
       "kind": "prayer",
@@ -36,11 +36,11 @@
               "globalIndex": 1
             },
             {
-              "text": "לְפָנֶֽיךָ",
+              "text": "לְפָנֶיךָ",
               "globalIndex": 2
             },
             {
-              "text": "מֶֽלֶךְ",
+              "text": "מֶלֶךְ",
               "globalIndex": 3
             },
             {
@@ -48,11 +48,11 @@
               "globalIndex": 4
             },
             {
-              "text": "וְקַיָּם",
+              "text": "וְקַיָּם,",
               "globalIndex": 5
             },
             {
-              "text": "שֶׁהֶחֱזַֽרְתָּ",
+              "text": "שֶׁהֶחֱזַרְתָּ",
               "globalIndex": 6
             },
             {
@@ -64,7 +64,7 @@
               "globalIndex": 8
             },
             {
-              "text": "בְּחֶמְלָה,",
+              "text": "בְּחֶמְלָה.",
               "globalIndex": 9
             },
             {
@@ -72,22 +72,13 @@
               "globalIndex": 10
             },
             {
-              "text": "אֱמוּנָתֶֽךָ:",
+              "text": "אֱמוּנָתֶךָ:",
               "globalIndex": 11
             }
           ]
-        }
-      ],
-      "wordIndexStart": 0,
-      "wordIndexEnd": 11,
-      "_legacySource": "shacharit/modeh_ani",
-      "en": []
-    },
-    {
-      "kind": "prayer",
-      "he": [
+        },
         {
-          "lineIndex": 0,
+          "lineIndex": 1,
           "words": [
             {
               "text": "רֵאשִׁית",
@@ -106,7 +97,7 @@
               "globalIndex": 15
             },
             {
-              "text": "שֵֽׂכֶל",
+              "text": "שֵׂכֶל",
               "globalIndex": 16
             },
             {
@@ -114,456 +105,4374 @@
               "globalIndex": 17
             },
             {
-              "text": "לְכָל־עֹשֵׂיהֶם,",
+              "text": "לְכָל",
               "globalIndex": 18
             },
             {
-              "text": "תְּהִלָּתוֹ",
+              "text": "עֹשֵׂיהֶם,",
               "globalIndex": 19
             },
             {
-              "text": "עוֹמֶֽדֶת",
+              "text": "תְּהִלָּתוֹ",
               "globalIndex": 20
             },
             {
-              "text": "לָעַד:",
+              "text": "עֹמֶדֶת",
               "globalIndex": 21
             },
             {
-              "text": "בָּרוּךְ",
+              "text": "לָעַד:",
               "globalIndex": 22
-            },
+            }
+          ]
+        },
+        {
+          "lineIndex": 2,
+          "words": [
             {
-              "text": "שֵׁם",
+              "text": "בָּרוּךְ",
               "globalIndex": 23
             },
             {
-              "text": "כְּבוֹד",
+              "text": "שֵׁם",
               "globalIndex": 24
             },
             {
-              "text": "מַלְכוּתוֹ",
+              "text": "כְּבוֹד",
               "globalIndex": 25
             },
             {
-              "text": "לְעוֹלָם",
+              "text": "מַלְכוּתוֹ",
               "globalIndex": 26
             },
             {
-              "text": "וָעֶד:",
+              "text": "לְעוֹלָם",
               "globalIndex": 27
-            }
-          ]
-        }
-      ],
-      "wordIndexStart": 12,
-      "wordIndexEnd": 27,
-      "_legacySource": "shacharit/reishis_chochmah",
-      "en": []
-    },
-    {
-      "kind": "prayer",
-      "he": [
-        {
-          "lineIndex": 0,
-          "words": [
-            {
-              "text": "אֱלֹהַי",
-              "globalIndex": 28
             },
             {
-              "text": "נְשָׁמָה",
+              "text": "וָעֶד:",
+              "globalIndex": 28
+            }
+          ]
+        },
+        {
+          "lineIndex": 3,
+          "words": [
+            {
+              "text": "תּוֹרָה",
               "globalIndex": 29
             },
             {
-              "text": "שֶׁנָּתַֽתָּ",
+              "text": "צִוָּה",
               "globalIndex": 30
             },
             {
-              "text": "בִּי",
+              "text": "לָנוּ",
               "globalIndex": 31
             },
             {
-              "text": "טְהוֹרָה",
+              "text": "מֹשֶׁה,",
               "globalIndex": 32
             },
             {
-              "text": "הִיא",
+              "text": "מוֹרָשָׁה",
               "globalIndex": 33
             },
             {
-              "text": "אַתָּה",
+              "text": "קְהִלַּת",
               "globalIndex": 34
             },
             {
-              "text": "בְרָאתָהּ",
+              "text": "יַעֲקֹב:",
               "globalIndex": 35
-            },
+            }
+          ]
+        },
+        {
+          "lineIndex": 4,
+          "words": [
             {
-              "text": "אַתָּה",
+              "text": "שְׁמַע",
               "globalIndex": 36
             },
             {
-              "text": "יְצַרְתָּהּ",
+              "text": "בְּנִי",
               "globalIndex": 37
             },
             {
-              "text": "אַתָּה",
+              "text": "מוּסַר",
               "globalIndex": 38
             },
             {
-              "text": "נְפַחְתָּהּ",
+              "text": "אָבִיךָ,",
               "globalIndex": 39
             },
             {
-              "text": "בִּי",
+              "text": "וְאַל",
               "globalIndex": 40
             },
             {
-              "text": "וְאַתָּה",
+              "text": "תִּטֹּשׁ",
               "globalIndex": 41
             },
             {
-              "text": "מְשַׁמְּ֒רָהּ",
+              "text": "תּוֹרַת",
               "globalIndex": 42
             },
             {
-              "text": "בְּקִרְבִּי",
+              "text": "אִמֶּךָ:",
               "globalIndex": 43
-            },
+            }
+          ]
+        },
+        {
+          "lineIndex": 5,
+          "words": [
             {
-              "text": "וְאַתָּה",
+              "text": "תּוֹרָה",
               "globalIndex": 44
             },
             {
-              "text": "עָתִיד",
+              "text": "תְּהֵא",
               "globalIndex": 45
             },
             {
-              "text": "לִטְּ֒לָהּ",
+              "text": "אֱמוּנָתִי,",
               "globalIndex": 46
             },
             {
-              "text": "מִמֶּֽנִּי",
+              "text": "וְאֵל",
               "globalIndex": 47
             },
             {
-              "text": "וּלְהַחֲזִירָהּ",
+              "text": "שַׁדַּי",
               "globalIndex": 48
             },
             {
-              "text": "בִּי",
+              "text": "בְּעֶזְרָתִי:",
               "globalIndex": 49
-            },
+            }
+          ]
+        },
+        {
+          "lineIndex": 6,
+          "words": [
             {
-              "text": "לֶעָתִיד",
+              "text": "וְאַתֶּם",
               "globalIndex": 50
             },
             {
-              "text": "לָבֹא,",
+              "text": "הַדְּבֵקִים",
               "globalIndex": 51
             },
             {
-              "text": "כָּל",
+              "text": "בַּיהֹוָה",
               "globalIndex": 52
             },
             {
-              "text": "זְמַן",
+              "text": "אֱלֹהֵיכֶם,",
               "globalIndex": 53
             },
             {
-              "text": "שֶׁהַנְּ֒שָׁמָה",
+              "text": "חַיִּים",
               "globalIndex": 54
             },
             {
-              "text": "בְקִרְבִּי",
+              "text": "כֻּלְּכֶם",
               "globalIndex": 55
             },
             {
-              "text": "מוֹדֶה",
+              "text": "הַיּוֹם:",
               "globalIndex": 56
-            },
+            }
+          ]
+        },
+        {
+          "lineIndex": 7,
+          "words": [
             {
-              "text": "אֲנִי",
+              "text": "לִישׁוּעָתְךָ",
               "globalIndex": 57
             },
             {
-              "text": "לְפָנֶֽיךָ",
+              "text": "קִוִּיתִי",
               "globalIndex": 58
             },
             {
-              "text": "יְהֹוָה",
+              "text": "יְהֹוָה:",
               "globalIndex": 59
-            },
+            }
+          ]
+        },
+        {
+          "lineIndex": 8,
+          "words": [
             {
-              "text": "אֱלֹהַי",
+              "text": "בָּרוּךְ",
               "globalIndex": 60
             },
             {
-              "text": "וֵאלֹהֵי",
+              "text": "אַתָּה",
               "globalIndex": 61
             },
             {
-              "text": "אֲבוֹתַי",
+              "text": "יְהֹוָה",
               "globalIndex": 62
             },
             {
-              "text": "רִבּוֹן",
+              "text": "אֱלֹהֵינוּ",
               "globalIndex": 63
             },
             {
-              "text": "כָּל",
+              "text": "מֶלֶךְ",
               "globalIndex": 64
             },
             {
-              "text": "הַמַּעֲשִׂים",
+              "text": "הָעוֹלָם,",
               "globalIndex": 65
             },
             {
-              "text": "אֲדוֹן",
+              "text": "אֲשֶׁר",
               "globalIndex": 66
             },
             {
-              "text": "כָּל",
+              "text": "קִדְּשָׁנוּ",
               "globalIndex": 67
             },
             {
-              "text": "הַנְּ֒שָׁמוֹת:",
+              "text": "בְּמִצְוֹתָיו,",
               "globalIndex": 68
             },
             {
-              "text": "בָּרוּךְ",
+              "text": "וְצִוָּנוּ",
               "globalIndex": 69
             },
             {
-              "text": "אַתָּה",
+              "text": "עַל",
               "globalIndex": 70
             },
             {
-              "text": "יְהֹוָה",
+              "text": "נְטִילַת",
               "globalIndex": 71
             },
             {
-              "text": "הַמַּחֲזִיר",
+              "text": "יָדָיִם:",
               "globalIndex": 72
-            },
+            }
+          ]
+        },
+        {
+          "lineIndex": 9,
+          "words": [
             {
-              "text": "נְשָׁמוֹת",
+              "text": "בָּרוּךְ",
               "globalIndex": 73
             },
             {
-              "text": "לִפְגָרִים",
+              "text": "אַתָּה",
               "globalIndex": 74
             },
             {
-              "text": "מֵתִים:",
+              "text": "יְהֹוָה",
               "globalIndex": 75
-            }
-          ]
-        }
-      ],
-      "wordIndexStart": 28,
-      "wordIndexEnd": 75,
-      "_legacySource": "shacharit/elokai_neshama",
-      "en": []
-    },
-    {
-      "kind": "prayer",
-      "he": [
-        {
-          "lineIndex": 0,
-          "words": [
+            },
             {
-              "text": "בָּרוּךְ",
+              "text": "אֱלֹהֵינוּ",
               "globalIndex": 76
             },
             {
-              "text": "אַתָּה",
+              "text": "מֶלֶךְ",
               "globalIndex": 77
             },
             {
-              "text": "יְהֹוָה",
+              "text": "הָעוֹלָם,",
               "globalIndex": 78
             },
             {
-              "text": "אֱלֹהֵֽינוּ",
+              "text": "אֲשֶׁר",
               "globalIndex": 79
             },
             {
-              "text": "מֶֽלֶךְ",
+              "text": "יָצַר",
               "globalIndex": 80
             },
             {
-              "text": "הָעוֹלָם",
+              "text": "אֶת",
               "globalIndex": 81
             },
             {
-              "text": "אֲשֶׁר",
+              "text": "הָאָדָם",
               "globalIndex": 82
             },
             {
-              "text": "יָצַר",
+              "text": "בְּחָכְמָה,",
               "globalIndex": 83
             },
             {
-              "text": "אֶת־הָאָדָם",
+              "text": "וּבָרָא",
               "globalIndex": 84
             },
             {
-              "text": "בְּחָכְמָה",
+              "text": "בוֹ",
               "globalIndex": 85
             },
             {
-              "text": "וּבָֽרָא",
+              "text": "נְקָבִים",
               "globalIndex": 86
             },
             {
-              "text": "בוֹ",
+              "text": "נְקָבִים,",
               "globalIndex": 87
             },
             {
-              "text": "נְקָבִים",
+              "text": "חֲלוּלִים",
               "globalIndex": 88
             },
             {
-              "text": "נְקָבִים",
+              "text": "חֲלוּלִים.",
               "globalIndex": 89
             },
             {
-              "text": "חֲלוּלִים",
+              "text": "גָּלוּי",
               "globalIndex": 90
             },
             {
-              "text": "חֲלוּלִים",
+              "text": "וְיָדוּעַ",
               "globalIndex": 91
             },
             {
-              "text": "גָּלוּי",
+              "text": "לִפְנֵי",
               "globalIndex": 92
             },
             {
-              "text": "וְיָדֽוּעַ",
+              "text": "כִסֵּא",
               "globalIndex": 93
             },
             {
-              "text": "לִפְנֵי",
+              "text": "כְבוֹדֶךָ,",
               "globalIndex": 94
             },
             {
-              "text": "כִסֵּא",
+              "text": "שֶׁאִם",
               "globalIndex": 95
             },
             {
-              "text": "כְבוֹדֶֽךָ",
+              "text": "יִפָּתֵחַ",
               "globalIndex": 96
             },
             {
-              "text": "שֶׁאִם",
+              "text": "אֶחָד",
               "globalIndex": 97
             },
             {
-              "text": "יִפָּתֵֽחַ",
+              "text": "מֵהֶם",
               "globalIndex": 98
             },
             {
-              "text": "אֶחָד",
+              "text": "אוֹ",
               "globalIndex": 99
             },
             {
-              "text": "מֵהֶם",
+              "text": "יִסָּתֵם",
               "globalIndex": 100
             },
             {
-              "text": "אוֹ",
+              "text": "אֶחָד",
               "globalIndex": 101
             },
             {
-              "text": "יִסָּתֵם",
+              "text": "מֵהֶם,",
               "globalIndex": 102
             },
             {
-              "text": "אֶחָד",
+              "text": "אִי",
               "globalIndex": 103
             },
             {
-              "text": "מֵהֶם",
+              "text": "אֶפְשַׁר",
               "globalIndex": 104
             },
             {
-              "text": "אִי",
+              "text": "לְהִתְקַיֵּם",
               "globalIndex": 105
             },
             {
-              "text": "אֶפְשַׁר",
+              "text": "וְלַעֲמֹד",
               "globalIndex": 106
             },
             {
-              "text": "לְהִתְקַיֵּם",
+              "text": "לְפָנֶיךָ",
               "globalIndex": 107
             },
             {
-              "text": "וְלַעֲמֹד",
+              "text": "[אֲפִלּוּ",
               "globalIndex": 108
             },
             {
-              "text": "לְפָנֶֽיךָ",
+              "text": "שָׁעָה",
               "globalIndex": 109
             },
             {
-              "text": "אֲפִילוּ",
+              "text": "אֶחָת].",
               "globalIndex": 110
             },
             {
-              "text": "שָׁעָה",
+              "text": "בָּרוּךְ",
               "globalIndex": 111
             },
             {
-              "text": "אֶחָת.",
+              "text": "אַתָּה",
               "globalIndex": 112
             },
             {
-              "text": "בָּרוּךְ",
+              "text": "יְהֹוָה,",
               "globalIndex": 113
             },
             {
-              "text": "אַתָּה",
+              "text": "רוֹפֵא",
               "globalIndex": 114
             },
             {
-              "text": "יְהֹוָה",
+              "text": "כָל",
               "globalIndex": 115
             },
             {
-              "text": "רוֹפֵא",
+              "text": "בָּשָׂר",
               "globalIndex": 116
             },
             {
-              "text": "כָל־בָּשָׂר",
+              "text": "וּמַפְלִיא",
               "globalIndex": 117
             },
             {
-              "text": "וּמַפְלִיא",
+              "text": "לַעֲשׂוֹת:",
               "globalIndex": 118
+            }
+          ]
+        },
+        {
+          "lineIndex": 10,
+          "words": [
+            {
+              "text": "אֱלֹהַי,",
+              "globalIndex": 119
             },
             {
-              "text": "לַעֲשׂוֹת:",
-              "globalIndex": 119
+              "text": "נְשָׁמָה",
+              "globalIndex": 120
+            },
+            {
+              "text": "שֶׁנָּתַתָּ",
+              "globalIndex": 121
+            },
+            {
+              "text": "בִּי",
+              "globalIndex": 122
+            },
+            {
+              "text": "טְהוֹרָה",
+              "globalIndex": 123
+            },
+            {
+              "text": "הִיא:",
+              "globalIndex": 124
+            }
+          ]
+        },
+        {
+          "lineIndex": 11,
+          "words": [
+            {
+              "text": "אַתָּה",
+              "globalIndex": 125
+            },
+            {
+              "text": "בְרָאתָהּ,",
+              "globalIndex": 126
+            },
+            {
+              "text": "אַתָּה",
+              "globalIndex": 127
+            },
+            {
+              "text": "יְצַרְתָּהּ,",
+              "globalIndex": 128
+            },
+            {
+              "text": "אַתָּה",
+              "globalIndex": 129
+            },
+            {
+              "text": "נְפַחְתָּהּ",
+              "globalIndex": 130
+            },
+            {
+              "text": "בִּי,",
+              "globalIndex": 131
+            },
+            {
+              "text": "וְאַתָּה",
+              "globalIndex": 132
+            },
+            {
+              "text": "מְשַׁמְּרָהּ",
+              "globalIndex": 133
+            },
+            {
+              "text": "בְּקִרְבִּי,",
+              "globalIndex": 134
+            },
+            {
+              "text": "וְאַתָּה",
+              "globalIndex": 135
+            },
+            {
+              "text": "עָתִיד",
+              "globalIndex": 136
+            },
+            {
+              "text": "לִטְּלָהּ",
+              "globalIndex": 137
+            },
+            {
+              "text": "מִמֶּנִּי,",
+              "globalIndex": 138
+            },
+            {
+              "text": "וּלְהַחֲזִירָהּ",
+              "globalIndex": 139
+            },
+            {
+              "text": "בִּי",
+              "globalIndex": 140
+            },
+            {
+              "text": "לֶעָתִיד",
+              "globalIndex": 141
+            },
+            {
+              "text": "לָבוֹא:",
+              "globalIndex": 142
+            }
+          ]
+        },
+        {
+          "lineIndex": 12,
+          "words": [
+            {
+              "text": "כָּל",
+              "globalIndex": 143
+            },
+            {
+              "text": "זְמַן",
+              "globalIndex": 144
+            },
+            {
+              "text": "שֶׁהַנְּשָׁמָה:",
+              "globalIndex": 145
+            }
+          ]
+        },
+        {
+          "lineIndex": 13,
+          "words": [
+            {
+              "text": "בְּקִרְבִּי",
+              "globalIndex": 146
+            },
+            {
+              "text": "מוֹדֶה",
+              "globalIndex": 147
+            },
+            {
+              "text": "אֲנִי",
+              "globalIndex": 148
+            },
+            {
+              "text": "לְפָנֶיךָ",
+              "globalIndex": 149
+            },
+            {
+              "text": "יְהֹוָה",
+              "globalIndex": 150
+            },
+            {
+              "text": "אֱלֹהַי",
+              "globalIndex": 151
+            },
+            {
+              "text": "וֵאלֹהֵי",
+              "globalIndex": 152
+            },
+            {
+              "text": "אֲבוֹתַי,",
+              "globalIndex": 153
+            },
+            {
+              "text": "רִבּוֹן",
+              "globalIndex": 154
+            },
+            {
+              "text": "כָּל",
+              "globalIndex": 155
+            },
+            {
+              "text": "הַמַּעֲשִׂים",
+              "globalIndex": 156
+            },
+            {
+              "text": "אֲדוֹן",
+              "globalIndex": 157
+            },
+            {
+              "text": "כָּל",
+              "globalIndex": 158
+            },
+            {
+              "text": "הַנְּשָׁמוֹת:",
+              "globalIndex": 159
+            }
+          ]
+        },
+        {
+          "lineIndex": 14,
+          "words": [
+            {
+              "text": "בָּרוּךְ",
+              "globalIndex": 160
+            },
+            {
+              "text": "אַתָּה",
+              "globalIndex": 161
+            },
+            {
+              "text": "יְהֹוָה,",
+              "globalIndex": 162
+            },
+            {
+              "text": "הַמַּחֲזִיר",
+              "globalIndex": 163
+            },
+            {
+              "text": "נְשָׁמוֹת",
+              "globalIndex": 164
+            },
+            {
+              "text": "לִפְגָרִים",
+              "globalIndex": 165
+            },
+            {
+              "text": "מֵתִים:",
+              "globalIndex": 166
+            }
+          ]
+        },
+        {
+          "lineIndex": 15,
+          "words": [
+            {
+              "text": "בָּרוּךְ",
+              "globalIndex": 167
+            },
+            {
+              "text": "אַתָּה",
+              "globalIndex": 168
+            },
+            {
+              "text": "יְהֹוָה",
+              "globalIndex": 169
+            },
+            {
+              "text": "אֱלֹהֵינוּ",
+              "globalIndex": 170
+            },
+            {
+              "text": "מֶלֶךְ",
+              "globalIndex": 171
+            },
+            {
+              "text": "הָעוֹלָם,",
+              "globalIndex": 172
+            },
+            {
+              "text": "אֲשֶׁר",
+              "globalIndex": 173
+            },
+            {
+              "text": "קִדְּשָׁנוּ",
+              "globalIndex": 174
+            },
+            {
+              "text": "בְּמִצְוֹתָיו,",
+              "globalIndex": 175
+            },
+            {
+              "text": "וְצִוָּנוּ",
+              "globalIndex": 176
+            },
+            {
+              "text": "לַעֲסֹק",
+              "globalIndex": 177
+            },
+            {
+              "text": "בְּדִבְרֵי",
+              "globalIndex": 178
+            },
+            {
+              "text": "תוֹרָה:",
+              "globalIndex": 179
+            }
+          ]
+        },
+        {
+          "lineIndex": 16,
+          "words": [
+            {
+              "text": "וְהַעֲרֶב",
+              "globalIndex": 180
+            },
+            {
+              "text": "נָא,",
+              "globalIndex": 181
+            },
+            {
+              "text": "יְהֹוָה",
+              "globalIndex": 182
+            },
+            {
+              "text": "אֱלֹהֵינוּ,",
+              "globalIndex": 183
+            },
+            {
+              "text": "אֶת",
+              "globalIndex": 184
+            },
+            {
+              "text": "דִּבְרֵי",
+              "globalIndex": 185
+            },
+            {
+              "text": "תוֹרָתְךָ",
+              "globalIndex": 186
+            },
+            {
+              "text": "בְּפִינוּ",
+              "globalIndex": 187
+            },
+            {
+              "text": "וּבְפִיּוֹת",
+              "globalIndex": 188
+            },
+            {
+              "text": "עַמְּךָ",
+              "globalIndex": 189
+            },
+            {
+              "text": "בֵּית",
+              "globalIndex": 190
+            },
+            {
+              "text": "יִשְׂרָאֵל,",
+              "globalIndex": 191
+            },
+            {
+              "text": "וְנִהְיֶה",
+              "globalIndex": 192
+            },
+            {
+              "text": "אֲנַחְנוּ",
+              "globalIndex": 193
+            },
+            {
+              "text": "וְצֶאֱצָאֵינוּ,",
+              "globalIndex": 194
+            },
+            {
+              "text": "(וְצֶאֱצָאֵי",
+              "globalIndex": 195
+            },
+            {
+              "text": "צֶאֱצָאֵינוּ)",
+              "globalIndex": 196
+            },
+            {
+              "text": "וְצֶאֱצָאֵי",
+              "globalIndex": 197
+            },
+            {
+              "text": "עַמְּךָ",
+              "globalIndex": 198
+            },
+            {
+              "text": "בֵּית",
+              "globalIndex": 199
+            },
+            {
+              "text": "יִשְׂרָאֵל,",
+              "globalIndex": 200
+            },
+            {
+              "text": "כֻּלָּנוּ",
+              "globalIndex": 201
+            },
+            {
+              "text": "יוֹדְעֵי",
+              "globalIndex": 202
+            },
+            {
+              "text": "שְׁמֶךָ,",
+              "globalIndex": 203
+            },
+            {
+              "text": "וְלוֹמְדֵי",
+              "globalIndex": 204
+            },
+            {
+              "text": "תוֹרָתֶךָ",
+              "globalIndex": 205
+            },
+            {
+              "text": "לִשְׁמָהּ:",
+              "globalIndex": 206
+            }
+          ]
+        },
+        {
+          "lineIndex": 17,
+          "words": [
+            {
+              "text": "בָּרוּךְ",
+              "globalIndex": 207
+            },
+            {
+              "text": "אַתָּה",
+              "globalIndex": 208
+            },
+            {
+              "text": "יְהֹוָה,",
+              "globalIndex": 209
+            },
+            {
+              "text": "הַמְלַמֵּד",
+              "globalIndex": 210
+            },
+            {
+              "text": "תּוֹרָה",
+              "globalIndex": 211
+            },
+            {
+              "text": "לְעַמּוֹ",
+              "globalIndex": 212
+            },
+            {
+              "text": "יִשְׂרָאֵל:",
+              "globalIndex": 213
+            }
+          ]
+        },
+        {
+          "lineIndex": 18,
+          "words": [
+            {
+              "text": "בָּרוּךְ",
+              "globalIndex": 214
+            },
+            {
+              "text": "אַתָּה",
+              "globalIndex": 215
+            },
+            {
+              "text": "יְהֹוָה",
+              "globalIndex": 216
+            },
+            {
+              "text": "אֱלֹהֵינוּ",
+              "globalIndex": 217
+            },
+            {
+              "text": "מֶלֶךְ",
+              "globalIndex": 218
+            },
+            {
+              "text": "הָעוֹלָם,",
+              "globalIndex": 219
+            },
+            {
+              "text": "אֲשֶׁר",
+              "globalIndex": 220
+            },
+            {
+              "text": "בָּחַר",
+              "globalIndex": 221
+            },
+            {
+              "text": "בָּנוּ",
+              "globalIndex": 222
+            },
+            {
+              "text": "מִכָּל",
+              "globalIndex": 223
+            },
+            {
+              "text": "הָעַמִּים",
+              "globalIndex": 224
+            },
+            {
+              "text": "וְנָתַן",
+              "globalIndex": 225
+            },
+            {
+              "text": "לָנוּ",
+              "globalIndex": 226
+            },
+            {
+              "text": "אֶת",
+              "globalIndex": 227
+            },
+            {
+              "text": "תּוֹרָתוֹ:",
+              "globalIndex": 228
+            }
+          ]
+        },
+        {
+          "lineIndex": 19,
+          "words": [
+            {
+              "text": "בָּרוּךְ",
+              "globalIndex": 229
+            },
+            {
+              "text": "אַתָּה",
+              "globalIndex": 230
+            },
+            {
+              "text": "יְהֹוָה",
+              "globalIndex": 231
+            },
+            {
+              "text": "נוֹתֵן",
+              "globalIndex": 232
+            },
+            {
+              "text": "הַתּוֹרָה:",
+              "globalIndex": 233
+            }
+          ]
+        },
+        {
+          "lineIndex": 20,
+          "words": [
+            {
+              "text": "יְבָרֶכְךָ",
+              "globalIndex": 234
+            },
+            {
+              "text": "יְהֹוָה",
+              "globalIndex": 235
+            },
+            {
+              "text": "וְיִשְׁמְרֶךָ:",
+              "globalIndex": 236
+            }
+          ]
+        },
+        {
+          "lineIndex": 21,
+          "words": [
+            {
+              "text": "יָאֵר",
+              "globalIndex": 237
+            },
+            {
+              "text": "יְהֹוָה",
+              "globalIndex": 238
+            },
+            {
+              "text": "פָּנָיו",
+              "globalIndex": 239
+            },
+            {
+              "text": "אֵלֶיךָ",
+              "globalIndex": 240
+            },
+            {
+              "text": "וִיחֻנֶּךָּ:",
+              "globalIndex": 241
+            }
+          ]
+        },
+        {
+          "lineIndex": 22,
+          "words": [
+            {
+              "text": "יִשָּׂא",
+              "globalIndex": 242
+            },
+            {
+              "text": "יְהֹוָה",
+              "globalIndex": 243
+            },
+            {
+              "text": "פָּנָיו",
+              "globalIndex": 244
+            },
+            {
+              "text": "אֵלֶיךָ",
+              "globalIndex": 245
+            },
+            {
+              "text": "וְיָשֵׂם",
+              "globalIndex": 246
+            },
+            {
+              "text": "לְךָ",
+              "globalIndex": 247
+            },
+            {
+              "text": "שָׁלוֹם:",
+              "globalIndex": 248
+            }
+          ]
+        },
+        {
+          "lineIndex": 23,
+          "words": [
+            {
+              "text": "אֵלּוּ",
+              "globalIndex": 249
+            },
+            {
+              "text": "דְבָרִים",
+              "globalIndex": 250
+            },
+            {
+              "text": "שֶׁאֵין",
+              "globalIndex": 251
+            },
+            {
+              "text": "לָהֶם",
+              "globalIndex": 252
+            },
+            {
+              "text": "שִׁעוּר,",
+              "globalIndex": 253
+            },
+            {
+              "text": "הַפֵּאָה",
+              "globalIndex": 254
+            },
+            {
+              "text": "וְהַבִּכּוּרִים",
+              "globalIndex": 255
+            },
+            {
+              "text": "וְהָרֵאָיוֹן",
+              "globalIndex": 256
+            },
+            {
+              "text": "וּגְמִילוּת",
+              "globalIndex": 257
+            },
+            {
+              "text": "חֲסָדִים",
+              "globalIndex": 258
+            },
+            {
+              "text": "וְתַלְמוּד",
+              "globalIndex": 259
+            },
+            {
+              "text": "תּוֹרָה:",
+              "globalIndex": 260
+            }
+          ]
+        },
+        {
+          "lineIndex": 24,
+          "words": [
+            {
+              "text": "אֵלּוּ",
+              "globalIndex": 261
+            },
+            {
+              "text": "דְבָרִים",
+              "globalIndex": 262
+            },
+            {
+              "text": "שֶׁאָדָם",
+              "globalIndex": 263
+            },
+            {
+              "text": "אוֹכֵל",
+              "globalIndex": 264
+            },
+            {
+              "text": "פֵּרוֹתֵיהֶם",
+              "globalIndex": 265
+            },
+            {
+              "text": "בָּעוֹלָם",
+              "globalIndex": 266
+            },
+            {
+              "text": "הַזֶּה",
+              "globalIndex": 267
+            },
+            {
+              "text": "וְהַקֶּרֶן",
+              "globalIndex": 268
+            },
+            {
+              "text": "קַיֶּמֶת",
+              "globalIndex": 269
+            },
+            {
+              "text": "לוֹ",
+              "globalIndex": 270
+            },
+            {
+              "text": "לָעוֹלָם",
+              "globalIndex": 271
+            },
+            {
+              "text": "הַבָּא,",
+              "globalIndex": 272
+            },
+            {
+              "text": "וְאֵלּוּ",
+              "globalIndex": 273
+            },
+            {
+              "text": "הֵן,",
+              "globalIndex": 274
+            },
+            {
+              "text": "כִּבּוּד",
+              "globalIndex": 275
+            },
+            {
+              "text": "אָב",
+              "globalIndex": 276
+            },
+            {
+              "text": "וָאֵם,",
+              "globalIndex": 277
+            },
+            {
+              "text": "וּגְמִילוּת",
+              "globalIndex": 278
+            },
+            {
+              "text": "חֲסָדִים,",
+              "globalIndex": 279
+            },
+            {
+              "text": "וְהַשְׁכָּמַת",
+              "globalIndex": 280
+            },
+            {
+              "text": "בֵּית",
+              "globalIndex": 281
+            },
+            {
+              "text": "הַמִּדְרָשׁ",
+              "globalIndex": 282
+            },
+            {
+              "text": "שַׁחֲרִית",
+              "globalIndex": 283
+            },
+            {
+              "text": "וְעַרְבִית,",
+              "globalIndex": 284
+            },
+            {
+              "text": "וְהַכְנָסַת",
+              "globalIndex": 285
+            },
+            {
+              "text": "אוֹרְחִים,",
+              "globalIndex": 286
+            },
+            {
+              "text": "וּבִקּוּר",
+              "globalIndex": 287
+            },
+            {
+              "text": "חוֹלִים,",
+              "globalIndex": 288
+            },
+            {
+              "text": "וְהַכְנָסַת",
+              "globalIndex": 289
+            },
+            {
+              "text": "כַּלָּה,",
+              "globalIndex": 290
+            },
+            {
+              "text": "וּלְוָיַת",
+              "globalIndex": 291
+            },
+            {
+              "text": "הַמֵּת,",
+              "globalIndex": 292
+            },
+            {
+              "text": "וְעִיּוּן",
+              "globalIndex": 293
+            },
+            {
+              "text": "תְּפִלָּה,",
+              "globalIndex": 294
+            },
+            {
+              "text": "וַהֲבָאַת",
+              "globalIndex": 295
+            },
+            {
+              "text": "שָׁלוֹם",
+              "globalIndex": 296
+            },
+            {
+              "text": "בֵּין",
+              "globalIndex": 297
+            },
+            {
+              "text": "אָדָם",
+              "globalIndex": 298
+            },
+            {
+              "text": "לַחֲבֵרוֹ",
+              "globalIndex": 299
+            },
+            {
+              "text": "וּבֵין",
+              "globalIndex": 300
+            },
+            {
+              "text": "אִישׁ",
+              "globalIndex": 301
+            },
+            {
+              "text": "לְאִשְׁתּוֹ—וְתַלְמוּד",
+              "globalIndex": 302
+            },
+            {
+              "text": "תּוֹרָה",
+              "globalIndex": 303
+            },
+            {
+              "text": "כְּנֶגֶד",
+              "globalIndex": 304
+            },
+            {
+              "text": "כֻּלָּם:",
+              "globalIndex": 305
+            }
+          ]
+        },
+        {
+          "lineIndex": 25,
+          "words": [
+            {
+              "text": "בָּרְכִי",
+              "globalIndex": 306
+            },
+            {
+              "text": "נַפְשִׁי",
+              "globalIndex": 307
+            },
+            {
+              "text": "אֶת",
+              "globalIndex": 308
+            },
+            {
+              "text": "יְהֹוָה,",
+              "globalIndex": 309
+            },
+            {
+              "text": "יְהֹוָה",
+              "globalIndex": 310
+            },
+            {
+              "text": "אֱלֹהַי",
+              "globalIndex": 311
+            },
+            {
+              "text": "גָּדַלְתָּ",
+              "globalIndex": 312
+            },
+            {
+              "text": "מְּאֹד",
+              "globalIndex": 313
+            },
+            {
+              "text": "הוֹד",
+              "globalIndex": 314
+            },
+            {
+              "text": "וְהָדָר",
+              "globalIndex": 315
+            },
+            {
+              "text": "לָבָשְׁתָּ:",
+              "globalIndex": 316
+            }
+          ]
+        },
+        {
+          "lineIndex": 26,
+          "words": [
+            {
+              "text": "עֹטֶה",
+              "globalIndex": 317
+            },
+            {
+              "text": "אוֹר",
+              "globalIndex": 318
+            },
+            {
+              "text": "כַּשַׂלְמָה",
+              "globalIndex": 319
+            },
+            {
+              "text": "נוֹטֶה",
+              "globalIndex": 320
+            },
+            {
+              "text": "שָׁמַיִם",
+              "globalIndex": 321
+            },
+            {
+              "text": "כַּיְרִיעָה:",
+              "globalIndex": 322
+            }
+          ]
+        },
+        {
+          "lineIndex": 27,
+          "words": [
+            {
+              "text": "לְשֵׁם",
+              "globalIndex": 323
+            },
+            {
+              "text": "יִחוּד",
+              "globalIndex": 324
+            },
+            {
+              "text": "קוּדְשָׁא",
+              "globalIndex": 325
+            },
+            {
+              "text": "בְּרִיךְ",
+              "globalIndex": 326
+            },
+            {
+              "text": "הוּא",
+              "globalIndex": 327
+            },
+            {
+              "text": "וּשְׁכִינְתֵּהּ,",
+              "globalIndex": 328
+            },
+            {
+              "text": "בִּדְחִילוּ",
+              "globalIndex": 329
+            },
+            {
+              "text": "וּרְחִימוּ,",
+              "globalIndex": 330
+            },
+            {
+              "text": "לְיַחֵד",
+              "globalIndex": 331
+            },
+            {
+              "text": "שֵׁם",
+              "globalIndex": 332
+            },
+            {
+              "text": "י\"ה",
+              "globalIndex": 333
+            },
+            {
+              "text": "בּו\"ה",
+              "globalIndex": 334
+            },
+            {
+              "text": "בְּיִחוּדָא",
+              "globalIndex": 335
+            },
+            {
+              "text": "שְׁלִים",
+              "globalIndex": 336
+            },
+            {
+              "text": "בְּשֵׁם",
+              "globalIndex": 337
+            },
+            {
+              "text": "כָּל",
+              "globalIndex": 338
+            },
+            {
+              "text": "יִשְׂרָאֵל,",
+              "globalIndex": 339
+            },
+            {
+              "text": "הֲרֵינִי",
+              "globalIndex": 340
+            },
+            {
+              "text": "מִתְעַטֵּף",
+              "globalIndex": 341
+            },
+            {
+              "text": "גּוּפִי",
+              "globalIndex": 342
+            },
+            {
+              "text": "בַּצִּיצִית,",
+              "globalIndex": 343
+            },
+            {
+              "text": "כֵּן",
+              "globalIndex": 344
+            },
+            {
+              "text": "תִּתְעַטֵּף",
+              "globalIndex": 345
+            },
+            {
+              "text": "נִשְׁמָתִי",
+              "globalIndex": 346
+            },
+            {
+              "text": "וּרְמַ\"ח",
+              "globalIndex": 347
+            },
+            {
+              "text": "אֵיבָרַי",
+              "globalIndex": 348
+            },
+            {
+              "text": "וּשְׁסַ\"ה",
+              "globalIndex": 349
+            },
+            {
+              "text": "גִידַי",
+              "globalIndex": 350
+            },
+            {
+              "text": "בְּאוֹר",
+              "globalIndex": 351
+            },
+            {
+              "text": "הַצִּיצִית",
+              "globalIndex": 352
+            },
+            {
+              "text": "הָעוֹלֶה",
+              "globalIndex": 353
+            },
+            {
+              "text": "תַרְיָ\"ג.",
+              "globalIndex": 354
+            },
+            {
+              "text": "וּכְשֵׁם",
+              "globalIndex": 355
+            },
+            {
+              "text": "שֶׁאֲנִי",
+              "globalIndex": 356
+            },
+            {
+              "text": "מִתְכַּסֶּה",
+              "globalIndex": 357
+            },
+            {
+              "text": "בְּטַלִּית",
+              "globalIndex": 358
+            },
+            {
+              "text": "בָּעוֹלָם",
+              "globalIndex": 359
+            },
+            {
+              "text": "הַזֶּה,",
+              "globalIndex": 360
+            },
+            {
+              "text": "כַּךְ",
+              "globalIndex": 361
+            },
+            {
+              "text": "אֶזְכֶּה",
+              "globalIndex": 362
+            },
+            {
+              "text": "לַחֲלוּקָא",
+              "globalIndex": 363
+            },
+            {
+              "text": "דְרַבָּנָן,",
+              "globalIndex": 364
+            },
+            {
+              "text": "וּלְטַלִּית",
+              "globalIndex": 365
+            },
+            {
+              "text": "נָאֶה",
+              "globalIndex": 366
+            },
+            {
+              "text": "לָעוֹלָם",
+              "globalIndex": 367
+            },
+            {
+              "text": "הַבָּא",
+              "globalIndex": 368
+            },
+            {
+              "text": "בְּגַן",
+              "globalIndex": 369
+            },
+            {
+              "text": "עֵדֶן.",
+              "globalIndex": 370
+            },
+            {
+              "text": "וְעַל",
+              "globalIndex": 371
+            },
+            {
+              "text": "יְדֵי",
+              "globalIndex": 372
+            },
+            {
+              "text": "מִצְוַת",
+              "globalIndex": 373
+            },
+            {
+              "text": "צִיצִית,",
+              "globalIndex": 374
+            },
+            {
+              "text": "תִּנָּצֵל",
+              "globalIndex": 375
+            },
+            {
+              "text": "נַפְשִׁי",
+              "globalIndex": 376
+            },
+            {
+              "text": "וְרוּחִי",
+              "globalIndex": 377
+            },
+            {
+              "text": "וְנִשְׁמָתִי",
+              "globalIndex": 378
+            },
+            {
+              "text": "וּתְפִלָּתִי",
+              "globalIndex": 379
+            },
+            {
+              "text": "מִן",
+              "globalIndex": 380
+            },
+            {
+              "text": "הַחִיצוֹנִים,",
+              "globalIndex": 381
+            },
+            {
+              "text": "וְהַטַּלִּית",
+              "globalIndex": 382
+            },
+            {
+              "text": "יִפְרוֹשׂ",
+              "globalIndex": 383
+            },
+            {
+              "text": "כְּנָפָיו",
+              "globalIndex": 384
+            },
+            {
+              "text": "עֲלֵיהֶם,",
+              "globalIndex": 385
+            },
+            {
+              "text": "וְיַצִּילֵם",
+              "globalIndex": 386
+            },
+            {
+              "text": "כְּנֶשֶׁר",
+              "globalIndex": 387
+            },
+            {
+              "text": "יָעִיר",
+              "globalIndex": 388
+            },
+            {
+              "text": "קִנּוֹ",
+              "globalIndex": 389
+            },
+            {
+              "text": "עַל",
+              "globalIndex": 390
+            },
+            {
+              "text": "גּוֹזָלָיו",
+              "globalIndex": 391
+            },
+            {
+              "text": "יְרַחֵף.",
+              "globalIndex": 392
+            },
+            {
+              "text": "וּתְהֵא",
+              "globalIndex": 393
+            },
+            {
+              "text": "חֲשׁוּבָה",
+              "globalIndex": 394
+            },
+            {
+              "text": "מִצְוַת",
+              "globalIndex": 395
+            },
+            {
+              "text": "צִיצִית",
+              "globalIndex": 396
+            },
+            {
+              "text": "לִפְנֵי",
+              "globalIndex": 397
+            },
+            {
+              "text": "הַקָּדוֹשׁ",
+              "globalIndex": 398
+            },
+            {
+              "text": "בָּרוּךְ",
+              "globalIndex": 399
+            },
+            {
+              "text": "הוּא,",
+              "globalIndex": 400
+            },
+            {
+              "text": "כְּאִלּוּ",
+              "globalIndex": 401
+            },
+            {
+              "text": "קִיַּמְתִּיהָ",
+              "globalIndex": 402
+            },
+            {
+              "text": "בְּכָל",
+              "globalIndex": 403
+            },
+            {
+              "text": "פְּרָטֶיהָ",
+              "globalIndex": 404
+            },
+            {
+              "text": "וְדִקְדּוּקֶיהָ",
+              "globalIndex": 405
+            },
+            {
+              "text": "וְכַוָּנוֹתֶיהָ,",
+              "globalIndex": 406
+            },
+            {
+              "text": "וְתַרְיָ\"ג",
+              "globalIndex": 407
+            },
+            {
+              "text": "מִצְוֹת",
+              "globalIndex": 408
+            },
+            {
+              "text": "הַתְּלוּיִם",
+              "globalIndex": 409
+            },
+            {
+              "text": "בָּהּ,",
+              "globalIndex": 410
+            },
+            {
+              "text": "אָמֵן",
+              "globalIndex": 411
+            },
+            {
+              "text": "סֶלָה:",
+              "globalIndex": 412
+            }
+          ]
+        },
+        {
+          "lineIndex": 28,
+          "words": [
+            {
+              "text": "הִנְנִי",
+              "globalIndex": 413
+            },
+            {
+              "text": "מְכַוֵּן",
+              "globalIndex": 414
+            },
+            {
+              "text": "לְהִתְעַטֵּף",
+              "globalIndex": 415
+            },
+            {
+              "text": "בַּצִּיצִית",
+              "globalIndex": 416
+            },
+            {
+              "text": "כְּדֵי",
+              "globalIndex": 417
+            },
+            {
+              "text": "שֶׁאֶזְכֹּר",
+              "globalIndex": 418
+            },
+            {
+              "text": "כָּל־מִצְוֹתָיו",
+              "globalIndex": 419
+            },
+            {
+              "text": "לַעֲשׂוֹתָם",
+              "globalIndex": 420
+            },
+            {
+              "text": "שֶׁנֶּאֱמַר:",
+              "globalIndex": 421
+            }
+          ]
+        },
+        {
+          "lineIndex": 29,
+          "words": [
+            {
+              "text": "וּרְאִיתֶם",
+              "globalIndex": 422
+            },
+            {
+              "text": "אֹתוֹ",
+              "globalIndex": 423
+            },
+            {
+              "text": "וּזְכַרְתֶּם",
+              "globalIndex": 424
+            },
+            {
+              "text": "אֶת־כָּל־מִצְוֹת",
+              "globalIndex": 425
+            },
+            {
+              "text": "יְהֹוָה",
+              "globalIndex": 426
+            },
+            {
+              "text": "וַעֲשִׂיתֶם",
+              "globalIndex": 427
+            },
+            {
+              "text": "אֹתָם:",
+              "globalIndex": 428
+            }
+          ]
+        },
+        {
+          "lineIndex": 30,
+          "words": [
+            {
+              "text": "וִיהִי,",
+              "globalIndex": 429
+            },
+            {
+              "text": "נֹעַם",
+              "globalIndex": 430
+            },
+            {
+              "text": "אֲדֹנָי",
+              "globalIndex": 431
+            },
+            {
+              "text": "אֱלֹהֵינוּ",
+              "globalIndex": 432
+            },
+            {
+              "text": "עָלֵינוּ",
+              "globalIndex": 433
+            },
+            {
+              "text": "וּמַעֲשֵׂה",
+              "globalIndex": 434
+            },
+            {
+              "text": "יָדֵינוּ",
+              "globalIndex": 435
+            },
+            {
+              "text": "כּוֹנְנָה",
+              "globalIndex": 436
+            },
+            {
+              "text": "עָלֵינוּ",
+              "globalIndex": 437
+            },
+            {
+              "text": "וּמַעֲשֵׂה",
+              "globalIndex": 438
+            },
+            {
+              "text": "יָדֵינוּ",
+              "globalIndex": 439
+            },
+            {
+              "text": "כּוֹנְנֵהוּ:",
+              "globalIndex": 440
+            }
+          ]
+        },
+        {
+          "lineIndex": 31,
+          "words": [
+            {
+              "text": "בָּרוּךְ",
+              "globalIndex": 441
+            },
+            {
+              "text": "אַתָּה",
+              "globalIndex": 442
+            },
+            {
+              "text": "יְהֹוָה",
+              "globalIndex": 443
+            },
+            {
+              "text": "אֱלֹהֵינוּ",
+              "globalIndex": 444
+            },
+            {
+              "text": "מֶלֶךְ",
+              "globalIndex": 445
+            },
+            {
+              "text": "הָעוֹלָם,",
+              "globalIndex": 446
+            },
+            {
+              "text": "אֲשֶׁר",
+              "globalIndex": 447
+            },
+            {
+              "text": "קִדְּשָׁנוּ",
+              "globalIndex": 448
+            },
+            {
+              "text": "בְּמִצְוֹתָיו",
+              "globalIndex": 449
+            },
+            {
+              "text": "וְצִוָּנוּ",
+              "globalIndex": 450
+            },
+            {
+              "text": "לְהִתְעַטֵּף",
+              "globalIndex": 451
+            },
+            {
+              "text": "בַּצִּיצִית:",
+              "globalIndex": 452
+            }
+          ]
+        },
+        {
+          "lineIndex": 32,
+          "words": [
+            {
+              "text": "מַה",
+              "globalIndex": 453
+            },
+            {
+              "text": "יָּקָר",
+              "globalIndex": 454
+            },
+            {
+              "text": "חַסְדְּךָ",
+              "globalIndex": 455
+            },
+            {
+              "text": "אֱלֹהִים,",
+              "globalIndex": 456
+            },
+            {
+              "text": "וּבְנֵי",
+              "globalIndex": 457
+            },
+            {
+              "text": "אָדָם",
+              "globalIndex": 458
+            },
+            {
+              "text": "בְּצֵל",
+              "globalIndex": 459
+            },
+            {
+              "text": "כְּנָפֶיךָ",
+              "globalIndex": 460
+            },
+            {
+              "text": "יֶחֱסָיוּן:",
+              "globalIndex": 461
+            }
+          ]
+        },
+        {
+          "lineIndex": 33,
+          "words": [
+            {
+              "text": "יִרְוְיֻן",
+              "globalIndex": 462
+            },
+            {
+              "text": "מִדֶּשֶׁן",
+              "globalIndex": 463
+            },
+            {
+              "text": "בֵּיתֶךָ",
+              "globalIndex": 464
+            },
+            {
+              "text": "וְנַחַל",
+              "globalIndex": 465
+            },
+            {
+              "text": "עֲדָנֶיךָ",
+              "globalIndex": 466
+            },
+            {
+              "text": "תַשְׁקֵם:",
+              "globalIndex": 467
+            }
+          ]
+        },
+        {
+          "lineIndex": 34,
+          "words": [
+            {
+              "text": "כִּי",
+              "globalIndex": 468
+            },
+            {
+              "text": "עִמְּךָ",
+              "globalIndex": 469
+            },
+            {
+              "text": "מְקוֹר",
+              "globalIndex": 470
+            },
+            {
+              "text": "חַיִּים,",
+              "globalIndex": 471
+            },
+            {
+              "text": "בְּאוֹרְךָ",
+              "globalIndex": 472
+            },
+            {
+              "text": "נִרְאֶה",
+              "globalIndex": 473
+            },
+            {
+              "text": "אוֹר:",
+              "globalIndex": 474
+            }
+          ]
+        },
+        {
+          "lineIndex": 35,
+          "words": [
+            {
+              "text": "מְשֹׁךְ",
+              "globalIndex": 475
+            },
+            {
+              "text": "חַסְדְּךָ",
+              "globalIndex": 476
+            },
+            {
+              "text": "לְיֹדְעֶיךָ",
+              "globalIndex": 477
+            },
+            {
+              "text": "וְצִדְקָתְךָ",
+              "globalIndex": 478
+            },
+            {
+              "text": "לְיִשְׁרֵי",
+              "globalIndex": 479
+            },
+            {
+              "text": "לֵב:",
+              "globalIndex": 480
+            }
+          ]
+        },
+        {
+          "lineIndex": 36,
+          "words": [
+            {
+              "text": "לְשֵׁם",
+              "globalIndex": 481
+            },
+            {
+              "text": "יִחוּד",
+              "globalIndex": 482
+            },
+            {
+              "text": "קוּדְשָׁא",
+              "globalIndex": 483
+            },
+            {
+              "text": "בְּרִיךְ",
+              "globalIndex": 484
+            },
+            {
+              "text": "הוּא",
+              "globalIndex": 485
+            },
+            {
+              "text": "וּשְׁכִינְתֵּיהּ",
+              "globalIndex": 486
+            },
+            {
+              "text": "בִּדְחִילוּ",
+              "globalIndex": 487
+            },
+            {
+              "text": "וּרְחִימוּ,",
+              "globalIndex": 488
+            },
+            {
+              "text": "לְיַחֵד",
+              "globalIndex": 489
+            },
+            {
+              "text": "שֵׁם",
+              "globalIndex": 490
+            },
+            {
+              "text": "י\"ה",
+              "globalIndex": 491
+            },
+            {
+              "text": "בּו\"ה",
+              "globalIndex": 492
+            },
+            {
+              "text": "בְּיִחוּדָא",
+              "globalIndex": 493
+            },
+            {
+              "text": "שְׁלִים",
+              "globalIndex": 494
+            },
+            {
+              "text": "בְּשֵׁם",
+              "globalIndex": 495
+            },
+            {
+              "text": "כָּל",
+              "globalIndex": 496
+            },
+            {
+              "text": "יִשְׂרָאֵל:",
+              "globalIndex": 497
+            }
+          ]
+        },
+        {
+          "lineIndex": 37,
+          "words": [
+            {
+              "text": "הִנְנִי",
+              "globalIndex": 498
+            },
+            {
+              "text": "מְכַוֵּן",
+              "globalIndex": 499
+            },
+            {
+              "text": "בַּהֲנָחַת",
+              "globalIndex": 500
+            },
+            {
+              "text": "תְּפִלִּין",
+              "globalIndex": 501
+            },
+            {
+              "text": "לְקַיֵּם",
+              "globalIndex": 502
+            },
+            {
+              "text": "מִצְוַת",
+              "globalIndex": 503
+            },
+            {
+              "text": "בּוֹרְאִי,",
+              "globalIndex": 504
+            },
+            {
+              "text": "שֶׁצִּוָּנוּ",
+              "globalIndex": 505
+            },
+            {
+              "text": "לְהָנִיחַ",
+              "globalIndex": 506
+            },
+            {
+              "text": "תְּפִלִּין,",
+              "globalIndex": 507
+            },
+            {
+              "text": "כַּכָּתוּב",
+              "globalIndex": 508
+            },
+            {
+              "text": "בְּתוֹרָתוֹ",
+              "globalIndex": 509
+            },
+            {
+              "text": "וּקְשַׁרְתָּם",
+              "globalIndex": 510
+            },
+            {
+              "text": "לְאוֹת",
+              "globalIndex": 511
+            },
+            {
+              "text": "עַל",
+              "globalIndex": 512
+            },
+            {
+              "text": "יָדֶךָ",
+              "globalIndex": 513
+            },
+            {
+              "text": "וְהָיוּ",
+              "globalIndex": 514
+            },
+            {
+              "text": "לְטֹטָפֹת",
+              "globalIndex": 515
+            },
+            {
+              "text": "בֵּין",
+              "globalIndex": 516
+            },
+            {
+              "text": "עֵינֶיךָ,",
+              "globalIndex": 517
+            },
+            {
+              "text": "וְהֵם",
+              "globalIndex": 518
+            },
+            {
+              "text": "אַרְבַּע",
+              "globalIndex": 519
+            },
+            {
+              "text": "פָּרָשִׁיּוֹת",
+              "globalIndex": 520
+            },
+            {
+              "text": "אֵלּוּ,",
+              "globalIndex": 521
+            },
+            {
+              "text": "שְׁמַע,",
+              "globalIndex": 522
+            },
+            {
+              "text": "וְהָיָה",
+              "globalIndex": 523
+            },
+            {
+              "text": "אִם",
+              "globalIndex": 524
+            },
+            {
+              "text": "שָׁמֹעַ,",
+              "globalIndex": 525
+            },
+            {
+              "text": "קַדֶּשׁ,",
+              "globalIndex": 526
+            },
+            {
+              "text": "וְהָיָה",
+              "globalIndex": 527
+            },
+            {
+              "text": "כִּי",
+              "globalIndex": 528
+            },
+            {
+              "text": "יְבִיאֲךָ,",
+              "globalIndex": 529
+            },
+            {
+              "text": "שֶׁיֵּשׁ",
+              "globalIndex": 530
+            },
+            {
+              "text": "בָּהֶם",
+              "globalIndex": 531
+            },
+            {
+              "text": "יִחוּדוֹ",
+              "globalIndex": 532
+            },
+            {
+              "text": "וְאַחְדוּתוֹ",
+              "globalIndex": 533
+            },
+            {
+              "text": "יִתְבָּרַךְ",
+              "globalIndex": 534
+            },
+            {
+              "text": "שְׁמוֹ",
+              "globalIndex": 535
+            },
+            {
+              "text": "בָּעוֹלָם:",
+              "globalIndex": 536
+            }
+          ]
+        },
+        {
+          "lineIndex": 38,
+          "words": [
+            {
+              "text": "וְשֶׁנִּזְכּוֹר",
+              "globalIndex": 537
+            },
+            {
+              "text": "נִסִּים",
+              "globalIndex": 538
+            },
+            {
+              "text": "וְנִפְלָאוֹת,",
+              "globalIndex": 539
+            },
+            {
+              "text": "שֶׁעָשָׂה",
+              "globalIndex": 540
+            },
+            {
+              "text": "עִמָּנוּ",
+              "globalIndex": 541
+            },
+            {
+              "text": "בְּהוֹצִיאָנוּ",
+              "globalIndex": 542
+            },
+            {
+              "text": "מִמִּצְרָיִם,",
+              "globalIndex": 543
+            },
+            {
+              "text": "וַאֲשֶׁר",
+              "globalIndex": 544
+            },
+            {
+              "text": "לוֹ",
+              "globalIndex": 545
+            },
+            {
+              "text": "הַכֹּחַ",
+              "globalIndex": 546
+            },
+            {
+              "text": "וְהַמֶּמְשָׁלָה",
+              "globalIndex": 547
+            },
+            {
+              "text": "בָּעֶלְיוֹנִים",
+              "globalIndex": 548
+            },
+            {
+              "text": "וּבַתַּחְתּוֹנִים",
+              "globalIndex": 549
+            },
+            {
+              "text": "לַעֲשׂוֹת",
+              "globalIndex": 550
+            },
+            {
+              "text": "בָּהֶם",
+              "globalIndex": 551
+            },
+            {
+              "text": "כִּרְצוֹנוֹ:",
+              "globalIndex": 552
+            }
+          ]
+        },
+        {
+          "lineIndex": 39,
+          "words": [
+            {
+              "text": "וְצִוָּנוּ",
+              "globalIndex": 553
+            },
+            {
+              "text": "לְהָנִיחַ",
+              "globalIndex": 554
+            },
+            {
+              "text": "עַל",
+              "globalIndex": 555
+            },
+            {
+              "text": "הַיָּד",
+              "globalIndex": 556
+            },
+            {
+              "text": "לְזִכָּרוֹן",
+              "globalIndex": 557
+            },
+            {
+              "text": "זְרוֹעַ",
+              "globalIndex": 558
+            },
+            {
+              "text": "הַנְּטוּיָה,",
+              "globalIndex": 559
+            },
+            {
+              "text": "וְשֶׁהִיא",
+              "globalIndex": 560
+            },
+            {
+              "text": "נֶגֶד",
+              "globalIndex": 561
+            },
+            {
+              "text": "הַלֵּב",
+              "globalIndex": 562
+            },
+            {
+              "text": "לְשַׁעְבֵּד",
+              "globalIndex": 563
+            },
+            {
+              "text": "בָּזֶה",
+              "globalIndex": 564
+            },
+            {
+              "text": "תַּאֲוֹת",
+              "globalIndex": 565
+            },
+            {
+              "text": "וּמַחְשְׁבוֹת",
+              "globalIndex": 566
+            },
+            {
+              "text": "לִבֵּנוּ",
+              "globalIndex": 567
+            },
+            {
+              "text": "לַעֲבוֹדָתוֹ",
+              "globalIndex": 568
+            },
+            {
+              "text": "יִתְבָּרַךְ",
+              "globalIndex": 569
+            },
+            {
+              "text": "שְׁמוֹ,",
+              "globalIndex": 570
+            },
+            {
+              "text": "וְעַל",
+              "globalIndex": 571
+            },
+            {
+              "text": "הָרֹאשׁ",
+              "globalIndex": 572
+            },
+            {
+              "text": "נֶגֶד",
+              "globalIndex": 573
+            },
+            {
+              "text": "הַמֹּחַ,",
+              "globalIndex": 574
+            },
+            {
+              "text": "שֶׁהַנְּשָׁמָה",
+              "globalIndex": 575
+            },
+            {
+              "text": "שֶׁבְּמֹחִי",
+              "globalIndex": 576
+            },
+            {
+              "text": "עִם",
+              "globalIndex": 577
+            },
+            {
+              "text": "שְׁאָר",
+              "globalIndex": 578
+            },
+            {
+              "text": "חוּשַׁי",
+              "globalIndex": 579
+            },
+            {
+              "text": "וְכֹחוֹתַי",
+              "globalIndex": 580
+            },
+            {
+              "text": "כֻּלָּם",
+              "globalIndex": 581
+            },
+            {
+              "text": "יִהְיוּ",
+              "globalIndex": 582
+            },
+            {
+              "text": "מְשֻׁעְבָּדִים",
+              "globalIndex": 583
+            },
+            {
+              "text": "לַעֲבוֹדָתוֹ",
+              "globalIndex": 584
+            },
+            {
+              "text": "יִתְבָּרַךְ",
+              "globalIndex": 585
+            },
+            {
+              "text": "שְׁמוֹ:",
+              "globalIndex": 586
+            }
+          ]
+        },
+        {
+          "lineIndex": 40,
+          "words": [
+            {
+              "text": "וּמִשֶּׁפַע",
+              "globalIndex": 587
+            },
+            {
+              "text": "מִצְוַת",
+              "globalIndex": 588
+            },
+            {
+              "text": "תְּפִלִּין",
+              "globalIndex": 589
+            },
+            {
+              "text": "יִתְמַשֵּׁךְ",
+              "globalIndex": 590
+            },
+            {
+              "text": "עָלַי",
+              "globalIndex": 591
+            },
+            {
+              "text": "לִהְיוֹת",
+              "globalIndex": 592
+            },
+            {
+              "text": "לִי",
+              "globalIndex": 593
+            },
+            {
+              "text": "חַיִּים",
+              "globalIndex": 594
+            },
+            {
+              "text": "אֲרֻכִּים",
+              "globalIndex": 595
+            },
+            {
+              "text": "וְשֶׁפַע",
+              "globalIndex": 596
+            },
+            {
+              "text": "קֹדֶשׁ",
+              "globalIndex": 597
+            },
+            {
+              "text": "וּמַחֲשָׁבוֹת",
+              "globalIndex": 598
+            },
+            {
+              "text": "קְדוֹשׁוֹת",
+              "globalIndex": 599
+            },
+            {
+              "text": "בְּלִי",
+              "globalIndex": 600
+            },
+            {
+              "text": "הִרְהוּר",
+              "globalIndex": 601
+            },
+            {
+              "text": "חֵטְא",
+              "globalIndex": 602
+            },
+            {
+              "text": "וְעָוֹן",
+              "globalIndex": 603
+            },
+            {
+              "text": "כְּלָל,",
+              "globalIndex": 604
+            },
+            {
+              "text": "וְשֶׁלֹּא",
+              "globalIndex": 605
+            },
+            {
+              "text": "יְפַתֵּנוּ",
+              "globalIndex": 606
+            },
+            {
+              "text": "וְלֹא",
+              "globalIndex": 607
+            },
+            {
+              "text": "יִתְגָּרֶה",
+              "globalIndex": 608
+            },
+            {
+              "text": "בָּנוּ",
+              "globalIndex": 609
+            },
+            {
+              "text": "יֵצֶר",
+              "globalIndex": 610
+            },
+            {
+              "text": "הָרָע,",
+              "globalIndex": 611
+            },
+            {
+              "text": "וְיַנִּיחֵנוּ",
+              "globalIndex": 612
+            },
+            {
+              "text": "לַעֲבֹד",
+              "globalIndex": 613
+            },
+            {
+              "text": "אֶת",
+              "globalIndex": 614
+            },
+            {
+              "text": "יְהֹוָה",
+              "globalIndex": 615
+            },
+            {
+              "text": "כַּאֲשֶׁר",
+              "globalIndex": 616
+            },
+            {
+              "text": "עִם",
+              "globalIndex": 617
+            },
+            {
+              "text": "לְבָבֵנוּ:",
+              "globalIndex": 618
+            }
+          ]
+        },
+        {
+          "lineIndex": 41,
+          "words": [
+            {
+              "text": "וִיהִי",
+              "globalIndex": 619
+            },
+            {
+              "text": "רָצוֹן",
+              "globalIndex": 620
+            },
+            {
+              "text": "מִלְּפָנֶיךָ",
+              "globalIndex": 621
+            },
+            {
+              "text": "יְהֹוָה",
+              "globalIndex": 622
+            },
+            {
+              "text": "אֱלֹהֵינוּ",
+              "globalIndex": 623
+            },
+            {
+              "text": "וֵאלֹהֵי",
+              "globalIndex": 624
+            },
+            {
+              "text": "אֲבוֹתֵינוּ,",
+              "globalIndex": 625
+            },
+            {
+              "text": "שֶׁתְּהֵא",
+              "globalIndex": 626
+            },
+            {
+              "text": "חֲשׁוּבָה",
+              "globalIndex": 627
+            },
+            {
+              "text": "מִצְוַת",
+              "globalIndex": 628
+            },
+            {
+              "text": "הֲנָחַת",
+              "globalIndex": 629
+            },
+            {
+              "text": "תְּפִלִּין",
+              "globalIndex": 630
+            },
+            {
+              "text": "לְפָנֶיךָ",
+              "globalIndex": 631
+            },
+            {
+              "text": "הַקָּדוֹשׁ",
+              "globalIndex": 632
+            },
+            {
+              "text": "בָּרוּךְ",
+              "globalIndex": 633
+            },
+            {
+              "text": "הוּא",
+              "globalIndex": 634
+            },
+            {
+              "text": "כְּאִלּוּ",
+              "globalIndex": 635
+            },
+            {
+              "text": "קִיַּמְתִּיהָ",
+              "globalIndex": 636
+            },
+            {
+              "text": "בְּכָל",
+              "globalIndex": 637
+            },
+            {
+              "text": "פְּרָטֶיהָ",
+              "globalIndex": 638
+            },
+            {
+              "text": "וְדִקְדּוּקֶיהָ",
+              "globalIndex": 639
+            },
+            {
+              "text": "וְכַוָּנוֹתֶיהָ",
+              "globalIndex": 640
+            },
+            {
+              "text": "וְתַרְיַ\"ג",
+              "globalIndex": 641
+            },
+            {
+              "text": "מִצְוֹת",
+              "globalIndex": 642
+            },
+            {
+              "text": "הַתְּלוּיִם",
+              "globalIndex": 643
+            },
+            {
+              "text": "בָּהּ,",
+              "globalIndex": 644
+            },
+            {
+              "text": "אָמֵן",
+              "globalIndex": 645
+            },
+            {
+              "text": "סֶלָה:",
+              "globalIndex": 646
+            }
+          ]
+        },
+        {
+          "lineIndex": 42,
+          "words": [
+            {
+              "text": "בָּרוּךְ",
+              "globalIndex": 647
+            },
+            {
+              "text": "אַתָּה",
+              "globalIndex": 648
+            },
+            {
+              "text": "יְהֹוָה",
+              "globalIndex": 649
+            },
+            {
+              "text": "אֱלֹהֵינוּ",
+              "globalIndex": 650
+            },
+            {
+              "text": "מֶלֶךְ",
+              "globalIndex": 651
+            },
+            {
+              "text": "הָעוֹלָם,",
+              "globalIndex": 652
+            },
+            {
+              "text": "אֲשֶׁר",
+              "globalIndex": 653
+            },
+            {
+              "text": "קִדְּשָׁנוּ",
+              "globalIndex": 654
+            },
+            {
+              "text": "בְּמִצְוֹתָיו,",
+              "globalIndex": 655
+            },
+            {
+              "text": "וְצִוָּנוּ",
+              "globalIndex": 656
+            },
+            {
+              "text": "לְהָנִיחַ",
+              "globalIndex": 657
+            },
+            {
+              "text": "תְּפִלִּין:",
+              "globalIndex": 658
+            }
+          ]
+        },
+        {
+          "lineIndex": 43,
+          "words": [
+            {
+              "text": "בָּרוּךְ",
+              "globalIndex": 659
+            },
+            {
+              "text": "אַתָּה",
+              "globalIndex": 660
+            },
+            {
+              "text": "יְהֹוָה",
+              "globalIndex": 661
+            },
+            {
+              "text": "אֱלֹהֵינוּ",
+              "globalIndex": 662
+            },
+            {
+              "text": "מֶלֶךְ",
+              "globalIndex": 663
+            },
+            {
+              "text": "הָעוֹלָם,",
+              "globalIndex": 664
+            },
+            {
+              "text": "אֲשֶׁר",
+              "globalIndex": 665
+            },
+            {
+              "text": "קִדְּשָׁנוּ",
+              "globalIndex": 666
+            },
+            {
+              "text": "בְּמִצְוֹתָיו",
+              "globalIndex": 667
+            },
+            {
+              "text": "וְצִוָּנוּ",
+              "globalIndex": 668
+            },
+            {
+              "text": "עַל",
+              "globalIndex": 669
+            },
+            {
+              "text": "מִצְוַת",
+              "globalIndex": 670
+            },
+            {
+              "text": "תְּפִלִּין:",
+              "globalIndex": 671
+            }
+          ]
+        },
+        {
+          "lineIndex": 44,
+          "words": [
+            {
+              "text": "בָּרוּךְ",
+              "globalIndex": 672
+            },
+            {
+              "text": "שֵׁם",
+              "globalIndex": 673
+            },
+            {
+              "text": "כְּבוֹד",
+              "globalIndex": 674
+            },
+            {
+              "text": "מַלְכוּתוֹ",
+              "globalIndex": 675
+            },
+            {
+              "text": "לְעוֹלָם",
+              "globalIndex": 676
+            },
+            {
+              "text": "וָעֶד:",
+              "globalIndex": 677
+            }
+          ]
+        },
+        {
+          "lineIndex": 45,
+          "words": [
+            {
+              "text": "וּמֵחָכְמָתְךָ",
+              "globalIndex": 678
+            },
+            {
+              "text": "אֵל",
+              "globalIndex": 679
+            },
+            {
+              "text": "עֶלְיוֹן",
+              "globalIndex": 680
+            },
+            {
+              "text": "תַּאֲצִיל",
+              "globalIndex": 681
+            },
+            {
+              "text": "עָלַי,",
+              "globalIndex": 682
+            },
+            {
+              "text": "וּמִבִּינָתְךָ",
+              "globalIndex": 683
+            },
+            {
+              "text": "תְּבִינֵנִי,",
+              "globalIndex": 684
+            },
+            {
+              "text": "וּבְחַסְדְּךָ",
+              "globalIndex": 685
+            },
+            {
+              "text": "תַּגְדִּיל",
+              "globalIndex": 686
+            },
+            {
+              "text": "עָלַי,",
+              "globalIndex": 687
+            },
+            {
+              "text": "וּבִגְבוּרָתְךָ",
+              "globalIndex": 688
+            },
+            {
+              "text": "תַּצְמִית",
+              "globalIndex": 689
+            },
+            {
+              "text": "אוֹיְבַי",
+              "globalIndex": 690
+            },
+            {
+              "text": "וְקָמַי,",
+              "globalIndex": 691
+            },
+            {
+              "text": "וְשֶׁמֶן",
+              "globalIndex": 692
+            },
+            {
+              "text": "הַטּוֹב",
+              "globalIndex": 693
+            },
+            {
+              "text": "תָּרִיק",
+              "globalIndex": 694
+            },
+            {
+              "text": "עַל",
+              "globalIndex": 695
+            },
+            {
+              "text": "שִׁבְעָה",
+              "globalIndex": 696
+            },
+            {
+              "text": "קְנֵי",
+              "globalIndex": 697
+            },
+            {
+              "text": "הַמְּנוֹרָה,",
+              "globalIndex": 698
+            },
+            {
+              "text": "לְהַשְׁפִּיעַ",
+              "globalIndex": 699
+            },
+            {
+              "text": "טוּבְךָ",
+              "globalIndex": 700
+            },
+            {
+              "text": "לִבְרִיּוֹתֶיךָ:",
+              "globalIndex": 701
+            }
+          ]
+        },
+        {
+          "lineIndex": 46,
+          "words": [
+            {
+              "text": "פּוֹתֵחַ",
+              "globalIndex": 702
+            },
+            {
+              "text": "אֶת",
+              "globalIndex": 703
+            },
+            {
+              "text": "יָדֶךָ",
+              "globalIndex": 704
+            },
+            {
+              "text": "וּמַשְׂבִּיעַ",
+              "globalIndex": 705
+            },
+            {
+              "text": "לְכָל",
+              "globalIndex": 706
+            },
+            {
+              "text": "חַי",
+              "globalIndex": 707
+            },
+            {
+              "text": "רָצוֹן:",
+              "globalIndex": 708
+            }
+          ]
+        },
+        {
+          "lineIndex": 47,
+          "words": [
+            {
+              "text": "וְאֵרַשְׂתִּ֥יךְ",
+              "globalIndex": 709
+            },
+            {
+              "text": "לִ֖י",
+              "globalIndex": 710
+            },
+            {
+              "text": "לְעוֹלָ֑ם:",
+              "globalIndex": 711
+            }
+          ]
+        },
+        {
+          "lineIndex": 48,
+          "words": [
+            {
+              "text": "וְאֵרַשְׂתִּ֥יךְ",
+              "globalIndex": 712
+            },
+            {
+              "text": "לִ֛י",
+              "globalIndex": 713
+            },
+            {
+              "text": "בְּצֶ֥דֶק",
+              "globalIndex": 714
+            },
+            {
+              "text": "וּבְמִשְׁפָּ֖ט,",
+              "globalIndex": 715
+            },
+            {
+              "text": "וּבְחֶ֥סֶד",
+              "globalIndex": 716
+            },
+            {
+              "text": "וּבְרַחֲמִ֑ים:",
+              "globalIndex": 717
+            }
+          ]
+        },
+        {
+          "lineIndex": 49,
+          "words": [
+            {
+              "text": "וְאֵרַשְׂתִּ֥יךְ",
+              "globalIndex": 718
+            },
+            {
+              "text": "לִ֖י",
+              "globalIndex": 719
+            },
+            {
+              "text": "בֶּאֱמוּנָ֑ה,",
+              "globalIndex": 720
+            },
+            {
+              "text": "וְיָדַ֖עַתְּ",
+              "globalIndex": 721
+            },
+            {
+              "text": "אֶת",
+              "globalIndex": 722
+            },
+            {
+              "text": "יְהֹוָה:",
+              "globalIndex": 723
+            }
+          ]
+        },
+        {
+          "lineIndex": 50,
+          "words": [
+            {
+              "text": "(שמות",
+              "globalIndex": 724
+            },
+            {
+              "text": "יב)",
+              "globalIndex": 725
+            },
+            {
+              "text": "וַיְדַבֵּ֣ר",
+              "globalIndex": 726
+            },
+            {
+              "text": "יְהֹוָ֔ה",
+              "globalIndex": 727
+            },
+            {
+              "text": "אֶל",
+              "globalIndex": 728
+            },
+            {
+              "text": "מֹשֶׁ֖ה",
+              "globalIndex": 729
+            },
+            {
+              "text": "לֵּאמֹֽר:",
+              "globalIndex": 730
+            }
+          ]
+        },
+        {
+          "lineIndex": 51,
+          "words": [
+            {
+              "text": "קַדֶּשׁ",
+              "globalIndex": 731
+            },
+            {
+              "text": "לִ֨י",
+              "globalIndex": 732
+            },
+            {
+              "text": "כָל",
+              "globalIndex": 733
+            },
+            {
+              "text": "בְּכ֜וֹר",
+              "globalIndex": 734
+            },
+            {
+              "text": "פֶּ֤טֶר",
+              "globalIndex": 735
+            },
+            {
+              "text": "כָּל",
+              "globalIndex": 736
+            },
+            {
+              "text": "רֶ֨חֶם֙",
+              "globalIndex": 737
+            },
+            {
+              "text": "בִּבְנֵ֣י",
+              "globalIndex": 738
+            },
+            {
+              "text": "יִשְׂרָאֵ֔ל",
+              "globalIndex": 739
+            },
+            {
+              "text": "בָּאָדָ֖ם",
+              "globalIndex": 740
+            },
+            {
+              "text": "וּבַבְּהֵמָ֑ה",
+              "globalIndex": 741
+            },
+            {
+              "text": "לִ֖י",
+              "globalIndex": 742
+            },
+            {
+              "text": "הֽוּא:",
+              "globalIndex": 743
+            }
+          ]
+        },
+        {
+          "lineIndex": 52,
+          "words": [
+            {
+              "text": "וַיֹּ֨אמֶר",
+              "globalIndex": 744
+            },
+            {
+              "text": "מֹשֶׁ֜ה",
+              "globalIndex": 745
+            },
+            {
+              "text": "אֶל",
+              "globalIndex": 746
+            },
+            {
+              "text": "הָעָ֗ם",
+              "globalIndex": 747
+            },
+            {
+              "text": "זָכ֞וֹר",
+              "globalIndex": 748
+            },
+            {
+              "text": "אֶת",
+              "globalIndex": 749
+            },
+            {
+              "text": "הַיּ֤וֹם",
+              "globalIndex": 750
+            },
+            {
+              "text": "הַזֶּה֙",
+              "globalIndex": 751
+            },
+            {
+              "text": "אֲשֶׁ֨ר",
+              "globalIndex": 752
+            },
+            {
+              "text": "יְצָאתֶ֤ם",
+              "globalIndex": 753
+            },
+            {
+              "text": "מִמִּצְרַ֨יִם֙",
+              "globalIndex": 754
+            },
+            {
+              "text": "מִבֵּ֣ית",
+              "globalIndex": 755
+            },
+            {
+              "text": "עֲבָדִ֔ים",
+              "globalIndex": 756
+            },
+            {
+              "text": "כִּ֚י",
+              "globalIndex": 757
+            },
+            {
+              "text": "בְּחֹ֣זֶק",
+              "globalIndex": 758
+            },
+            {
+              "text": "יָ֔ד",
+              "globalIndex": 759
+            },
+            {
+              "text": "הוֹצִ֥יא",
+              "globalIndex": 760
+            },
+            {
+              "text": "יְהֹוָ֛ה",
+              "globalIndex": 761
+            },
+            {
+              "text": "אֶתְכֶ֖ם",
+              "globalIndex": 762
+            },
+            {
+              "text": "מִזֶּ֑ה",
+              "globalIndex": 763
+            },
+            {
+              "text": "וְלֹ֥א",
+              "globalIndex": 764
+            },
+            {
+              "text": "יֵאָכֵ֖ל",
+              "globalIndex": 765
+            },
+            {
+              "text": "חָמֵֽץ:",
+              "globalIndex": 766
+            }
+          ]
+        },
+        {
+          "lineIndex": 53,
+          "words": [
+            {
+              "text": "הַיּ֖וֹם",
+              "globalIndex": 767
+            },
+            {
+              "text": "אַתֶּ֣ם",
+              "globalIndex": 768
+            },
+            {
+              "text": "יֹצְאִ֑ים",
+              "globalIndex": 769
+            },
+            {
+              "text": "בְּחֹ֖דֶשׁ",
+              "globalIndex": 770
+            },
+            {
+              "text": "הָאָבִֽיב:",
+              "globalIndex": 771
+            }
+          ]
+        },
+        {
+          "lineIndex": 54,
+          "words": [
+            {
+              "text": "וְהָיָ֞ה",
+              "globalIndex": 772
+            },
+            {
+              "text": "כִּי",
+              "globalIndex": 773
+            },
+            {
+              "text": "יְבִיאֲךָ֣",
+              "globalIndex": 774
+            },
+            {
+              "text": "יְהֹוָ֗ה",
+              "globalIndex": 775
+            },
+            {
+              "text": "אֶל",
+              "globalIndex": 776
+            },
+            {
+              "text": "אֶ֤רֶץ",
+              "globalIndex": 777
+            },
+            {
+              "text": "הַֽכְּנַעֲנִי֙",
+              "globalIndex": 778
+            },
+            {
+              "text": "וְהַחִתִּ֔י",
+              "globalIndex": 779
+            },
+            {
+              "text": "וְהָאֱמֹרִ֥י",
+              "globalIndex": 780
+            },
+            {
+              "text": "וְהַחִוִּ֖י",
+              "globalIndex": 781
+            },
+            {
+              "text": "וְהַיְבוּסִ֑י",
+              "globalIndex": 782
+            },
+            {
+              "text": "אֲשֶׁ֨ר",
+              "globalIndex": 783
+            },
+            {
+              "text": "נִשְׁבַּ֤ע",
+              "globalIndex": 784
+            },
+            {
+              "text": "לַאֲבֹתֶ֨יךָ֙",
+              "globalIndex": 785
+            },
+            {
+              "text": "לָ֣תֶת",
+              "globalIndex": 786
+            },
+            {
+              "text": "לָ֔ךְ",
+              "globalIndex": 787
+            },
+            {
+              "text": "אֶ֛רֶץ",
+              "globalIndex": 788
+            },
+            {
+              "text": "זָבַ֥ת",
+              "globalIndex": 789
+            },
+            {
+              "text": "חָלָ֖ב",
+              "globalIndex": 790
+            },
+            {
+              "text": "וּדְבָ֑שׁ",
+              "globalIndex": 791
+            },
+            {
+              "text": "וְעָבַדְתָּ֛",
+              "globalIndex": 792
+            },
+            {
+              "text": "אֶת",
+              "globalIndex": 793
+            },
+            {
+              "text": "הָעֲבֹדָ֥ה",
+              "globalIndex": 794
+            },
+            {
+              "text": "הַזֹּ֖את",
+              "globalIndex": 795
+            },
+            {
+              "text": "בַּחֹ֥דֶשׁ",
+              "globalIndex": 796
+            },
+            {
+              "text": "הַזֶּֽה:",
+              "globalIndex": 797
+            }
+          ]
+        },
+        {
+          "lineIndex": 55,
+          "words": [
+            {
+              "text": "שִׁבְעַ֥ת",
+              "globalIndex": 798
+            },
+            {
+              "text": "יָמִ֖ים",
+              "globalIndex": 799
+            },
+            {
+              "text": "תֹּאכַ֣ל",
+              "globalIndex": 800
+            },
+            {
+              "text": "מַצֹּ֑ת",
+              "globalIndex": 801
+            },
+            {
+              "text": "וּבַיּוֹם֙",
+              "globalIndex": 802
+            },
+            {
+              "text": "הַשְּׁבִיעִ֔י",
+              "globalIndex": 803
+            },
+            {
+              "text": "חַ֖ג",
+              "globalIndex": 804
+            },
+            {
+              "text": "לַיהֹוָֽה:",
+              "globalIndex": 805
+            }
+          ]
+        },
+        {
+          "lineIndex": 56,
+          "words": [
+            {
+              "text": "מַצּוֹת֙",
+              "globalIndex": 806
+            },
+            {
+              "text": "יֵֽאָכֵ֔ל",
+              "globalIndex": 807
+            },
+            {
+              "text": "אֵ֖ת",
+              "globalIndex": 808
+            },
+            {
+              "text": "שִׁבְעַ֣ת",
+              "globalIndex": 809
+            },
+            {
+              "text": "הַיָּמִ֑ים",
+              "globalIndex": 810
+            },
+            {
+              "text": "וְלֹֽא",
+              "globalIndex": 811
+            },
+            {
+              "text": "יֵרָאֶ֨ה",
+              "globalIndex": 812
+            },
+            {
+              "text": "לְךָ֜",
+              "globalIndex": 813
+            },
+            {
+              "text": "חָמֵ֗ץ",
+              "globalIndex": 814
+            },
+            {
+              "text": "וְלֹֽא",
+              "globalIndex": 815
+            },
+            {
+              "text": "יֵרָאֶ֥ה",
+              "globalIndex": 816
+            },
+            {
+              "text": "לְךָ֛",
+              "globalIndex": 817
+            },
+            {
+              "text": "שְׂאֹ֖ר",
+              "globalIndex": 818
+            },
+            {
+              "text": "בְּכָל",
+              "globalIndex": 819
+            },
+            {
+              "text": "גְּבֻלֶֽךָ:",
+              "globalIndex": 820
+            }
+          ]
+        },
+        {
+          "lineIndex": 57,
+          "words": [
+            {
+              "text": "וְהִגַּדְתָּ֣",
+              "globalIndex": 821
+            },
+            {
+              "text": "לְבִנְךָ֔",
+              "globalIndex": 822
+            },
+            {
+              "text": "בַּיּ֥וֹם",
+              "globalIndex": 823
+            },
+            {
+              "text": "הַה֖וּא",
+              "globalIndex": 824
+            },
+            {
+              "text": "לֵאמֹ֑ר",
+              "globalIndex": 825
+            },
+            {
+              "text": "בַּעֲב֣וּר",
+              "globalIndex": 826
+            },
+            {
+              "text": "זֶ֗ה",
+              "globalIndex": 827
+            },
+            {
+              "text": "עָשָׂ֤ה",
+              "globalIndex": 828
+            },
+            {
+              "text": "יְהֹוָה֙",
+              "globalIndex": 829
+            },
+            {
+              "text": "לִ֔י",
+              "globalIndex": 830
+            },
+            {
+              "text": "בְּצֵאתִ֖י",
+              "globalIndex": 831
+            },
+            {
+              "text": "מִמִּצְרָֽיִם:",
+              "globalIndex": 832
+            }
+          ]
+        },
+        {
+          "lineIndex": 58,
+          "words": [
+            {
+              "text": "וְהָיָ֨ה",
+              "globalIndex": 833
+            },
+            {
+              "text": "לְךָ֤",
+              "globalIndex": 834
+            },
+            {
+              "text": "לְאוֹת֙",
+              "globalIndex": 835
+            },
+            {
+              "text": "עַל",
+              "globalIndex": 836
+            },
+            {
+              "text": "יָ֣דְךָ֔",
+              "globalIndex": 837
+            },
+            {
+              "text": "וּלְזִכָּר֖וֹן",
+              "globalIndex": 838
+            },
+            {
+              "text": "בֵּ֣ין",
+              "globalIndex": 839
+            },
+            {
+              "text": "עֵינֶ֑יךָ",
+              "globalIndex": 840
+            },
+            {
+              "text": "לְמַ֗עַן",
+              "globalIndex": 841
+            },
+            {
+              "text": "תִּהְיֶ֛ה",
+              "globalIndex": 842
+            },
+            {
+              "text": "תּוֹרַ֥ת",
+              "globalIndex": 843
+            },
+            {
+              "text": "יְהֹוָ֖ה",
+              "globalIndex": 844
+            },
+            {
+              "text": "בְּפִ֑יךָ",
+              "globalIndex": 845
+            },
+            {
+              "text": "כִּ֚י",
+              "globalIndex": 846
+            },
+            {
+              "text": "בְּיָ֣ד",
+              "globalIndex": 847
+            },
+            {
+              "text": "חֲזָקָ֔ה",
+              "globalIndex": 848
+            },
+            {
+              "text": "הוֹצִֽאֲךָ֥",
+              "globalIndex": 849
+            },
+            {
+              "text": "יְהֹוָ֖ה",
+              "globalIndex": 850
+            },
+            {
+              "text": "מִמִּצְרָֽיִם:",
+              "globalIndex": 851
+            }
+          ]
+        },
+        {
+          "lineIndex": 59,
+          "words": [
+            {
+              "text": "וְשָׁמַרְתָּ֛",
+              "globalIndex": 852
+            },
+            {
+              "text": "אֶת",
+              "globalIndex": 853
+            },
+            {
+              "text": "הַחֻקָּ֥ה",
+              "globalIndex": 854
+            },
+            {
+              "text": "הַזֹּ֖את",
+              "globalIndex": 855
+            },
+            {
+              "text": "לְמוֹעֲדָ֑הּ",
+              "globalIndex": 856
+            },
+            {
+              "text": "מִיָּמִ֖ים",
+              "globalIndex": 857
+            },
+            {
+              "text": "יָמִֽימָה:",
+              "globalIndex": 858
+            }
+          ]
+        },
+        {
+          "lineIndex": 60,
+          "words": [
+            {
+              "text": "וְהָיָ֞ה",
+              "globalIndex": 859
+            },
+            {
+              "text": "כִּי",
+              "globalIndex": 860
+            },
+            {
+              "text": "יְבִֽאֲךָ֣",
+              "globalIndex": 861
+            },
+            {
+              "text": "יְהֹוָ֗ה",
+              "globalIndex": 862
+            },
+            {
+              "text": "אֶל",
+              "globalIndex": 863
+            },
+            {
+              "text": "אֶ֤רֶץ",
+              "globalIndex": 864
+            },
+            {
+              "text": "הַֽכְּנַעֲנִי֙",
+              "globalIndex": 865
+            },
+            {
+              "text": "כַּאֲשֶׁ֨ר",
+              "globalIndex": 866
+            },
+            {
+              "text": "נִשְׁבַּ֥ע",
+              "globalIndex": 867
+            },
+            {
+              "text": "לְךָ֖",
+              "globalIndex": 868
+            },
+            {
+              "text": "וְלַאֲבֹתֶ֑יךָ",
+              "globalIndex": 869
+            },
+            {
+              "text": "וּנְתָנָ֖הּ",
+              "globalIndex": 870
+            },
+            {
+              "text": "לָֽךְ:",
+              "globalIndex": 871
+            }
+          ]
+        },
+        {
+          "lineIndex": 61,
+          "words": [
+            {
+              "text": "וְהַעֲבַרְתָּ֥",
+              "globalIndex": 872
+            },
+            {
+              "text": "כָל",
+              "globalIndex": 873
+            },
+            {
+              "text": "פֶּ֖טֶר",
+              "globalIndex": 874
+            },
+            {
+              "text": "רֶ֣חֶם",
+              "globalIndex": 875
+            },
+            {
+              "text": "לַיהֹוָ֑ה",
+              "globalIndex": 876
+            },
+            {
+              "text": "וְכָל",
+              "globalIndex": 877
+            },
+            {
+              "text": "פֶּ֤טֶר",
+              "globalIndex": 878
+            },
+            {
+              "text": "שֶׁ֨גֶר֙",
+              "globalIndex": 879
+            },
+            {
+              "text": "בְּהֵמָ֔ה",
+              "globalIndex": 880
+            },
+            {
+              "text": "אֲשֶׁ֨ר",
+              "globalIndex": 881
+            },
+            {
+              "text": "יִהְיֶ֥ה",
+              "globalIndex": 882
+            },
+            {
+              "text": "לְךָ֛",
+              "globalIndex": 883
+            },
+            {
+              "text": "הַזְּכָרִ֖ים",
+              "globalIndex": 884
+            },
+            {
+              "text": "לַיהֹוָֽה:",
+              "globalIndex": 885
+            }
+          ]
+        },
+        {
+          "lineIndex": 62,
+          "words": [
+            {
+              "text": "וְכָל",
+              "globalIndex": 886
+            },
+            {
+              "text": "פֶּ֤טֶר",
+              "globalIndex": 887
+            },
+            {
+              "text": "חֲמֹר֙",
+              "globalIndex": 888
+            },
+            {
+              "text": "תִּפְדֶּ֣ה",
+              "globalIndex": 889
+            },
+            {
+              "text": "בְשֶׂ֔ה",
+              "globalIndex": 890
+            },
+            {
+              "text": "וְאִם",
+              "globalIndex": 891
+            },
+            {
+              "text": "לֹ֥א",
+              "globalIndex": 892
+            },
+            {
+              "text": "תִפְדֶּ֖ה",
+              "globalIndex": 893
+            },
+            {
+              "text": "וַעֲרַפְתּ֑וֹ",
+              "globalIndex": 894
+            },
+            {
+              "text": "וְכֹ֨ל",
+              "globalIndex": 895
+            },
+            {
+              "text": "בְּכ֥וֹר",
+              "globalIndex": 896
+            },
+            {
+              "text": "אָדָ֛ם",
+              "globalIndex": 897
+            },
+            {
+              "text": "בְּבָנֶ֖יךָ",
+              "globalIndex": 898
+            },
+            {
+              "text": "תִּפְדֶּֽה:",
+              "globalIndex": 899
+            }
+          ]
+        },
+        {
+          "lineIndex": 63,
+          "words": [
+            {
+              "text": "וְהָיָ֞ה",
+              "globalIndex": 900
+            },
+            {
+              "text": "כִּי",
+              "globalIndex": 901
+            },
+            {
+              "text": "יִשְׁאָלְךָ֥",
+              "globalIndex": 902
+            },
+            {
+              "text": "בִנְךָ֛",
+              "globalIndex": 903
+            },
+            {
+              "text": "מָחָ֖ר",
+              "globalIndex": 904
+            },
+            {
+              "text": "לֵאמֹ֣ר",
+              "globalIndex": 905
+            },
+            {
+              "text": "מַה",
+              "globalIndex": 906
+            },
+            {
+              "text": "זֹּ֑את",
+              "globalIndex": 907
+            },
+            {
+              "text": "וְאָמַרְתָּ֣",
+              "globalIndex": 908
+            },
+            {
+              "text": "אֵלָ֔יו",
+              "globalIndex": 909
+            },
+            {
+              "text": "בְּחֹ֣זֶק",
+              "globalIndex": 910
+            },
+            {
+              "text": "יָ֗ד",
+              "globalIndex": 911
+            },
+            {
+              "text": "הוֹצִיאָ֧נוּ",
+              "globalIndex": 912
+            },
+            {
+              "text": "יְהֹוָ֛ה",
+              "globalIndex": 913
+            },
+            {
+              "text": "מִמִּצְרַ֖יִם",
+              "globalIndex": 914
+            },
+            {
+              "text": "מִבֵּ֥ית",
+              "globalIndex": 915
+            },
+            {
+              "text": "עֲבָדִֽים:",
+              "globalIndex": 916
+            }
+          ]
+        },
+        {
+          "lineIndex": 64,
+          "words": [
+            {
+              "text": "וַיְהִ֗י",
+              "globalIndex": 917
+            },
+            {
+              "text": "כִּי",
+              "globalIndex": 918
+            },
+            {
+              "text": "הִקְשָׁ֤ה",
+              "globalIndex": 919
+            },
+            {
+              "text": "פַרְעֹה֙",
+              "globalIndex": 920
+            },
+            {
+              "text": "לְשַׁלְּחֵ֔נוּ",
+              "globalIndex": 921
+            },
+            {
+              "text": "וַיַּהֲרֹ֨ג",
+              "globalIndex": 922
+            },
+            {
+              "text": "יְהֹוָ֤ה",
+              "globalIndex": 923
+            },
+            {
+              "text": "כָּל",
+              "globalIndex": 924
+            },
+            {
+              "text": "בְּכוֹר֙",
+              "globalIndex": 925
+            },
+            {
+              "text": "בְּאֶ֣רֶץ",
+              "globalIndex": 926
+            },
+            {
+              "text": "מִצְרַ֔יִם",
+              "globalIndex": 927
+            },
+            {
+              "text": "מִבְּכֹ֥ר",
+              "globalIndex": 928
+            },
+            {
+              "text": "אָדָ֖ם",
+              "globalIndex": 929
+            },
+            {
+              "text": "וְעַ֣ד",
+              "globalIndex": 930
+            },
+            {
+              "text": "בְּכ֣וֹר",
+              "globalIndex": 931
+            },
+            {
+              "text": "בְּהֵמָ֑ה",
+              "globalIndex": 932
+            },
+            {
+              "text": "עַל",
+              "globalIndex": 933
+            },
+            {
+              "text": "כֵּן֩",
+              "globalIndex": 934
+            },
+            {
+              "text": "אֲנִ֨י",
+              "globalIndex": 935
+            },
+            {
+              "text": "זֹבֵ֜חַ",
+              "globalIndex": 936
+            },
+            {
+              "text": "לַיהֹוָ֗ה",
+              "globalIndex": 937
+            },
+            {
+              "text": "כָּל",
+              "globalIndex": 938
+            },
+            {
+              "text": "פֶּ֤טֶר",
+              "globalIndex": 939
+            },
+            {
+              "text": "רֶ֨חֶם֙",
+              "globalIndex": 940
+            },
+            {
+              "text": "הַזְּכָרִ֔ים",
+              "globalIndex": 941
+            },
+            {
+              "text": "וְכָל",
+              "globalIndex": 942
+            },
+            {
+              "text": "בְּכ֥וֹר",
+              "globalIndex": 943
+            },
+            {
+              "text": "בָּנַ֖י",
+              "globalIndex": 944
+            },
+            {
+              "text": "אֶפְדֶּֽה:",
+              "globalIndex": 945
+            }
+          ]
+        },
+        {
+          "lineIndex": 65,
+          "words": [
+            {
+              "text": "וְהָיָ֤ה",
+              "globalIndex": 946
+            },
+            {
+              "text": "לְאוֹת֙",
+              "globalIndex": 947
+            },
+            {
+              "text": "עַל",
+              "globalIndex": 948
+            },
+            {
+              "text": "יָ֣דְכָ֔ה",
+              "globalIndex": 949
+            },
+            {
+              "text": "וּלְטוֹטָפֹ֖ת",
+              "globalIndex": 950
+            },
+            {
+              "text": "בֵּ֣ין",
+              "globalIndex": 951
+            },
+            {
+              "text": "עֵינֶ֑יךָ",
+              "globalIndex": 952
+            },
+            {
+              "text": "כִּ֚י",
+              "globalIndex": 953
+            },
+            {
+              "text": "בְּחֹ֣זֶק",
+              "globalIndex": 954
+            },
+            {
+              "text": "יָ֔ד",
+              "globalIndex": 955
+            },
+            {
+              "text": "הוֹצִיאָ֥נוּ",
+              "globalIndex": 956
+            },
+            {
+              "text": "יְהֹוָ֖ה",
+              "globalIndex": 957
+            },
+            {
+              "text": "מִמִּצְרָֽיִם:",
+              "globalIndex": 958
             }
           ]
         }
       ],
-      "wordIndexStart": 76,
-      "wordIndexEnd": 119,
-      "_legacySource": "shacharit/asher_yatzar",
-      "en": []
+      "en": [
+        {
+          "spans": [
+            {
+              "text": "Thank You, Hashem, for giving my neshamah back to me (which was a merciful thing to do since I have not yet lived up to my full potential, and therefore may not really deserve that);"
+            }
+          ],
+          "anchorLine": 0
+        },
+        {
+          "spans": [
+            {
+              "text": "Your belief in me is very great! (You believe I am important; my struggles are important; and You believe I can climb up to the next rung—which is why You woke me up. Thank You!)"
+            }
+          ]
+        },
+        {
+          "spans": [
+            {
+              "text": "The root of gaining wisdom is יראת השם. (If we show Hashem that we are willing to follow the Torah even when we do NOT understand it—then He will reward us by giving us understanding!) A good understanding of Torah is given to those who put it into practice (rather than learn it just to get a good grade, impress others—or get into yeshiva or seminary!). The praise of such a person is eternal (it goes beyond the report card—it will help them navigate life!). We DO want to see Hashem in our lives, therefore we proclaim: May our perception of Hashem's Presence and rulership (שֵׁם כְּבוֹד מַלְכוּתוֹ) be increased (בָּרוּךְ) forever (לְעוֹלָם וָעֶד)."
+            }
+          ],
+          "anchorLine": 1
+        },
+        {
+          "spans": [
+            {
+              "text": "The very same Torah that Moshe commanded us (at Har Sinai) is the eternal inheritance of the entire Bnei Yisrael (including me!). Help me understand and to never abandon all that has been handed down to us throughout the generations. May the Torah be the bedrock of my faith and may Hashem assist me in my growth, because I know that those who remain firm and close to Hashem are the ones who are really alive today. Hashem! I look to You for help in dealing with all my struggles!"
+            }
+          ],
+          "anchorLine": 3
+        },
+        {
+          "spans": [
+            {
+              "text": "You, Hashem, are the Source of everything;"
+            }
+          ],
+          "anchorLine": 8
+        },
+        {
+          "spans": [
+            {
+              "text": "You take care of us;"
+            }
+          ],
+          "anchorLine": 8
+        },
+        {
+          "spans": [
+            {
+              "text": "and You rule the entire world;"
+            }
+          ]
+        },
+        {
+          "spans": [
+            {
+              "text": "and through Your mitzvos You elevated us,"
+            }
+          ]
+        },
+        {
+          "spans": [
+            {
+              "text": "and You commanded us to wash our hands (and thus make sure we put meaning and thought into all we do)."
+            }
+          ]
+        },
+        {
+          "spans": [
+            {
+              "text": "You, Hashem, are the Source of everything;"
+            }
+          ],
+          "anchorLine": 8
+        },
+        {
+          "spans": [
+            {
+              "text": "You take care of us;"
+            }
+          ],
+          "anchorLine": 8
+        },
+        {
+          "spans": [
+            {
+              "text": "and You rule the entire world; You have formed humans with great wisdom (as scientists are continually discovering) and created within us all sorts of openings and cavities. It is quite obvious that even if just one of them would be torn or blocked—it would be impossible for us to survive and stand in front of You (even for a second)!"
+            }
+          ]
+        },
+        {
+          "spans": [
+            {
+              "text": "You, Hashem, are the Source of everything;"
+            }
+          ],
+          "anchorLine": 8
+        },
+        {
+          "spans": [
+            {
+              "text": "You heal all living things and perform constant miracles."
+            }
+          ]
+        },
+        {
+          "spans": [
+            {
+              "text": "Hashem Who takes care of me—the neshamah that You personally placed in me is a pure neshamah! You formed it (uniquely for me); You breathed it into me, You make sure it stays in me (and keeps me alive); and I know that eventually You will take it back. (Therefore, I must take advantage of it while I can!) And I believe that You will return it to me"
+            }
+          ],
+          "anchorLine": 10
+        },
+        {
+          "spans": [
+            {
+              "text": "at Techiyas Hameisim. As long as my neshamah is in me, I thank You, Hashem, Who takes care of me and Bnei Yisrael throughout our history; You are the Master of all that happens and of all souls. בָּרוּךְ אַתָּה יְהֹוָה—You, Hashem, are the Source of everything; הַמַּחֲזִיר נְשָׁמוֹת לִפְגָרִים מֵתִים—Who restores the neshamahs to dead bodies."
+            }
+          ]
+        },
+        {
+          "spans": [
+            {
+              "text": "בָּרוּךְ אַתָּה יְהֹוָה—You, Hashem, are the Source of everything; אֱלֹהֵינוּ—You take care of us; מֶלֶךְ הָעוֹלָם—and You rule the entire world; אֲשֶׁר קִדְּשָׁנוּ בְּמִצְוֹתָיו—and through Your mitzvos You elevated us; וְצִוָּנוּ לַעֲסֹק בְּדִבְרֵי תוֹרָה—and You commanded us to be continually involved with the words of Torah. (Even though I do not always understand them or find them easy to apply.)"
+            }
+          ]
+        },
+        {
+          "spans": [
+            {
+              "text": "וְהַעֲרֶב נָא—Please, Hashem, make the words of Your Torah sweet (enjoyable and understandable) to us and to all Jews everywhere; so that all of us, and our children and our grandchildren, will all acknowledge Your constant Presence (in our lives) and we will all study Your Torah for its own sake (not just to get reward). בָּרוּךְ אַתָּה יְהֹוָה—You, Hashem, are the Source of everything; הַמְלַמֵּד תּוֹרָה לְעַמּוֹ יִשְׂרָאֵל—Who personally teaches Torah to (each member of) His nation—Bnei Yisrael (including me!)."
+            }
+          ]
+        },
+        {
+          "spans": [
+            {
+              "text": "בָּרוּךְ אַתָּה יְהֹוָה—You, Hashem, are the Source of everything; אֱלֹהֵינוּ—You take care of us; מֶלֶךְ הָעוֹלָם—and You rule the entire world; אֲשֶׁר בָּחַר בָּנוּ מִכָּל הָעַמִּים—(we are so happy that) You have chosen us, Bnei Yisrael, out of all the nations of the world; וְנָתַן לָנוּ אֶת תּוֹרָתוֹ—and have given us Your Torah. בָּרוּךְ אַתָּה יְהֹוָה—You, Hashem, are the Source of everything; נוֹתֵן הַתּוֹרָה—Who gives (us) the Torah."
+            }
+          ],
+          "anchorLine": 8
+        },
+        {
+          "spans": [
+            {
+              "text": "בָּרְכִי נַפְשִׁי—Just by looking at Your amazing creation, my soul calls out that You, Hashem, are the Source of it all! And (though) You are \"clothed in majesty and splendor\" and \"wrapped in light\" (meaning, Hashem is beyond our comprehension), You are my personal God and You direct all that happens here on earth, under the Heavens."
+            }
+          ],
+          "anchorLine": 20
+        },
+        {
+          "spans": [
+            {
+              "text": "לְשֵׁם יִחוּד—Just as I am about to wrap myself in my tallis, so too may my neshamah be wrapped in the light of Hashem. And may the merit of this mitzvah protect me from all spiritual and physical dangers that I may encounter during the day. And (even though I know that I do not always do all the mitzvos perfectly and with the proper intentions) may Hashem consider this mitzvah as if I did it 100 percent properly!"
+            }
+          ]
+        },
+        {
+          "spans": [
+            {
+              "text": "הִנְנִי מְכַוֵּן—I am now going to fulfill my Creator's commandment to wrap myself in tzitzis, whose purpose is to remind me of the 613 mitzvos."
+            }
+          ],
+          "anchorLine": 28
+        },
+        {
+          "spans": [
+            {
+              "text": "בָּרוּךְ אַתָּה יְהֹוָה—You, Hashem, are the Source of everything; אֱלֹהֵינוּ—You take care of us; מֶלֶךְ הָעוֹלָם—and You rule the entire world; אֲשֶׁר קִדְּשָׁנוּ בְּמִצְוֹתָיו—and through Your mitzvos You elevated us; וְצִוָּנוּ לְהִתְעַטֵּף בַּצִּיצִית—and You commanded us to wrap ourselves in tzitzis."
+            }
+          ],
+          "anchorLine": 8
+        },
+        {
+          "spans": [
+            {
+              "text": "מַה יָּקָר חַסְדְּךָ—Hashem—Your loving-kindness is crucial for our welfare! We find security by placing ourselves under Your protection—for You are the Source of all spiritual and material abundance. Please continue to show us Your chessed and righteousness!"
+            }
+          ],
+          "anchorLine": 32
+        },
+        {
+          "spans": [
+            {
+              "text": "It is important to think a bit before one does a mitzvah so that one will be doing it for the correct reasons! This is especially true with the mitzvah of tefillin, which is an external symbol of an inner commitment! Therefore, many say the לשם יחוד paragraph before putting on their tefillin."
+            }
+          ]
+        },
+        {
+          "spans": [
+            {
+              "text": "לְשֵׁם יִחוּד—I am about to put on tefillin, with the intent to fulfill a mitzvah of the Torah. What is written in the tefillin reminds me of the great miracles of yetzias Mitzrayim, and that Hashem controls the world! By putting tefillin on my arm and opposite my heart, I dedicate my strengths and talents wholeheartedly to the service of Hashem. By putting tefillin on my head, I dedicate my intellectual powers and all my senses to the service of Hashem. In the merit of this mitzvah, may I live a long, productive, and spiritual life—free from improper thoughts. And may the yetzer hara not sway me to sin—rather it should allow me to serve You—which is really what my heart desires to do! And (even though I know that I do not always do all the mitzvos perfectly and with the proper intentions) may Hashem consider this mitzvah as if I did it 100 percent properly!"
+            }
+          ],
+          "anchorLine": 27
+        },
+        {
+          "spans": [
+            {
+              "text": "בָּרוּךְ אַתָּה יְהֹוָה—You, Hashem, are the Source of everything; אֱלֹהֵינוּ—You take care of us; מֶלֶךְ הָעוֹלָם—and You rule the entire world; אֲשֶׁר קִדְּשָׁנוּ בְּמִצְוֹתָיו—and through Your mitzvos You elevated us; וְצִוָּנוּ לְהָנִיחַ תְּפִלִּין—and You commanded us to put on tefillin."
+            }
+          ],
+          "anchorLine": 8
+        },
+        {
+          "spans": [
+            {
+              "text": "בָּרוּךְ אַתָּה יְהֹוָה—You, Hashem, are the Source of everything; אֱלֹהֵינוּ—You take care of us; מֶלֶךְ הָעוֹלָם—and You rule the entire world; אֲשֶׁר קִדְּשָׁנוּ בְּמִצְוֹתָיו—and through Your mitzvos You elevated us; וְצִוָּנוּ עַל מִצְוַת תְּפִלִּין—and You commanded us regarding the mitzvah of tefillin."
+            }
+          ],
+          "anchorLine": 8
+        },
+        {
+          "spans": [
+            {
+              "text": "בָּרוּךְ שֵׁם כְּבוֹד מַלְכוּתוֹ—May the perception of Hashem's Presence and rulership be increased (so all humans will recognize His existence and power), לְעוֹלָם וָעֶד—forever and ever."
+            }
+          ],
+          "anchorLine": 2
+        },
+        {
+          "spans": [
+            {
+              "text": "וּמֵחָכְמָתְךָ אֵל עֶלְיוֹן—Please, Hashem, grant me wisdom and understanding. May Your chessed always be with me, and please subdue all my enemies! And shower Your goodness on all Your creatures!"
+            }
+          ],
+          "anchorLine": 45
+        },
+        {
+          "spans": [
+            {
+              "text": "פּוֹתֵחַ אֶת יָדֶךָ—You open Your Hand; וּמַשְׂבִּיעַ לְכָל חַי רָצוֹן—and give each person what they need in order to be satisfied."
+            }
+          ],
+          "anchorLine": 46
+        },
+        {
+          "spans": [
+            {
+              "text": "As we wind the tefillin on our fingers, we read from the Navi Hoshea, which describes how, in the end of days, the relationship between Hashem and Bnei Yisrael will be similar to that of a chassan and kallah."
+            }
+          ]
+        },
+        {
+          "spans": [
+            {
+              "text": "וְאֵרַשְׂתִּיךְ לִי—I will Hashem declares: betroth you to Me forever (our bond will never be broken)."
+            }
+          ],
+          "anchorLine": 47
+        },
+        {
+          "spans": [
+            {
+              "text": "וְאֵרַשְׂתִּיךְ לִי (Regarding bein adam l'chaveiro,) the basis of our bond is that you, Bnei Yisrael, will deal with others with מִשְׁפָּט—following the letter of the law and צֶדֶק—going even beyond the letter of the law; and in return I, Hashem, will show you חֶסֶד and רַחֲמִים."
+            }
+          ],
+          "anchorLine": 47
+        },
+        {
+          "spans": [
+            {
+              "text": "וְאֵרַשְׂתִּיךְ לִי (Regarding bein adam la'Makom,) the basis of our bond is that you, Bnei Yisrael, will have pure אֱמוּנָה; and in return, וְיָדַעַתְּ אֶת יְהֹוָה—I, Hashem, will allow you to understand My ways and all will make sense."
+            }
+          ],
+          "anchorLine": 47
+        }
+      ],
+      "_legacySource": null
     },
     {
       "kind": "callout",
+      "tags": [
+        "note"
+      ],
       "body": [
         {
           "spans": [
             {
-              "text": "The FOR WEEKDAYS"
+              "text": "OK—but I can't climb to the next rung if I don't understand what to do!"
             }
           ]
         }
@@ -571,15 +4480,14 @@
     },
     {
       "kind": "callout",
+      "tags": [
+        "note"
+      ],
       "body": [
         {
           "spans": [
             {
-              "text": "The complete weekday davening with an  easy-to-follow and insightful  translation/explanation",
-              "style": "italic"
-            },
-            {
-              "text": "and"
+              "text": "OK—I have a body and a soul. What can I do to ensure they work together successfully?"
             }
           ]
         }
@@ -587,11 +4495,14 @@
     },
     {
       "kind": "callout",
+      "tags": [
+        "note"
+      ],
       "body": [
         {
           "spans": [
             {
-              "text": "NUSACH ASHKENAZ"
+              "text": "But I know that Torah really IS sweet—and therefore I ask:"
             }
           ]
         }
@@ -599,11 +4510,50 @@
     },
     {
       "kind": "callout",
+      "tags": [
+        "note"
+      ],
       "body": [
         {
           "spans": [
             {
-              "text": "BY R ABBI YITZCHAK FEIGENBAUM A PROJECT OF NAVON EDUCATIONAL FOUNDATION"
+              "text": "I don't feel, \"Oh, my bad luck! I'm stuck with this Torah.\" Rather, I'm proud to be part of this great mission to the world—and therefore I proclaim:"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "faq",
+      "body": [
+        {
+          "spans": [
+            {
+              "text": "FAQ:\nBut I do NOT understand the Torah, and to be honest, I am NOT happy that I was stuck being part of the Chosen People! What's so great about it?"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "faq",
+      "body": [
+        {
+          "spans": [
+            {
+              "text": "ANSWER:\nFamous question! See Appendix 4."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "instant_insight",
+      "body": [
+        {
+          "spans": [
+            {
+              "text": "Instant Insight:\nAs much as we all wish that our daily experience of Torah and mitzvos be uplifting, meaningful, and exciting, the truth is that for many of us, at times in our lives it is not. But the bedrock of our emunah is that Hashem spoke at Har Sinai and chose us for a mission (which is borne out by our miraculous existence until today—to the consternation of much of the rest of the world!), and therefore, simply put, we must get with the program! That is the first brachah of לעסוק—you just have to do it to the best of your ability. You have questions? Fine. It will take a lifetime to ask all the questions and get answers. But until that happens, we must start with לעסוק—get involved with the Torah, get with the program, and do the best we can. As we said earlier: שכל טוב—A good understanding of Torah is given לכל עושיהם—to those who practice it.\n\nDespite this need to \"do it\" no matter what, since we all know deep down that there must be \"A Plan\" and that there is depth to Torah that we simply don't understand yet, we then ask Hashem והערב נא—please, make it sweet and understandable. Why? First of all, it is easier to \"take vitamins and medicines\" (it is Torah that keeps us spiritually healthy) that are sweet. But in addition, ונהיה אנחנו וצאצאינו וצאצאי עמך בית ישראל כלנו יודעי שמך—it will be easier for us to hand it down to OUR kids if we and they enjoy it! We then end the series of three brachos by proclaiming that as much as we do or don't understand—אשר בחר בנו—we thank Hashem for choosing us for His great mission to the world."
             }
           ]
         }
@@ -611,11 +4561,31 @@
     },
     {
       "kind": "callout",
+      "tags": [
+        "rubric"
+      ],
       "body": [
         {
           "spans": [
             {
-              "text": "Copyright © 2022 by Mosaica Press"
+              "text": "תורה שבכתב—ברכת כהנים /\nתורה שבעל פה—משנה פאה, גמרא שבת"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "subsection",
+      "he": "עטיפת טלית",
+      "en": ""
+    },
+    {
+      "kind": "faq",
+      "body": [
+        {
+          "spans": [
+            {
+              "text": "FAQ:\nWomen are also \"committed to putting Torah into practice,\" so how come they don't put on tallis and tefillin?\nANSWER:\nFair and honest question! See Appendix 11."
             }
           ]
         }
@@ -623,11 +4593,14 @@
     },
     {
       "kind": "callout",
+      "tags": [
+        "rubric"
+      ],
       "body": [
         {
           "spans": [
             {
-              "text": "ISBN: 978-1-952370-74-8"
+              "text": "Brachah before putting on the tallis:"
             }
           ]
         }
@@ -635,11 +4608,34 @@
     },
     {
       "kind": "callout",
+      "tags": [
+        "rubric"
+      ],
       "body": [
         {
           "spans": [
             {
-              "text": "and"
+              "text": "After putting on the tallis:"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "subsection",
+      "he": "הנחת תפילין",
+      "en": ""
+    },
+    {
+      "kind": "callout",
+      "tags": [
+        "note"
+      ],
+      "body": [
+        {
+          "spans": [
+            {
+              "text": "I dedicate my actions and thoughts to Hashem."
             }
           ]
         }
@@ -647,11 +4643,14 @@
     },
     {
       "kind": "callout",
+      "tags": [
+        "rubric"
+      ],
       "body": [
         {
           "spans": [
             {
-              "text": "Published by Mosaica Press, Inc. www.mosaicapress.com info@mosaicapress.com TABLE OF CONTENTS"
+              "text": "Brachah before putting on the tefillin shel yad:"
             }
           ]
         }
@@ -659,15 +4658,14 @@
     },
     {
       "kind": "callout",
+      "tags": [
+        "rubric"
+      ],
       "body": [
         {
           "spans": [
             {
-              "text": "VI",
-              "style": "bold"
-            },
-            {
-              "text": "and"
+              "text": "Brachah before putting on the tefillin shel rosh:"
             }
           ]
         }
@@ -675,11 +4673,14 @@
     },
     {
       "kind": "callout",
+      "tags": [
+        "rubric"
+      ],
       "body": [
         {
           "spans": [
             {
-              "text": "and"
+              "text": "After adjusting the tefillin shel rosh say:"
             }
           ]
         }
@@ -687,69 +4688,34 @@
     },
     {
       "kind": "callout",
+      "tags": [
+        "rubric"
+      ],
       "body": [
         {
           "spans": [
             {
-              "text": "and"
+              "text": "Then say:"
             }
           ]
         }
       ]
     },
     {
-      "kind": "callout",
-      "body": [
-        {
-          "spans": [
-            {
-              "text": "Li’chvod",
-              "style": "italic"
-            }
-          ]
-        }
-      ]
+      "kind": "subsection",
+      "he": "קדש לי כל בכור",
+      "en": ""
     },
     {
       "kind": "callout",
+      "tags": [
+        "rubric"
+      ],
       "body": [
         {
           "spans": [
             {
-              "text": "VI",
-              "style": "bold"
-            },
-            {
-              "text": "shmuzim",
-              "style": "italic"
-            },
-            {
-              "text": "and still hear your"
-            },
-            {
-              "text": "niggunim",
-              "style": "italic"
-            },
-            {
-              "text": "for the Rosh Hashanah and Yom Kippur davening in my head every year. I wish you much"
-            },
-            {
-              "text": "mazal",
-              "style": "italic"
-            },
-            {
-              "text": "and"
-            },
-            {
-              "text": "brachah",
-              "style": "italic"
-            },
-            {
-              "text": "on the completion of this siddur. May Hashem bless you, your"
-            },
-            {
-              "text": "rebbetzin",
-              "style": "italic"
+              "text": "Some have the custom to say the two (of the four) parshiyos that are in the tefillin shel rosh that appear in Chumash Shemos. (We will say the other two when we recite the Shema.)"
             }
           ]
         }
